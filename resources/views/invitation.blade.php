@@ -24,12 +24,13 @@
             {!! QrCode::size(500)->generate($invitation->guest_code) !!}
         </div>
         <div class="card-body text-center">
+            {{ $invitation->guest_code }}
             <h5 class="card-title">
                 {{ $invitation->name }}
             </h5>
             <p class="card-text">
+                {{ $invitation->guests }} {{ Str::plural('guest', $invitation->guests) }}<br>
                 {{ $invitation->seating->name }}<br>
-                Pax: {{ $invitation->guests }}
             </p>
         </div>
     </div>
