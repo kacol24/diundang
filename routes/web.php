@@ -2,6 +2,8 @@
 
 use App\Models\Invitation;
 use Illuminate\Support\Facades\Route;
+use Intervention\Image\Facades\Image;
+use SimpleSoftwareIO\QrCode\Facades\QrCode;
 
 /*
 |--------------------------------------------------------------------------
@@ -17,6 +19,13 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     $guestCode = request('guest');
     $invitation = Invitation::where('guest_code', $guestCode)->first();
+
+    //$img = Image::make(public_path('images/design.jpg'));
+    //QrCode::size(500)
+    //      ->format('png')
+    //      ->generate($invitation->guest_code, storage_path('app/public/qr/'.$guestCode.'.png'));
+    //$img->insert(storage_path('app/public/qr/'.$guestCode.'.png'));
+    //$img->save(storage_path('app/public/'.$guestCode.'.jpg'));
 
     return view('invitation', compact('invitation'));
 });
