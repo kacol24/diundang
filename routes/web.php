@@ -1,5 +1,6 @@
 <?php
 
+use App\Models\Invitation;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -14,5 +15,8 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    $guestCode = request('guest');
+    $invitation = Invitation::where('guest_code', $guestCode)->first();
+
+    return view('invitation', compact('invitation'));
 });
