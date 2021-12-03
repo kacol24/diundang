@@ -24,9 +24,9 @@
         <div class="card w-100 mx-auto rounded-3">
             <div class="card-body text-center w-100">
                 {!! QrCode::size(500)->generate($invitation->guest_code) !!}
-                <h5 class="card-title mt-2 mb-0">
+                <h6 class="card-title mt-2 mb-0">
                     {{ $invitation->name }}
-                </h5>
+                </h6>
                 <p class="card-text m-0">
                     {{ $invitation->guests }} {{ Str::plural('guest', $invitation->guests) }}
                 </p>
