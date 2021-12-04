@@ -25,18 +25,10 @@ Route::get('/', function () {
           ->generate($invitation->guest_code, storage_path('app/public/qr/'.$guestCode.'.png'));
     $qr = storage_path('app/public/qr/'.$guestCode.'.png');
 
-    //$img = Image::make(public_path('images/design.jpg'));
-    //QrCode::size(500)
-    //      ->format('png')
-    //      ->generate($invitation->guest_code, storage_path('app/public/qr/'.$guestCode.'.png'));
-    //$img->insert(storage_path('app/public/qr/'.$guestCode.'.png'));
-    //$img->save(storage_path('app/public/'.$guestCode.'.jpg'));
-
     $pdf = App::make('dompdf.wrapper');
     $pdf->loadView('qr', compact('invitation', 'qr'));
 
-    return $pdf->download();
-    //return view('qr', compact('invitation'));
+    return $pdf->download('Invitation, The Wedding of Kevin & Fernanda, 09-10-2022' . $guestCode.'.pdf');
 });
 
 Route::get('/qr', function () {
