@@ -1,8 +1,8 @@
 <?php
 
 use App\Models\Invitation;
+use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\Route;
-use Intervention\Image\Facades\Image;
 use SimpleSoftwareIO\QrCode\Facades\QrCode;
 
 /*
@@ -20,6 +20,11 @@ Route::get('/', function () {
     $guestCode = request('guest');
     $invitation = Invitation::where('guest_code', $guestCode)->first();
 
+    QrCode::size(500)
+          ->format('png')
+          ->generate($invitation->guest_code, storage_path('app/public/qr/'.$guestCode.'.png'));
+    $qr = storage_path('app/public/qr/'.$guestCode.'.png');
+
     //$img = Image::make(public_path('images/design.jpg'));
     //QrCode::size(500)
     //      ->format('png')
@@ -27,7 +32,11 @@ Route::get('/', function () {
     //$img->insert(storage_path('app/public/qr/'.$guestCode.'.png'));
     //$img->save(storage_path('app/public/'.$guestCode.'.jpg'));
 
-    return view('invitation', compact('invitation'));
+    $pdf = App::make('dompdf.wrapper');
+    $pdf->loadView('qr', compact('invitation', 'qr'));
+
+    return $pdf->stream();
+    //return view('qr', compact('invitation'));
 });
 
 Route::get('/qr', function () {
