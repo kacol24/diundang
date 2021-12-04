@@ -20,15 +20,21 @@ Route::get('/', function () {
     $guestCode = request('guest');
     $invitation = Invitation::where('guest_code', $guestCode)->first();
 
-    QrCode::size(500)
-          ->format('png')
-          ->generate($invitation->guest_code, storage_path('app/public/qr/'.$guestCode.'.png'));
-    $qr = storage_path('app/public/qr/'.$guestCode.'.png');
+    $qrname = storage_path('app/public/qr/'.$guestCode.'.png');
+    $filename = storage_path('app/public/['.$guestCode.'] Invitation, The Wedding of Kevin & Fernanda, 09-10-2022.pdf');
 
-    $pdf = App::make('dompdf.wrapper');
-    $pdf->loadView('qr', compact('invitation', 'qr'));
+    if (! file_exists($filename)) {
+        QrCode::size(500)
+              ->format('png')
+              ->generate($invitation->guest_code, $qrname);
+        $qr = $qrname;
 
-    return $pdf->download('Invitation, The Wedding of Kevin & Fernanda, 09-10-2022' . $guestCode.'.pdf');
+        $pdf = App::make('dompdf.wrapper');
+        $pdf->loadView('qr', compact('invitation', 'qr'));
+        $pdf->save($filename);
+    }
+
+    return response()->download($filename);
 });
 
 Route::get('/download', function () {
@@ -43,7 +49,7 @@ Route::get('/download', function () {
     $pdf = App::make('dompdf.wrapper');
     $pdf->loadView('qr', compact('invitation', 'qr'));
 
-    return $pdf->stream('Invitation, The Wedding of Kevin & Fernanda, 09-10-2022'.$guestCode.'.pdf');
+    return $pdf->stream('Invitation, The Wedding of Kevin & Fernanda, 09-10-2022.pdf');
 });
 
 Route::get('/qr', function () {
