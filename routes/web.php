@@ -35,7 +35,7 @@ Route::get('/', function () {
     $pdf = App::make('dompdf.wrapper');
     $pdf->loadView('qr', compact('invitation', 'qr'));
 
-    return $pdf->stream();
+    return $pdf->download();
     //return view('qr', compact('invitation'));
 });
 
