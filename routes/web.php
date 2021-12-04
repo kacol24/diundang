@@ -35,7 +35,7 @@ Route::get('/', function () {
     }
 
     return response()->download($filename);
-});
+})->name('download');
 
 Route::get('/download', function () {
     $guestCode = request('guest');

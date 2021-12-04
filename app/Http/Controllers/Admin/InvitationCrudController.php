@@ -41,6 +41,8 @@ class InvitationCrudController extends CrudController
      */
     protected function setupListOperation()
     {
+        $this->crud->addButtonFromView('line', 'send-wa-invite', 'wa-invite', true);
+
         CRUD::column('guest_code');
         CRUD::column('name');
         CRUD::column('phone');
