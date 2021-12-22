@@ -45,6 +45,11 @@ class Invitation extends Model
         return $this->belongsTo(Seating::class);
     }
 
+    public function attendance()
+    {
+        return $this->hasOne(Attendance::class);
+    }
+
     /*
     |--------------------------------------------------------------------------
     | SCOPES
