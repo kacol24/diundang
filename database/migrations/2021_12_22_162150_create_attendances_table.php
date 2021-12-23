@@ -16,7 +16,7 @@ class CreateAttendancesTable extends Migration
         Schema::create('attendances', function (Blueprint $table) {
             $table->id();
             $table->foreignId('invitation_id')->constrained();
-            $table->string('sequence_group');
+            $table->string('sequence_group')->nullable();
             $table->integer('sequence');
             $table->timestamps();
         });

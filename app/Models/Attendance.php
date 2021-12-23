@@ -9,6 +9,11 @@ class Attendance extends Model
 {
     use HasFactory;
 
+    protected $fillable = [
+        'sequence_group',
+        'sequence',
+    ];
+
     public function invitation()
     {
         return $this->belongsTo(Invitation::class);

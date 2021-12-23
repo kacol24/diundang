@@ -4,6 +4,13 @@ scalar Date @scalar(class: "Nuwave\\Lighthouse\\Schema\\Types\\Scalars\\Date")
 "A datetime string with format `Y-m-d H:i:s`, e.g. `2018-05-23 13:43:32`."
 scalar DateTime @scalar(class: "Nuwave\\Lighthouse\\Schema\\Types\\Scalars\\DateTime")
 
+type Mutation {
+    checkIn(
+        guest_code: String!
+        sequence_group: String
+    ): Attendance @field(resolver: "CheckIn")
+}
+
 type Query {
     users: [User!]! @paginate(defaultCount: 10)
     user(id: ID @eq): User! @find
@@ -11,7 +18,7 @@ type Query {
     attendances(
         limit: Int @limit
         sequence_group: String @where(clause: "whereSequenceGroup")
-    ): [Attendance] @all
+    ): [Attendance!]! @all @orderBy(column: "created_at", direction: DESC)
 }
 
 type User {
