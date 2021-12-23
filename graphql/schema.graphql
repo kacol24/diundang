@@ -14,7 +14,7 @@ type Mutation {
 type Query {
     users: [User!]! @paginate(defaultCount: 10)
     user(id: ID @eq): User! @find
-    invitations: [Invitation!]! @paginate(defaultCount: 10)
+    invitations: [Invitation!]! @all
     attendances(
         limit: Int @limit
         sequence_group: String @where(clause: "whereSequenceGroup")
@@ -30,6 +30,7 @@ type User {
 }
 
 type Invitation {
+    id: ID
     guest_code: String
     name: String!
     phone: String

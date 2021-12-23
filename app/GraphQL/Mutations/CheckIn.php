@@ -19,7 +19,8 @@ class CheckIn
         $invitation = Invitation::where('guest_code', $guestCode)->first();
 
         if ($invitation->attendance()->exists()) {
-            return $invitation->attendance->where('sequence_group', $sequenceGroup)
+            return $invitation->attendance->where('invitation_id', $invitation->id)
+                                          ->where('sequence_group', $sequenceGroup)
                                           ->orderBy('sequence', 'desc')
                                           ->first();
         }
