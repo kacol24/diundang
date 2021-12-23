@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use Backpack\CRUD\app\Models\Traits\CrudTrait;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
 class Invitation extends Model
@@ -12,6 +13,7 @@ class Invitation extends Model
     const WA_CTC = 'https://wa.me/62%phone%?text=%message%';
 
     use CrudTrait;
+    use HasFactory;
 
     /*
     |--------------------------------------------------------------------------
