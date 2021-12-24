@@ -24,6 +24,23 @@
     </style>
 </head>
 <body>
+<div style="page-break-after: always">
+    <div style="text-align: center;padding: 15px;">
+        <div>
+            Your table:<br>
+            <strong>
+                {{ $invitation->seating->name }}
+            </strong>
+        </div>
+        <img src="{{ public_path('images/'. rand(1, 5) .'.jpg') }}" style="max-width: 100%;height:auto;margin-top: 30px;">
+        <div style="position: fixed;bottom: 15px;left: 0;width: 100%;">
+            <div style="width: 100px;margin: auto;">
+                Invitation<br>
+                Next Page
+            </div>
+        </div>
+    </div>
+</div>
 <div style="position: relative;">
     <img src="{{ public_path('images/design.jpg') }}" style="max-width: 100%;height:auto;">
     <div style="position: absolute; left: 2.13cm;bottom: 1.6cm;">
