@@ -18,9 +18,11 @@ class Seating extends Model
     */
 
     protected $table = 'seatings';
+
     // protected $primaryKey = 'id';
     // public $timestamps = false;
     protected $guarded = ['id'];
+
     // protected $fillable = [];
     // protected $hidden = [];
     // protected $dates = [];
@@ -52,7 +54,10 @@ class Seating extends Model
     | ACCESSORS
     |--------------------------------------------------------------------------
     */
-
+    public function getPlanImageUrlAttribute()
+    {
+        return asset('images/'.rand(1, 5).'.jpg');
+    }
     /*
     |--------------------------------------------------------------------------
     | MUTATORS

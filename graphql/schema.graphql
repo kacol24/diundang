@@ -41,6 +41,7 @@ type Invitation {
 
 type Seating {
     name: String!
+    plan_image_url: String
 }
 
 type Attendance {
