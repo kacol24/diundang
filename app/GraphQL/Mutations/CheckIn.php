@@ -41,6 +41,6 @@ class CheckIn
             'sequence'       => $nextSequence,
         ]);
 
-        return $attendance;
+        return $invitation;
     }
 }

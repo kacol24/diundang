@@ -8,7 +8,7 @@ type Mutation {
     checkIn(
         guest_code: String!
         sequence_group: String
-    ): Attendance @field(resolver: "CheckIn")
+    ): Invitation @field(resolver: "CheckIn")
 }
 
 type Query {
