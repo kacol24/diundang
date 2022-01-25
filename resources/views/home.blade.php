@@ -114,37 +114,39 @@
             </div>
         </nav>
     </header>
-    <div class="container py-5" id="couple" style="background-color:rgba(162,195,255,0.3);">
-        <div class="row align-items-center">
-            <div class="col-md">
-                <div class="text-center">
-                    <img src="https://placekitten.com/250" alt="" class="img-fluid rounded-circle mb-3"
-                         style="max-width: 250px">
-                    <h2 class="font-cursive">
-                        Kevin Chandra
-                    </h2>
-                    <p>
-                        <strong>Son of</strong><br>
-                        Gunawan Chandra &<br>
-                        Susilowati
-                    </p>
+    <div class="py-5" id="couple" style="background-color:rgba(162,195,255,0.3);">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-md">
+                    <div class="text-center">
+                        <img src="https://placekitten.com/250" alt="" class="img-fluid rounded-circle mb-3"
+                             style="max-width: 250px">
+                        <h2 class="font-cursive">
+                            Kevin Chandra
+                        </h2>
+                        <p>
+                            <strong>Son of</strong><br>
+                            Gunawan Chandra &<br>
+                            Susilowati
+                        </p>
+                    </div>
                 </div>
-            </div>
-            <div class="col-md-1 display-1 text-center" style="font-family: cursive;">
-                &
-            </div>
-            <div class="col-md">
-                <div class="text-center">
-                    <img src="https://placekitten.com/300" alt="" class="img-fluid rounded-circle mb-3"
-                         style="max-width: 250px">
-                    <h2 class="font-cursive">
-                        Fernanda Eka Putri
-                    </h2>
-                    <p>
-                        <strong>Daughter of</strong><br>
-                        Ge Cingkai &<br>
-                        Lim Liauw Hung San
-                    </p>
+                <div class="col-md-1 display-1 text-center" style="font-family: cursive;">
+                    &
+                </div>
+                <div class="col-md">
+                    <div class="text-center">
+                        <img src="https://placekitten.com/300" alt="" class="img-fluid rounded-circle mb-3"
+                             style="max-width: 250px">
+                        <h2 class="font-cursive">
+                            Fernanda Eka Putri
+                        </h2>
+                        <p>
+                            <strong>Daughter of</strong><br>
+                            Ge Cingkai &<br>
+                            Lim Liauw Hung San
+                        </p>
+                    </div>
                 </div>
             </div>
         </div>
