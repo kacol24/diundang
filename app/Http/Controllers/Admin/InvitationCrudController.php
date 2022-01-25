@@ -87,6 +87,9 @@ class InvitationCrudController extends CrudController
             ->model(Seating::class)
             ->attribute('name')
             ->allowsNull(true);
+        CRUD::field('files')
+            ->label('Files')
+            ->type('browse');
         /**
          * Fields can be defined using the fluent syntax or array syntax:
          * - CRUD::field('price')->type('number');
