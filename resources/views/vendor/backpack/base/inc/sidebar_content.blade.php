@@ -3,3 +3,4 @@
 <li class='nav-item'><a class='nav-link' href='{{ backpack_url('seating') }}'><i class='nav-icon la la-question'></i> Seatings</a></li>
 <li class='nav-item'><a class='nav-link' href='{{ backpack_url('invitation') }}'><i class='nav-icon la la-question'></i> Invitations</a></li>
 <li class='nav-item'><a class='nav-link' href='{{ backpack_url('attendance') }}'><i class='nav-icon la la-question'></i> Attendances</a></li>
+<li class="nav-item"><a class="nav-link" href="{{ backpack_url('elfinder') }}"><i class="nav-icon la la-files-o"></i> <span>{{ trans('backpack::crud.file_manager') }}</span></a></li>
