@@ -14,6 +14,8 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+Route::view('/', 'home');
+
 Route::get('/download', function () {
     $guestCode = request('guest');
     abort_unless($guestCode, 404, 'Guest code missing.');
