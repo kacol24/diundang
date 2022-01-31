@@ -102,8 +102,8 @@
 
 <div class="wrapper">
     <div class="hero-image darkened-overlay text-center py-5 overflow-hidden"
-         data-parallax="scroll"
-         data-image-src="{{ asset('images/hero-2.jpg') }}">
+         data-parallax
+         data-src="{{ asset('images/hero-2.jpg') }}">
         <img src="{{ asset('images/logo-initials.png') }}" alt="" class="img-fluid" width="200" style="z-index: 1"
              data-aos="fade-down">
         <div class="text-white font-cursive">
@@ -162,9 +162,11 @@
             </div>
         </nav>
     </header>
-    <div class="position-relative overflow-hidden" id="couple" style="background-color:var(--color-primary);padding-top: 10%;padding-bottom: 10%;">
+    <div class="position-relative overflow-hidden" id="couple"
+         style="background-color:var(--color-primary);padding-top: 10%;padding-bottom: 10%;">
         <div class="position-absolute" style="right: -50px;top: 0;">
-            <img src="{{ asset('images/decoration-1.png') }}" alt="" data-aos="fade-left">
+            <div data-parallax
+                 data-src="{{ asset('images/decoration-1.png') }}" style="height: 100vh;width: 300px;"></div>
         </div>
         <div class="position-absolute" style="left: -70px;bottom: -20px;">
             <img src="{{ asset('images/decoration-2.png') }}" alt="" data-aos="fade-right">
@@ -216,7 +218,8 @@
     <div id="save_the_date" class="position-relative pb-5" style="padding-top: 150px;">
         <div class="position-absolute w-100 darkened-overlay"
              style="top: 0;left: 0; height: 80%; background-repeat: no-repeat; background-size: cover; background-position: center bottom"
-             data-lazy data-background-image="{{ asset('images/banner-save-the-date.jpg') }}"></div>
+             data-parallax
+             data-src="{{ asset('images/banner-save-the-date.jpg') }}"></div>
         <div class="container position-relative text-center" style="z-index: 1">
             <h3 class="text-uppercase text-white display-4">
                 Saturday,<br>
@@ -338,10 +341,11 @@
             </button>
         </div>
     </div>
-    <div id="cta"
+    <div id="cta" class="darkened-overlay"
          style="background-repeat: no-repeat; background-size: cover; background-position: center bottom; padding-top: 10%; padding-bottom: 10%"
-         data-parallax="scroll" data-image-src="{{ asset('images/banner-cta.jpg') }}">
-        <div class="container text-white py-5 my-5 text-center">
+         data-parallax
+         data-src="{{ asset('images/banner-cta.jpg') }}">
+        <div class="container text-white py-5 my-5 text-center position-relative">
             <h3 class="display-3 text-uppercase">
                 We Can't Wait To See You!
             </h3>
@@ -436,10 +440,13 @@
 <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js" integrity="sha384-7+zCNj/IqJ95wo16oMtfsKbZ9ccEh31eOz1HGyDuCQ6wgnyJNSYdrPa03rtR1zdB" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.min.js" integrity="sha384-QJHtvGhmr9XOIpI6YVutG+2QOK9T+ZnN4kzFN1RtK3zEFEIsxhlmWl5/YESvpZ13" crossorigin="anonymous"></script>
 -->
-<script src="https://cdn.jsdelivr.net/npm/jquery-parallax.js@1.5.0/parallax.min.js"></script>
+{{--<script src="https://cdn.jsdelivr.net/npm/jquery-parallax.js@1.5.0/parallax.min.js"></script>--}}
+<script src="{{ asset('js/jquery.parallax.min.js') }}"></script>
 <audio src="{{ asset('uploads/bgm-cant-help-falling-in-love-elvis.mp3') }}" loop autoplay controls id="bgm"></audio>
 <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.min.js"></script>
 <script>
+    Parallax.DEFAULTS.excludeAgents = false;
+
     AOS.init();
 
     var lazyParallax = window.lozad('.parallax-slider');
