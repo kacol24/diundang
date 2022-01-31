@@ -92,7 +92,7 @@
             position: fixed;
             right: 15px;
             bottom: 15px;
-            z-index: 10;
+            z-index: 1030;
         }
     </style>
     <script src="https://cdn.jsdelivr.net/npm/lozad@1.16.0/dist/lozad.min.js"></script>
@@ -101,12 +101,13 @@
 <body>
 
 <div class="wrapper">
-    <div class="hero-image darkened-overlay text-center py-5" data-parallax="scroll"
+    <div class="hero-image darkened-overlay text-center py-5 overflow-hidden"
+         data-parallax="scroll"
          data-image-src="{{ asset('images/hero-2.jpg') }}">
         <img src="{{ asset('images/logo-initials.png') }}" alt="" class="img-fluid" width="200" style="z-index: 1"
              data-aos="fade-down">
         <div class="text-white font-cursive">
-            <h1 class="display-1" data-aos="zoom-out-up" data-aos-duration="1000">
+            <h1 class="display-3" data-aos="zoom-out-up" data-aos-duration="1000">
                 Kevin & Fernanda
             </h1>
             <h3 data-aos="zoom-out-down" data-aos-offset="-100" data-aos-delay="100">
@@ -161,11 +162,26 @@
             </div>
         </nav>
     </header>
-    <div class="py-5" id="couple" style="background-color:var(--color-primary);">
-        <div class="container py-5">
+    <div class="position-relative overflow-hidden" id="couple" style="background-color:var(--color-primary);padding-top: 10%;padding-bottom: 10%;">
+        <div class="position-absolute" style="right: -50px;top: 0;">
+            <img src="{{ asset('images/decoration-1.png') }}" alt="" data-aos="fade-left">
+        </div>
+        <div class="position-absolute" style="left: -70px;bottom: -20px;">
+            <img src="{{ asset('images/decoration-2.png') }}" alt="" data-aos="fade-right">
+        </div>
+        <div class="container py-5 position-relative">
+            <div class="text-center text-white">
+                <h1 class="text-uppercase display-3">
+                    We Are Getting Married
+                </h1>
+                <p style="max-width: 500px" class="mx-auto">
+                    Merupakan suatu kehormatan dan kebahagiaan bagi kami apabila Bapak/Ibu/Saudara/i berkenan hadir dan
+                    memberikan doa restu kepada kedua mempelai
+                </p>
+            </div>
             <div class="row py-5 align-items-center justify-content-around overflow-hidden">
                 <div class="col-md-4">
-                    <div class="card rounded-4 text-center" data-aos="fade-right">
+                    <div class="card rounded-4 mb-4 text-center" data-aos="fade-right">
                         <div class="card-body py-5">
                             <img src="https://placekitten.com/250" alt="" class="img-fluid rounded-circle mb-3 mx-auto"
                                  style="max-width: 150px" data-aos="fade-down" data-aos-delay="300">
@@ -211,7 +227,7 @@
             </a>
             <div class="row mt-5 justify-content-around">
                 <div class="col-md-5">
-                    <div class="card rounded-4 text-center border-0" data-aos="fade-up">
+                    <div class="card mb-4 rounded-4 text-center border-0" data-aos="fade-up">
                         <div class="card-body py-5">
                             <h3 class="card-title display-6">
                                 Holy Matrimony
