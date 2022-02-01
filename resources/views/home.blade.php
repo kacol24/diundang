@@ -103,6 +103,7 @@
 <div class="wrapper">
     <div class="hero-image darkened-overlay text-center py-5 overflow-hidden"
          data-parallax
+         data-exclude-agents="false"
          data-src="{{ asset('images/hero-2.jpg') }}">
         <img src="{{ asset('images/logo-initials.png') }}" alt="" class="img-fluid" width="200" style="z-index: 1"
              data-aos="fade-down">
@@ -166,6 +167,7 @@
          style="background-color:var(--color-primary);padding-top: 10%;padding-bottom: 10%;">
         <div class="position-absolute" style="right: -50px;top: 0;">
             <div data-parallax
+                 data-exclude-agents="false"
                  data-src="{{ asset('images/decoration-1.png') }}" style="height: 100vh;width: 300px;"></div>
         </div>
         <div class="position-absolute" style="left: -70px;bottom: -20px;">
@@ -219,6 +221,7 @@
         <div class="position-absolute w-100 darkened-overlay"
              style="top: 0;left: 0; height: 80%; background-repeat: no-repeat; background-size: cover; background-position: center bottom"
              data-parallax
+             data-exclude-agents="false"
              data-src="{{ asset('images/banner-save-the-date.jpg') }}"></div>
         <div class="container position-relative text-center" style="z-index: 1">
             <h3 class="text-uppercase text-white display-4">
@@ -344,6 +347,7 @@
     <div id="cta" class="darkened-overlay"
          style="background-repeat: no-repeat; background-size: cover; background-position: center bottom; padding-top: 10%; padding-bottom: 10%"
          data-parallax
+         data-exclude-agents="false"
          data-src="{{ asset('images/banner-cta.jpg') }}">
         <div class="container text-white py-5 my-5 text-center position-relative">
             <h3 class="display-3 text-uppercase">
@@ -445,8 +449,6 @@
 <audio src="{{ asset('uploads/bgm-cant-help-falling-in-love-elvis.mp3') }}" loop autoplay controls id="bgm"></audio>
 <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.min.js"></script>
 <script>
-    Parallax.DEFAULTS.excludeAgents = false;
-
     AOS.init();
 
     var lazyParallax = window.lozad('.parallax-slider');
