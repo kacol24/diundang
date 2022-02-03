@@ -204,7 +204,7 @@
         </div>
     </div>
     <div class="modal fade" id="mapModal" tabindex="-1" aria-labelledby="mapModalLabel" aria-hidden="true">
-        <div class="modal-dialog modal-dialog-centered modal-lg modal-fullscreen-md-down">
+        <div class="modal-dialog modal-dialog-centered modal-lg">
             <div class="modal-content">
                 <div class="modal-header">
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
@@ -331,7 +331,7 @@
         <div class="position-absolute simple-parallax" style="left: -50px;bottom: 0;width: 350px;">
             <img src="{{ asset('images/decoration-4.png') }}" alt="" class="img-fluid">
         </div>
-        <div class="container text-center">
+        <div class="container text-center position-relative" style="z-index: 1">
             <h1 class="text-uppercase font-serif display-5 mb-5">
                 Wedding Gift
             </h1>
