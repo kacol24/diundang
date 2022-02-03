@@ -165,13 +165,11 @@
     </header>
     <div class="position-relative overflow-hidden" id="couple"
          style="background-color:var(--color-primary);padding-top: 10%;padding-bottom: 10%;">
-        <div class="position-absolute" style="right: -50px;top: 0;">
-            <div data-parallax
-                 data-exclude-agents="false"
-                 data-src="{{ asset('images/decoration-1.png') }}" style="height: 100vh;width: 300px;"></div>
+        <div class="position-absolute simple-parallax" style="top: 100px;right: -50px;width: 275px;">
+            <img src="{{ asset('images/decoration-1.png') }}" alt="" class="img-fluid">
         </div>
-        <div class="position-absolute" style="left: -70px;bottom: -20px;">
-            <img src="{{ asset('images/decoration-2.png') }}" alt="" data-aos="fade-right">
+        <div class="position-absolute simple-parallax" style="left: -50px;bottom: 0;width: 350px;">
+            <img src="{{ asset('images/decoration-2.png') }}" alt="" class="img-fluid">
         </div>
         <div class="container py-5 position-relative">
             <div class="text-center text-white">
@@ -445,6 +443,7 @@
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.min.js" integrity="sha384-QJHtvGhmr9XOIpI6YVutG+2QOK9T+ZnN4kzFN1RtK3zEFEIsxhlmWl5/YESvpZ13" crossorigin="anonymous"></script>
 -->
 {{--<script src="https://cdn.jsdelivr.net/npm/jquery-parallax.js@1.5.0/parallax.min.js"></script>--}}
+<script src="https://cdn.jsdelivr.net/npm/simple-parallax-js@5.6.2/dist/simpleParallax.min.js"></script>
 <script src="{{ asset('js/jquery.parallax.min.js') }}"></script>
 <audio src="{{ asset('uploads/bgm-cant-help-falling-in-love-elvis.mp3') }}" loop autoplay controls id="bgm"></audio>
 <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.min.js"></script>
@@ -456,6 +455,11 @@
 
     const observer = window.lozad('[data-lazy]');
     observer.observe();
+
+    var images = document.querySelectorAll('.simple-parallax');
+    new simpleParallax(images, {
+        overflow: true
+    });
 </script>
 </body>
 </html>
