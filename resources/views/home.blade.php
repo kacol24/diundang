@@ -12,7 +12,9 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.min.css">
     <link rel="stylesheet" href="{{ mix('css/main.css') }}">
 
-    <title>Hello, world!</title>
+    <title>{NAMA UNDANGAN}</title>
+    <meta name="description"
+          content="Dear {NAMA UNDANGAN}, you are cordially invited to celebrate the wedding of Kevin and Fernanda on September 24th, 2022.">
 
     <script src="https://cdn.jsdelivr.net/npm/lozad@1.16.0/dist/lozad.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/alpinejs@3.8.1/dist/cdn.min.js" defer></script>
