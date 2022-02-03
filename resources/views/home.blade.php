@@ -47,35 +47,38 @@
                 <a class="navbar-brand" href="#">
                     #loVINyouforeFER
                 </a>
-                <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas"
+                <button class="navbar-toggler text-white" type="button" data-bs-toggle="offcanvas"
                         data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar">
-                    <span class="navbar-toggler-icon"></span>
+                    <i class="fas fa-fw fa-bars"></i>
                 </button>
                 <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasNavbar"
+                     style="background-color:var(--color-secondary)"
                      aria-labelledby="offcanvasNavbarLabel">
                     <div class="offcanvas-header">
-                        <h5 class="offcanvas-title" id="offcanvasNavbarLabel">
+                        <h5 class="offcanvas-title text-white" id="offcanvasNavbarLabel">
                             #loVINyouforeFER
                         </h5>
-                        <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas"
-                                aria-label="Close"></button>
+                        <button type="button" class="btn-close text-white" style="background: none;opacity: 1;"
+                                data-bs-dismiss="offcanvas" aria-label="Close">
+                            <i class="fas fa-fw fa-times fa-lg"></i>
+                        </button>
                     </div>
                     <div class="offcanvas-body">
                         <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
                             <li class="nav-item">
-                                <a class="nav-link" aria-current="page" href="#couple">Bride & Groom</a>
+                                <a class="nav-link text-white" aria-current="page" href="#couple">Bride & Groom</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="#event_date">Save The Date</a>
+                                <a class="nav-link text-white" href="#event_date">Save The Date</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="#gallery">Gallery</a>
+                                <a class="nav-link text-white" href="#gallery">Gallery</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="#protocol">Health Protocol</a>
+                                <a class="nav-link text-white" href="#protocol">Health Protocol</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="#rsvp">RSVP</a>
+                                <a class="nav-link text-white" href="#rsvp">RSVP</a>
                             </li>
                         </ul>
                     </div>
@@ -236,8 +239,7 @@
             <div class="row mt-5">
                 <div class="col-6 col-md text-center">
                     <figure class="figure">
-                        <img src="{{ asset('images/wear-mask.png') }}" alt="" class="img-fluid figure-img"
-                             style="height: 150px;">
+                        <img src="{{ asset('images/wear-mask.png') }}" alt="" class="img-fluid figure-img px-md-5">
                         <figcaption class="figure-caption text-white">
                             <div class="lead">
                                 Wear Mask
@@ -247,8 +249,7 @@
                 </div>
                 <div class="col-6 col-md text-center">
                     <figure class="figure">
-                        <img src="{{ asset('images/wash-hands.png') }}" alt="" class="img-fluid figure-img"
-                             style="height: 150px;">
+                        <img src="{{ asset('images/wash-hands.png') }}" alt="" class="img-fluid figure-img px-md-5">
                         <figcaption class="figure-caption text-white">
                             <div class="lead">
                                 Wash Hands
@@ -258,8 +259,7 @@
                 </div>
                 <div class="col-6 col-md text-center">
                     <figure class="figure">
-                        <img src="{{ asset('images/clean-surfaces.png') }}" alt="" class="img-fluid figure-img"
-                             style="height: 150px;">
+                        <img src="{{ asset('images/clean-surfaces.png') }}" alt="" class="img-fluid figure-img px-md-5">
                         <figcaption class="figure-caption text-white">
                             <div class="lead">
                                 Clean Surfaces
@@ -269,8 +269,7 @@
                 </div>
                 <div class="col-6 col-md text-center">
                     <figure class="figure">
-                        <img src="{{ asset('images/keep-distance.png') }}" alt="" class="img-fluid figure-img"
-                             style="height: 150px;">
+                        <img src="{{ asset('images/keep-distance.png') }}" alt="" class="img-fluid figure-img px-md-5">
                         <figcaption class="figure-caption text-white">
                             <div class="lead">
                                 Keep Distance
@@ -285,19 +284,22 @@
         <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable modal-fullscreen-md-down modal-xl">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="modalGiftLabel">Modal title</h5>
+                    <h5 class="modal-title" id="modalGiftLabel">Wedding Gift</h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
                     <div class="row justify-content-around align-items-center">
                         <div class="col-md-7">
-                            <div class="d-flex align-items-center font-sans-serif">
-                                <img src="https://placekitten.com/250" alt=""
-                                     class="img-fluid rounded-circle mb-3 mx-auto"
-                                     style="max-width: 250px">
-                                <h3 class="w-100 ms-5">
-                                    Kevin Chandra
-                                </h3>
+                            <div class="row text-center text-md-start align-items-center justify-content-center">
+                                <div class="col-md-auto col-6">
+                                    <img src="https://placekitten.com/250" alt=""
+                                         class="img-fluid rounded-circle mb-3 mx-auto">
+                                </div>
+                                <div class="col-md">
+                                    <h3 class="font-sans-serif">
+                                        Kevin Chandra
+                                    </h3>
+                                </div>
                             </div>
                         </div>
                         <div class="col-md-4">
@@ -306,13 +308,16 @@
                     </div>
                     <div class="row justify-content-around align-items-center mt-5">
                         <div class="col-md-7">
-                            <div class="d-flex align-items-center font-sans-serif">
-                                <img src="https://placekitten.com/250" alt=""
-                                     class="img-fluid rounded-circle mb-3 mx-auto"
-                                     style="max-width: 250px">
-                                <h3 class="w-100 ms-5">
-                                    Fernanda Eka Putri
-                                </h3>
+                            <div class="row text-center text-md-start align-items-center justify-content-center">
+                                <div class="col-md-auto col-6">
+                                    <img src="https://placekitten.com/250" alt=""
+                                         class="img-fluid rounded-circle mb-3 mx-auto">
+                                </div>
+                                <div class="col-md">
+                                    <h3 class="font-sans-serif">
+                                        Fernanda Eka Putri
+                                    </h3>
+                                </div>
                             </div>
                         </div>
                         <div class="col-md-4">
