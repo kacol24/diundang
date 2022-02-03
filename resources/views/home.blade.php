@@ -10,91 +10,10 @@
           integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.4/css/all.min.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.min.css">
+    <link rel="stylesheet" href="{{ mix('css/main.css') }}">
 
     <title>Hello, world!</title>
 
-    <style>
-        :root {
-            --color-primary: #09232f;
-            --color-secondary: #4d1c32;
-        }
-
-        .rounded-4 {
-            border-radius: 1rem;
-        }
-
-        .hero-image {
-            height: 100vh;
-            position: relative;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: space-between;
-        }
-
-        .darkened-overlay {
-            position: relative;
-        }
-
-        .darkened-overlay::before {
-            content: '';
-            position: absolute;
-            z-index: 0;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-color: rgba(0, 0, 0, .5);
-        }
-
-        .btn-primary {
-            background-color: var(--color-primary);
-            border-color: var(--color-primary);
-        }
-
-        .btn-primary:hover {
-            background-color: #0d3344;
-            border-color: #0d3344;
-        }
-
-        .btn-secondary {
-            background-color: var(--color-secondary);
-            border-color: var(--color-secondary);
-        }
-
-        .btn-secondary:hover {
-            background-color: #3a1526;
-            border-color: #3a1526;
-        }
-
-        .link-color\:blue {
-            color: var(--color-primary);
-            transition: color 200ms;
-        }
-
-        .link-color\:blue:hover {
-            color: #0d3344;
-        }
-
-        .text-color\:blue {
-            color: var(--color-primary);
-        }
-
-        .text-color\:gold {
-            color: #c8a945;
-        }
-
-        .font-cursive {
-            font-family: cursive;
-        }
-
-        #bgm {
-            position: fixed;
-            right: 15px;
-            bottom: 15px;
-            z-index: 1030;
-        }
-    </style>
     <script src="https://cdn.jsdelivr.net/npm/lozad@1.16.0/dist/lozad.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/alpinejs@3.8.1/dist/cdn.min.js" defer></script>
 </head>
@@ -105,10 +24,11 @@
          data-parallax
          data-exclude-agents="false"
          data-src="{{ asset('images/hero-2.jpg') }}">
-        <img src="{{ asset('images/logo-initials.png') }}" alt="" class="img-fluid" width="200" style="z-index: 1"
-             data-aos="fade-down">
-        <div class="text-white font-cursive">
-            <h1 class="display-3" data-aos="zoom-out-up" data-aos-duration="1000">
+        <div class="font-serif text-white display-1" style="z-index: 1; letter-spacing: -6px;" data-aos="fade-down">
+            KF
+        </div>
+        <div class="text-white font-serif">
+            <h1 class="display-3 text-uppercase" data-aos="zoom-out-up" data-aos-duration="1000">
                 Kevin & Fernanda
             </h1>
             <h3 data-aos="zoom-out-down" data-aos-offset="-100" data-aos-delay="100">
@@ -116,7 +36,7 @@
             </h3>
         </div>
     </div>
-    <header class="sticky-top">
+    <header class="sticky-top font-sans-serif">
         <nav class="navbar navbar-dark navbar-expand-lg" style="background-color:var(--color-secondary);">
             <div class="container-fluid">
                 <a class="navbar-brand" href="#">
@@ -143,20 +63,15 @@
                             <li class="nav-item">
                                 <a class="nav-link" href="#event_date">Save The Date</a>
                             </li>
-                            {{--                            <li class="nav-item dropdown">--}}
-                            {{--                                <a class="nav-link dropdown-toggle" href="#" id="offcanvasNavbarDropdown" role="button"--}}
-                            {{--                                   data-bs-toggle="dropdown" aria-expanded="false">--}}
-                            {{--                                    Dropdown--}}
-                            {{--                                </a>--}}
-                            {{--                                <ul class="dropdown-menu" aria-labelledby="offcanvasNavbarDropdown">--}}
-                            {{--                                    <li><a class="dropdown-item" href="#">Action</a></li>--}}
-                            {{--                                    <li><a class="dropdown-item" href="#">Another action</a></li>--}}
-                            {{--                                    <li>--}}
-                            {{--                                        <hr class="dropdown-divider">--}}
-                            {{--                                    </li>--}}
-                            {{--                                    <li><a class="dropdown-item" href="#">Something else here</a></li>--}}
-                            {{--                                </ul>--}}
-                            {{--                            </li>--}}
+                            <li class="nav-item">
+                                <a class="nav-link" href="#gallery">Gallery</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#protocol">Health Protocol</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#rsvp">RSVP</a>
+                            </li>
                         </ul>
                     </div>
                 </div>
@@ -165,7 +80,7 @@
     </header>
     <div class="position-relative overflow-hidden" id="couple"
          style="background-color:var(--color-primary);padding-top: 10%;padding-bottom: 10%;">
-        <div class="position-absolute simple-parallax" style="top: 100px;right: -50px;width: 275px;">
+        <div class="position-absolute simple-parallax--faster" style="top: 100px;right: -50px;width: 275px;">
             <img src="{{ asset('images/decoration-1.png') }}" alt="" class="img-fluid">
         </div>
         <div class="position-absolute simple-parallax" style="left: -50px;bottom: 0;width: 350px;">
@@ -173,7 +88,7 @@
         </div>
         <div class="container py-5 position-relative">
             <div class="text-center text-white">
-                <h1 class="text-uppercase display-3">
+                <h1 class="text-uppercase display-3 font-serif">
                     We Are Getting Married
                 </h1>
                 <p style="max-width: 500px" class="mx-auto">
@@ -187,12 +102,14 @@
                         <div class="card-body py-5">
                             <img src="https://placekitten.com/250" alt="" class="img-fluid rounded-circle mb-3 mx-auto"
                                  style="max-width: 150px" data-aos="fade-down" data-aos-delay="300">
-                            <h2 class="font-cursive">
+                            <h2 class="font-serif text-uppercase">
                                 Kevin Chandra
                             </h2>
                             <p class="m-0">
-                                <strong>Son of</strong><br>
-                                Gunawan Chandra & Susilowati
+                                <small class="d-block">
+                                    <em>Son of</em>
+                                </small>
+                                Mr. Gunawan Chandra & Mrs. Susilowati
                             </p>
                         </div>
                     </div>
@@ -202,12 +119,16 @@
                         <div class="card-body py-5">
                             <img src="https://placekitten.com/300" alt="" class="img-fluid rounded-circle mb-3 mx-auto"
                                  style="max-width: 150px" data-aos="fade-down" data-aos-delay="300">
-                            <h2 class="font-cursive">
+                            <h2 class="font-serif text-uppercase">
                                 Fernanda Eka Putri
                             </h2>
                             <p class="m-0">
-                                <strong>Daughter of</strong><br>
-                                Ge Cingkai & Lim Liauw Hung San
+                                <small class="d-block">
+                                    <em>
+                                        Daughter of
+                                    </em>
+                                </small>
+                                Mr. Ge Cingkai & Mrs. Lim Liauw Hung San
                             </p>
                         </div>
                     </div>
@@ -222,52 +143,72 @@
              data-exclude-agents="false"
              data-src="{{ asset('images/banner-save-the-date.jpg') }}"></div>
         <div class="container position-relative text-center" style="z-index: 1">
-            <h3 class="text-uppercase text-white display-4">
+            <h3 class="text-uppercase text-white display-4 font-serif">
                 Saturday,<br>
-                September 24th, 2022
+                September 24<sup style="text-transform: none;">th</sup>, 2022
             </h3>
             <a href="" class="btn btn-secondary" data-aos="fade-down">
                 Save The Date
             </a>
-            <div class="row mt-5 justify-content-around">
+            <div class="row mt-5 justify-content-around font-serif">
                 <div class="col-md-5">
                     <div class="card mb-4 rounded-4 text-center border-0" data-aos="fade-up">
-                        <div class="card-body py-5">
-                            <h3 class="card-title display-6">
+                        <div class="card-body py-5 px-md-5">
+                            <h3 class="card-title display-6 mb-5">
                                 Holy Matrimony
                             </h3>
                             @include('components.horizontal-separator')
-                            <strong class="mt-3 d-block">
-                                11:00
-                            </strong>
-                            <div class="text-muted">
-                                at
+                            <div class="font-sans-serif mt-5 fw-light">
+                                at 11:00
                             </div>
                             <address>
-                                <strong>St. Aloysius Gonzaga Church</strong><br>
-                                Jl. something bla di daerah bla
+                                <div class="font-sans-serif">St. Aloysius Gonzaga Church</div>
+                                <small class="fst-italic">
+                                    Jl. Satelit Indah I Bl HN No.1, Tanjungsari, Kec. Sukomanunggal, Kota SBY, Jawa
+                                    Timur 60187
+                                </small>
                             </address>
                         </div>
                     </div>
                 </div>
                 <div class="col-md-5">
                     <div class="card rounded-4 text-center border-0" data-aos="fade-up" data-aos-delay="300">
-                        <div class="card-body py-5">
-                            <h3 class="card-title display-6">
+                        <div class="card-body py-5 px-md-5">
+                            <h3 class="card-title display-6 mb-5">
                                 Wedding Reception
                             </h3>
                             @include('components.horizontal-separator')
-                            <strong class="mt-3 d-block">
-                                18:00
-                            </strong>
-                            <div class="text-muted">
-                                at
+                            <div class="font-sans-serif mt-5 fw-light">
+                                at 18:00
                             </div>
                             <address>
-                                <strong>XO Palace</strong><br>
-                                Jl. something bla di daerah bla
+                                <div class="font-sans-serif">XO Palace</div>
+                                <small class="fst-italic">
+                                    Jl. Raya Kupang Indah No.15, Dukuh Kupang, Kec. Dukuhpakis, Kota SBY, Jawa Timur
+                                    60225
+                                </small>
                             </address>
+                            <a href="#mapModal" class="btn btn-secondary text-uppercase" data-bs-toggle="modal">
+                                <i class="fas fa-fw fa-map-marker" style="color: #ee2e30"></i>
+                                Open Maps
+                            </a>
                         </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal fade" id="mapModal" tabindex="-1" aria-labelledby="mapModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-lg modal-fullscreen-md-down">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body p-0">
+                    <div class="ratio ratio-4x3">
+                        <iframe
+                            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3957.6403243803657!2d112.70499985105243!3d-7.281701673559742!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2dd7fc0ee483ffff%3A0x625015abf9f3022e!2sXO%20Palace!5e0!3m2!1sen!2sid!4v1643895260472!5m2!1sen!2sid"
+                            style="border:0;" allowfullscreen="" loading="lazy"></iframe>
                     </div>
                 </div>
             </div>
@@ -279,9 +220,9 @@
             <img src="{{ asset('images/hero-2.jpg') }}" alt="" class="img-fluid w-100">
         </div>
     </div>
-    <div id="protocol" style="background-color:var(--color-primary);" class="rounded-4">
+    <div id="protocol" style="background-color:var(--color-primary);" class="rounded-4 font-sans-serif">
         <div class="container text-white py-5">
-            <p class="text-center mx-auto" style="max-width: 350px">
+            <p class="text-center mx-auto" style="max-width: 400px">
                 Love is caring.<br>
                 Your health and safety is very important to us.<br>
                 To keep everyone comfortable and safe,
@@ -290,7 +231,8 @@
             <div class="row mt-5">
                 <div class="col-6 col-md text-center">
                     <figure class="figure">
-                        <img src="{{ asset('images/protocol-wear-mask.png') }}" alt="" class="img-fluid figure-img">
+                        <img src="{{ asset('images/wear-mask.png') }}" alt="" class="img-fluid figure-img"
+                             style="height: 150px;">
                         <figcaption class="figure-caption text-white">
                             <div class="lead">
                                 Wear Mask
@@ -300,7 +242,8 @@
                 </div>
                 <div class="col-6 col-md text-center">
                     <figure class="figure">
-                        <img src="{{ asset('images/protocol-wear-mask.png') }}" alt="" class="img-fluid figure-img">
+                        <img src="{{ asset('images/wash-hands.png') }}" alt="" class="img-fluid figure-img"
+                             style="height: 150px;">
                         <figcaption class="figure-caption text-white">
                             <div class="lead">
                                 Wash Hands
@@ -310,7 +253,8 @@
                 </div>
                 <div class="col-6 col-md text-center">
                     <figure class="figure">
-                        <img src="{{ asset('images/protocol-wear-mask.png') }}" alt="" class="img-fluid figure-img">
+                        <img src="{{ asset('images/clean-surfaces.png') }}" alt="" class="img-fluid figure-img"
+                             style="height: 150px;">
                         <figcaption class="figure-caption text-white">
                             <div class="lead">
                                 Clean Surfaces
@@ -320,7 +264,8 @@
                 </div>
                 <div class="col-6 col-md text-center">
                     <figure class="figure">
-                        <img src="{{ asset('images/protocol-wear-mask.png') }}" alt="" class="img-fluid figure-img">
+                        <img src="{{ asset('images/keep-distance.png') }}" alt="" class="img-fluid figure-img"
+                             style="height: 150px;">
                         <figcaption class="figure-caption text-white">
                             <div class="lead">
                                 Keep Distance
@@ -331,13 +276,63 @@
             </div>
         </div>
     </div>
-    <div id="gift" style="height: 100vh;" class="d-flex align-items-center justify-content-center">
+    <div class="modal fade" id="modalGift" tabindex="-1" aria-labelledby="modalGiftLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable modal-fullscreen-md-down modal-xl">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="modalGiftLabel">Modal title</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="row justify-content-around align-items-center">
+                        <div class="col-md-7">
+                            <div class="d-flex align-items-center font-sans-serif">
+                                <img src="https://placekitten.com/250" alt=""
+                                     class="img-fluid rounded-circle mb-3 mx-auto"
+                                     style="max-width: 250px">
+                                <h3 class="w-100 ms-5">
+                                    Kevin Chandra
+                                </h3>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <img src="{{ asset('images/S__24076291.jpg') }}" alt="" class="img-fluid w-100">
+                        </div>
+                    </div>
+                    <div class="row justify-content-around align-items-center mt-5">
+                        <div class="col-md-7">
+                            <div class="d-flex align-items-center font-sans-serif">
+                                <img src="https://placekitten.com/250" alt=""
+                                     class="img-fluid rounded-circle mb-3 mx-auto"
+                                     style="max-width: 250px">
+                                <h3 class="w-100 ms-5">
+                                    Fernanda Eka Putri
+                                </h3>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <img src="{{ asset('images/S__24076291.jpg') }}" alt="" class="img-fluid w-100">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="gift" style="height: 100vh;"
+         class="d-flex align-items-center justify-content-center position-relative overflow-hidden">
+        <div class="position-absolute simple-parallax--faster" style="bottom: 0;right: -50px;width: 275px;">
+            <img src="{{ asset('images/decoration-3.png') }}" alt="" class="img-fluid">
+        </div>
+        <div class="position-absolute simple-parallax" style="left: -50px;bottom: 0;width: 350px;">
+            <img src="{{ asset('images/decoration-4.png') }}" alt="" class="img-fluid">
+        </div>
         <div class="container text-center">
-            <h1 class="text-uppercase">
+            <h1 class="text-uppercase font-serif display-5 mb-5">
                 Wedding Gift
             </h1>
             @include('components.horizontal-separator')
-            <button class="btn btn-secondary text-uppercase mt-4" data-bs-toggle="modal">
+            <button class="btn btn-secondary text-uppercase mt-5" data-bs-toggle="modal" data-bs-target="#modalGift">
+                <i class="fas fa-gift fa-fw"></i>
                 Send Gift
             </button>
         </div>
@@ -347,7 +342,7 @@
          data-parallax
          data-exclude-agents="false"
          data-src="{{ asset('images/banner-cta.jpg') }}">
-        <div class="container text-white py-5 my-5 text-center position-relative">
+        <div class="container text-white py-5 my-5 text-center position-relative font-serif">
             <h3 class="display-3 text-uppercase">
                 We Can't Wait To See You!
             </h3>
@@ -359,14 +354,14 @@
     <div id="rsvp" class="my-5 py-5">
         <div class="container my-5 py-5">
             <div class="text-center">
-                <h1>
+                <h1 class="font-serif mb-5">
                     RSVP
                 </h1>
                 @include('components.horizontal-separator')
             </div>
-            <div class="row justify-content-center">
+            <div class="row justify-content-center mt-5">
                 <div class="col-md-6">
-                    <form action="" class="mt-4"
+                    <form action="" class="mt-4 font-sans-serif"
                           x-data="{
                             attend: ''
                           }">
@@ -459,6 +454,12 @@
     var images = document.querySelectorAll('.simple-parallax');
     new simpleParallax(images, {
         overflow: true
+    });
+
+    var fastParallax = document.querySelectorAll('.simple-parallax--faster');
+    new simpleParallax(fastParallax, {
+        overflow: true,
+        scale: 2
     });
 </script>
 </body>

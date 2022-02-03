@@ -1,0 +1,39 @@
+:root {
+    --color-primary: #09232f;
+    --color-secondary: #4d1c32;
+}
+
+@import "fonts";
+@import "helpers";
+@import "buttons";
+
+.hero-image {
+    height: 100vh;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.darkened-overlay {
+    position: relative;
+}
+
+.darkened-overlay::before {
+    content: '';
+    position: absolute;
+    z-index: 0;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, .5);
+}
+
+#bgm {
+    position: fixed;
+    right: 15px;
+    bottom: 15px;
+    z-index: 1030;
+}
