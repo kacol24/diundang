@@ -148,7 +148,6 @@
         <div class="position-absolute w-100 darkened-overlay"
              style="top: 0;left: 0; height: 80%; background-repeat: no-repeat; background-size: cover; background-position: center bottom"
              data-parallax
-             data-exclude-agents="false"
              data-src="{{ asset('images/banner-save-the-date.jpg') }}"></div>
         <div class="container position-relative text-center" style="z-index: 1">
             <h3 class="text-uppercase text-white display-4 font-serif">
@@ -350,7 +349,6 @@
     <div id="cta" class="darkened-overlay"
          style="background-repeat: no-repeat; background-size: cover; background-position: center bottom; padding-top: 10%; padding-bottom: 10%"
          data-parallax
-         data-exclude-agents="false"
          data-src="{{ asset('images/banner-cta.jpg') }}">
         <div class="container text-white py-5 my-5 text-center position-relative font-serif" style="z-index: 2">
             <h3 class="display-3 text-uppercase">
