@@ -453,7 +453,46 @@
 
 <!-- 1. The <iframe> (and video player) will replace this <div> tag. -->
 <div id="player" style="display: none;"></div>
-
+<div id="controls" class="shadow">
+    <button class="btn p-0" id="btn_play">
+        <i class="fas fa-fw fa-xs fa-play"></i>
+    </button>
+    <button class="btn p-0 d-none" id="btn_pause">
+        <i class="fas fa-fw fa-xs fa-pause"></i>
+    </button>
+</div>
+<div class="modal fade" id="invitationModal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+     aria-labelledby="invitationModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-sm">
+        <div class="modal-content">
+            <div class="modal-header border-0 justify-content-center">
+                <div class="text-center">
+                    <small class="d-block" style="font-size: 12px;">
+                        You are cordially invited to
+                    </small>
+                    the wedding of<br>
+                    <h5 class="modal-title">
+                        <strong>Kevin & Fernanda</strong>
+                    </h5>
+                </div>
+            </div>
+            <div class="modal-body text-center pb-0">
+                Dear
+                <h3 class="modal-title">
+                    {NAMA UNDANGAN}
+                </h3>
+                <small class="fst-italic text-muted mt-5 d-block" style="font-size: 12px;">
+                    We apologize if there are misspelling of your name/title
+                </small>
+            </div>
+            <div class="modal-footer border-0 justify-content-center pt-0">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
+                    Buka Undangan
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
 <script>
     // 2. This code loads the IFrame Player API code asynchronously.
     var tag = document.createElement('script');
@@ -471,17 +510,14 @@
             videoId: 'vGJTaP6anOU',
             playerVars: {
                 'playsinline': 1
-            },
-            events: {
-                'onReady': onPlayerReady
             }
         });
     }
 
     // 4. The API will call this function when the video player is ready.
-    function onPlayerReady(event) {
-        event.target.playVideo();
-    }
+    // function onPlayerReady(event) {
+    //     event.target.playVideo();
+    // }
 
     // // 5. The API calls this function when the player's state changes.
     // //    The function indicates that when playing a video (state=1),
@@ -498,6 +534,31 @@
     function stopVideo() {
         player.stopVideo();
     }
+
+    var $play = $('#btn_play');
+    var $pause = $('#btn_pause');
+
+    function playTrack() {
+        $play.addClass('d-none');
+        $pause.removeClass('d-none');
+        player.playVideo();
+    }
+
+    function pauseTrack() {
+        $play.removeClass('d-none');
+        $pause.addClass('d-none');
+        player.pauseVideo();
+    }
+
+    $play.click(function(e) {
+        e.preventDefault();
+        playTrack();
+    });
+
+    $pause.click(function(e) {
+        e.preventDefault();
+        pauseTrack();
+    });
 </script>
 <script>
     AOS.init();
@@ -517,6 +578,13 @@
     new simpleParallax(fastParallax, {
         overflow: true,
         scale: 2
+    });
+
+    var invitationModal = new bootstrap.Modal(document.getElementById('invitationModal'));
+    invitationModal.show();
+
+    document.getElementById('invitationModal').addEventListener('hidden.bs.modal', function(event) {
+        playTrack();
     });
 </script>
 </body>
