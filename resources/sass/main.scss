@@ -6,6 +6,7 @@
 @import "fonts";
 @import "helpers";
 @import "buttons";
+@import "decoration";
 
 .hero-image {
     height: 100vh;
@@ -23,7 +24,7 @@
 .darkened-overlay::before {
     content: '';
     position: absolute;
-    z-index: 0;
+    z-index: 1;
     top: 0;
     left: 0;
     width: 100%;

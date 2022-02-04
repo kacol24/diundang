@@ -29,10 +29,10 @@
          data-parallax
          data-exclude-agents="false"
          data-src="{{ asset('images/hero-2.jpg') }}">
-        <div class="font-serif text-white display-1" style="z-index: 1; letter-spacing: -6px;" data-aos="fade-down">
+        <div class="font-serif text-white display-1" style="z-index: 2; letter-spacing: -6px;" data-aos="fade-down">
             KF
         </div>
-        <div class="text-white font-serif">
+        <div class="text-white font-serif" style="z-index: 2">
             <h1 class="display-3 text-uppercase" data-aos="zoom-out-up" data-aos-duration="1000">
                 Kevin & Fernanda
             </h1>
@@ -86,15 +86,15 @@
             </div>
         </nav>
     </header>
-    <div class="position-relative overflow-hidden" id="couple"
+    <div class="position-relative overflow-hidden darkened-overlay" id="couple"
          style="background-color:var(--color-primary);padding-top: 10%;padding-bottom: 10%;">
-        <div class="position-absolute simple-parallax--faster" style="top: 100px;right: -50px;width: 275px;">
+        <div class="simple-parallax--faster decoration-1">
             <img src="{{ asset('images/decoration-1.png') }}" alt="" class="img-fluid">
         </div>
-        <div class="position-absolute simple-parallax" style="left: -50px;bottom: 0;width: 350px;">
+        <div class="simple-parallax decoration-2">
             <img src="{{ asset('images/decoration-2.png') }}" alt="" class="img-fluid">
         </div>
-        <div class="container py-5 position-relative">
+        <div class="container py-5 position-relative" style="z-index: 2">
             <div class="text-center text-white">
                 <h1 class="text-uppercase display-3 font-serif">
                     We Are Getting Married
@@ -330,10 +330,10 @@
     </div>
     <div id="gift" style="height: 100vh;"
          class="d-flex align-items-center justify-content-center position-relative overflow-hidden">
-        <div class="position-absolute simple-parallax--faster" style="bottom: 0;right: -50px;width: 275px;">
+        <div class="simple-parallax--faster decoration-3">
             <img src="{{ asset('images/decoration-3.png') }}" alt="" class="img-fluid">
         </div>
-        <div class="position-absolute simple-parallax" style="left: -50px;bottom: 0;width: 350px;">
+        <div class="simple-parallax decoration-4">
             <img src="{{ asset('images/decoration-4.png') }}" alt="" class="img-fluid">
         </div>
         <div class="container text-center position-relative" style="z-index: 1">
@@ -352,7 +352,7 @@
          data-parallax
          data-exclude-agents="false"
          data-src="{{ asset('images/banner-cta.jpg') }}">
-        <div class="container text-white py-5 my-5 text-center position-relative font-serif">
+        <div class="container text-white py-5 my-5 text-center position-relative font-serif" style="z-index: 2">
             <h3 class="display-3 text-uppercase">
                 We Can't Wait To See You!
             </h3>
