@@ -22,7 +22,7 @@
     <script src="https://cdn.jsdelivr.net/npm/lozad@1.16.0/dist/lozad.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/alpinejs@3.8.1/dist/cdn.min.js" defer></script>
 </head>
-<body>
+<body class="modal-open">
 
 <div class="wrapper">
     <div class="hero-image darkened-overlay text-center py-5 overflow-hidden"
@@ -47,7 +47,7 @@
                 <a class="navbar-brand" href="#">
                     #loVINyouforeFER
                 </a>
-                <button class="navbar-toggler text-white" type="button" data-bs-toggle="offcanvas"
+                <button class="navbar-toggler border-0 text-white" type="button" data-bs-toggle="offcanvas"
                         data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar">
                     <i class="fas fa-fw fa-bars"></i>
                 </button>
