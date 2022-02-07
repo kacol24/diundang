@@ -238,7 +238,7 @@
             <div class="row mt-5">
                 <div class="col-6 col-md text-center">
                     <figure class="figure">
-                        <img src="{{ asset('images/wear-mask.png') }}" alt="" class="img-fluid figure-img" style="max-width: 150px">
+                        <img src="{{ asset('images/wear-mask.png') }}" alt="" class="img-fluid figure-img" style="max-width: 120px">
                         <figcaption class="figure-caption text-white">
                             <div class="lead">
                                 Wear Mask
@@ -248,7 +248,7 @@
                 </div>
                 <div class="col-6 col-md text-center">
                     <figure class="figure">
-                        <img src="{{ asset('images/wash-hands.png') }}" alt="" class="img-fluid figure-img" style="max-width: 150px">
+                        <img src="{{ asset('images/wash-hands.png') }}" alt="" class="img-fluid figure-img" style="max-width: 120px">
                         <figcaption class="figure-caption text-white">
                             <div class="lead">
                                 Wash Hands
@@ -258,7 +258,7 @@
                 </div>
                 <div class="col-6 col-md text-center">
                     <figure class="figure">
-                        <img src="{{ asset('images/clean-surfaces.png') }}" alt="" class="img-fluid figure-img" style="max-width: 150px">
+                        <img src="{{ asset('images/clean-surfaces.png') }}" alt="" class="img-fluid figure-img" style="max-width: 120px">
                         <figcaption class="figure-caption text-white">
                             <div class="lead">
                                 Clean Surfaces
@@ -268,7 +268,7 @@
                 </div>
                 <div class="col-6 col-md text-center">
                     <figure class="figure">
-                        <img src="{{ asset('images/keep-distance.png') }}" alt="" class="img-fluid figure-img" style="max-width: 150px">
+                        <img src="{{ asset('images/keep-distance.png') }}" alt="" class="img-fluid figure-img" style="max-width: 120px">
                         <figcaption class="figure-caption text-white">
                             <div class="lead">
                                 Keep Distance
@@ -378,7 +378,7 @@
                                 Your Name
                             </label>
                             <input type="text" readonly class="form-control-plaintext" id="staticEmail"
-                                   value="Nama Tamu Undangan"
+                                   value="{{ $guestName }}"
                                    aria-label="your name">
                         </div>
                         <div class="row">
