@@ -12,9 +12,9 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.min.css">
     <link rel="stylesheet" href="{{ mix('css/main.css') }}">
 
-    <title>{NAMA UNDANGAN}</title>
+    <title>The Wedding of Kevin & Fernanda</title>
     <meta name="description"
-          content="Dear {NAMA UNDANGAN}, you are cordially invited to celebrate the wedding of Kevin and Fernanda on September 24th, 2022.">
+          content="Dear {{ $guestName }}, you are cordially invited to celebrate the wedding of Kevin and Fernanda on September 24th, 2022.">
     <meta property="og:image" content="{{ asset('images/logo-initials.png') }}"/>
     <meta property="og:image:width" content="194"/>
     <meta property="og:image:height" content="143"/>
@@ -478,8 +478,8 @@
             </div>
             <div class="modal-body text-center pb-0">
                 Dear
-                <h3 class="modal-title">
-                    {NAMA UNDANGAN}
+                <h3 class="modal-title" style="line-height: 1.2;">
+                    {{ $guestName }}
                 </h3>
                 <small class="fst-italic text-muted mt-5 d-block" style="font-size: 12px;">
                     We apologize if there are misspelling of your name/title

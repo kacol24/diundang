@@ -14,7 +14,22 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::view('/', 'home');
+Route::get('/', function () {
+    $guestName = 'Tamu Undangan';
+
+    $guestCode = request('guest');
+    $invitation = Invitation::where('guest_code', $guestCode)->first();
+
+    if ($invitation) {
+        $guestName = $invitation->name;
+    }
+
+    $data = [
+        'guestName' => $guestName,
+    ];
+
+    return view('home', $data);
+});
 
 Route::get('/download', function () {
     $guestCode = request('guest');
