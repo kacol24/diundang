@@ -169,10 +169,9 @@
                                 at 11:00
                             </div>
                             <address>
-                                <div class="font-sans-serif">St. Aloysius Gonzaga Church</div>
+                                <div class="font-sans-serif">St. Yakobus</div>
                                 <small class="fst-italic">
-                                    Jl. Satelit Indah I Bl HN No.1, Tanjungsari, Kec. Sukomanunggal, Kota SBY, Jawa
-                                    Timur 60187
+                                    Jl. Puri Widya Kencana LL-1, Citraland, Surabaya
                                 </small>
                             </address>
                         </div>
