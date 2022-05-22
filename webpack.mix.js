@@ -11,7 +11,7 @@ const mix = require('laravel-mix');
  |
  */
 
-mix.sass('resources/sass/main.scss', 'public/css')
-   .options({
-       processCssUrls: false
-   });
+mix.js('resources/js/app.js', 'public/js')
+    .postCss('resources/css/app.css', 'public/css', [
+        //
+    ]);
