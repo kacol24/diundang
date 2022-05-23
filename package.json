@@ -10,6 +10,8 @@
         "production": "mix --production"
     },
     "devDependencies": {
-        "laravel-mix": "^6.0.6"
+        "laravel-mix": "^6.0.6",
+        "sass": "^1.52.1",
+        "sass-loader": "^12.1.0"
     }
 }
