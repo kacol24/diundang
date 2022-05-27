@@ -20,9 +20,17 @@ class InvitationResource extends Resource
     public static function form(Form $form): Form
     {
         return $form
+            ->columns(1)
             ->schema([
-                Forms\Components\TextInput::make('guest_code')
-                                          ->required(),
+                Forms\Components\Grid::make()
+                                     ->schema([
+                                         Forms\Components\TextInput::make('guest_code')
+                                                                   ->required(),
+                                         Forms\Components\BelongsToSelect::make('seating_id')
+                                                                         ->relationship('seating', 'name')
+                                                                         ->searchable()
+                                                                         ->required(),
+                                     ]),
                 Forms\Components\TextInput::make('name')
                                           ->required(),
                 Forms\Components\TextInput::make('phone')
@@ -32,11 +40,8 @@ class InvitationResource extends Resource
                 Forms\Components\TextInput::make('guests')
                                           ->required()
                                           ->type('number')
+                                          ->suffix('person(s)')
                                           ->minValue(1),
-                Forms\Components\BelongsToSelect::make('seating_id')
-                                                ->relationship('seating', 'name')
-                                                ->searchable()
-                                                ->required(),
             ]);
     }
 
