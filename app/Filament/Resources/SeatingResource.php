@@ -30,6 +30,8 @@ class SeatingResource extends Resource
         return $table
             ->columns([
                 Tables\Columns\TextColumn::make('name'),
+                Tables\Columns\TextColumn::make('invitations_count')
+                                         ->counts('invitations'),
             ])
             ->filters([
                 //
