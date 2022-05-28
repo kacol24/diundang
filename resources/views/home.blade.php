@@ -120,7 +120,7 @@
                                 <small class="d-block">
                                     <em>The only son of</em>
                                 </small>
-                                Mr. Tjen Gunawan Chandra (陳劲源) & Mrs. Hoo Swie Tjoe (Susi)
+                                <span class="text-nowrap">Mr. Tjen Gunawan Chandra (陳劲源)</span> & <span class="text-nowrap">Mrs. Hoo Swie Tjoe (Susi)</span>
                             </p>
                         </div>
                     </div>
@@ -140,7 +140,7 @@
                                         The first daughter, second child of
                                     </em>
                                 </small>
-                                Mr. Ge Cing Kai & Mrs. Liauw Hung San
+                                <span class="text-nowrap">Mr. Ge Cing Kai</span> & <span class="text-nowrap">Mrs. Liauw Hung San</span>
                             </p>
                         </div>
                     </div>
