@@ -29,12 +29,20 @@
                 font-size: 14px;
             }
 
-            .font-sm\:24 {
-                font-size: 24px;
+            .sm\:text-lg {
+                font-size: 26px;
             }
 
-            .font-sm\:20 {
-                font-size: 20px;
+            .sm\:text-base {
+                font-size: 22px;
+            }
+
+            .sm\:font-size-19 {
+                font-size: 19px;
+            }
+
+            .sm\:text-sm {
+                font-size: 14px;
             }
         }
     </style>
@@ -49,10 +57,10 @@
             KF
         </div>
         <div class="text-white font-serif" style="z-index: 2">
-            <h3 class="mb-2 font-sm:20" data-aos="zoom-out-down" data-aos-offset="-100" data-aos-delay="100">
+            <h3 class="mb-2 sm:text-base" data-aos="zoom-out-down" data-aos-offset="-100" data-aos-delay="100">
                 The Wedding of
             </h3>
-            <h1 class="display-3 text-uppercase mb-0 font-sm:24" data-aos="zoom-out-up" data-aos-duration="1000">
+            <h1 class="display-3 text-uppercase mb-0 sm:text-lg" data-aos="zoom-out-up" data-aos-duration="1000">
                 Kevin & Fernanda
             </h1>
         </div>
@@ -112,7 +120,7 @@
         </div>
         <div class="container py-5 position-relative" style="z-index: 2">
             <div class="text-center text-white">
-                <h1 class="text-uppercase display-3 font-serif">
+                <h1 class="text-uppercase display-3 font-serif sm:text-base">
                     Tie The Knot
                 </h1>
                 <p style="max-width: 430px" class="mx-auto">
@@ -127,7 +135,7 @@
                             <img src="{{ asset('images/kevin.jpg') }}" alt=""
                                  class="img-fluid rounded-circle mb-3 mx-auto"
                                  style="max-width: 150px" data-aos="fade-down" data-aos-delay="300">
-                            <h2 class="font-serif text-uppercase">
+                            <h2 class="font-serif text-uppercase sm:text-base">
                                 KEVIN CHANDRA
                             </h2>
                             <p class="m-0">
@@ -146,7 +154,7 @@
                             <img src="{{ asset('images/nanda.jpg') }}" alt=""
                                  class="img-fluid rounded-circle mb-3 mx-auto"
                                  style="max-width: 150px" data-aos="fade-down" data-aos-delay="300">
-                            <h2 class="font-serif text-uppercase">
+                            <h2 class="font-serif text-uppercase sm:text-base">
                                 FERNANDA EKA PUTRI
                             </h2>
                             <p class="m-0">
@@ -169,7 +177,7 @@
              data-parallax
              data-src="{{ asset('images/ROB00394.jpg') }}"></div>
         <div class="container position-relative text-center" style="z-index: 1">
-            <h3 class="text-uppercase text-white display-4 font-serif">
+            <h3 class="text-uppercase text-white display-4 font-serif sm:text-base lh-base">
                 Saturday,<br>
                 September 24<sup style="text-transform: none;">th</sup>, 2022
             </h3>
@@ -475,7 +483,7 @@
             <img src="{{ asset('images/decoration-4.png') }}" alt="" class="img-fluid">
         </div>
         <div class="container text-center position-relative" style="z-index: 1">
-            <h1 class="text-uppercase font-serif display-5 mb-5">
+            <h1 class="text-uppercase font-serif display-5 mb-5 sm:text-lg">
                 Wedding Gift
             </h1>
             @include('components.horizontal-separator')
@@ -490,7 +498,7 @@
          data-parallax
          data-src="{{ asset('images/ROB00450.jpg') }}">
         <div class="container text-white py-5 my-5 text-center position-relative font-serif" style="z-index: 2">
-            <h3 class="display-3 text-uppercase">
+            <h3 class="display-3 text-uppercase sm:font-size-19">
                 We Can't Wait To See You!
             </h3>
         </div>
@@ -499,7 +507,7 @@
         <div class="container">
             <div class="text-center">
                 With ❤️<br>
-                <h1 class="font-serif display-1">Kevin & Nanda</h1>
+                <h1 class="font-serif display-1 sm:text-lg">Kevin & Nanda</h1>
                 <a href="https://www.instagram.com/explore/tags/loVINyouforeFER/" target="_blank" class="link-secondary">#loVINyouforeFER</a>
             </div>
         </div>
