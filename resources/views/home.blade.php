@@ -474,7 +474,7 @@
 </div>
 
 
-<script src="https://code.jquery.com/jquery-3.6.0.slim.min.js"></script>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <!-- Optional JavaScript; choose one of the two! -->
 
 <!-- Option 1: Bootstrap Bundle with Popper -->
@@ -497,7 +497,18 @@
 
 <!-- 1. The <iframe> (and video player) will replace this <div> tag. -->
 <div id="player" style="display: none;"></div>
-<div id="controls" class="shadow">
+<div class="position-fixed ps-3 text-white text-nowrap rounded-pill overflow-hidden align-items-center"
+     id="now_playing"
+     data-aos="fade-left"
+     data-aos-duration="1000"
+     data-aos-offset="-1000"
+     data-aos-delay="3000"
+     style="background-color: rgba(0, 0, 0, .7);z-index: 1040; bottom: 20px;right: 20px;left: 15px; padding-right: 35px; height: 30px; font-size: 12px; display: flex;">
+    <marquee>
+        Now playing: Love Will Find A Way (End Title) · Heather Headley · Kenny Lattimore
+    </marquee>
+</div>
+<div id="controls" class="shadow-sm">
     <button class="btn p-0" id="btn_play">
         <i class="fas fa-fw fa-xs fa-play"></i>
     </button>
@@ -591,6 +602,10 @@
         $play.addClass('d-none');
         $pause.removeClass('d-none');
         player.playVideo();
+
+        setTimeout(function() {
+            $('#now_playing').fadeOut();
+        }, 10000);
     }
 
     function pauseTrack() {
