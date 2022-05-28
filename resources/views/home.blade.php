@@ -553,7 +553,7 @@
 
     function onYouTubeIframeAPIReady() {
         player = new YT.Player('player', {
-            videoId: 'IcB0KNcsGy8',
+            videoId: 'szqxa_Ebs0I',
             playerVars: {
                 'playsinline': 1
             },
