@@ -120,7 +120,7 @@
                                 <small class="d-block">
                                     <em>The only son of</em>
                                 </small>
-                                Mr. Gunawan Chandra & Mrs. Susilowati
+                                <span class="text-nowrap">Mr. Tjen Gunawan Chandra (陳劲源)</span> & <span class="text-nowrap">Mrs. Hoo Swie Tjoe (Susi)</span>
                             </p>
                         </div>
                     </div>
@@ -140,7 +140,7 @@
                                         The first daughter, second child of
                                     </em>
                                 </small>
-                                Mr. Ge Cing Kai & Mrs. Liauw Hung San
+                                <span class="text-nowrap">Mr. Ge Cing Kai</span> & <span class="text-nowrap">Mrs. Liauw Hung San</span>
                             </p>
                         </div>
                     </div>
@@ -553,9 +553,12 @@
 
     function onYouTubeIframeAPIReady() {
         player = new YT.Player('player', {
-            videoId: 'IcB0KNcsGy8',
+            videoId: 'szqxa_Ebs0I',
             playerVars: {
                 'playsinline': 1
+            },
+            events: {
+                'onStateChange': onPlayerStateChange
             }
         });
     }
@@ -570,12 +573,11 @@
     // //    the player should play for six seconds and then stop.
     // var done = false;
     //
-    // function onPlayerStateChange(event) {
-    //     if (event.data == YT.PlayerState.PLAYING && !done) {
-    //         setTimeout(stopVideo, 6000);
-    //         done = true;
-    //     }
-    // }
+    function onPlayerStateChange(event) {
+        if (event.data === YT.PlayerState.ENDED) {
+            player.playVideo();
+        }
+    }
 
     function stopVideo() {
         player.stopVideo();
