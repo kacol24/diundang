@@ -466,6 +466,14 @@
                                 Confirm
                             </button>
                         </div>
+                        <small class="text-muted">
+                            <br>
+                            <em>
+                                * Having trouble with the RSVP form? Please contact <a href="https://wa.me/6282233662728?text={{ urlencode('Hi, this is '. $guestName .'! I want to confirm my attendance to your wedding reception.') }}">Kevin</a>
+                                or <a
+                                    href="https://wa.me/6282244872421?text={{ urlencode('Hi, '. $guestName .'! I want to confirm my attendance to your wedding reception.') }}">Nanda</a> directly to confirm your attendance.
+                            </em>
+                        </small>
                     </form>
                 </div>
             </div>
