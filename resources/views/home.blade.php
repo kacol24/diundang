@@ -264,7 +264,7 @@
                             <a href="{{ asset('images/gallery/' . $gallery) }}"
                                class="link-secondary text-decoration-none"
                                data-fancybox="gallery"
-                               data-caption='Photo by - <a href="https://www.instagram.com/explore/tags/summerstoryrobert/" target="_blank" class="link-light">#summerstoryrobert</a>'>
+                               data-caption='<span style="font-size: 8px">Photo by - <a href="https://www.instagram.com/explore/tags/summerstoryrobert/" target="_blank" class="link-light">#summerstoryrobert</a></span>'>
                                 <img src="{{ asset('images/gallery/' . $gallery) }}"
                                      class="img-fluid w-100 figure-img m-0" alt="gallery image {{ $loop->iteration }}">
                             </a>
@@ -384,7 +384,7 @@
                         <img src="{{ asset('images/wear-mask.png') }}" alt="" class="img-fluid figure-img"
                              style="max-width: 120px">
                         <figcaption class="figure-caption text-white">
-                            <div class="lead">
+                            <div class="lead sm:text-sm">
                                 Wear Mask
                             </div>
                         </figcaption>
@@ -395,7 +395,7 @@
                         <img src="{{ asset('images/wash-hands.png') }}" alt="" class="img-fluid figure-img"
                              style="max-width: 120px">
                         <figcaption class="figure-caption text-white">
-                            <div class="lead">
+                            <div class="lead sm:text-sm">
                                 Wash Hands
                             </div>
                         </figcaption>
@@ -406,7 +406,7 @@
                         <img src="{{ asset('images/clean-surfaces.png') }}" alt="" class="img-fluid figure-img"
                              style="max-width: 120px">
                         <figcaption class="figure-caption text-white">
-                            <div class="lead">
+                            <div class="lead sm:text-sm">
                                 Clean Surfaces
                             </div>
                         </figcaption>
@@ -417,7 +417,7 @@
                         <img src="{{ asset('images/keep-distance.png') }}" alt="" class="img-fluid figure-img"
                              style="max-width: 120px">
                         <figcaption class="figure-caption text-white">
-                            <div class="lead">
+                            <div class="lead sm:text-sm">
                                 Keep Distance
                             </div>
                         </figcaption>
