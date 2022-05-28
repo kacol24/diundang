@@ -325,8 +325,8 @@
                         <div class="col-md-7">
                             <div class="row text-center text-md-start align-items-center justify-content-center">
                                 <div class="col-md-auto col-6">
-                                    <img src="{{ asset('images/boy.jpg') }}" alt="kevin"
-                                         class="img-fluid rounded-circle mb-3 mx-auto">
+                                    <img src="{{ asset('images/kevin.jpg') }}" alt="kevin"
+                                         class="img-fluid rounded-circle mb-3 mx-auto w-100" style="max-width: 250px">
                                 </div>
                                 <div class="col-md">
                                     <h3 class="font-sans-serif">
@@ -343,8 +343,8 @@
                         <div class="col-md-7">
                             <div class="row text-center text-md-start align-items-center justify-content-center">
                                 <div class="col-md-auto col-6">
-                                    <img src="{{ asset('images/girl.jpg') }}" alt=""
-                                         class="img-fluid rounded-circle mb-3 mx-auto">
+                                    <img src="{{ asset('images/nanda.jpg') }}" alt=""
+                                         class="img-fluid rounded-circle mb-3 mx-auto w-100" style="max-width: 250px">
                                 </div>
                                 <div class="col-md">
                                     <h3 class="font-sans-serif">
