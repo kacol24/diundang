@@ -556,6 +556,9 @@
             videoId: 'IcB0KNcsGy8',
             playerVars: {
                 'playsinline': 1
+            },
+            events: {
+                'onStateChange': onPlayerStateChange
             }
         });
     }
@@ -570,12 +573,11 @@
     // //    the player should play for six seconds and then stop.
     // var done = false;
     //
-    // function onPlayerStateChange(event) {
-    //     if (event.data == YT.PlayerState.PLAYING && !done) {
-    //         setTimeout(stopVideo, 6000);
-    //         done = true;
-    //     }
-    // }
+    function onPlayerStateChange(event) {
+        if (event.data === YT.PlayerState.ENDED) {
+            player.playVideo();
+        }
+    }
 
     function stopVideo() {
         player.stopVideo();
