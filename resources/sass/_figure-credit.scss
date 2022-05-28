@@ -1,0 +1,11 @@
+.figure-credit {
+    position: relative;
+
+    .figure-caption {
+        position: absolute;
+        left: -1px;
+        bottom: -1px;
+        background-color: #fff;
+        padding: 5px 10px;
+    }
+}

@@ -12,7 +12,6 @@ class Invitation extends Model
 
     const WA_CTC = 'https://wa.me/62%phone%?text=%message%';
 
-    use CrudTrait;
     use HasFactory;
 
     /*
