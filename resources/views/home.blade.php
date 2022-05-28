@@ -22,6 +22,22 @@
 
     <script src="https://cdn.jsdelivr.net/npm/lozad@1.16.0/dist/lozad.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/alpinejs@3.8.1/dist/cdn.min.js" defer></script>
+
+    <style>
+        @media (max-width: 767px) {
+            body {
+                font-size: 14px;
+            }
+
+            .font-sm\:24 {
+                font-size: 24px;
+            }
+
+            .font-sm\:20 {
+                font-size: 20px;
+            }
+        }
+    </style>
 </head>
 <body class="font-sans-serif">
 
@@ -33,14 +49,12 @@
             KF
         </div>
         <div class="text-white font-serif" style="z-index: 2">
-            <h1 class="display-3 text-uppercase" data-aos="zoom-out-up" data-aos-duration="1000">
-                Kevin
-                <span class="d-block d-md-inline">&</span>
-                Fernanda
-            </h1>
-            <h3 class="m0" data-aos="zoom-out-down" data-aos-offset="-100" data-aos-delay="100">
-                The Wedding
+            <h3 class="mb-2 font-sm:20" data-aos="zoom-out-down" data-aos-offset="-100" data-aos-delay="100">
+                The Wedding of
             </h3>
+            <h1 class="display-3 text-uppercase mb-0 font-sm:24" data-aos="zoom-out-up" data-aos-duration="1000">
+                Kevin & Fernanda
+            </h1>
         </div>
     </div>
     <header class="sticky-top font-sans-serif">
@@ -99,7 +113,7 @@
         <div class="container py-5 position-relative" style="z-index: 2">
             <div class="text-center text-white">
                 <h1 class="text-uppercase display-3 font-serif">
-                    We Are Getting Married
+                    Tie The Knot
                 </h1>
                 <p style="max-width: 430px" class="mx-auto">
                     By the love and grace of the Lord,<br>
@@ -127,7 +141,7 @@
                     </div>
                 </div>
                 <div class="col-md-5">
-                    <div class="card rounded-4 text-center" data-aos="fade-left">
+                    <div class="card rounded-4 text-center h-100" data-aos="fade-left">
                         <div class="card-body py-5">
                             <img src="{{ asset('images/nanda.jpg') }}" alt=""
                                  class="img-fluid rounded-circle mb-3 mx-auto"
@@ -254,6 +268,97 @@
                         </figure>
                     </div>
                 @endforeach
+            </div>
+        </div>
+    </div>
+    <div id="rsvp" class="my-5 py-5">
+        <div class="container my-5 py-5">
+            <div class="text-center">
+                <h1 class="font-serif mb-5">
+                    RSVP
+                </h1>
+                @include('components.horizontal-separator')
+            </div>
+            <div class="row justify-content-center mt-5">
+                <div class="col-md-6">
+                    Please kindly help us prepare everything better by confirming your attendance to our wedding event
+                    with the following RSVP form
+                    <form action="" class="mt-4 font-sans-serif"
+                          x-data="{
+                            attend: '',
+                            pax: ''
+                          }">
+                        <div class="mb-3">
+                            <label class="fw-bold">
+                                Your Name
+                            </label>
+                            <input type="text" readonly class="form-control-plaintext" id="staticEmail"
+                                   value="{{ $guestName }}"
+                                   aria-label="your name">
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="mb-3">
+                                    <label class="fw-bold">
+                                        Attend Reception
+                                    </label>
+                                    <div>
+                                        <div class="form-check form-check-inline">
+                                            <input class="form-check-input" type="radio" name="inlineRadioOptions"
+                                                   id="inlineRadio1" value="yes"
+                                                   x-model="attend">
+                                            <label class="form-check-label" for="inlineRadio1">Yes</label>
+                                        </div>
+                                        <div class="form-check form-check-inline">
+                                            <input class="form-check-input" type="radio" name="inlineRadioOptions"
+                                                   id="inlineRadio2" value="no"
+                                                   x-model="attend">
+                                            <label class="form-check-label" for="inlineRadio2">No</label>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="mb-3">
+                                    <div
+                                        x-show="attend === 'yes'"
+                                        x-transition>
+                                        <label class="fw-bold">
+                                            How many people will attend?
+                                        </label>
+                                        <select class="form-select" aria-label="Default select example"
+                                                x-model="pax">
+                                            <option selected value="" disabled hidden>
+                                                How many people will attend?
+                                            </option>
+                                            <option value="1">One</option>
+                                            <option value="2">Two</option>
+                                            <option value="3">Three</option>
+                                            <option value="4">Four</option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="text-center">
+                            <button type="submit" class="btn btn-secondary disabled" disabled
+                                    :disabled="!pax"
+                                    :class="{ 'disabled': !pax }">
+                                Confirm
+                            </button>
+                        </div>
+                        <small class="text-muted">
+                            <br>
+                            <em>
+                                * Having trouble with the RSVP form? Please contact <a
+                                    href="https://wa.me/6282233662728?text={{ urlencode('Hi, this is '. $guestName .'! I want to confirm my attendance to your wedding reception.') }}">Kevin</a>
+                                or <a
+                                    href="https://wa.me/6282244872421?text={{ urlencode('Hi, '. $guestName .'! I want to confirm my attendance to your wedding reception.') }}">Nanda</a>
+                                directly to confirm your attendance.
+                            </em>
+                        </small>
+                    </form>
+                </div>
             </div>
         </div>
     </div>
@@ -388,97 +493,17 @@
             <h3 class="display-3 text-uppercase">
                 We Can't Wait To See You!
             </h3>
-            <em>
-                Please let us know if you'll be able to make it.
-            </em>
         </div>
     </div>
-    <div id="rsvp" class="my-5 py-5">
-        <div class="container my-5 py-5">
+    <footer class="py-5 my-5">
+        <div class="container">
             <div class="text-center">
-                <h1 class="font-serif mb-5">
-                    RSVP
-                </h1>
-                @include('components.horizontal-separator')
-            </div>
-            <div class="row justify-content-center mt-5">
-                <div class="col-md-6">
-                    <form action="" class="mt-4 font-sans-serif"
-                          x-data="{
-                            attend: '',
-                            pax: '',
-                          }">
-                        <div class="mb-3">
-                            <label class="fw-bold">
-                                Your Name
-                            </label>
-                            <input type="text" readonly class="form-control-plaintext" id="staticEmail"
-                                   value="{{ $guestName }}"
-                                   aria-label="your name">
-                        </div>
-                        <div class="row">
-                            <div class="col-md-6">
-                                <div class="mb-3">
-                                    <label class="fw-bold">
-                                        Attend Reception
-                                    </label>
-                                    <div>
-                                        <div class="form-check form-check-inline">
-                                            <input class="form-check-input" type="radio" name="inlineRadioOptions"
-                                                   id="inlineRadio1" value="yes"
-                                                   x-model="attend">
-                                            <label class="form-check-label" for="inlineRadio1">Yes</label>
-                                        </div>
-                                        <div class="form-check form-check-inline">
-                                            <input class="form-check-input" type="radio" name="inlineRadioOptions"
-                                                   id="inlineRadio2" value="no"
-                                                   x-model="attend">
-                                            <label class="form-check-label" for="inlineRadio2">No</label>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-md-6">
-                                <div class="mb-3">
-                                    <div
-                                        x-show="attend === 'yes'"
-                                        x-transition>
-                                        <label class="fw-bold">
-                                            How many people will attend?
-                                        </label>
-                                        <select class="form-select" aria-label="Default select example"
-                                                x-model="pax">
-                                            <option selected value="" disabled hidden>
-                                                How many people will attend?
-                                            </option>
-                                            <option value="1">One</option>
-                                            <option value="2">Two</option>
-                                            <option value="3">Three</option>
-                                        </select>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="text-center">
-                            <button type="submit" class="btn btn-secondary disabled" disabled
-                                    :disabled="!pax"
-                                    :class="{ 'disabled': !pax }">
-                                Confirm
-                            </button>
-                        </div>
-                        <small class="text-muted">
-                            <br>
-                            <em>
-                                * Having trouble with the RSVP form? Please contact <a href="https://wa.me/6282233662728?text={{ urlencode('Hi, this is '. $guestName .'! I want to confirm my attendance to your wedding reception.') }}">Kevin</a>
-                                or <a
-                                    href="https://wa.me/6282244872421?text={{ urlencode('Hi, '. $guestName .'! I want to confirm my attendance to your wedding reception.') }}">Nanda</a> directly to confirm your attendance.
-                            </em>
-                        </small>
-                    </form>
-                </div>
+                With ❤️<br>
+                <h1 class="font-serif display-1">Kevin & Nanda</h1>
+                <a href="https://www.instagram.com/explore/tags/loVINyouforeFER/" target="_blank" class="link-secondary">#loVINyouforeFER</a>
             </div>
         </div>
-    </div>
+    </footer>
 </div>
 
 
