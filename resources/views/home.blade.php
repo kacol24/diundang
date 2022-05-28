@@ -244,9 +244,9 @@
                                data-fancybox="gallery"
                                data-caption='Photo by - <a href="https://www.instagram.com/explore/tags/summerstoryrobert/" target="_blank" class="link-light">#summerstoryrobert</a>'>
                                 <img src="{{ asset('images/gallery/' . $gallery) }}"
-                                     class="img-fluid w-100 figure-img" alt="gallery image {{ $loop->iteration }}">
+                                     class="img-fluid w-100 figure-img m-0" alt="gallery image {{ $loop->iteration }}">
                             </a>
-                            <figcaption class="figure-caption">
+                            <figcaption class="figure-caption" style="font-size: 8px;">
                                 Photo by - <a href="https://www.instagram.com/explore/tags/summerstoryrobert/"
                                               target="_blank"
                                               class="link-secondary">#summerstoryrobert</a>
@@ -503,7 +503,7 @@
      data-aos-duration="1000"
      data-aos-offset="-1000"
      data-aos-delay="3000"
-     style="background-color: rgba(0, 0, 0, .7);z-index: 1040; bottom: 20px;right: 20px;left: 15px; padding-right: 35px; height: 30px; font-size: 12px; display: flex;">
+     style="background-color: rgba(0, 0, 0, .7);z-index: 1040; bottom: 20px;left: 15px; right: 20px; padding-right: 35px; height: 30px; font-size: 12px; display: flex; max-width: 500px">
     <marquee>
         Now playing: Love Will Find A Way (End Title) · Heather Headley · Kenny Lattimore
     </marquee>

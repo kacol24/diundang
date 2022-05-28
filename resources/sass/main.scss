@@ -66,3 +66,9 @@
         color: #000;
     }
 }
+
+@media (min-width: 768px) {
+    #now_playing {
+        left: auto !important;
+    }
+}
