@@ -10,6 +10,7 @@
           integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.4/css/all.min.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui@4.0.27/dist/fancybox.min.css">
     <link rel="stylesheet" href="{{ mix('css/main.css') }}">
 
     <title>The Wedding of Kevin & Fernanda</title>
@@ -22,13 +23,13 @@
     <script src="https://cdn.jsdelivr.net/npm/lozad@1.16.0/dist/lozad.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/alpinejs@3.8.1/dist/cdn.min.js" defer></script>
 </head>
-<body class="modal-open">
+<body class="modal-open font-sans-serif">
 
 <div class="wrapper">
     <div class="hero-image darkened-overlay text-center py-5 overflow-hidden"
          data-parallax
          data-exclude-agents="false"
-         data-src="{{ asset('images/hero-2.jpg') }}">
+         data-src="{{ asset('images/ROB00812.jpg') }}">
         <div class="font-serif text-white display-1" style="z-index: 2; letter-spacing: -6px;" data-aos="fade-down">
             KF
         </div>
@@ -108,7 +109,8 @@
                 <div class="col-md-4">
                     <div class="card rounded-4 mb-4 text-center" data-aos="fade-right">
                         <div class="card-body py-5">
-                            <img src="https://placekitten.com/250" alt="" class="img-fluid rounded-circle mb-3 mx-auto"
+                            <img src="{{ asset('images/kevin.jpg') }}" alt=""
+                                 class="img-fluid rounded-circle mb-3 mx-auto"
                                  style="max-width: 150px" data-aos="fade-down" data-aos-delay="300">
                             <h2 class="font-serif text-uppercase">
                                 Kevin Chandra
@@ -125,7 +127,8 @@
                 <div class="col-md-4">
                     <div class="card rounded-4 text-center" data-aos="fade-left">
                         <div class="card-body py-5">
-                            <img src="https://placekitten.com/300" alt="" class="img-fluid rounded-circle mb-3 mx-auto"
+                            <img src="{{ asset('images/nanda.jpg') }}" alt=""
+                                 class="img-fluid rounded-circle mb-3 mx-auto"
                                  style="max-width: 150px" data-aos="fade-down" data-aos-delay="300">
                             <h2 class="font-serif text-uppercase">
                                 Fernanda Eka Putri
@@ -148,7 +151,7 @@
         <div class="position-absolute w-100 darkened-overlay"
              style="top: 0;left: 0; height: 80%; background-repeat: no-repeat; background-size: cover; background-position: center bottom"
              data-parallax
-             data-src="{{ asset('images/banner-save-the-date.jpg') }}"></div>
+             data-src="{{ asset('images/ROB00394.jpg') }}"></div>
         <div class="container position-relative text-center" style="z-index: 1">
             <h3 class="text-uppercase text-white display-4 font-serif">
                 Saturday,<br>
@@ -222,8 +225,32 @@
     </div>
     <div id="gallery" class="py-5">
         <div class="container">
-            <img src="{{ asset('images/hero-2.jpg') }}" alt="" class="img-fluid w-100 mb-4">
-            <img src="{{ asset('images/hero-2.jpg') }}" alt="" class="img-fluid w-100">
+            <div class="row grid" id="gallery_lightbox">
+                @foreach([
+                    'ROB00520.jpg',
+                    'gallery.jpeg',
+                    'ROB00812.jpg',
+                    'ROB00667.jpg',
+                    'ROB00398.jpg',
+                ] as $gallery)
+                    <div class="col-md-4 grid-item">
+                        <figure class="figure figure-credit">
+                            <a href="{{ asset('images/gallery/' . $gallery) }}"
+                               class="link-secondary text-decoration-none"
+                               data-fancybox="gallery"
+                               data-caption='Photo by - <a href="https://www.instagram.com/explore/tags/summerstoryrobert/" target="_blank" class="link-light">#summerstoryrobert</a>'>
+                                <img src="{{ asset('images/gallery/' . $gallery) }}"
+                                     class="img-fluid w-100 figure-img" alt="gallery image {{ $loop->iteration }}">
+                            </a>
+                            <figcaption class="figure-caption">
+                                Photo by - <a href="https://www.instagram.com/explore/tags/summerstoryrobert/"
+                                              target="_blank"
+                                              class="link-secondary">#summerstoryrobert</a>
+                            </figcaption>
+                        </figure>
+                    </div>
+                @endforeach
+            </div>
         </div>
     </div>
     <div id="protocol" style="background-color:var(--color-primary);" class="rounded-4 font-sans-serif">
@@ -237,7 +264,8 @@
             <div class="row mt-5">
                 <div class="col-6 col-md text-center">
                     <figure class="figure">
-                        <img src="{{ asset('images/wear-mask.png') }}" alt="" class="img-fluid figure-img" style="max-width: 120px">
+                        <img src="{{ asset('images/wear-mask.png') }}" alt="" class="img-fluid figure-img"
+                             style="max-width: 120px">
                         <figcaption class="figure-caption text-white">
                             <div class="lead">
                                 Wear Mask
@@ -247,7 +275,8 @@
                 </div>
                 <div class="col-6 col-md text-center">
                     <figure class="figure">
-                        <img src="{{ asset('images/wash-hands.png') }}" alt="" class="img-fluid figure-img" style="max-width: 120px">
+                        <img src="{{ asset('images/wash-hands.png') }}" alt="" class="img-fluid figure-img"
+                             style="max-width: 120px">
                         <figcaption class="figure-caption text-white">
                             <div class="lead">
                                 Wash Hands
@@ -257,7 +286,8 @@
                 </div>
                 <div class="col-6 col-md text-center">
                     <figure class="figure">
-                        <img src="{{ asset('images/clean-surfaces.png') }}" alt="" class="img-fluid figure-img" style="max-width: 120px">
+                        <img src="{{ asset('images/clean-surfaces.png') }}" alt="" class="img-fluid figure-img"
+                             style="max-width: 120px">
                         <figcaption class="figure-caption text-white">
                             <div class="lead">
                                 Clean Surfaces
@@ -267,7 +297,8 @@
                 </div>
                 <div class="col-6 col-md text-center">
                     <figure class="figure">
-                        <img src="{{ asset('images/keep-distance.png') }}" alt="" class="img-fluid figure-img" style="max-width: 120px">
+                        <img src="{{ asset('images/keep-distance.png') }}" alt="" class="img-fluid figure-img"
+                             style="max-width: 120px">
                         <figcaption class="figure-caption text-white">
                             <div class="lead">
                                 Keep Distance
@@ -346,9 +377,9 @@
         </div>
     </div>
     <div id="cta" class="darkened-overlay"
-         style="background-repeat: no-repeat; background-size: cover; background-position: center bottom; padding-top: 10%; padding-bottom: 10%"
+         style="background-repeat: no-repeat; background-size: cover; background-position: center bottom; padding-top: 15%; padding-bottom: 15%"
          data-parallax
-         data-src="{{ asset('images/banner-cta.jpg') }}">
+         data-src="{{ asset('images/ROB00450.jpg') }}">
         <div class="container text-white py-5 my-5 text-center position-relative font-serif" style="z-index: 2">
             <h3 class="display-3 text-uppercase">
                 We Can't Wait To See You!
@@ -446,6 +477,8 @@
 -->
 {{--<script src="https://cdn.jsdelivr.net/npm/jquery-parallax.js@1.5.0/parallax.min.js"></script>--}}
 <script src="https://cdn.jsdelivr.net/npm/simple-parallax-js@5.6.2/dist/simpleParallax.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/masonry.js@3.1.5/dist/masonry.pkgd.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui@4.0.27/dist/fancybox.umd.min.js"></script>
 <script src="{{ asset('js/jquery.parallax.min.js') }}"></script>
 {{--<audio src="{{ asset('uploads/bgm-cant-help-falling-in-love-elvis.mp3') }}" loop autoplay controls id="bgm"></audio>--}}
 <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.min.js"></script>
@@ -506,7 +539,7 @@
 
     function onYouTubeIframeAPIReady() {
         player = new YT.Player('player', {
-            videoId: 'vGJTaP6anOU',
+            videoId: 'IcB0KNcsGy8',
             playerVars: {
                 'playsinline': 1
             }
@@ -584,6 +617,10 @@
 
     document.getElementById('invitationModal').addEventListener('hidden.bs.modal', function(event) {
         playTrack();
+    });
+
+    $('.grid').masonry({
+        itemSelector: '.grid-item'
     });
 </script>
 </body>
