@@ -5,11 +5,11 @@ namespace App\GraphQL\Mutations;
 use App\Models\Attendance;
 use App\Models\Invitation;
 
-class CheckIn
+final class CheckIn
 {
     /**
      * @param  null  $_
-     * @param  array<string, mixed>  $args
+     * @param  array{}  $args
      */
     public function __invoke($_, array $args)
     {

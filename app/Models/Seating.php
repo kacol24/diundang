@@ -8,7 +8,6 @@ use Illuminate\Database\Eloquent\Model;
 
 class Seating extends Model
 {
-    use CrudTrait;
     use HasFactory;
 
     /*

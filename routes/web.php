@@ -1,7 +1,9 @@
 <?php
 
 use App\Models\Invitation;
+use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\Route;
+use SimpleSoftwareIO\QrCode\Facades\QrCode;
 
 /*
 |--------------------------------------------------------------------------
@@ -53,3 +55,4 @@ Route::get('/download', function () {
 
     return response()->download($filename);
 })->name('download');
+

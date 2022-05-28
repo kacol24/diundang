@@ -1,0 +1,11 @@
+<?php
+
+namespace App\Filament\Resources\SeatingResource\Pages;
+
+use App\Filament\Resources\SeatingResource;
+use Filament\Resources\Pages\CreateRecord;
+
+class CreateSeating extends CreateRecord
+{
+    protected static string $resource = SeatingResource::class;
+}
