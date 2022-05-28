@@ -120,7 +120,7 @@
                                 <small class="d-block">
                                     <em>The only son of</em>
                                 </small>
-                                Mr. Gunawan Chandra & Mrs. Susilowati
+                                Mr. Tjen Gunawan Chandra (陳劲源) & Mrs. Hoo Swie Tjoe (Susi)
                             </p>
                         </div>
                     </div>
