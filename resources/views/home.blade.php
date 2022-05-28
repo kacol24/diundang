@@ -336,7 +336,7 @@
                             </div>
                         </div>
                         <div class="col-md-4">
-                            <img src="{{ asset('images/S__24076291.jpg') }}" alt="" class="img-fluid w-100">
+                            <img src="{{ asset('images/QR_8630064181.jpeg') }}" alt="" class="img-fluid w-100">
                         </div>
                     </div>
                     <div class="row justify-content-around align-items-center mt-5">
