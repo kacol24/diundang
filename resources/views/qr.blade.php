@@ -48,7 +48,7 @@
             <img src="{{ $qr }}" style="height:auto;max-width: 100%">
             <strong style="font-size: 12px;">{{ $invitation->name }}</strong><br>
             <small style="font-size: 10px;">
-                {{ $invitation->guests }} {{ Str::plural('guest', $invitation->guests) }}
+                Table: <strong>{{ $invitation->seating->name }}</strong>
             </small>
         </div>
     </div>
