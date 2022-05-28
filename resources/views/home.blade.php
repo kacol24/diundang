@@ -120,7 +120,8 @@
                                 <small class="d-block">
                                     <em>The only son of</em>
                                 </small>
-                                <span class="text-nowrap">Mr. Tjen Gunawan Chandra (陳劲源)</span> & <span class="text-nowrap">Mrs. Hoo Swie Tjoe (Susi)</span>
+                                <span class="text-nowrap">Mr. Tjen Gunawan Chandra (陳劲源)</span> & <span
+                                    class="text-nowrap">Mrs. Susilowati (何瑞珠)</span>
                             </p>
                         </div>
                     </div>
