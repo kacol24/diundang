@@ -2,19 +2,21 @@
 
 namespace Database\Seeders;
 
+use App\Models\Seating;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 
-class DatabaseSeeder extends Seeder
+class DummySeatingSeeder extends Seeder
 {
     /**
-     * Seed the application's database.
+     * Run the database seeds.
      *
      * @return void
      */
     public function run()
     {
-        $this->call(SeatingSeeder::class);
-        $this->call(GroupSeeder::class);
+        \DB::table('seatings')->truncate();
+
+        Seating::factory()->count(20)->create();
     }
 }

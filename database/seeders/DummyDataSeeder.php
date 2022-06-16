@@ -17,7 +17,6 @@ class DummyDataSeeder extends Seeder
     {
         Schema::disableForeignKeyConstraints();
 
-        $this->call(SeatingSeeder::class);
         $this->call(InvitationSeeder::class);
 
         Schema::enableForeignKeyConstraints();
