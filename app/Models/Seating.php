@@ -63,9 +63,16 @@ class Seating extends Model
     {
         $sumGuests = $this->invitations->sum('guests');
 
-        $tableCount = ceil($sumGuests / self::PER_TABLE);
+        $tableCount = $this->table_count;
 
         return $sumGuests.'/'.$tableCount * self::PER_TABLE.' ('.$tableCount.' tables)';
+    }
+
+    public function getTableCountAttribute()
+    {
+        $sumGuests = $this->invitations->sum('guests');
+
+        return ceil($sumGuests / self::PER_TABLE);
     }
     /*
     |--------------------------------------------------------------------------
