@@ -39,10 +39,11 @@ class InvitationResource extends Resource
             ->columns([
                 Tables\Columns\TextColumn::make('guest_code'),
                 Tables\Columns\TextColumn::make('name'),
-                Tables\Columns\TextColumn::make('phone')
-                                         ->prefix('+62'),
+                Tables\Columns\TextColumn::make('group.name'),
                 Tables\Columns\TextColumn::make('guests'),
                 Tables\Columns\TextColumn::make('seating.name'),
+                Tables\Columns\BooleanColumn::make('is_attending'),
+                Tables\Columns\TextColumn::make('rsvp_at')->dateTime(),
             ])
             ->filters([
                 //
@@ -75,7 +76,6 @@ class InvitationResource extends Resource
                                 Forms\Components\TextInput::make('name')
                                                           ->required(),
                                 Forms\Components\TextInput::make('phone')
-                                                          ->unique(ignorable: fn(?Model $record): ?Model => $record)
                                                           ->type('tel')
                                                           ->prefix('+62'),
                                 Forms\Components\Select::make('group_id')
@@ -105,7 +105,11 @@ class InvitationResource extends Resource
                  ->schema([
                      Section::make('RSVP Detail')
                             ->schema([
-                                Forms\Components\Toggle::make('is_attending'),
+                                Forms\Components\Select::make('is_attending')
+                                                       ->options([
+                                                           1 => 'Attending',
+                                                           0 => 'Not Attending',
+                                                       ]),
                                 Forms\Components\DateTimePicker::make('rsvp_at')
                                                                ->label('RSVP At'),
                             ]),

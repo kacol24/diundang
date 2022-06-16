@@ -30,8 +30,7 @@ class Invitation extends Model
     // protected $dates = [];
 
     protected $casts = [
-        'rsvp_at'      => 'datetime',
-        'is_attending' => 'boolean',
+        'rsvp_at' => 'datetime',
     ];
 
     /*
@@ -63,6 +62,11 @@ class Invitation extends Model
     public function attendance()
     {
         return $this->hasOne(Attendance::class);
+    }
+
+    public function group()
+    {
+        return $this->belongsTo(Group::class);
     }
 
     /*
