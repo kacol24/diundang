@@ -135,15 +135,15 @@
                             <img src="{{ asset('images/kevin.jpg') }}" alt=""
                                  class="img-fluid rounded-circle mb-3 mx-auto"
                                  style="max-width: 150px" data-aos="fade-down" data-aos-delay="300">
-                            <h2 class="font-serif text-uppercase sm:text-base">
+                            <h2 class="font-serif text-uppercase h3">
                                 KEVIN CHANDRA
                             </h2>
                             <p class="m-0">
                                 <small class="d-block">
                                     <em>The only son of</em>
                                 </small>
-                                <span class="text-nowrap">Mr. Tjen Gunawan Chandra (陳劲源)</span> & <span
-                                    class="text-nowrap">Mrs. Susilowati (何瑞珠)</span>
+                                <span class="text-nowrap">Mr. Tjen Gunawan Chandra (陳劲源)</span> &<br<
+                                <span class="text-nowrap">Mrs. Susilowati (何瑞珠)</span>
                             </p>
                         </div>
                     </div>
@@ -154,7 +154,7 @@
                             <img src="{{ asset('images/nanda.jpg') }}" alt=""
                                  class="img-fluid rounded-circle mb-3 mx-auto"
                                  style="max-width: 150px" data-aos="fade-down" data-aos-delay="300">
-                            <h2 class="font-serif text-uppercase sm:text-base">
+                            <h2 class="font-serif text-uppercase h3">
                                 FERNANDA EKA PUTRI
                             </h2>
                             <p class="m-0">
@@ -163,7 +163,8 @@
                                         The first daughter, second child of
                                     </em>
                                 </small>
-                                <span class="text-nowrap">Mr. Ge Cing Kai</span> & <span class="text-nowrap">Mrs. Liauw Hung San</span>
+                                <span class="text-nowrap">Mr. Ge Cing Kai</span> &<br>
+                                <span class="text-nowrap">Mrs. Liauw Hung San</span>
                             </p>
                         </div>
                     </div>
@@ -507,7 +508,7 @@
         <div class="container">
             <div class="text-center">
                 With ❤️<br>
-                <h1 class="font-serif display-1 sm:text-lg">Kevin & Nanda</h1>
+                <h1 class="font-serif display-1">Kevin & Nanda</h1>
                 <a href="https://www.instagram.com/explore/tags/loVINyouforeFER/" target="_blank" class="link-secondary">#loVINyouforeFER</a>
             </div>
         </div>
