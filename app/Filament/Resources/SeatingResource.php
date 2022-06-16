@@ -13,6 +13,8 @@ use Filament\Tables;
 
 class SeatingResource extends Resource
 {
+    protected static ?string $navigationGroup = 'Master';
+
     protected static ?string $model = Seating::class;
 
     protected static ?string $navigationIcon = 'heroicon-o-collection';

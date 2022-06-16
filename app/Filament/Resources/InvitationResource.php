@@ -17,6 +17,8 @@ use Illuminate\Database\Eloquent\Model;
 
 class InvitationResource extends Resource
 {
+    protected static ?string $navigationGroup = 'Invitations';
+
     protected static ?string $model = Invitation::class;
 
     protected static ?string $navigationIcon = 'heroicon-o-collection';
