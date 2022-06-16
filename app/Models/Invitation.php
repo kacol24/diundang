@@ -29,11 +29,26 @@ class Invitation extends Model
     // protected $hidden = [];
     // protected $dates = [];
 
+    protected $casts = [
+        'rsvp_at'      => 'datetime',
+        'is_attending' => 'boolean',
+    ];
+
     /*
     |--------------------------------------------------------------------------
     | FUNCTIONS
     |--------------------------------------------------------------------------
     */
+    public static function generateGuestCode()
+    {
+        $candidate = mt_rand(100000, 999999);
+
+        if (self::where('guest_code', $candidate)->exists()) {
+            return self::generateGuestCode();
+        }
+
+        return $candidate;
+    }
 
     /*
     |--------------------------------------------------------------------------
