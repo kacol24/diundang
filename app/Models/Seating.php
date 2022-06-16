@@ -65,7 +65,7 @@ class Seating extends Model
 
         $tableCount = ceil($sumGuests / self::PER_TABLE);
 
-        return $sumGuests.'/'.$tableCount * self::PER_TABLE;
+        return $sumGuests.'/'.$tableCount * self::PER_TABLE.' ('.$tableCount.' tables)';
     }
     /*
     |--------------------------------------------------------------------------
