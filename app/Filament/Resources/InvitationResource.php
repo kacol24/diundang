@@ -37,16 +37,28 @@ class InvitationResource extends Resource
     {
         return $table
             ->columns([
-                Tables\Columns\TextColumn::make('guest_code'),
-                Tables\Columns\TextColumn::make('name'),
+                Tables\Columns\TextColumn::make('guest_code')
+                                         ->searchable(),
+                Tables\Columns\TextColumn::make('name')
+                                         ->searchable(),
                 Tables\Columns\TextColumn::make('group.name'),
                 Tables\Columns\TextColumn::make('guests'),
-                Tables\Columns\TextColumn::make('seating.name'),
+                Tables\Columns\TextColumn::make('seating.name')
+                                         ->label('Table'),
                 Tables\Columns\BooleanColumn::make('is_attending'),
                 Tables\Columns\TextColumn::make('rsvp_at')->dateTime(),
             ])
             ->filters([
-                //
+                Tables\Filters\MultiSelectFilter::make('group_id')
+                                                ->label('Group')
+                                                ->relationship('group', 'name'),
+                Tables\Filters\MultiSelectFilter::make('seating_id')
+                                                ->label('Table')
+                                                ->relationship('seating', 'name'),
+                Tables\Filters\TernaryFilter::make('is_attending'),
+                Tables\Filters\TernaryFilter::make('rsvp_at')
+                                            ->label('RSVP')
+                                            ->nullable(),
             ]);
     }
 
