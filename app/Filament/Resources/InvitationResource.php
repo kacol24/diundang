@@ -75,10 +75,13 @@ class InvitationResource extends Resource
                                 Forms\Components\TextInput::make('name')
                                                           ->required(),
                                 Forms\Components\TextInput::make('phone')
-                                                          ->required()
                                                           ->unique(ignorable: fn(?Model $record): ?Model => $record)
                                                           ->type('tel')
                                                           ->prefix('+62'),
+                                Forms\Components\Select::make('group_id')
+                                                       ->label('Group')
+                                                       ->options(\App\Models\Group::all()->pluck('name', 'id'))
+                                                       ->searchable(),
                             ]),
                      Section::make('Invitation Detail')
                             ->schema([
@@ -92,6 +95,7 @@ class InvitationResource extends Resource
                                                           ->required()
                                                           ->type('number')
                                                           ->suffix('person(s)')
+                                                          ->default(1)
                                                           ->minValue(1),
                             ]),
                  ])->columnSpan([
