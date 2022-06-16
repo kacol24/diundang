@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\RsvpController;
 use App\Models\Invitation;
 use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\Route;
@@ -20,14 +21,15 @@ Route::get('/', function () {
     $guestName = 'Tamu Undangan';
 
     $guestCode = request('guest');
-    $invitation = Invitation::where('guest_code', $guestCode)->first();
+    $invitation = Invitation::firstWhere('guest_code', $guestCode);
 
     if ($invitation) {
         $guestName = $invitation->name;
     }
 
     $data = [
-        'guestName' => $guestName,
+        'guestName'  => $guestName,
+        'invitation' => $invitation,
     ];
 
     return view('home', $data);
@@ -56,3 +58,5 @@ Route::get('/download', function () {
     return response()->download($filename);
 })->name('download');
 
+Route::post('rsvp', [RsvpController::class, 'store'])
+     ->name('rsvp.store');

@@ -292,11 +292,12 @@
                 <div class="col-md-6">
                     Please kindly help us prepare everything better by confirming your attendance to our wedding event
                     with the following RSVP form
-                    <form action="" class="mt-4 font-sans-serif"
+                    <form action="{{ route('rsvp.store') }}" method="POST" class="mt-4 font-sans-serif"
                           x-data="{
                             attend: '',
                             pax: ''
                           }">
+                        @csrf
                         <div class="mb-3">
                             <label class="fw-bold">
                                 Your Name
@@ -340,10 +341,11 @@
                                             <option selected value="" disabled hidden>
                                                 How many people will attend?
                                             </option>
-                                            <option value="1">One</option>
-                                            <option value="2">Two</option>
-                                            <option value="3">Three</option>
-                                            <option value="4">Four</option>
+                                            @foreach(range(1, $invitation->guests) as $guest)
+                                                <option value="{{ $guest }}">
+                                                    {{ $guest }} {{ \Str::plural('person', $guest) }}
+                                                </option>
+                                            @endforeach
                                         </select>
                                     </div>
                                 </div>
@@ -509,7 +511,8 @@
             <div class="text-center">
                 With ❤️<br>
                 <h1 class="font-serif display-1">Kevin & Nanda</h1>
-                <a href="https://www.instagram.com/explore/tags/loVINyouforeFER/" target="_blank" class="link-secondary">#loVINyouforeFER</a>
+                <a href="https://www.instagram.com/explore/tags/loVINyouforeFER/" target="_blank"
+                   class="link-secondary">#loVINyouforeFER</a>
             </div>
         </div>
     </footer>
