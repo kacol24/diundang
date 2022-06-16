@@ -7,6 +7,8 @@ use Illuminate\Database\Eloquent\Model;
 
 class Seating extends Model
 {
+    const PER_TABLE = 6;
+
     use HasFactory;
 
     /*
@@ -55,6 +57,15 @@ class Seating extends Model
     public function getPlanImageUrlAttribute()
     {
         return asset('images/'.rand(1, 5).'.jpg');
+    }
+
+    public function getQuotaAttribute()
+    {
+        $sumGuests = $this->invitations->sum('guests');
+
+        $tableCount = ceil($sumGuests / self::PER_TABLE);
+
+        return $sumGuests.'/'.$tableCount * self::PER_TABLE;
     }
     /*
     |--------------------------------------------------------------------------
