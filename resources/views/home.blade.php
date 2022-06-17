@@ -563,7 +563,7 @@
 </div>
 <div class="modal fade" id="invitationModal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
      aria-labelledby="invitationModalLabel" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered modal-fullscreen-sm-down">
+    <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content">
             <div class="modal-header border-0 justify-content-center">
                 <div class="text-center">
@@ -607,6 +607,7 @@
     // 3. This function creates an <iframe> (and YouTube player)
     //    after the API code downloads.
     var player;
+    var playPlease = false;
 
     function onYouTubeIframeAPIReady() {
         player = new YT.Player('player', {
@@ -615,15 +616,18 @@
                 'playsinline': 1
             },
             events: {
+                'onReady': onPlayerReady,
                 'onStateChange': onPlayerStateChange
             }
         });
     }
 
     // 4. The API will call this function when the video player is ready.
-    // function onPlayerReady(event) {
-    //     event.target.playVideo();
-    // }
+    function onPlayerReady(event) {
+        if (playPlease) {
+            event.target.playVideo();
+        }
+    }
 
     // // 5. The API calls this function when the player's state changes.
     // //    The function indicates that when playing a video (state=1),
@@ -644,13 +648,14 @@
     var $pause = $('#btn_pause');
 
     function playTrack() {
+        if (player) {
         $play.addClass('d-none');
         $pause.removeClass('d-none');
         player.playVideo();
-
         setTimeout(function() {
             $('#now_playing').fadeOut();
         }, 10000);
+    }
     }
 
     function pauseTrack() {
@@ -667,6 +672,14 @@
     $pause.click(function(e) {
         e.preventDefault();
         pauseTrack();
+    });
+
+    var invitationModal = new bootstrap.Modal(document.getElementById('invitationModal'));
+    invitationModal.show();
+
+    document.getElementById('invitationModal').addEventListener('hidden.bs.modal', function(event) {
+        playPlease = true;
+        playTrack();
     });
 </script>
 <script>
@@ -688,17 +701,7 @@
         overflow: true,
         scale: 2
     });
-
-    var invitationModal = new bootstrap.Modal(document.getElementById('invitationModal'));
-    invitationModal.show();
-
-    document.getElementById('invitationModal').addEventListener('hidden.bs.modal', function(event) {
-        playTrack();
-    });
-
-    $('.grid').masonry({
-        itemSelector: '.grid-item'
-    });
 </script>
+@stack('after_scripts')
 </body>
 </html>
