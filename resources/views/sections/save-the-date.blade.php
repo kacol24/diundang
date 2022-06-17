@@ -4,7 +4,7 @@
          data-parallax
          data-src="{{ asset('images/ROB00394.jpg') }}"></div>
     <div class="container position-relative text-center" style="z-index: 1">
-        <h3 class="text-uppercase text-white display-4 font-serif sm:text-base lh-base">
+        <h3 class="text-uppercase text-white display-4 font-serif lh-base">
             Saturday,<br>
             September 24<sup style="text-transform: none;">th</sup>, 2022
         </h3>

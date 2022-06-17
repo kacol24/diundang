@@ -21,27 +21,11 @@
     <meta property="og:image:height" content="143"/>
 
     <script src="https://cdn.jsdelivr.net/npm/lozad@1.16.0/dist/lozad.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/alpinejs@3.8.1/dist/cdn.min.js" defer></script>
+    <script src="https://cdn.jsdelivr.net/npm/alpinejs@3.10.2/dist/cdn.min.js" defer></script>
 
     <style>
         @media (max-width: 767px) {
             body {
-                font-size: 14px;
-            }
-
-            .sm\:text-lg {
-                font-size: 26px;
-            }
-
-            .sm\:text-base {
-                font-size: 22px;
-            }
-
-            .sm\:font-size-19 {
-                font-size: 19px;
-            }
-
-            .sm\:text-sm {
                 font-size: 14px;
             }
         }

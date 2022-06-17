@@ -5,10 +5,10 @@
         KF
     </div>
     <div class="text-white font-serif" style="z-index: 2">
-        <h3 class="mb-2 sm:text-base" data-aos="zoom-out-down" data-aos-offset="-100" data-aos-delay="100">
+        <h3 class="mb-2" data-aos="zoom-out-down" data-aos-offset="-100" data-aos-delay="100">
             The Wedding of
         </h3>
-        <h1 class="display-3 text-uppercase mb-0 sm:text-lg" data-aos="zoom-out-up" data-aos-duration="1000">
+        <h1 class="display-3 text-uppercase mb-0" data-aos="zoom-out-up" data-aos-duration="1000">
             Kevin & Fernanda
         </h1>
     </div>

@@ -7,7 +7,7 @@
         <img src="{{ asset('images/decoration-4.png') }}" alt="" class="img-fluid">
     </div>
     <div class="container text-center position-relative" style="z-index: 1">
-        <h1 class="text-uppercase font-serif display-5 mb-5 sm:text-lg">
+        <h1 class="text-uppercase font-serif display-5 mb-5">
             Wedding Gift
         </h1>
         @include('components.horizontal-separator')

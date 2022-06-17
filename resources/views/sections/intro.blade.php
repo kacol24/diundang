@@ -8,7 +8,7 @@
     </div>
     <div class="container py-5 position-relative" style="z-index: 2">
         <div class="text-center text-white">
-            <h1 class="text-uppercase display-3 font-serif sm:text-base">
+            <h1 class="text-uppercase display-3 font-serif">
                 Tie The Knot
             </h1>
             <p style="max-width: 430px" class="mx-auto">

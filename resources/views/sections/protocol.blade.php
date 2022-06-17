@@ -12,7 +12,7 @@
                     <img src="{{ asset('images/wear-mask.png') }}" alt="" class="img-fluid figure-img"
                          style="max-width: 120px">
                     <figcaption class="figure-caption text-white">
-                        <div class="lead sm:text-sm">
+                        <div class="lead">
                             Wear Mask
                         </div>
                     </figcaption>
@@ -23,7 +23,7 @@
                     <img src="{{ asset('images/wash-hands.png') }}" alt="" class="img-fluid figure-img"
                          style="max-width: 120px">
                     <figcaption class="figure-caption text-white">
-                        <div class="lead sm:text-sm">
+                        <div class="lead">
                             Wash Hands
                         </div>
                     </figcaption>
@@ -34,7 +34,7 @@
                     <img src="{{ asset('images/clean-surfaces.png') }}" alt="" class="img-fluid figure-img"
                          style="max-width: 120px">
                     <figcaption class="figure-caption text-white">
-                        <div class="lead sm:text-sm">
+                        <div class="lead">
                             Clean Surfaces
                         </div>
                     </figcaption>
@@ -45,7 +45,7 @@
                     <img src="{{ asset('images/keep-distance.png') }}" alt="" class="img-fluid figure-img"
                          style="max-width: 120px">
                     <figcaption class="figure-caption text-white">
-                        <div class="lead sm:text-sm">
+                        <div class="lead">
                             Keep Distance
                         </div>
                     </figcaption>
