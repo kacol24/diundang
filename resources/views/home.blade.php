@@ -364,7 +364,7 @@
                                 * Having trouble with the RSVP form? Please contact <a
                                     href="https://wa.me/6282233662728?text={{ urlencode('Hi, this is '. $guestName .'! I want to confirm my attendance to your wedding reception.') }}">Kevin</a>
                                 or <a
-                                    href="https://wa.me/6282244872421?text={{ urlencode('Hi, '. $guestName .'! I want to confirm my attendance to your wedding reception.') }}">Nanda</a>
+                                    href="https://wa.me/6282244872421?text={{ urlencode('Hi, '. $guestName .'! I want to confirm my attendance to your wedding reception.') }}">Fernanda</a>
                                 directly to confirm your attendance.
                             </em>
                         </small>
@@ -510,7 +510,7 @@
         <div class="container">
             <div class="text-center">
                 With ❤️<br>
-                <h1 class="font-serif display-1">Kevin & Nanda</h1>
+                <h1 class="font-serif display-3">Kevin & Fernanda</h1>
                 <a href="https://www.instagram.com/explore/tags/loVINyouforeFER/" target="_blank"
                    class="link-secondary">#loVINyouforeFER</a>
             </div>
@@ -582,13 +582,13 @@
                         <h3 class="modal-title" style="line-height: 1.2;">
                             {{ $guestName }}
                         </h3>
+                        <small class="fst-italic text-muted d-block" style="font-size: 12px;">
+                            We apologize if there are misspelling of your name/title.
+                        </small>
                     </div>
                 </div>
             </div>
             <div class="modal-footer border-0 justify-content-center">
-                <small class="fst-italic text-muted d-block" style="font-size: 12px;">
-                    We apologize if there are misspelling of your name/title.
-                </small>
                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
                     See Invitation
                 </button>
