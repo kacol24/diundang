@@ -340,7 +340,7 @@
                                             <option selected value="" disabled hidden>
                                                 How many people will attend?
                                             </option>
-                                            @foreach(range(1, $invitation->guests) as $guest)
+                                            @foreach(range(1, $invitation->guests ?? 2) as $guest)
                                                 <option value="{{ $guest }}"
                                                     {{ $loop->last ? 'selected' : '' }}>
                                                     {{ $guest }} {{ \Str::plural('person', $guest) }}
