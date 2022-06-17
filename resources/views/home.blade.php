@@ -24,52 +24,6 @@
     <script src="https://cdn.jsdelivr.net/npm/alpinejs@3.10.2/dist/cdn.min.js" defer></script>
 </head>
 <body class="font-sans-serif">
-
-<div class="wrapper">
-    @include('sections.hero')
-
-    @include('includes.header')
-
-    @include('sections.intro')
-    @include('sections.save-the-date')
-    @include('sections.gallery')
-    @include('sections.rsvp')
-    @include('sections.protocol')
-
-    @include('includes.footer')
-</div>
-
-<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
-        crossorigin="anonymous"></script>
-@stack('before_scripts')
-<script
-    src="https://cdn.jsdelivr.net/combine/npm/masonry.js@3.1.5/dist/masonry.pkgd.min.js,npm/imagesloaded@5.0.0/imagesloaded.pkgd.min.js,npm/simple-parallax-js@5.6.2,npm/@fancyapps/ui@4.0.27,npm/aos@2.3.4"></script>
-<script src="{{ asset('js/jquery.parallax.min.js') }}"></script>
-{{--<audio src="{{ asset('uploads/bgm-cant-help-falling-in-love-elvis.mp3') }}" loop autoplay controls id="bgm"></audio>--}}
-
-<!-- 1. The <iframe> (and video player) will replace this <div> tag. -->
-<div id="player" style="display: none;"></div>
-<div class="position-fixed ps-3 text-white text-nowrap rounded-pill overflow-hidden align-items-center"
-     id="now_playing"
-     data-aos="fade-left"
-     data-aos-duration="1000"
-     data-aos-offset="-1000"
-     data-aos-delay="3000"
-     style="background-color: rgba(0, 0, 0, .7);z-index: 1040; bottom: 20px;left: 15px; right: 20px; padding-right: 35px; height: 30px; font-size: 12px; display: flex; max-width: 500px">
-    <marquee>
-        Now playing: Love Will Find A Way (End Title) · Heather Headley · Kenny Lattimore
-    </marquee>
-</div>
-<div id="controls" class="shadow-sm">
-    <button class="btn p-0" id="btn_play">
-        <i class="fas fa-fw fa-xs fa-play"></i>
-    </button>
-    <button class="btn p-0 d-none" id="btn_pause">
-        <i class="fas fa-fw fa-xs fa-pause"></i>
-    </button>
-</div>
 <div class="modal fade" id="invitationModal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
      aria-labelledby="invitationModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered">
@@ -104,6 +58,50 @@
             </div>
         </div>
     </div>
+</div>
+<div class="wrapper">
+    @include('sections.hero')
+
+    @include('includes.header')
+
+    @include('sections.intro')
+    @include('sections.save-the-date')
+    @include('sections.gallery')
+    @include('sections.rsvp')
+    @include('sections.protocol')
+
+    @include('includes.footer')
+</div>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
+        crossorigin="anonymous"></script>
+@stack('before_scripts')
+<script
+    src="https://cdn.jsdelivr.net/combine/npm/masonry.js@3.1.5/dist/masonry.pkgd.min.js,npm/imagesloaded@5.0.0/imagesloaded.pkgd.min.js,npm/simple-parallax-js@5.6.2,npm/@fancyapps/ui@4.0.27,npm/aos@2.3.4"></script>
+<script src="{{ asset('js/jquery.parallax.min.js') }}"></script>
+{{--<audio src="{{ asset('uploads/bgm-cant-help-falling-in-love-elvis.mp3') }}" loop autoplay controls id="bgm"></audio>--}}
+
+<!-- 1. The <iframe> (and video player) will replace this <div> tag. -->
+<div id="player" style="display: none;"></div>
+<div class="position-fixed ps-3 text-white text-nowrap rounded-pill overflow-hidden align-items-center"
+     id="now_playing"
+     data-aos="fade-left"
+     data-aos-duration="1000"
+     data-aos-offset="-1000"
+     data-aos-delay="3000"
+     style="background-color: rgba(0, 0, 0, .7);z-index: 1040; bottom: 20px;left: 15px; right: 20px; padding-right: 35px; height: 30px; font-size: 12px; display: flex; max-width: 500px">
+    <marquee>
+        Now playing: Love Will Find A Way (End Title) · Heather Headley · Kenny Lattimore
+    </marquee>
+</div>
+<div id="controls" class="shadow-sm">
+    <button class="btn p-0" id="btn_play">
+        <i class="fas fa-fw fa-xs fa-play"></i>
+    </button>
+    <button class="btn p-0 d-none" id="btn_pause">
+        <i class="fas fa-fw fa-xs fa-pause"></i>
+    </button>
 </div>
 <script>
     // 2. This code loads the IFrame Player API code asynchronously.
