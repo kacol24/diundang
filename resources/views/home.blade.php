@@ -142,8 +142,8 @@
                                 <small class="d-block">
                                     <em>The only son of</em>
                                 </small>
-                                <span class="text-nowrap">Mr. Tjen Gunawan Chandra (陳劲源)</span> &<br<
-                                <span class="text-nowrap">Mrs. Susilowati (何瑞珠)</span>
+                                <span class="text-nowrap">Mr. Tjen Gunawan Chandra (陳劲源)</span><br>
+                                & <span class="text-nowrap">Mrs. Susilowati (何瑞珠)</span>
                             </p>
                         </div>
                     </div>
@@ -163,8 +163,8 @@
                                         The first daughter, second child of
                                     </em>
                                 </small>
-                                <span class="text-nowrap">Mr. Ge Cing Kai</span> &<br>
-                                <span class="text-nowrap">Mrs. Liauw Hung San</span>
+                                <span class="text-nowrap">Mr. Ge Cing Kai</span><br>
+                                & <span class="text-nowrap">Mrs. Liauw Hung San</span>
                             </p>
                         </div>
                     </div>
@@ -336,13 +336,13 @@
                                         <label class="fw-bold">
                                             How many people will attend?
                                         </label>
-                                        <select class="form-select" aria-label="Default select example"
-                                                x-model="pax">
+                                        <select class="form-select">
                                             <option selected value="" disabled hidden>
                                                 How many people will attend?
                                             </option>
                                             @foreach(range(1, $invitation->guests) as $guest)
-                                                <option value="{{ $guest }}">
+                                                <option value="{{ $guest }}"
+                                                    {{ $loop->last ? 'selected' : '' }}>
                                                     {{ $guest }} {{ \Str::plural('person', $guest) }}
                                                 </option>
                                             @endforeach
