@@ -8,7 +8,8 @@
             Saturday,<br>
             September 24<sup style="text-transform: none;">th</sup>, 2022
         </h3>
-        <a href="" class="btn btn-secondary" data-aos="fade-down">
+        <a href="https://calendar.google.com/event?action=TEMPLATE&tmeid=MzNkdjEycG11MnUxa2dhc2lsMDQwMGQ1ZXQga2Fjb2wuYm90QG0&tmsrc=kacol.bot%40gmail.com"
+           target="_blank" class="btn btn-secondary" data-aos="fade-down">
             Save The Date
         </a>
         <div class="row mt-5 justify-content-around font-serif">
