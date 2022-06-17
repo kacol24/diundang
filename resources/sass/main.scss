@@ -3,6 +3,11 @@
     --color-secondary: #4d1c32;
 }
 
+html {
+    scroll-behavior: smooth;
+    scroll-padding-top: var(--scroll-padding, 56px);
+}
+
 @import "fonts";
 @import "helpers";
 @import "buttons";
@@ -16,12 +21,6 @@
     flex-direction: column;
     align-items: center;
     justify-content: space-between;
-}
-
-@media (max-width: 767px) {
-    .hero-image {
-        height: 50vh;
-    }
 }
 
 .darkened-overlay {
@@ -70,5 +69,15 @@
 @media (min-width: 768px) {
     #now_playing {
         left: auto !important;
+    }
+}
+
+@media (max-width: 767px) {
+    body {
+        font-size: 14px;
+    }
+
+    .hero-image {
+        height: 50vh;
     }
 }

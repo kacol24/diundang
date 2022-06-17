@@ -22,14 +22,6 @@
 
     <script src="https://cdn.jsdelivr.net/npm/lozad@1.16.0/dist/lozad.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/alpinejs@3.10.2/dist/cdn.min.js" defer></script>
-
-    <style>
-        @media (max-width: 767px) {
-            body {
-                font-size: 14px;
-            }
-        }
-    </style>
 </head>
 <body class="font-sans-serif">
 
