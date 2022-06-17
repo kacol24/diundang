@@ -56,6 +56,7 @@
 
     @include('sections.intro')
     @include('sections.save-the-date')
+    @include('sections.gallery')
     @include('sections.rsvp')
     @include('sections.protocol')
 
