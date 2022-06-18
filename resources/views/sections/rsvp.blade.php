@@ -77,7 +77,7 @@
                         </div>
                     </div>
                     <div class="text-center">
-                        <button type="submit" class="btn btn-secondary disabled btn-sm" disabled
+                        <button type="submit" class="btn btn-secondary disabled" disabled
                                 :disabled="!pax"
                                 :class="{ 'disabled': !pax }">
                             {{ __('Confirm') }}
