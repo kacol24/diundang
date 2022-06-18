@@ -54,29 +54,29 @@
                 </div>
             </div>
             <div class="modal-footer border-0 justify-content-center">
-{{--                <div class="dropdown">--}}
-{{--                    <button type="button" class="btn btn-secondary" aria-expanded="false"--}}
-{{--                            data-bs-toggle="dropdown">--}}
-{{--                        {{ __('See Invitation') }}--}}
-{{--                    </button>--}}
-{{--                    <ul class="dropdown-menu">--}}
-{{--                        <li>--}}
-{{--                            <h6 class="dropdown-header">--}}
-{{--                                Choose Language--}}
-{{--                            </h6>--}}
-{{--                        </li>--}}
-{{--                        <li>--}}
-{{--                            <a class="dropdown-item" href="#">--}}
-{{--                                English--}}
-{{--                            </a>--}}
-{{--                        </li>--}}
-{{--                        <li>--}}
-{{--                            <a class="dropdown-item" href="#">--}}
-{{--                                Bahasa Indonesia--}}
-{{--                            </a>--}}
-{{--                        </li>--}}
-{{--                    </ul>--}}
-{{--                </div>--}}
+                {{--                <div class="dropdown">--}}
+                {{--                    <button type="button" class="btn btn-secondary" aria-expanded="false"--}}
+                {{--                            data-bs-toggle="dropdown">--}}
+                {{--                        {{ __('See Invitation') }}--}}
+                {{--                    </button>--}}
+                {{--                    <ul class="dropdown-menu">--}}
+                {{--                        <li>--}}
+                {{--                            <h6 class="dropdown-header">--}}
+                {{--                                Choose Language--}}
+                {{--                            </h6>--}}
+                {{--                        </li>--}}
+                {{--                        <li>--}}
+                {{--                            <a class="dropdown-item" href="#">--}}
+                {{--                                English--}}
+                {{--                            </a>--}}
+                {{--                        </li>--}}
+                {{--                        <li>--}}
+                {{--                            <a class="dropdown-item" href="#">--}}
+                {{--                                Bahasa Indonesia--}}
+                {{--                            </a>--}}
+                {{--                        </li>--}}
+                {{--                    </ul>--}}
+                {{--                </div>--}}
                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
                     {{ __('See Invitation') }}
                 </button>
@@ -105,7 +105,7 @@
 <script
     src="https://cdn.jsdelivr.net/combine/npm/masonry.js@3.1.5/dist/masonry.pkgd.min.js,npm/imagesloaded@5.0.0/imagesloaded.pkgd.min.js,npm/simple-parallax-js@5.6.2,npm/@fancyapps/ui@4.0.27,npm/aos@2.3.4"></script>
 <script src="{{ asset('js/jquery.parallax.min.js') }}"></script>
-{{--<audio src="{{ asset('uploads/bgm-cant-help-falling-in-love-elvis.mp3') }}" loop autoplay controls id="bgm"></audio>--}}
+<audio src="{{ asset('media/Love_Will_Find_A_Way_From_Simbas_Pride.mp3') }}" loop id="bgm"></audio>
 
 <!-- 1. The <iframe> (and video player) will replace this <div> tag. -->
 <div id="player" style="display: none;"></div>
@@ -128,94 +128,107 @@
         <i class="fas fa-fw fa-xs fa-pause"></i>
     </button>
 </div>
+{{--<script>--}}
+{{--    // 2. This code loads the IFrame Player API code asynchronously.--}}
+{{--    var tag = document.createElement('script');--}}
+
+{{--    tag.src = 'https://www.youtube.com/iframe_api';--}}
+{{--    var firstScriptTag = document.getElementsByTagName('script')[0];--}}
+{{--    firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);--}}
+
+{{--    // 3. This function creates an <iframe> (and YouTube player)--}}
+{{--    //    after the API code downloads.--}}
+{{--    var player;--}}
+{{--    var playPlease = false;--}}
+
+{{--    function onYouTubeIframeAPIReady() {--}}
+{{--        player = new YT.Player('player', {--}}
+{{--            videoId: 'szqxa_Ebs0I',--}}
+{{--            playerVars: {--}}
+{{--                'playsinline': 1--}}
+{{--            },--}}
+{{--            events: {--}}
+{{--                'onReady': onPlayerReady,--}}
+{{--                'onStateChange': onPlayerStateChange--}}
+{{--            }--}}
+{{--        });--}}
+{{--    }--}}
+
+{{--    // 4. The API will call this function when the video player is ready.--}}
+{{--    function onPlayerReady(event) {--}}
+{{--        if (playPlease) {--}}
+{{--            playTrack();--}}
+{{--        }--}}
+{{--    }--}}
+
+{{--    // // 5. The API calls this function when the player's state changes.--}}
+{{--    // //    The function indicates that when playing a video (state=1),--}}
+{{--    // //    the player should play for six seconds and then stop.--}}
+{{--    // var done = false;--}}
+{{--    //--}}
+{{--    function onPlayerStateChange(event) {--}}
+{{--        if (event.data === YT.PlayerState.ENDED) {--}}
+{{--            player.playVideo();--}}
+{{--        }--}}
+{{--    }--}}
+
+{{--    function stopVideo() {--}}
+{{--        player.stopVideo();--}}
+{{--    }--}}
+
+{{--    var $play = $('#btn_play');--}}
+{{--    var $pause = $('#btn_pause');--}}
+
+{{--    function playTrack() {--}}
+{{--        if (player) {--}}
+{{--            $play.addClass('d-none');--}}
+{{--            $pause.removeClass('d-none');--}}
+{{--            player.playVideo();--}}
+{{--            $('#now_playing').removeClass('invisible');--}}
+{{--            setTimeout(function() {--}}
+{{--                $('#now_playing').fadeOut();--}}
+{{--            }, 10000);--}}
+{{--        }--}}
+{{--    }--}}
+
+{{--    function pauseTrack() {--}}
+{{--        $play.removeClass('d-none');--}}
+{{--        $pause.addClass('d-none');--}}
+{{--        player.pauseVideo();--}}
+{{--    }--}}
+
+{{--    $play.click(function(e) {--}}
+{{--        e.preventDefault();--}}
+{{--        playTrack();--}}
+{{--    });--}}
+
+{{--    $pause.click(function(e) {--}}
+{{--        e.preventDefault();--}}
+{{--        pauseTrack();--}}
+{{--    });--}}
+
+{{--    var invitationModal = new bootstrap.Modal(document.getElementById('invitationModal'));--}}
+{{--        invitationModal.show();--}}
+
+{{--    document.getElementById('invitationModal').addEventListener('hidden.bs.modal', function(event) {--}}
+{{--        playPlease = true;--}}
+{{--        playTrack();--}}
+{{--    });--}}
+{{--</script>--}}
 <script>
-    // 2. This code loads the IFrame Player API code asynchronously.
-    var tag = document.createElement('script');
-
-    tag.src = 'https://www.youtube.com/iframe_api';
-    var firstScriptTag = document.getElementsByTagName('script')[0];
-    firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
-
-    // 3. This function creates an <iframe> (and YouTube player)
-    //    after the API code downloads.
-    var player;
-    var playPlease = false;
-
-    function onYouTubeIframeAPIReady() {
-        player = new YT.Player('player', {
-            videoId: 'szqxa_Ebs0I',
-            playerVars: {
-                'playsinline': 1
-            },
-            events: {
-                'onReady': onPlayerReady,
-                'onStateChange': onPlayerStateChange
-            }
-        });
-    }
-
-    // 4. The API will call this function when the video player is ready.
-    function onPlayerReady(event) {
-        if (playPlease) {
-            playTrack();
-        }
-    }
-
-    // // 5. The API calls this function when the player's state changes.
-    // //    The function indicates that when playing a video (state=1),
-    // //    the player should play for six seconds and then stop.
-    // var done = false;
-    //
-    function onPlayerStateChange(event) {
-        if (event.data === YT.PlayerState.ENDED) {
-            player.playVideo();
-        }
-    }
-
-    function stopVideo() {
-        player.stopVideo();
-    }
-
-    var $play = $('#btn_play');
-    var $pause = $('#btn_pause');
-
-    function playTrack() {
-        if (player) {
-            $play.addClass('d-none');
-            $pause.removeClass('d-none');
-            player.playVideo();
-            $('#now_playing').removeClass('invisible');
-            setTimeout(function() {
-                $('#now_playing').fadeOut();
-            }, 10000);
-        }
-    }
-
-    function pauseTrack() {
-        $play.removeClass('d-none');
-        $pause.addClass('d-none');
-        player.pauseVideo();
-    }
-
-    $play.click(function(e) {
-        e.preventDefault();
-        playTrack();
-    });
-
-    $pause.click(function(e) {
-        e.preventDefault();
-        pauseTrack();
-    });
-
     var invitationModal = new bootstrap.Modal(document.getElementById('invitationModal'));
-        invitationModal.show();
+    invitationModal.show();
 
     document.getElementById('invitationModal').addEventListener('hidden.bs.modal', function(event) {
-        playPlease = true;
+        // playPlease = true;
         playTrack();
     });
-</script>
-<script>
+
+    function playTrack() {
+        var player = document.getElementById('bgm');
+        player.play();
+    }
+
     AOS.init();
 
     var lazyParallax = window.lozad('.parallax-slider');
