@@ -8,7 +8,7 @@
     </div>
     <div class="container py-5 position-relative" style="z-index: 2">
         <div class="text-center text-white">
-            <h1 class="text-uppercase h5 font-serif">
+            <h1 class="text-uppercase h3 font-serif">
                 {{ __('Tie The Knot') }}
             </h1>
             <p style="max-width: 430px" class="mx-auto">
@@ -32,7 +32,7 @@
                                     {{ __('The only son of') }}
                                 </em>
                             </small>
-                            <span class="text-nowrap">{{ __('Mr.') }} Tjen Gunawan Chandra (陳劲源)</span>&<br>
+                            <span class="text-nowrap">{{ __('Mr.') }} Tjen Gunawan Chandra (陳劲源)</span> &<br>
                             <span class="text-nowrap">{{ __('Mrs.') }} Susilowati (何瑞珠)</span>
                         </p>
                     </div>
@@ -53,7 +53,7 @@
                                     {{ __('The first daughter, second child of') }}
                                 </em>
                             </small>
-                            <span class="text-nowrap">{{ __('Mr.') }} Ge Cing Kai</span>&<br>
+                            <span class="text-nowrap">{{ __('Mr.') }} Ge Cing Kai</span> &<br>
                             <span class="text-nowrap">{{ __('Mrs.') }} Liauw Hung San</span>
                         </p>
                     </div>

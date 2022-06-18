@@ -1,9 +1,9 @@
 <div id="rsvp" class="my-5 py-5 pt-0 mt-0">
-    <div class="container">
+    <div class="container mt-5">
         <div class="text-center">
-            <h1 class="font-serif mb-5">
+            <h2 class="font-serif mb-5 h3">
                 {{ __('RSVP') }}
-            </h1>
+            </h2>
             @include('components.horizontal-separator')
         </div>
         <div class="row justify-content-center mt-5">
@@ -34,7 +34,7 @@
                     <div class="row">
                         <div class="col-md-6">
                             <div class="mb-md-5 mb-3">
-                                <label class="fw-bold">
+                                <label class="fw-bold mb-2">
                                     {{ __('Attend Reception') }}
                                 </label>
                                 <div>
