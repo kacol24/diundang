@@ -3,9 +3,7 @@
         <div class="container-fluid">
             <a class="navbar-brand" href="#">
                 <small>
-                    <small>
-                        #loVINyouforeFER
-                    </small>
+                    #loVINyouforeFER
                 </small>
             </a>
             <button class="navbar-toggler border-0 text-white" type="button" data-bs-toggle="offcanvas"
@@ -17,9 +15,7 @@
                  aria-labelledby="offcanvasNavbarLabel">
                 <div class="offcanvas-header">
                     <h5 class="offcanvas-title text-white h6" id="offcanvasNavbarLabel">
-                        <small>
-                            #loVINyouforeFER
-                        </small>
+                        #loVINyouforeFER
                     </h5>
                     <button type="button" class="btn-close text-white" style="background: none;opacity: 1;"
                             data-bs-dismiss="offcanvas" aria-label="Close">

@@ -5,10 +5,10 @@
         KF
     </div>
     <div class="text-white font-serif" style="z-index: 2">
-        <h3 class="mb-2 h6" data-aos="zoom-out-down" data-aos-offset="-100" data-aos-delay="100">
+        <h3 class="mb-2 h5" data-aos="zoom-out-down" data-aos-offset="-100" data-aos-delay="100">
             {{ __('The Wedding of') }}
         </h3>
-        <h1 class="text-uppercase mb-0 h2" data-aos="zoom-out-up" data-aos-duration="1000">
+        <h1 class="text-uppercase mb-0 h1" data-aos="zoom-out-up" data-aos-duration="1000">
             Kevin <span class="d-lg-inline">&</span> Fernanda
         </h1>
     </div>

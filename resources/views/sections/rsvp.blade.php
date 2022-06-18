@@ -80,9 +80,7 @@
                         <button type="submit" class="btn btn-secondary disabled btn-sm" disabled
                                 :disabled="!pax"
                                 :class="{ 'disabled': !pax }">
-                            <small>
-                                {{ __('Confirm') }}
-                            </small>
+                            {{ __('Confirm') }}
                         </button>
                     </div>
                     <small class="text-muted">
