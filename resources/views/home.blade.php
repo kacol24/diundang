@@ -273,6 +273,17 @@
         overflow: true,
         scale: 2
     });
+
+    var myOffcanvas = document.getElementById('offcanvasNavbar');
+    var bsOffcanvas = new bootstrap.Offcanvas(myOffcanvas);
+    $('#open_nav').click(function(e) {
+        e.preventDefault();
+        e.stopPropagation();
+        bsOffcanvas.show();
+    });
+    $('#offcanvasNavbar .nav-link, #close_nav').click(function() {
+        bsOffcanvas.hide();
+    });
 </script>
 @stack('after_scripts')
 </body>
