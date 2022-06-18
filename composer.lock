@@ -1008,16 +1008,16 @@
         },
         {
             "name": "filament/filament",
-            "version": "v2.13.4",
+            "version": "v2.13.5",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravel-filament/admin.git",
-                "reference": "b3676b9d4529aa73cc744dc6298fd85a10ee19f4"
+                "reference": "4e37a434327268d81d9da667340bcd39d588de71"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravel-filament/admin/zipball/b3676b9d4529aa73cc744dc6298fd85a10ee19f4",
-                "reference": "b3676b9d4529aa73cc744dc6298fd85a10ee19f4",
+                "url": "https://api.github.com/repos/laravel-filament/admin/zipball/4e37a434327268d81d9da667340bcd39d588de71",
+                "reference": "4e37a434327268d81d9da667340bcd39d588de71",
                 "shasum": ""
             },
             "require": {
@@ -1065,20 +1065,20 @@
                 "issues": "https://github.com/laravel-filament/filament/issues",
                 "source": "https://github.com/laravel-filament/filament"
             },
-            "time": "2022-06-16T04:33:17+00:00"
+            "time": "2022-06-17T21:55:13+00:00"
         },
         {
             "name": "filament/forms",
-            "version": "v2.13.4",
+            "version": "v2.13.5",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravel-filament/forms.git",
-                "reference": "e86a2f76eec4a317ce74b72fd1e9c67e115cec0c"
+                "reference": "4a6ecc8b4086abef769fc8eb3b637385229b317f"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravel-filament/forms/zipball/e86a2f76eec4a317ce74b72fd1e9c67e115cec0c",
-                "reference": "e86a2f76eec4a317ce74b72fd1e9c67e115cec0c",
+                "url": "https://api.github.com/repos/laravel-filament/forms/zipball/4a6ecc8b4086abef769fc8eb3b637385229b317f",
+                "reference": "4a6ecc8b4086abef769fc8eb3b637385229b317f",
                 "shasum": ""
             },
             "require": {
@@ -1122,20 +1122,20 @@
                 "issues": "https://github.com/laravel-filament/filament/issues",
                 "source": "https://github.com/laravel-filament/filament"
             },
-            "time": "2022-06-16T04:33:14+00:00"
+            "time": "2022-06-17T21:55:12+00:00"
         },
         {
             "name": "filament/support",
-            "version": "v2.13.4",
+            "version": "v2.13.5",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravel-filament/support.git",
-                "reference": "a7b98df8689eb76280865ff45f7eacf05bce6615"
+                "reference": "324afc3898654c4dfd35664b6eb853aba69d474d"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravel-filament/support/zipball/a7b98df8689eb76280865ff45f7eacf05bce6615",
-                "reference": "a7b98df8689eb76280865ff45f7eacf05bce6615",
+                "url": "https://api.github.com/repos/laravel-filament/support/zipball/324afc3898654c4dfd35664b6eb853aba69d474d",
+                "reference": "324afc3898654c4dfd35664b6eb853aba69d474d",
                 "shasum": ""
             },
             "require": {
@@ -1171,20 +1171,20 @@
                 "issues": "https://github.com/laravel-filament/filament/issues",
                 "source": "https://github.com/laravel-filament/filament"
             },
-            "time": "2022-06-16T05:53:48+00:00"
+            "time": "2022-06-17T21:55:11+00:00"
         },
         {
             "name": "filament/tables",
-            "version": "v2.13.4",
+            "version": "v2.13.5",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravel-filament/tables.git",
-                "reference": "a9d6f72cbf0e2e5adf408fde1105ef850c3c7059"
+                "reference": "d073773091a62acfd1c95563e955729bdb93ec4c"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravel-filament/tables/zipball/a9d6f72cbf0e2e5adf408fde1105ef850c3c7059",
-                "reference": "a9d6f72cbf0e2e5adf408fde1105ef850c3c7059",
+                "url": "https://api.github.com/repos/laravel-filament/tables/zipball/d073773091a62acfd1c95563e955729bdb93ec4c",
+                "reference": "d073773091a62acfd1c95563e955729bdb93ec4c",
                 "shasum": ""
             },
             "require": {
@@ -1225,7 +1225,7 @@
                 "issues": "https://github.com/laravel-filament/filament/issues",
                 "source": "https://github.com/laravel-filament/filament"
             },
-            "time": "2022-06-16T05:53:42+00:00"
+            "time": "2022-06-17T21:55:08+00:00"
         },
         {
             "name": "fruitcake/php-cors",
@@ -9178,16 +9178,16 @@
         },
         {
             "name": "spatie/laravel-ignition",
-            "version": "1.3.0",
+            "version": "1.3.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spatie/laravel-ignition.git",
-                "reference": "5409e699fc19f4d53e59427445b08f90593fda28"
+                "reference": "fe37a0eafe6ea040804255c70e9808af13314f87"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spatie/laravel-ignition/zipball/5409e699fc19f4d53e59427445b08f90593fda28",
-                "reference": "5409e699fc19f4d53e59427445b08f90593fda28",
+                "url": "https://api.github.com/repos/spatie/laravel-ignition/zipball/fe37a0eafe6ea040804255c70e9808af13314f87",
+                "reference": "fe37a0eafe6ea040804255c70e9808af13314f87",
                 "shasum": ""
             },
             "require": {
@@ -9264,7 +9264,7 @@
                     "type": "github"
                 }
             ],
-            "time": "2022-06-15T13:55:18+00:00"
+            "time": "2022-06-17T06:28:57+00:00"
         },
         {
             "name": "theseer/tokenizer",
