@@ -6,13 +6,56 @@
     <div class="container position-relative text-center" style="z-index: 1">
         <h3 class="text-uppercase text-white h2 font-serif lh-base">
             {{ __('Saturday') }},<br>
-            September 24<sup style="text-transform: none;">th</sup>, 2022
+            September <span style="letter-spacing: 3px;">24<sup style="text-transform: none;">th</sup></span>, 2022
         </h3>
         <div data-aos="fade-down">
             <a href="https://calendar.google.com/event?action=TEMPLATE&tmeid=MzNkdjEycG11MnUxa2dhc2lsMDQwMGQ1ZXQga2Fjb2wuYm90QG0&tmsrc=kacol.bot%40gmail.com"
                target="_blank" class="btn btn-secondary">
                 {{ __('Save The Date') }}
             </a>
+        </div>
+        <div class="row justify-content-center text-white mt-5 pb-5 font-sans-serif g-1"
+            x-data="countdown(new Date('2022-09-24 18:00:00'))"
+            x-init="init()">
+            <div class="col-2 col-md-1">
+                <h3 class="fw-normal mb-0" x-text="time().days">00</h3>
+                <small>
+                    Days
+                </small>
+            </div>
+            <div class="col-auto">
+                <div class="mt-1">
+                    :
+                </div>
+            </div>
+            <div class="col-2 col-md-1">
+                <h3 class="fw-normal mb-0" x-text="time().hours">00</h3>
+                <small>
+                    Hrs
+                </small>
+            </div>
+            <div class="col-auto">
+                <div class="mt-1">
+                    :
+                </div>
+            </div>
+            <div class="col-2 col-md-1">
+                <h3 class="fw-normal mb-0" x-text="time().minutes">00</h3>
+                <small>
+                    Mins
+                </small>
+            </div>
+            <div class="col-auto">
+                <div class="mt-1">
+                    :
+                </div>
+            </div>
+            <div class="col-2 col-md-1">
+                <h3 class="fw-normal mb-0" x-text="time().seconds">00</h3>
+                <small>
+                    Secs
+                </small>
+            </div>
         </div>
         <div class="row mt-5 justify-content-around font-serif">
             <div class="col-md-5">
@@ -81,4 +124,59 @@
             </div>
         </div>
     </div>
+@endpush
+
+@push('after_scripts')
+    <script>
+        function countdown(expiry) {
+            return {
+                expiry: expiry,
+                remaining: null,
+                init() {
+                    this.setRemaining();
+                    setInterval(() => {
+                        this.setRemaining();
+                    }, 1000);
+                },
+                setRemaining() {
+                    const diff = this.expiry - new Date().getTime();
+                    this.remaining = parseInt(diff / 1000);
+                },
+                days() {
+                    return {
+                        value: this.remaining / 86400,
+                        remaining: this.remaining % 86400
+                    };
+                },
+                hours() {
+                    return {
+                        value: this.days().remaining / 3600,
+                        remaining: this.days().remaining % 3600
+                    };
+                },
+                minutes() {
+                    return {
+                        value: this.hours().remaining / 60,
+                        remaining: this.hours().remaining % 60
+                    };
+                },
+                seconds() {
+                    return {
+                        value: this.minutes().remaining
+                    };
+                },
+                format(value) {
+                    return ('0' + parseInt(value)).slice(-2);
+                },
+                time() {
+                    return {
+                        days: this.format(this.days().value),
+                        hours: this.format(this.hours().value),
+                        minutes: this.format(this.minutes().value),
+                        seconds: this.format(this.seconds().value)
+                    };
+                }
+            };
+        }
+    </script>
 @endpush
