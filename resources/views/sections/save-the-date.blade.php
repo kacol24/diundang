@@ -8,10 +8,12 @@
             Saturday,<br>
             September 24<sup style="text-transform: none;">th</sup>, 2022
         </h3>
-        <a href="https://calendar.google.com/event?action=TEMPLATE&tmeid=MzNkdjEycG11MnUxa2dhc2lsMDQwMGQ1ZXQga2Fjb2wuYm90QG0&tmsrc=kacol.bot%40gmail.com"
-           target="_blank" class="btn btn-secondary" data-aos="fade-down">
-            Save The Date
-        </a>
+        <div data-aos="fade-down">
+            <a href="https://calendar.google.com/event?action=TEMPLATE&tmeid=MzNkdjEycG11MnUxa2dhc2lsMDQwMGQ1ZXQga2Fjb2wuYm90QG0&tmsrc=kacol.bot%40gmail.com"
+               target="_blank" class="btn btn-secondary btn-lg">
+                Save The Date
+            </a>
+        </div>
         <div class="row mt-5 justify-content-around font-serif">
             <div class="col-md-5">
                 <div class="card mb-4 rounded-4 text-center border-0" data-aos="fade-up">
@@ -51,7 +53,7 @@
                                 60225
                             </small>
                         </address>
-                        <a href="#mapModal" class="btn btn-secondary text-uppercase" data-bs-toggle="modal">
+                        <a href="#mapModal" class="btn btn-secondary text-uppercase btn-sm" data-bs-toggle="modal">
                             <i class="fas fa-fw fa-map-marker" style="color: #ee2e30"></i>
                             Get Direction
                         </a>
