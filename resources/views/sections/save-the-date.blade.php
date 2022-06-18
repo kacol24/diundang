@@ -5,13 +5,13 @@
          data-src="{{ asset('images/ROB00394.jpg') }}"></div>
     <div class="container position-relative text-center" style="z-index: 1">
         <h3 class="text-uppercase text-white display-4 font-serif lh-base">
-            Saturday,<br>
+            {{ __('Saturday') }},<br>
             September 24<sup style="text-transform: none;">th</sup>, 2022
         </h3>
         <div data-aos="fade-down">
             <a href="https://calendar.google.com/event?action=TEMPLATE&tmeid=MzNkdjEycG11MnUxa2dhc2lsMDQwMGQ1ZXQga2Fjb2wuYm90QG0&tmsrc=kacol.bot%40gmail.com"
                target="_blank" class="btn btn-secondary btn-lg">
-                Save The Date
+                {{ __('Save The Date') }}
             </a>
         </div>
         <div class="row mt-5 justify-content-around font-serif">
@@ -19,15 +19,15 @@
                 <div class="card mb-4 rounded-4 text-center border-0" data-aos="fade-up">
                     <div class="card-body py-5 px-md-5">
                         <h3 class="card-title display-6 mb-5">
-                            Holy Matrimony
+                            {{ __('Holy Matrimony') }}
                         </h3>
                         @include('components.horizontal-separator')
                         <div class="font-sans-serif mt-5 fw-light">
-                            at 11:00
+                            {{ __('at') }} 11:00
                         </div>
                         <address>
                             <div class="font-sans-serif">
-                                St. Yakobus Catholic Church
+                                {{ __('St. Yakobus Catholic Church') }}
                             </div>
                             <small class="fst-italic">
                                 Jl. Puri Widya Kencana LL-1, Citraland, Surabaya
@@ -40,11 +40,11 @@
                 <div class="card rounded-4 text-center border-0" data-aos="fade-up" data-aos-delay="300">
                     <div class="card-body py-5 px-md-5">
                         <h3 class="card-title display-6 mb-5">
-                            Wedding Reception
+                            {{ __('Wedding Reception') }}
                         </h3>
                         @include('components.horizontal-separator')
                         <div class="font-sans-serif mt-5 fw-light">
-                            at 18:00
+                            {{ __('at') }} 18:00
                         </div>
                         <address>
                             <div class="font-sans-serif">XO Palace</div>
@@ -55,7 +55,7 @@
                         </address>
                         <a href="#mapModal" class="btn btn-secondary text-uppercase btn-sm" data-bs-toggle="modal">
                             <i class="fas fa-fw fa-map-marker" style="color: #ee2e30"></i>
-                            Get Direction
+                            {{ __('Get Direction') }}
                         </a>
                     </div>
                 </div>

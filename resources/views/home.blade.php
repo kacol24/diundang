@@ -31,7 +31,7 @@
             <div class="modal-header border-0 justify-content-center">
                 <div class="text-center">
                     <small class="d-block mb-1">
-                        You are cordially invited to the wedding of
+                        {{ __('You are cordially invited to the wedding of') }}
                     </small>
                     <h4 class="modal-title">
                         <strong class="font-serif text-uppercase">Kevin & Fernanda</strong>
@@ -41,13 +41,13 @@
             <div class="modal-body text-center py-5">
                 <div class="d-flex align-items-center justify-content-center h-100">
                     <div class="py-5">
-                        Dear
+                        {{ __('Dear') }}
                         <h3 class="modal-title">
                             {{ $guestName }}
                         </h3>
                         <small class="fst-italic text-muted d-block mt-3">
                             <small>
-                                We apologize if there are misspelling of your name/title.
+                                {{ __('We apologize if there are misspelling of your name or title') }}
                             </small>
                         </small>
                     </div>
@@ -55,7 +55,7 @@
             </div>
             <div class="modal-footer border-0 justify-content-center">
                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
-                    See Invitation
+                    {{ __('See Invitation') }}
                 </button>
             </div>
         </div>
@@ -94,7 +94,7 @@
      data-aos-delay="3000"
      style="background-color: rgba(0, 0, 0, .7);z-index: 1040; bottom: 20px;left: 15px; right: 20px; padding-right: 35px; height: 30px; font-size: 12px; display: flex; max-width: 500px">
     <marquee>
-        Now playing: Love Will Find A Way (End Title) · Heather Headley · Kenny Lattimore
+        {{ __('Now playing') }}: Love Will Find A Way (End Title) · Heather Headley · Kenny Lattimore
     </marquee>
 </div>
 <div id="controls" class="shadow-sm">

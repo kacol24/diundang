@@ -23,19 +23,29 @@
                 <div class="offcanvas-body">
                     <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
                         <li class="nav-item">
-                            <a class="nav-link text-white" aria-current="page" href="#couple">Bride & Groom</a>
+                            <a class="nav-link text-white" aria-current="page" href="#couple">
+                                {{ __('Bride & Groom') }}
+                            </a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-white" href="#save_the_date">Save The Date</a>
+                            <a class="nav-link text-white" href="#save_the_date">
+                                {{ __('navbar.save_the_date') }}
+                            </a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-white" href="#gallery">Gallery</a>
+                            <a class="nav-link text-white" href="#gallery">
+                                {{ __('Gallery') }}
+                            </a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-white" href="#rsvp">RSVP</a>
+                            <a class="nav-link text-white" href="#rsvp">
+                                {{ __('RSVP') }}
+                            </a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-white" href="#protocol">Health Protocol</a>
+                            <a class="nav-link text-white" href="#protocol">
+                                {{ __('Health Protocol') }}
+                            </a>
                         </li>
                     </ul>
                 </div>

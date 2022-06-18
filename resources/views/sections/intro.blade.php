@@ -9,11 +9,11 @@
     <div class="container py-5 position-relative" style="z-index: 2">
         <div class="text-center text-white">
             <h1 class="text-uppercase display-3 font-serif">
-                Tie The Knot
+                {{ __('Tie The Knot') }}
             </h1>
             <p style="max-width: 430px" class="mx-auto">
-                By the love and grace of the Lord,<br>
-                we cordially request the honour of your presence to celebrate the marriage of our children
+                {{ __('By the love and grace of the Lord') }},<br>
+                {{ __('we cordially request the honour of your presence to celebrate our marriage') }}
             </p>
         </div>
         <div class="row py-5 justify-content-around overflow-hidden">
@@ -28,10 +28,12 @@
                         </h2>
                         <p class="m-0">
                             <small class="d-block">
-                                <em>The only son of</em>
+                                <em>
+                                    {{ __('The only son of') }}
+                                </em>
                             </small>
-                            <span class="text-nowrap">Mr. Tjen Gunawan Chandra (陳劲源)</span><br>
-                            & <span class="text-nowrap">Mrs. Susilowati (何瑞珠)</span>
+                            <span class="text-nowrap">{{ __('Mr.') }} Tjen Gunawan Chandra (陳劲源)</span><br>
+                            & <span class="text-nowrap">{{ __('Mrs.') }} Susilowati (何瑞珠)</span>
                         </p>
                     </div>
                 </div>
@@ -48,11 +50,11 @@
                         <p class="m-0">
                             <small class="d-block">
                                 <em>
-                                    The first daughter, second child of
+                                    {{ __('The first daughter, second child of') }}
                                 </em>
                             </small>
-                            <span class="text-nowrap">Mr. Ge Cing Kai</span><br>
-                            & <span class="text-nowrap">Mrs. Liauw Hung San</span>
+                            <span class="text-nowrap">{{ __('Mr.') }} Ge Cing Kai</span><br>
+                            & <span class="text-nowrap">{{ __('Mrs.') }} Liauw Hung San</span>
                         </p>
                     </div>
                 </div>

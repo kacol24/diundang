@@ -2,14 +2,13 @@
     <div class="container my-5 py-5">
         <div class="text-center">
             <h1 class="font-serif mb-5">
-                RSVP
+                {{ __('RSVP') }}
             </h1>
             @include('components.horizontal-separator')
         </div>
         <div class="row justify-content-center mt-5">
             <div class="col-md-6">
-                Please kindly help us prepare everything better by confirming your attendance to our wedding event
-                with the following RSVP form
+                {{ __('Please kindly help us prepare everything better by confirming your presence to our wedding event with the following RSVP form') }}:
                 <form action="{{ route('rsvp.store') }}" method="POST" class="mt-4 font-sans-serif" id="RsvpForm"
                       x-data="{
                             name: '{{ $invitation->name ?? "" }}',
@@ -19,7 +18,7 @@
                     @csrf
                     <div class="mb-3">
                         <label class="fw-bold" for="name">
-                            Your Name
+                            {{ __('Your Name') }}
                         </label>
                         <input type="text"
                                @if($invitation)
@@ -36,7 +35,7 @@
                         <div class="col-md-6">
                             <div class="mb-5">
                                 <label class="fw-bold">
-                                    Attend Reception
+                                    {{ __('Attend Reception') }}
                                 </label>
                                 <div>
                                     <div class="form-check form-check-inline">
@@ -60,16 +59,16 @@
                                     x-show="attend === 'yes'"
                                     x-transition>
                                     <label class="fw-bold" for="pax">
-                                        How many people will attend?
+                                        {{ __('How many people will attend?') }}
                                     </label>
                                     <select class="form-select" id="pax"
                                             x-model="pax">
                                         <option selected value="" disabled hidden>
-                                            How many people will attend?
+                                            {{ __('How many people will attend?') }}
                                         </option>
                                         @foreach(range(1, $invitation->guests ?? 2) as $guest)
                                             <option value="{{ $guest }}">
-                                                {{ $guest }} {{ \Str::plural('person', $guest) }}
+                                                {{ $guest }} {{ \Str::plural(__('person'), $guest) }}
                                             </option>
                                         @endforeach
                                     </select>
@@ -81,19 +80,13 @@
                         <button type="submit" class="btn btn-secondary disabled" disabled
                                 :disabled="!pax"
                                 :class="{ 'disabled': !pax }">
-                            Confirm
+                            {{ __('Confirm') }}
                         </button>
                     </div>
                     <small class="text-muted">
                         <br>
                         <em>
-                            * Having trouble with the RSVP form? Please contact <a
-                                href="https://wa.me/6282233662728?text={{ urlencode('Hi, this is '. $guestName .'! I want to confirm my attendance to your wedding reception.') }}"
-                                style="color: var(--color-secondary)">Kevin</a>
-                            or <a
-                                href="https://wa.me/6282244872421?text={{ urlencode('Hi, '. $guestName .'! I want to confirm my attendance to your wedding reception.') }}"
-                                style="color: var(--color-secondary)">Fernanda</a>
-                            directly to confirm your attendance.
+                            * {!! __('rsvp_section.trouble', ['groom' => '<a href="https://wa.me/6282233662728?text='. urlencode('Hi, this is '. $guestName .'! I want to confirm my attendance to your wedding reception.') .'" style="color: var(--color-secondary)">Kevin</a>', 'bride' => '<a href="https://wa.me/6282244872421?text='. urlencode('Hi, '. $guestName .'! I want to confirm my attendance to your wedding reception.') .'" style="color: var(--color-secondary)">Fernanda</a>']) !!}
                         </em>
                     </small>
                 </form>
