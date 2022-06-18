@@ -30,7 +30,7 @@
         <div class="modal-content">
             <div class="modal-header border-0 justify-content-center">
                 <div class="text-center">
-                    <small class="d-block mb-3" style="font-size: 12px;">
+                    <small class="d-block mb-1">
                         You are cordially invited to the wedding of
                     </small>
                     <h4 class="modal-title">
@@ -42,11 +42,13 @@
                 <div class="d-flex align-items-center justify-content-center h-100">
                     <div class="py-5">
                         Dear
-                        <h3 class="modal-title" style="line-height: 1.2;">
+                        <h3 class="modal-title">
                             {{ $guestName }}
                         </h3>
-                        <small class="fst-italic text-muted d-block" style="font-size: 12px;">
-                            We apologize if there are misspelling of your name/title.
+                        <small class="fst-italic text-muted d-block mt-3">
+                            <small>
+                                We apologize if there are misspelling of your name/title.
+                            </small>
                         </small>
                     </div>
                 </div>
