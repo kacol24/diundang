@@ -94,6 +94,7 @@
     @include('sections.gallery')
     @include('sections.rsvp')
     @include('sections.protocol')
+    @include('sections.cta-2')
 
     @include('includes.footer')
 </div>
