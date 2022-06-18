@@ -8,7 +8,7 @@
     </div>
     <div class="container py-5 position-relative" style="z-index: 2">
         <div class="text-center text-white">
-            <h1 class="text-uppercase display-3 font-serif">
+            <h1 class="text-uppercase h6 font-serif">
                 {{ __('Tie The Knot') }}
             </h1>
             <p style="max-width: 430px" class="mx-auto">
@@ -23,7 +23,7 @@
                         <img src="{{ asset('images/kevin.jpg') }}" alt=""
                              class="img-fluid rounded-circle mb-3 mx-auto"
                              style="max-width: 150px" data-aos="fade-down" data-aos-delay="300">
-                        <h2 class="font-serif text-uppercase h3">
+                        <h2 class="font-serif text-uppercase h6">
                             KEVIN CHANDRA
                         </h2>
                         <p class="m-0">
@@ -44,7 +44,7 @@
                         <img src="{{ asset('images/nanda.jpg') }}" alt=""
                              class="img-fluid rounded-circle mb-3 mx-auto"
                              style="max-width: 150px" data-aos="fade-down" data-aos-delay="300">
-                        <h2 class="font-serif text-uppercase h3">
+                        <h2 class="font-serif text-uppercase h6">
                             FERNANDA EKA PUTRI
                         </h2>
                         <p class="m-0">

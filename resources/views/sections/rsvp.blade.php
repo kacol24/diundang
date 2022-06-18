@@ -1,5 +1,5 @@
-<div id="rsvp" class="my-5 py-5">
-    <div class="container my-5 py-5">
+<div id="rsvp" class="my-5 py-5 pt-0 mt-0">
+    <div class="container">
         <div class="text-center">
             <h1 class="font-serif mb-5">
                 {{ __('RSVP') }}
@@ -33,7 +33,7 @@
                     </div>
                     <div class="row">
                         <div class="col-md-6">
-                            <div class="mb-5">
+                            <div class="mb-md-5 mb-3">
                                 <label class="fw-bold">
                                     {{ __('Attend Reception') }}
                                 </label>
@@ -62,7 +62,7 @@
                                         {{ __('How many people will attend?') }}
                                     </label>
                                     <select class="form-select" id="pax"
-                                            x-model="pax">
+                                            x-model="pax" style="font-size: inherit;">
                                         <option selected value="" disabled hidden>
                                             {{ __('How many people will attend?') }}
                                         </option>
@@ -77,10 +77,12 @@
                         </div>
                     </div>
                     <div class="text-center">
-                        <button type="submit" class="btn btn-secondary disabled" disabled
+                        <button type="submit" class="btn btn-secondary disabled btn-sm" disabled
                                 :disabled="!pax"
                                 :class="{ 'disabled': !pax }">
-                            {{ __('Confirm') }}
+                            <small>
+                                {{ __('Confirm') }}
+                            </small>
                         </button>
                     </div>
                     <small class="text-muted">

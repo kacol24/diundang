@@ -9,9 +9,9 @@
             <div class="col-6 col-md text-center">
                 <figure class="figure">
                     <img src="{{ asset('images/wear-mask.png') }}" alt="" class="img-fluid figure-img"
-                         style="max-width: 120px">
+                         style="max-width: 80px">
                     <figcaption class="figure-caption text-white">
-                        <div class="lead">
+                        <div class="">
                             {{ __('Wear Mask') }}
                         </div>
                     </figcaption>
@@ -20,9 +20,9 @@
             <div class="col-6 col-md text-center">
                 <figure class="figure">
                     <img src="{{ asset('images/wash-hands.png') }}" alt="" class="img-fluid figure-img"
-                         style="max-width: 120px">
+                         style="max-width: 80px">
                     <figcaption class="figure-caption text-white">
-                        <div class="lead">
+                        <div class="">
                             {{ __('Wash Hands') }}
                         </div>
                     </figcaption>
@@ -31,9 +31,9 @@
             <div class="col-6 col-md text-center">
                 <figure class="figure">
                     <img src="{{ asset('images/clean-surfaces.png') }}" alt="" class="img-fluid figure-img"
-                         style="max-width: 120px">
+                         style="max-width: 80px">
                     <figcaption class="figure-caption text-white">
-                        <div class="lead">
+                        <div class="">
                             {{ __('Clean Surfaces') }}
                         </div>
                     </figcaption>
@@ -42,9 +42,9 @@
             <div class="col-6 col-md text-center">
                 <figure class="figure">
                     <img src="{{ asset('images/keep-distance.png') }}" alt="" class="img-fluid figure-img"
-                         style="max-width: 120px">
+                         style="max-width: 80px">
                     <figcaption class="figure-caption text-white">
-                        <div class="lead">
+                        <div class="">
                             {{ __('Social Distancing') }}
                         </div>
                     </figcaption>

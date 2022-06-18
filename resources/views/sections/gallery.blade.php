@@ -1,4 +1,4 @@
-<div id="gallery" class="py-5">
+<div id="gallery" class="py-3">
     <div class="container">
         <div class="row grid" id="gallery_lightbox">
             @foreach([

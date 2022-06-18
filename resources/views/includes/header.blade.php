@@ -2,7 +2,11 @@
     <nav class="navbar navbar-dark navbar-expand-lg" style="background-color:var(--color-secondary);">
         <div class="container-fluid">
             <a class="navbar-brand" href="#">
-                #loVINyouforeFER
+                <small>
+                    <small>
+                        #loVINyouforeFER
+                    </small>
+                </small>
             </a>
             <button class="navbar-toggler border-0 text-white" type="button" data-bs-toggle="offcanvas"
                     data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar">
@@ -12,8 +16,10 @@
                  style="background-color:var(--color-secondary)"
                  aria-labelledby="offcanvasNavbarLabel">
                 <div class="offcanvas-header">
-                    <h5 class="offcanvas-title text-white" id="offcanvasNavbarLabel">
-                        #loVINyouforeFER
+                    <h5 class="offcanvas-title text-white h6" id="offcanvasNavbarLabel">
+                        <small>
+                            #loVINyouforeFER
+                        </small>
                     </h5>
                     <button type="button" class="btn-close text-white" style="background: none;opacity: 1;"
                             data-bs-dismiss="offcanvas" aria-label="Close">
