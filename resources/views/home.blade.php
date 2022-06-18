@@ -95,6 +95,7 @@
     @include('sections.rsvp')
     @include('sections.protocol')
     @include('sections.cta-2')
+    @include('sections.comments')
 
     @include('includes.footer')
 </div>
@@ -218,7 +219,7 @@
 {{--</script>--}}
 <script>
     var invitationModal = new bootstrap.Modal(document.getElementById('invitationModal'));
-    invitationModal.show();
+    // invitationModal.show();
 
     document.getElementById('invitationModal').addEventListener('hidden.bs.modal', function(event) {
         // playPlease = true;
