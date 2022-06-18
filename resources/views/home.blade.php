@@ -224,10 +224,35 @@
         playTrack();
     });
 
+    var $play = $('#btn_play');
+    var $pause = $('#btn_pause');
+    var player = document.getElementById('bgm');
+
     function playTrack() {
-        var player = document.getElementById('bgm');
+        $play.addClass('d-none');
+        $pause.removeClass('d-none');
         player.play();
+        $('#now_playing').removeClass('invisible');
+        setTimeout(function() {
+            $('#now_playing').fadeOut();
+        }, 10000);
     }
+
+    function pauseTrack() {
+        $play.removeClass('d-none');
+        $pause.addClass('d-none');
+        player.pause();
+    }
+
+    $play.click(function(e) {
+        e.preventDefault();
+        playTrack();
+    });
+
+    $pause.click(function(e) {
+        e.preventDefault();
+        pauseTrack();
+    });
 
     AOS.init();
 
