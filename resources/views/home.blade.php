@@ -54,6 +54,29 @@
                 </div>
             </div>
             <div class="modal-footer border-0 justify-content-center">
+{{--                <div class="dropdown">--}}
+{{--                    <button type="button" class="btn btn-secondary" aria-expanded="false"--}}
+{{--                            data-bs-toggle="dropdown">--}}
+{{--                        {{ __('See Invitation') }}--}}
+{{--                    </button>--}}
+{{--                    <ul class="dropdown-menu">--}}
+{{--                        <li>--}}
+{{--                            <h6 class="dropdown-header">--}}
+{{--                                Choose Language--}}
+{{--                            </h6>--}}
+{{--                        </li>--}}
+{{--                        <li>--}}
+{{--                            <a class="dropdown-item" href="#">--}}
+{{--                                English--}}
+{{--                            </a>--}}
+{{--                        </li>--}}
+{{--                        <li>--}}
+{{--                            <a class="dropdown-item" href="#">--}}
+{{--                                Bahasa Indonesia--}}
+{{--                            </a>--}}
+{{--                        </li>--}}
+{{--                    </ul>--}}
+{{--                </div>--}}
                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
                     {{ __('See Invitation') }}
                 </button>
@@ -86,7 +109,7 @@
 
 <!-- 1. The <iframe> (and video player) will replace this <div> tag. -->
 <div id="player" style="display: none;"></div>
-<div class="position-fixed ps-3 text-white text-nowrap rounded-pill overflow-hidden align-items-center"
+<div class="position-fixed ps-3 text-white text-nowrap rounded-pill overflow-hidden align-items-center invisible"
      id="now_playing"
      data-aos="fade-left"
      data-aos-duration="1000"
@@ -134,7 +157,7 @@
     // 4. The API will call this function when the video player is ready.
     function onPlayerReady(event) {
         if (playPlease) {
-            event.target.playVideo();
+            playTrack();
         }
     }
 
@@ -161,6 +184,7 @@
             $play.addClass('d-none');
             $pause.removeClass('d-none');
             player.playVideo();
+            $('#now_playing').removeClass('invisible');
             setTimeout(function() {
                 $('#now_playing').fadeOut();
             }, 10000);
@@ -184,7 +208,7 @@
     });
 
     var invitationModal = new bootstrap.Modal(document.getElementById('invitationModal'));
-    invitationModal.show();
+        invitationModal.show();
 
     document.getElementById('invitationModal').addEventListener('hidden.bs.modal', function(event) {
         playPlease = true;
