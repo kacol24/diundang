@@ -15,7 +15,15 @@ return new class extends Migration
     {
         Schema::create('comments', function (Blueprint $table) {
             $table->id();
+            $table->boolean('is_approved')->default(true);
+            $table->foreignId('invitation_id')->nullable();
+            $table->ipAddress()->nullable();
+
+            $table->string('name');
+            $table->longText('message')->nullable();
+
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 

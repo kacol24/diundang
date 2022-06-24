@@ -2,12 +2,17 @@
 
 namespace App\Http\Livewire;
 
+use App\Models\Comment;
 use Livewire\Component;
 
 class CommentList extends Component
 {
     public function render()
     {
-        return view('livewire.comment-list');
+        $comments = Comment::approved()->latest()->get();
+
+        return view('livewire.comment-list', [
+            'comments' => $comments,
+        ]);
     }
 }
