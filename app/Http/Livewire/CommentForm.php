@@ -30,7 +30,7 @@ class CommentForm extends Component
             $invitation = Invitation::firstWhere('guest_code', $this->guest);
             $invitationId = $invitation?->id;
         }
-        
+
         Comment::create([
             'invitation_id' => $invitationId,
             'ip_address'    => request()->ip(),
