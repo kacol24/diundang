@@ -8,20 +8,7 @@
         </small>
         <div class="row justify-content-center">
             <div class="col-md-6">
-                <form action="" class="mt-5">
-                    <div class="mb-3">
-                        <input type="text" class="form-control" placeholder="Name" aria-label="Name">
-                    </div>
-                    <div class="mb-3">
-                <textarea class="form-control" placeholder="Write message" aria-label="Write message"
-                          rows="5"></textarea>
-                    </div>
-                    <div class="text-center">
-                        <button class="btn btn-secondary text-uppercase" type="submit">
-                            Send Wish
-                        </button>
-                    </div>
-                </form>
+                <livewire:comment-form/>
                 <livewire:comment-list/>
             </div>
         </div>
