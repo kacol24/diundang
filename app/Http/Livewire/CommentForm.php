@@ -35,6 +35,8 @@ class CommentForm extends Component
             'message'       => $this->message,
         ]);
 
+        $this->emit('commentSaved');
+
         $this->reset([
             'name',
             'message',

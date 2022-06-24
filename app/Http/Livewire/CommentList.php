@@ -7,12 +7,24 @@ use Livewire\Component;
 
 class CommentList extends Component
 {
+    public $comments = [];
+
+    protected $listeners = ['commentSaved' => 'fetchComments'];
+
+    public function fetchComments()
+    {
+        $this->comments = Comment::approved()->latest()->get();
+    }
+
+    public function mount()
+    {
+        $this->fetchComments();
+    }
+
     public function render()
     {
-        $comments = Comment::approved()->latest()->get();
-
         return view('livewire.comment-list', [
-            'comments' => $comments,
+            'comments' => $this->comments,
         ]);
     }
 }
