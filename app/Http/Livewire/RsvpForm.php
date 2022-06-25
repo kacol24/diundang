@@ -29,6 +29,8 @@ class RsvpForm extends Component
 
             $this->dispatchBrowserEvent('rsvp-created', ['guest' => $invitation->guest_code]);
             $this->emit('rsvpCreated', ['guest' => $invitation->guest_code]);
+
+            $this->invitation = $invitation;
         } else {
             $this->invitation->is_attending = $this->isAttending;
             $this->invitation->pax = $this->guests;
