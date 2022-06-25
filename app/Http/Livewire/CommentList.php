@@ -16,11 +16,6 @@ class CommentList extends Component
         $this->comments = Comment::approved()->latest()->get();
     }
 
-    public function mount()
-    {
-        $this->fetchComments();
-    }
-
     public function render()
     {
         $this->fetchComments();
