@@ -8,15 +8,24 @@
             {{ __('Saturday') }},<br>
             September <span style="letter-spacing: 3px;">24<sup style="text-transform: none;">th</sup></span>, 2022
         </h3>
-        <div data-aos="fade-down">
-            <a href="https://calendar.google.com/event?action=TEMPLATE&tmeid=MzNkdjEycG11MnUxa2dhc2lsMDQwMGQ1ZXQga2Fjb2wuYm90QG0&tmsrc=kacol.bot%40gmail.com"
-               target="_blank" class="btn btn-secondary">
-                {{ __('Save The Date') }}
-            </a>
+        <div data-aos="fade-down"
+             x-data>
+            <template x-if="$store.isIos">
+                <a href="data:text/calendar;charset=utf8,BEGIN:VCALENDAR%0AVERSION:2.0%0ABEGIN:VEVENT%0ADTSTART:20220924T110000Z%0ADTEND:20220924T150000Z%0ASUMMARY:The%20Wedding%20of%20Kevin%20%26%20Fernanda%0ADESCRIPTION:The%20Wedding%20of%20Kevin%20%26%20Fernanda%0ALOCATION:XO%20Palace%0AEND:VEVENT%0AEND:VCALENDAR%0A"
+                   target="_blank" class="btn btn-secondary">
+                    {{ __('Save The Date') }}
+                </a>
+            </template>
+            <template x-if="!$store.isIos">
+                <a href="https://calendar.google.com/calendar/render?action=TEMPLATE&dates=20220924T110000Z%2F20220924T150000Z&details=The%20Wedding%20of%20Kevin%20%26%20Fernanda&location=XO%20Palace&text=The%20Wedding%20of%20Kevin%20%26%20Fernanda"
+                   target="_blank" class="btn btn-secondary">
+                    {{ __('Save The Date') }}
+                </a>
+            </template>
         </div>
         <div class="row justify-content-center text-white mt-5 pb-5 font-sans-serif g-1"
-            x-data="countdown(new Date('2022-09-24 18:00:00'))"
-            x-init="init()">
+             x-data="countdown(new Date('2022-09-24 18:00:00'))"
+             x-init="init()">
             <div class="col-2 col-md-1">
                 <h3 class="fw-normal mb-0" x-text="time().days">00</h3>
                 <small>
@@ -128,6 +137,11 @@
 
 @push('after_scripts')
     <script>
+        document.addEventListener('alpine:init', function() {
+            var isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent) && !window.MSStream;
+            Alpine.store('isIos', isIOS);
+        });
+
         function countdown(expiry) {
             return {
                 expiry: expiry,
