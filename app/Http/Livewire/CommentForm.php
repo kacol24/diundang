@@ -22,6 +22,8 @@ class CommentForm extends Component
         'message' => 'required|min:2',
     ];
 
+    protected $listeners = ['rsvpCreated' => 'setInvitation'];
+
     public function save()
     {
         $this->validate();
@@ -57,14 +59,19 @@ class CommentForm extends Component
         ]);
     }
 
-    public function mount(Request $request)
+    public function setInvitation($payload)
     {
-        $invitation = Invitation::firstWhere('guest_code', $request->guest);
+        $invitation = Invitation::firstWhere('guest_code', $payload['guest']);
 
         if ($invitation) {
             $this->guest = $invitation->guest_code;
             $this->name = $invitation->name;
         }
+    }
+
+    public function mount(Request $request)
+    {
+        $this->setInvitation(['guest' => $request->guest]);
     }
 
     public function render()
