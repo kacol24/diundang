@@ -20,11 +20,11 @@
             <input type="hidden" name="guest_code" value="{{ optional($invitation)->guest_code }}">
             <input type="text"
                    @if($invitation)
-                       class="form-control-plaintext"
+                   class="form-control-plaintext"
                    readonly
                    value="{{ $guestName }}"
                    @else
-                       class="form-control"
+                   class="form-control"
                    x-model="name"
                    wire:model="guestName"
                    @endif
@@ -78,16 +78,25 @@
                 </div>
             </div>
         </div>
-        <div class="text-center">
-            <button type="submit" class="btn btn-secondary disabled" disabled
-                    :disabled="!pax"
-                    :class="{ 'disabled': !pax }">
-                @if(optional($invitation)->rsvp_at)
-                    {{ __('Update RSVP') }}
-                @else
-                    {{ __('Confirm') }}
-                @endif
-            </button>
+        <div class="row align-items-center">
+            <div class="col-md-4 offset-md-4 text-center">
+                <button type="submit" class="btn btn-secondary disabled" disabled
+                        :disabled="!pax"
+                        :class="{ 'disabled': !pax }">
+                    @if(optional($invitation)->rsvp_at)
+                        {{ __('Update RSVP') }}
+                    @else
+                        {{ __('Confirm') }}
+                    @endif
+                </button>
+            </div>
+            <div class="col-md-4 text-end">
+                <a href="#" style="color: var(--color-secondary);">
+                    <small class="fst-italic">
+                        {{ __('Show QR Code') }}
+                    </small>
+                </a>
+            </div>
         </div>
         <small class="text-muted">
             <br>
