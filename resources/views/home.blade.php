@@ -22,6 +22,7 @@
 
     <script src="https://cdn.jsdelivr.net/npm/lozad@1.16.0/dist/lozad.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/alpinejs@3.10.2/dist/cdn.min.js" defer></script>
+    @livewireStyles
 </head>
 <body class="font-sans-serif">
 <div class="modal fade" id="invitationModal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
@@ -287,5 +288,6 @@
     });
 </script>
 @stack('after_scripts')
+@livewireScripts
 </body>
 </html>
