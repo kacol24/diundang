@@ -27,7 +27,7 @@ class RsvpForm extends Component
                 'rsvp_at'      => now(),
             ]);
 
-            return redirect()->route('home', ['guest' => $invitation->guest_code]);
+            $this->dispatchBrowserEvent('rsvp-created', ['guest' => $invitation->guest_code]);
         } else {
             $this->invitation->is_attending = $this->isAttending;
             $this->invitation->pax = $this->guests;

@@ -6,11 +6,16 @@
     @endif
     <form action="{{ route('rsvp.store') }}" method="POST" class="mt-4 font-sans-serif" id="RsvpForm"
           wire:submit.prevent="save"
+          @rsvpCreated.window="console.log('asdklasjdklsa');"
           x-data="{
             name: '{{ addslashes(optional($invitation)->name) ?? "" }}',
             attend: '{{ $isAttending }}',
             pax: '{{ optional($invitation)->pax }}'
           }">
+        <a href="#"
+           @click.prevent="window.history.replaceState('', '', '{{ route('home', ['guest' => '573806']) }}');">
+            Test
+        </a>
         @csrf
         <div class="mb-3">
             <label class="fw-bold" for="name">
@@ -96,3 +101,9 @@
         </small>
     </form>
 </div>
+
+<script>
+    window.addEventListener('rsvp-created', event => {
+        window.history.replaceState('', '', '{{ route('home') }}?guest=' + event.detail.guest);
+    })
+</script>
