@@ -17,7 +17,7 @@ class RsvpForm extends Component
     public function save()
     {
         $this->invitation->is_attending = $this->isAttending;
-        $this->invitation->guests = $this->guests;
+        $this->invitation->pax = $this->guests;
         $this->invitation->rsvp_at = now();
         $this->invitation->save();
 
@@ -27,7 +27,7 @@ class RsvpForm extends Component
     public function mount()
     {
         if($this->invitation->rsvp_at) {
-            $this->guests = $this->invitation->guests;
+            $this->guests = $this->invitation->pax;
             $this->isAttending = $this->invitation->is_attending;
         }
     }

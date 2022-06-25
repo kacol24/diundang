@@ -21,3 +21,8 @@
         border-color: #3a1526;
     }
 }
+
+.form-check-input:checked {
+    background-color: var(--color-secondary);
+    border-color: var(--color-secondary);
+}

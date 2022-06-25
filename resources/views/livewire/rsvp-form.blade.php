@@ -7,10 +7,10 @@
     <form action="{{ route('rsvp.store') }}" method="POST" class="mt-4 font-sans-serif" id="RsvpForm"
           wire:submit.prevent="save"
           x-data="{
-                name: '{{ $invitation->name ?? "" }}',
-                attend: '{{ $isAttending }}',
-                pax: {{ $guests }}
-              }">
+            name: '{{ $invitation->name ?? "" }}',
+            attend: '{{ $isAttending }}',
+            pax: '{{ $invitation->pax }}'
+          }">
         @csrf
         <div class="mb-3">
             <label class="fw-bold" for="name">
