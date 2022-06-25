@@ -60,3 +60,7 @@ Route::get('/download', function () {
 
 Route::post('rsvp', [RsvpController::class, 'store'])
      ->name('rsvp.store');
+
+Route::get('login', function (){
+    return redirect()->route('filament.auth.login');
+})->name('login');
