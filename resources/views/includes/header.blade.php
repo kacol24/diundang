@@ -1,7 +1,7 @@
 <header class="sticky-top font-sans-serif">
     <nav class="navbar navbar-dark navbar-expand-lg" style="background-color:var(--color-secondary);">
         <div class="container-fluid">
-            <a class="navbar-brand" href="javascript:void(0);">
+            <a class="navbar-brand" href="#top">
                 <small>
                     #loVINyouforeFER
                 </small>
