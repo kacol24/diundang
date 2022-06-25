@@ -26,4 +26,9 @@ class Comment extends Model
     {
         return $query->where('is_approved', true);
     }
+
+    public function invitation()
+    {
+        return $this->belongsTo(Invitation::class);
+    }
 }
