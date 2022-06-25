@@ -33,7 +33,7 @@ Route::get('/', function () {
     ];
 
     return view('home', $data);
-});
+})->name('home');
 
 Route::get('/download', function () {
     $guestCode = request('guest');

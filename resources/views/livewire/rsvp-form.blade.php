@@ -9,14 +9,14 @@
           x-data="{
             name: '{{ $invitation->name ?? "" }}',
             attend: '{{ $isAttending }}',
-            pax: '{{ $invitation->pax }}'
+            pax: '{{ optional($invitation)->pax }}'
           }">
         @csrf
         <div class="mb-3">
             <label class="fw-bold" for="name">
                 {{ __('Your Name') }}
             </label>
-            <input type="hidden" name="guest_code" value="{{ $invitation->guest_code }}">
+            <input type="hidden" name="guest_code" value="{{ optional($invitation)->guest_code }}">
             <input type="text"
                    @if($invitation)
                        class="form-control-plaintext"
@@ -25,6 +25,7 @@
                    @else
                        class="form-control"
                    x-model="name"
+                   wire:model="guestName"
                    @endif
                    id="name">
         </div>
@@ -80,7 +81,7 @@
             <button type="submit" class="btn btn-secondary disabled" disabled
                     :disabled="!pax"
                     :class="{ 'disabled': !pax }">
-                @if($invitation->rsvp_at)
+                @if(optional($invitation)->rsvp_at)
                     {{ __('Update RSVP') }}
                 @else
                     {{ __('Confirm') }}

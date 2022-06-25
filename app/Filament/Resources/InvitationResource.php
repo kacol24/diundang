@@ -107,7 +107,7 @@ class InvitationResource extends Resource
                                                           ->required()
                                                           ->type('number')
                                                           ->suffix('person(s)')
-                                                          ->default(1)
+                                                          ->default(2)
                                                           ->minValue(1),
                             ]),
                  ])->columnSpan([
