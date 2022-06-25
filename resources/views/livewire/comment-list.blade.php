@@ -1,6 +1,6 @@
 <div>
     <div class="list-group mt-5" style="max-height: 500px; overflow-y: auto;"
-         wire:poll.{{ 10 * 1000 }}ms.visible>
+         wire:poll.{{ 5 * 1000 }}ms.visible>
         @forelse($comments as $comment)
             <div class="mb-4 mb-md-5">
                 <div class="d-flex w-100 justify-content-between">
