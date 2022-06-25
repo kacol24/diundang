@@ -23,6 +23,8 @@ class CommentList extends Component
 
     public function render()
     {
+        $this->fetchComments();
+
         return view('livewire.comment-list', [
             'comments' => $this->comments,
         ]);
