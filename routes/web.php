@@ -18,7 +18,7 @@ use SimpleSoftwareIO\QrCode\Facades\QrCode;
 */
 
 Route::get('/', function () {
-    $guestName = 'Tamu Undangan';
+    $guestName = request('for', 'Tamu Undangan');
 
     $guestCode = request('guest');
     $invitation = Invitation::firstWhere('guest_code', $guestCode);

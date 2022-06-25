@@ -7,7 +7,7 @@
     <form action="{{ route('rsvp.store') }}" method="POST" class="mt-4 font-sans-serif" id="RsvpForm"
           wire:submit.prevent="save"
           x-data="{
-            name: '{{ $invitation->name ?? "" }}',
+            name: '{{ addslashes($invitation->name) ?? "" }}',
             attend: '{{ $isAttending }}',
             pax: '{{ optional($invitation)->pax }}'
           }">
