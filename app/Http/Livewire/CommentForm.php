@@ -4,6 +4,7 @@ namespace App\Http\Livewire;
 
 use App\Models\Comment;
 use App\Models\Invitation;
+use App\Settings\BadWordsSettings;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
 use Livewire\Component;
@@ -31,18 +32,25 @@ class CommentForm extends Component
             $invitationId = $invitation?->id;
         }
 
+        $badWords = app(BadWordsSettings::class)->bad_words;
+        $isApproved = ! (Str::contains($this->name, $badWords, true) ||
+            Str::contains($this->message, $badWords, true));
+
         Comment::create([
             'invitation_id' => $invitationId,
             'ip_address'    => request()->ip(),
-            'is_approved'   => ! (Str::contains($this->name, config('badwords'), true) || Str::contains($this->message,
-                    config('badwords'), true)),
+            'is_approved'   => $isApproved,
             'name'          => $this->name,
             'message'       => $this->message,
         ]);
 
         $this->emit('commentSaved');
 
-        session()->flash('success', 'Wish successfully posted.');
+        if ($isApproved) {
+            session()->flash('success', 'Wish successfully posted.');
+        } else {
+            session()->flash('danger', 'Whoops! Bad words detected :(');
+        }
 
         $this->reset([
             'message',

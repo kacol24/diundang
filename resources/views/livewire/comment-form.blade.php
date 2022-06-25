@@ -21,4 +21,9 @@
             {{ session('success') }}
         </div>
     @endif
+    @if (session()->has('danger'))
+        <div class="alert alert-danger mt-3">
+            {{ session('danger') }}
+        </div>
+    @endif
 </form>
