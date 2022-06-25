@@ -220,7 +220,7 @@
 {{--</script>--}}
 <script>
     var invitationModal = new bootstrap.Modal(document.getElementById('invitationModal'));
-    // invitationModal.show();
+    invitationModal.show();
 
     document.getElementById('invitationModal').addEventListener('hidden.bs.modal', function(event) {
         // playPlease = true;
