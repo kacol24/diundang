@@ -42,15 +42,21 @@ class CommentForm extends Component
 
         $this->emit('commentSaved');
 
+        session()->flash('success', 'Wish successfully posted.');
+
         $this->reset([
-            'name',
             'message',
         ]);
     }
 
     public function mount(Request $request)
     {
-        $this->guest = $request->guest;
+        $invitation = Invitation::firstWhere('guest_code', $request->guest);
+
+        if ($invitation) {
+            $this->guest = $invitation->guest_code;
+            $this->name = $invitation->name;
+        }
     }
 
     public function render()
