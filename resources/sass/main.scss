@@ -15,6 +15,25 @@ html {
 @import "decoration";
 @import "figure-credit";
 
+.nav-link {
+    display: inline-block;
+
+    &:after {
+        content: '';
+        display: block;
+        height: 2px;
+        width: 100%;
+        background-color: transparent;
+        transition: background-color 200ms;
+    }
+
+    &.active {
+        &:after {
+            background-color: #fff;
+        }
+    }
+}
+
 .hero-image {
     height: 100vh;
     position: relative;

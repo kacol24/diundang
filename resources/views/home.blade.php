@@ -24,7 +24,10 @@
     <script src="https://cdn.jsdelivr.net/npm/alpinejs@3.10.2/dist/cdn.min.js" defer></script>
     @livewireStyles
 </head>
-<body class="font-sans-serif" id="top">
+<body class="font-sans-serif" id="top"
+      data-bs-spy="scroll"
+      data-bs-target="#site_nav"
+      data-bs-offset="100">
 <div class="modal fade" id="invitationModal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
      aria-labelledby="invitationModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered">

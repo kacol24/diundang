@@ -21,7 +21,7 @@
                         <i class="fas fa-fw fa-times fa-lg"></i>
                     </button>
                 </div>
-                <div class="offcanvas-body">
+                <div class="offcanvas-body" id="site_nav">
                     <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
                         <li class="nav-item">
                             <a class="nav-link text-white" href="#couple">

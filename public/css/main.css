@@ -217,6 +217,21 @@ html {
   padding: 3px 8px;
 }
 
+.nav-link {
+  display: inline-block;
+}
+.nav-link:after {
+  content: "";
+  display: block;
+  height: 2px;
+  width: 100%;
+  background-color: transparent;
+  transition: background-color 200ms;
+}
+.nav-link.active:after {
+  background-color: #fff;
+}
+
 .hero-image {
   height: 100vh;
   position: relative;

@@ -1,4 +1,4 @@
-<div id="rsvp" class="my-5 py-5 pt-0 mt-0">
+<div id="rsvp" class="my-5 py-5 pt-3 mt-0">
     <div class="container mt-5">
         <div class="text-center">
             <h2 class="font-serif mb-5 h3">
