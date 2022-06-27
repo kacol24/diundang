@@ -93,6 +93,7 @@
             autoCenter: true,
             display: 'single',
         });
+        $('#flipbook').turn('peel', 'br');
     </script>
     <script>
         var $grid = $('.grid').masonry({
