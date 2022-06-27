@@ -29,7 +29,45 @@
     </div>
 </div>
 
+<div class="container">
+    <div id="flipbook">
+        @foreach([
+                    //'ROB00520.jpg',
+                    'gallery.jpeg',
+                    //'ROB00812.jpg',
+                    'ROB00667.jpg',
+                    'ROB00398.jpg',
+                    'ROB00667.jpg',
+                    'ROB00398.jpg',
+                    'ROB00667.jpg',
+                    'ROB00398.jpg',
+                    'ROB00667.jpg',
+                    'ROB00398.jpg',
+                    'ROB00667.jpg',
+                    'ROB00398.jpg',
+                    'ROB00667.jpg',
+                    'ROB00398.jpg',
+                ] as $gallery)
+            <div>
+                <img src="{{ asset('images/gallery/' . $gallery) }}" class="img-fluid user-select-none" draggable="false">
+            </div>
+        @endforeach
+    </div>
+</div>
+
 @push('after_scripts')
+    <style>
+        #flipbook {
+            width: 100% !important;
+        }
+    </style>
+    <script src="{{ asset('js/turn.min.js') }}"></script>
+    <script type="text/javascript">
+        $("#flipbook").turn({
+            height: 954,
+            autoCenter: true
+        });
+    </script>
     <script>
         var $grid = $('.grid').masonry({
             itemSelector: '.grid-item'
