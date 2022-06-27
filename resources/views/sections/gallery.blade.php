@@ -29,29 +29,41 @@
     </div>
 </div>
 
-<div class="container">
-    <div id="flipbook">
-        @foreach([
-                    //'ROB00520.jpg',
-                    'gallery.jpeg',
-                    //'ROB00812.jpg',
-                    'ROB00667.jpg',
-                    'ROB00398.jpg',
-                    'ROB00667.jpg',
-                    'ROB00398.jpg',
-                    'ROB00667.jpg',
-                    'ROB00398.jpg',
-                    'ROB00667.jpg',
-                    'ROB00398.jpg',
-                    'ROB00667.jpg',
-                    'ROB00398.jpg',
-                    'ROB00667.jpg',
-                    'ROB00398.jpg',
-                ] as $gallery)
-            <div>
-                <img src="{{ asset('images/gallery/' . $gallery) }}" class="img-fluid user-select-none" draggable="false">
+<div class="container"
+     @resize.window.debounce="window.innerWidth < 992 ? $('#flipbook').turn('display', 'single') : $('#flipbook').turn('display', 'double')"
+     x-data>
+    <div class="row justify-content-center">
+        <div class="col-md-10">
+            <div class="ratio" style="--bs-aspect-ratio: {{ 3/4 * 100 }}%;">
+                <div>
+                    <div id="flipbook">
+                        @foreach([
+                                    //'ROB00520.jpg',
+                                    'gallery.jpeg',
+                                    //'ROB00812.jpg',
+                                    'ROB00667.jpg',
+                                    'ROB00398.jpg',
+                                    'ROB00667.jpg',
+                                    'ROB00398.jpg',
+                                    'ROB00667.jpg',
+                                    'ROB00398.jpg',
+                                    'ROB00667.jpg',
+                                    'ROB00398.jpg',
+                                    'ROB00667.jpg',
+                                    'ROB00398.jpg',
+                                    'ROB00667.jpg',
+                                    'ROB00398.jpg',
+                                ] as $gallery)
+                            <div>
+                                <img src="{{ asset('images/gallery/' . $gallery) }}"
+                                     class="img-fluid w-100 user-select-none"
+                                     draggable="false">
+                            </div>
+                        @endforeach
+                    </div>
+                </div>
             </div>
-        @endforeach
+        </div>
     </div>
 </div>
 
@@ -59,13 +71,18 @@
     <style>
         #flipbook {
             width: 100% !important;
+            height: 100% !important;
+        }
+
+        .page {
+            background-color: white;
         }
     </style>
     <script src="{{ asset('js/turn.min.js') }}"></script>
     <script type="text/javascript">
         $("#flipbook").turn({
-            height: 954,
-            autoCenter: true
+            autoCenter: true,
+            display: 'single',
         });
     </script>
     <script>
