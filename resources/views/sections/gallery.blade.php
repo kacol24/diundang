@@ -30,11 +30,11 @@
 </div>
 
 <div class="container"
-     @resize.window.debounce="window.innerWidth < 992 ? $('#flipbook').turn('display', 'single') : $('#flipbook').turn('display', 'double')"
+     @resize.window.debounce="window.innerWidth >= 992 ? $('#flipbook').turn('display', 'double') : $('#flipbook').turn('display', 'single')"
      x-data>
     <div class="row justify-content-center">
         <div class="col-md-10">
-            <div class="ratio" style="--bs-aspect-ratio: {{ 3/4 * 100 }}%;">
+            <div class="ratio responsive">
                 <div>
                     <div id="flipbook">
                         @foreach([
@@ -76,6 +76,16 @@
 
         .page {
             background-color: white;
+        }
+
+        .ratio.responsive {
+            --bs-aspect-ratio: {{ 4/3 * 100 }}%;
+        }
+
+        @media(min-width: 992px) {
+            .ratio.responsive {
+                --bs-aspect-ratio: {{ 3/4 * 100 }}%;
+            }
         }
     </style>
     <script src="{{ asset('js/turn.min.js') }}"></script>
