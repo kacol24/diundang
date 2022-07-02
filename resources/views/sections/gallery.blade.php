@@ -27,7 +27,7 @@
     {{--            @endforeach--}}
     {{--        </div>--}}
     {{--    </div>--}}
-    <div class="container"
+    <div class="container overflow-hidden py-5"
          @resize.window.debounce="window.innerWidth >= 992 ? $('#flipbook').turn('display', 'double') : $('#flipbook').turn('display', 'single')"
          x-init="window.innerWidth >= 992 ? $('#flipbook').turn('display', 'double') : $('#flipbook').turn('display', 'single')"
          x-data>
@@ -35,7 +35,7 @@
             <div class="col-md-10">
                 <div class="ratio responsive">
                     <div>
-                        <div id="flipbook">
+                        <div id="flipbook" class="shadow">
                             <div class="hard">
                                 <img src="{{ asset('images/cover-front.jpg') }}"
                                      class="img-fluid w-100 user-select-none"
@@ -56,7 +56,6 @@
                                         'ROB00667.jpg',
                                         'ROB00398.jpg',
                                         'ROB00667.jpg',
-                                        'ROB00398.jpg',
                                     ] as $gallery)
                                 <div>
                                     <div class="gradient"></div>
@@ -126,7 +125,7 @@
     <script type="text/javascript">
         $('#flipbook').turn({
             autoCenter: true,
-            display: 'single'
+            display: 'single',
         });
         $('#flipbook').turn('peel', 'br');
     </script>
