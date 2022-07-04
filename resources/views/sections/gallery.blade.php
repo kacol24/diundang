@@ -97,28 +97,28 @@
             .ratio.responsive {
                 --bs-aspect-ratio: {{ 3/4 * 100 }}%;
             }
-        }
 
-        .even .gradient {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-image: url({{ asset('images/right-border.png') }});
-            background-position: right top;
-            background-repeat: repeat-y;
-        }
+            .even .gradient {
+                position: absolute;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                background-image: url({{ asset('images/right-border.png') }});
+                background-position: right top;
+                background-repeat: repeat-y;
+            }
 
-        .odd .gradient {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-image: url({{ asset('images/left-border.png') }});
-            background-position: left top;
-            background-repeat: repeat-y;
+            .odd .gradient {
+                position: absolute;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                background-image: url({{ asset('images/left-border.png') }});
+                background-position: left top;
+                background-repeat: repeat-y;
+            }
         }
     </style>
     <script src="{{ asset('js/turn.min.js') }}"></script>
