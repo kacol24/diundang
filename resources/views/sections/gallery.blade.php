@@ -37,7 +37,7 @@
                     <div>
                         <div id="flipbook" class="shadow">
                             <div class="hard">
-                                <img src="{{ asset('images/cover-front.jpg') }}"
+                                <img src="{{ asset('images/album-cover-front.jpg') }}"
                                      class="img-fluid w-100 user-select-none"
                                      draggable="false">
                             </div>
@@ -66,7 +66,7 @@
                                 </div>
                             @endforeach
                             <div class="hard">
-                                <img src="{{ asset('images/cover-back.jpg') }}"
+                                <img src="{{ asset('images/album-cover-back.jpg') }}"
                                      class="img-fluid w-100 user-select-none"
                                      draggable="false">
                             </div>
