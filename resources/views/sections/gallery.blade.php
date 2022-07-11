@@ -2,7 +2,15 @@
     <div class="container">
         <div class="row justify-content-center">
             <div class="col-md-5">
-                <a href="#galleryModal" data-bs-toggle="modal">
+                <a href="#galleryModal" data-bs-toggle="modal" class="position-relative d-block">
+                    <div class="position-absolute w-100 h-100 top-0 start-0 d-flex align-items-center justify-content-center" style="background-color:rgba(0, 0, 0, .6);">
+                        <div class="text-center text-white">
+                            <i class="fa-solid fa-hand-pointer fa-2x"></i>
+                            <h2 class="mt-3 mb-0">
+                                View Album
+                            </h2>
+                        </div>
+                    </div>
                     <img src="{{ asset('images/album-cover-front.jpg') }}"
                          class="img-fluid w-100 user-select-none"
                          draggable="false">
