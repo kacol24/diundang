@@ -33,7 +33,7 @@
                             aria-label="Close"></button>
                 </div>
                 <div class="modal-body p-0 border-0" style="background-color:transparent;">
-                    <div class="container overflow-hidden"
+                    <div class="container overflow-hidden px-0"
                          @resize.window.debounce="window.innerWidth >= 992 ? $('#flipbook').turn('display', 'double') : $('#flipbook').turn('display', 'single')"
                          x-init="window.innerWidth >= 992 ? $('#flipbook').turn('display', 'double') : $('#flipbook').turn('display', 'single')"
                          x-data>
