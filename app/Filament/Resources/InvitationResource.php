@@ -75,7 +75,7 @@ class InvitationResource extends Resource
                                          return "https://wa.me/62{$record->phone}?text=".urlencode(view('whatsapp',
                                                  [
                                                      'groomName'  => 'Kevin Chandra',
-                                                     'guestName'  => 'Tamu Undangan',
+                                                     'guestName'  => $record->name ?: 'Mr. / Mrs. / Ms.',
                                                      'brideName'  => 'Fernanda Eka Putri',
                                                      'linkToSite' => route('home', ['guest' => $record->guest_code]),
                                                      'dueDate'    => Carbon::parse('2022-09-24')->subMonth()
