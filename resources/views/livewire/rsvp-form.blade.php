@@ -80,7 +80,7 @@
         </div>
         <div class="row align-items-center">
             <div class="col-md-4 offset-md-4 text-center">
-                <button type="submit" class="btn btn-secondary disabled" disabled
+                <button type="submit" class="btn btn-secondary disabled rounded-pill" disabled
                         :disabled="!pax"
                         :class="{ 'disabled': !pax }">
                     @if(optional($invitation)->rsvp_at)
@@ -93,7 +93,7 @@
             <div class="col-md-4 text-end">
                 <a href="#" style="color: var(--color-secondary);">
                     <small class="fst-italic">
-                        {{ __('Show QR Code') }}
+                        {{ __('Show QR Invitation') }}
                     </small>
                 </a>
             </div>

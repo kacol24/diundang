@@ -81,7 +81,7 @@
                 {{--                        </li>--}}
                 {{--                    </ul>--}}
                 {{--                </div>--}}
-                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
+                <button type="button" class="btn btn-secondary rounded-pill" data-bs-dismiss="modal">
                     {{ __('See Invitation') }}
                 </button>
             </div>
@@ -123,8 +123,19 @@
      data-aos-delay="3000"
      style="background-color: rgba(0, 0, 0, .7);z-index: 1040; bottom: 20px;left: 15px; right: 20px; padding-right: 35px; height: 30px; font-size: 12px; display: flex; max-width: 500px">
     <marquee>
-        {{ __('Now playing') }}: Love Will Find A Way (From "Simba's Pride") · Liz Callaway · Gene Miller · Disney Studio Chorus
+        {{ __('Now playing') }}: Love Will Find A Way (From "Simba's Pride") · Liz Callaway · Gene Miller · Disney
+        Studio Chorus
     </marquee>
+</div>
+<div class="position-fixed" style="bottom: 15px;left: 15px;z-index:1050">
+    <button class="btn d-flex align-items-center rounded-pill" style="background-color: #eee;">
+        <span class="d-flex justify-content-center align-items-center me-2 text-black">
+            <i class="fa-solid fa-qrcode fa-fw fa-xs"></i>
+        </span>
+        <small style="font-size: 70%;">
+            QR Invitation
+        </small>
+    </button>
 </div>
 <div id="controls" class="shadow-sm">
     <button class="btn p-0" id="btn_play">
