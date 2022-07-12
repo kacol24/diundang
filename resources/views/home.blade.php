@@ -123,7 +123,7 @@
      data-aos-delay="3000"
      style="background-color: rgba(0, 0, 0, .7);z-index: 1040; bottom: 20px;left: 15px; right: 20px; padding-right: 35px; height: 30px; font-size: 12px; display: flex; max-width: 500px">
     <marquee>
-        {{ __('Now playing') }}: Love Will Find A Way (End Title) · Heather Headley · Kenny Lattimore
+        {{ __('Now playing') }}: Love Will Find A Way (From "Simba's Pride") · Liz Callaway · Gene Miller · Disney Studio Chorus
     </marquee>
 </div>
 <div id="controls" class="shadow-sm">
