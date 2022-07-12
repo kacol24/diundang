@@ -51,7 +51,7 @@ class CommentForm extends Component
         if ($isApproved) {
             session()->flash('success', 'Wish successfully posted.');
         } else {
-            session()->flash('danger', 'Whoops! Bad words detected :(');
+            session()->flash('danger', 'Whoops! Bad words are a no, no :(');
         }
 
         $this->reset([
