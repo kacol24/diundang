@@ -7,11 +7,11 @@
                     <div
                         class="position-absolute w-100 h-100 top-0 start-0 d-flex align-items-center justify-content-center"
                         style="background-color:rgba(0, 0, 0, .4);">
-                        <div class="text-center text-white">
-                            <i class="fa-solid fa-hand-pointer fa-2x fa-fw"></i>
-                            <h2 class="mt-3 mb-0 font-serif">
+                        <div class="text-center text-white" style="margin-top: 50%;">
+                            <i class="fa-solid fa-hand-pointer fa-lg fa-fw"></i>
+                            <h5 class="mt-3 mb-0 font-serif">
                                 View Album
-                            </h2>
+                            </h5>
                         </div>
                     </div>
                     <img src="{{ asset('images/album-cover-front.jpg') }}"
