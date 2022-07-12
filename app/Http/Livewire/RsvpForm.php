@@ -2,6 +2,7 @@
 
 namespace App\Http\Livewire;
 
+use App\Models\Group;
 use App\Models\Invitation;
 use Livewire\Component;
 
@@ -15,13 +16,21 @@ class RsvpForm extends Component
 
     public $isAttending;
 
+    public $group;
+
     public function save()
     {
         if (! $this->invitation) {
+            $group = null;
+            if ($this->group) {
+                $group = Group::firstWhere('name', $this->group);
+            }
+
             $invitation = Invitation::create([
                 'guest_code' => Invitation::generateGuestCode(),
                 'name'       => $this->guestName,
                 'guests'     => 2,
+                'group_id'   => optional($group)->id,
                 //'is_attending' => $this->isAttending,
                 //'pax'          => $this->guests,
                 //'rsvp_at'      => now(),
