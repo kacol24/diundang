@@ -1,4 +1,4 @@
-<div style="background-color:var(--color-primary);" class="py-5 text-white">
+<div style="background-color:var(--color-primary);" class="py-5 text-white" id="comments">
     <div class="container py-5 my-5">
         <h2 class="font-serif h3 text-center text-uppercase">
             {{ __('Guestbook') }}
