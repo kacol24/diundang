@@ -12,13 +12,13 @@
              x-data>
             <template x-if="$store.isIos">
                 <a href="data:text/calendar;charset=utf8,BEGIN:VCALENDAR%0AVERSION:2.0%0ABEGIN:VEVENT%0ADTSTART:20220924T110000Z%0ADTEND:20220924T150000Z%0ASUMMARY:The%20Wedding%20of%20Kevin%20%26%20Fernanda%0ADESCRIPTION:The%20Wedding%20of%20Kevin%20%26%20Fernanda%0ALOCATION:XO%20Palace%0AEND:VEVENT%0AEND:VCALENDAR%0A"
-                   target="_blank" class="btn btn-secondary">
+                   target="_blank" class="btn btn-secondary rounded-pill">
                     {{ __('Save The Date') }}
                 </a>
             </template>
             <template x-if="!$store.isIos">
                 <a href="https://calendar.google.com/calendar/render?action=TEMPLATE&dates=20220924T110000Z%2F20220924T150000Z&details=The%20Wedding%20of%20Kevin%20%26%20Fernanda&location=XO%20Palace&text=The%20Wedding%20of%20Kevin%20%26%20Fernanda"
-                   target="_blank" class="btn btn-secondary">
+                   target="_blank" class="btn btn-secondary rounded-pill">
                     {{ __('Save The Date') }}
                 </a>
             </template>
@@ -105,7 +105,7 @@
                                 60225
                             </small>
                         </address>
-                        <a href="#mapModal" class="btn btn-secondary text-uppercase btn-sm" data-bs-toggle="modal">
+                        <a href="#mapModal" class="btn btn-secondary text-uppercase btn-sm rounded-pill" data-bs-toggle="modal">
                             <i class="fas fa-fw fa-map-marker" style="color: #ee2e30"></i>
                             {{ __('Get Direction') }}
                         </a>

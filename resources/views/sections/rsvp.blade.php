@@ -8,7 +8,7 @@
         </div>
         <div class="row justify-content-center mt-5">
             <div class="col-md-6">
-                <livewire:rsvp-form :invitation="$invitation" :guestName="$guestName"/>
+                <livewire:rsvp-form :invitation="$invitation" :guestName="$guestName" :group="request('for')"/>
             </div>
         </div>
     </div>

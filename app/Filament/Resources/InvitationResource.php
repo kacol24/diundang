@@ -6,13 +6,21 @@ use App\Filament\Resources\InvitationResource\Pages;
 use App\Filament\Resources\InvitationResource\RelationManagers;
 use App\Models\Invitation;
 use App\Models\Seating;
+use Carbon\Carbon;
 use Filament\Forms;
+use Filament\Forms\Components\DateTimePicker;
 use Filament\Forms\Components\Group;
 use Filament\Forms\Components\Section;
+use Filament\Forms\Components\Select;
+use Filament\Forms\Components\TextInput;
 use Filament\Resources\Form;
 use Filament\Resources\Resource;
 use Filament\Resources\Table;
 use Filament\Tables;
+use Filament\Tables\Columns\BooleanColumn;
+use Filament\Tables\Columns\TextColumn;
+use Filament\Tables\Filters\MultiSelectFilter;
+use Filament\Tables\Filters\TernaryFilter;
 use Illuminate\Database\Eloquent\Model;
 
 class InvitationResource extends Resource
@@ -37,28 +45,47 @@ class InvitationResource extends Resource
     {
         return $table
             ->columns([
-                Tables\Columns\TextColumn::make('guest_code')
-                                         ->searchable(),
-                Tables\Columns\TextColumn::make('name')
-                                         ->searchable(),
-                Tables\Columns\TextColumn::make('group.name'),
-                Tables\Columns\TextColumn::make('guests'),
-                Tables\Columns\TextColumn::make('seating.name')
-                                         ->label('Table'),
-                Tables\Columns\BooleanColumn::make('is_attending'),
-                Tables\Columns\TextColumn::make('rsvp_at')->dateTime(),
+                TextColumn::make('guest_code')
+                          ->searchable(),
+                TextColumn::make('name')
+                          ->searchable(),
+                TextColumn::make('group.name'),
+                TextColumn::make('guests'),
+                TextColumn::make('seating.name')
+                          ->label('Table'),
+                BooleanColumn::make('is_attending'),
+                TextColumn::make('rsvp_at')->dateTime(),
             ])
             ->filters([
-                Tables\Filters\MultiSelectFilter::make('group_id')
-                                                ->label('Group')
-                                                ->relationship('group', 'name'),
-                Tables\Filters\MultiSelectFilter::make('seating_id')
-                                                ->label('Table')
-                                                ->relationship('seating', 'name'),
-                Tables\Filters\TernaryFilter::make('is_attending'),
-                Tables\Filters\TernaryFilter::make('rsvp_at')
-                                            ->label('RSVP')
-                                            ->nullable(),
+                MultiSelectFilter::make('group_id')
+                                 ->label('Group')
+                                 ->relationship('group', 'name'),
+                MultiSelectFilter::make('seating_id')
+                                 ->label('Table')
+                                 ->relationship('seating', 'name'),
+                TernaryFilter::make('is_attending'),
+                TernaryFilter::make('rsvp_at')
+                             ->label('RSVP')
+                             ->nullable(),
+            ])
+            ->actions([
+                Tables\Actions\Action::make('send_wa')
+                                     ->label('WhatsApp')
+                                     ->url(function (Invitation $record) {
+                                         return "https://wa.me/62{$record->phone}?text=".urlencode(view('whatsapp',
+                                                 [
+                                                     'groomName'  => 'Kevin Chandra',
+                                                     'guestName'  => $record->name ?: 'Mr. / Mrs. / Ms.',
+                                                     'brideName'  => 'Fernanda Eka Putri',
+                                                     'linkToSite' => route('home', ['guest' => $record->guest_code]),
+                                                     'dueDate'    => Carbon::parse('2022-09-24')->subMonth()
+                                                                           ->format('d F Y'),
+                                                 ])->render());
+                                     })
+                                     ->openUrlInNewTab(),
+                //Tables\Actions\ViewAction::make(),
+                //Tables\Actions\EditAction::make(),
+                //Tables\Actions\DeleteAction::make(),
             ]);
     }
 
@@ -85,30 +112,30 @@ class InvitationResource extends Resource
                  ->schema([
                      Section::make('Guest Detail')
                             ->schema([
-                                Forms\Components\TextInput::make('name')
-                                                          ->required(),
-                                Forms\Components\TextInput::make('phone')
-                                                          ->type('tel')
-                                                          ->prefix('+62'),
-                                Forms\Components\Select::make('group_id')
-                                                       ->label('Group')
-                                                       ->options(\App\Models\Group::all()->pluck('name', 'id'))
-                                                       ->searchable(),
+                                TextInput::make('name')
+                                         ->required(),
+                                TextInput::make('phone')
+                                         ->type('tel')
+                                         ->prefix('+62'),
+                                TextInput::make('guest_code')
+                                         ->unique(ignorable: fn(?Model $record): ?Model => $record),
                             ]),
                      Section::make('Invitation Detail')
                             ->schema([
-                                Forms\Components\TextInput::make('guest_code')
-                                                          ->unique(ignorable: fn(?Model $record): ?Model => $record),
-                                Forms\Components\Select::make('seating_id')
-                                                       ->label('Table')
-                                                       ->options(Seating::all()->pluck('name', 'id'))
-                                                       ->searchable(),
-                                Forms\Components\TextInput::make('guests')
-                                                          ->required()
-                                                          ->type('number')
-                                                          ->suffix('person(s)')
-                                                          ->default(2)
-                                                          ->minValue(1),
+                                Select::make('group_id')
+                                      ->label('Group')
+                                      ->options(\App\Models\Group::all()->pluck('name', 'id'))
+                                      ->searchable(),
+                                Select::make('seating_id')
+                                      ->label('Table')
+                                      ->options(Seating::all()->pluck('name', 'id'))
+                                      ->searchable(),
+                                TextInput::make('guests')
+                                         ->required()
+                                         ->type('number')
+                                         ->suffix('person(s)')
+                                         ->default(2)
+                                         ->minValue(1),
                             ]),
                  ])->columnSpan([
                     'sm' => 2,
@@ -117,13 +144,13 @@ class InvitationResource extends Resource
                  ->schema([
                      Section::make('RSVP Detail')
                             ->schema([
-                                Forms\Components\Select::make('is_attending')
-                                                       ->options([
-                                                           1 => 'Attending',
-                                                           0 => 'Not Attending',
-                                                       ]),
-                                Forms\Components\DateTimePicker::make('rsvp_at')
-                                                               ->label('RSVP At'),
+                                Select::make('is_attending')
+                                      ->options([
+                                          1 => 'Attending',
+                                          0 => 'Not Attending',
+                                      ]),
+                                DateTimePicker::make('rsvp_at')
+                                              ->label('RSVP At'),
                             ]),
                  ])
                  ->columnSpan(1),

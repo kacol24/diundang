@@ -48,6 +48,11 @@
                                 {{ __('Health Protocol') }}
                             </a>
                         </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-white" href="#comments">
+                                {{ __('Guest Book') }}
+                            </a>
+                        </li>
                     </ul>
                 </div>
             </div>

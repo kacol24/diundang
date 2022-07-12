@@ -11,7 +11,7 @@
                   wire:model.defer="message"></textarea>
         </div>
         <div class="text-center">
-            <button class="btn btn-secondary text-uppercase" type="submit">
+            <button class="btn btn-secondary text-uppercase rounded-pill" type="submit">
                 Send Wish
             </button>
         </div>
