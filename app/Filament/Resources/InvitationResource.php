@@ -117,15 +117,15 @@ class InvitationResource extends Resource
                                 TextInput::make('phone')
                                          ->type('tel')
                                          ->prefix('+62'),
+                                TextInput::make('guest_code')
+                                         ->unique(ignorable: fn(?Model $record): ?Model => $record),
+                            ]),
+                     Section::make('Invitation Detail')
+                            ->schema([
                                 Select::make('group_id')
                                       ->label('Group')
                                       ->options(\App\Models\Group::all()->pluck('name', 'id'))
                                       ->searchable(),
-                            ]),
-                     Section::make('Invitation Detail')
-                            ->schema([
-                                TextInput::make('guest_code')
-                                         ->unique(ignorable: fn(?Model $record): ?Model => $record),
                                 Select::make('seating_id')
                                       ->label('Table')
                                       ->options(Seating::all()->pluck('name', 'id'))
