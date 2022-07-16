@@ -43,9 +43,7 @@ class GenerateQrCode implements ShouldQueue
                ->format('png')
                ->color(77, 28, 50)
                ->errorCorrection('H')
-               ->merge('/public/images/logo-qr.png')
+               ->merge('/public/images/logo-qr-deinterlaced.png')
                ->generate($this->code, $qrFullPath);
-
-        $template = Image::make('public/images/template.jpg');
     }
 }
