@@ -20,11 +20,11 @@
             <input type="hidden" name="guest_code" value="{{ optional($invitation)->guest_code }}">
             <input type="text"
                    @if($invitation)
-                   class="form-control-plaintext"
+                       class="form-control-plaintext"
                    readonly
                    value="{{ $guestName }}"
                    @else
-                   class="form-control"
+                       class="form-control"
                    x-model="name"
                    wire:model="guestName"
                    @endif
@@ -90,13 +90,16 @@
                     @endif
                 </button>
             </div>
-            <div class="col-md-4 text-end">
-                <a href="#" style="color: var(--color-secondary);">
-                    <small class="fst-italic">
-                        {{ __('Show QR Invitation') }}
-                    </small>
-                </a>
-            </div>
+            @if($invitation && $invitation->is_attending)
+                <div class="col-md-4 text-end">
+                    <a href="#qrModal" style="color: var(--color-secondary);"
+                       data-bs-toggle="modal">
+                        <small class="fst-italic">
+                            {{ __('Show QR Invitation') }}
+                        </small>
+                    </a>
+                </div>
+            @endif
         </div>
         <small class="text-muted">
             <br>

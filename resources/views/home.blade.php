@@ -24,9 +24,9 @@
     <title>The Wedding of Kevin & Fernanda</title>
     <meta name="description"
           content="Dear {{ $guestName }}, you are cordially invited to celebrate the wedding of Kevin and Fernanda on September 24th, 2022.">
-    <meta property="og:image" content="{{ asset('images/logo-initials.png') }}"/>
-    <meta property="og:image:width" content="194"/>
-    <meta property="og:image:height" content="143"/>
+    <meta property="og:image" content="{{ asset('images/logo@2x.png') }}"/>
+    <meta property="og:image:width" content="500"/>
+    <meta property="og:image:height" content="500"/>
 
     <script src="https://cdn.jsdelivr.net/npm/lozad@1.16.0/dist/lozad.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/alpinejs@3.10.2/dist/cdn.min.js" defer></script>
@@ -111,6 +111,7 @@
 
     @include('includes.footer')
 </div>
+@livewireScripts
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
@@ -135,15 +136,25 @@
         Studio Chorus
     </marquee>
 </div>
-<div class="position-fixed" style="bottom: 15px;left: 15px;z-index:1050">
-    <button class="btn d-flex align-items-center rounded-pill shadow-sm" style="background-color: #eee;">
-        <span class="d-flex justify-content-center align-items-center me-2 text-black">
-            <i class="fa-solid fa-qrcode fa-fw fa-xs"></i>
-        </span>
-        <small style="font-size: 70%;">
-            QR Invitation
-        </small>
-    </button>
+<livewire:floating-qr-button :is-shown="optional($invitation)->is_attending"/>
+<div class="modal fade" id="qrModal" tabindex="-1" aria-labelledby="qrModalLabel" aria-hidden="true"
+     data-bs-backdrop="static">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="qrModalLabel">Digital Invitation</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body p-0">
+                <img src="{{ asset('storage/616467.jpg') }}" alt="qr code" class="img-fluid w-100">
+            </div>
+            <div class="modal-footer justify-content-start">
+                <small class="fst-italic">
+                    Screenshot this page or save this QR Code as image.
+                </small>
+            </div>
+        </div>
+    </div>
 </div>
 <div id="controls" class="shadow-sm">
     <button class="btn p-0" id="btn_play">
@@ -241,6 +252,13 @@
 {{--    });--}}
 {{--</script>--}}
 <script>
+    var qrModal = new bootstrap.Modal(document.getElementById('qrModal'));
+    Livewire.on('rsvpUpdated', function(payload) {
+        if (payload.invitation.is_attending == 1) {
+            qrModal.show();
+        }
+    });
+
     var invitationModal = new bootstrap.Modal(document.getElementById('invitationModal'));
     invitationModal.show();
 
@@ -310,6 +328,5 @@
     });
 </script>
 @stack('after_scripts')
-@livewireScripts
 </body>
 </html>
