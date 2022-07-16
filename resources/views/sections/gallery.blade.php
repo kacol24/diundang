@@ -14,7 +14,7 @@
                             </h5>
                         </div>
                     </div>
-                    <img src="{{ asset('images/album-cover-front.jpg') }}"
+                    <img src="{{ asset('images/ALBUM-COVER-KEVIN-&-NANDA-WD-02-FRONT.jpg') }}"
                          class="img-fluid w-100 user-select-none"
                          draggable="false" alt="album cover front">
                 </a>
@@ -40,7 +40,7 @@
                                     <div>
                                         <div id="flipbook" class="shadow">
                                             <div class="hard">
-                                                <img src="{{ asset('images/album-cover-front.jpg') }}"
+                                                <img src="{{ asset('images/ALBUM-COVER-KEVIN-&-NANDA-WD-02-FRONT.jpg') }}"
                                                      class="img-fluid w-100 user-select-none"
                                                      draggable="false" alt="album cover front">
                                             </div>
@@ -70,7 +70,7 @@
                                                 </div>
                                             @endforeach
                                             <div class="hard">
-                                                <img src="{{ asset('images/album-cover-back.jpg') }}"
+                                                <img src="{{ asset('images/ALBUM-COVER-KEVIN-&-NANDA-WD-02-BACK.jpg') }}"
                                                      class="img-fluid w-100 user-select-none"
                                                      draggable="false" alt="album cover back">
                                             </div>
