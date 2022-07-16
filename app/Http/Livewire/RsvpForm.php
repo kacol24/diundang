@@ -47,6 +47,8 @@ class RsvpForm extends Component
         $this->invitation->rsvp_at = now();
         $this->invitation->save();
 
+        $this->emit('rsvpUpdated', ['invitation' => $this->invitation]);
+
         session()->flash('success', 'Thank you for confirming your presence.');
     }
 
