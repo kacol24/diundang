@@ -24,9 +24,9 @@
     <title>The Wedding of Kevin & Fernanda</title>
     <meta name="description"
           content="Dear {{ $guestName }}, you are cordially invited to celebrate the wedding of Kevin and Fernanda on September 24th, 2022.">
-    <meta property="og:image" content="{{ asset('images/logo-initials.png') }}"/>
-    <meta property="og:image:width" content="194"/>
-    <meta property="og:image:height" content="143"/>
+    <meta property="og:image" content="{{ asset('images/logo@2x.png') }}"/>
+    <meta property="og:image:width" content="500"/>
+    <meta property="og:image:height" content="500"/>
 
     <script src="https://cdn.jsdelivr.net/npm/lozad@1.16.0/dist/lozad.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/alpinejs@3.10.2/dist/cdn.min.js" defer></script>
@@ -136,7 +136,9 @@
     </marquee>
 </div>
 <div class="position-fixed" style="bottom: 15px;left: 15px;z-index:1050">
-    <button class="btn d-flex align-items-center rounded-pill shadow-sm" style="background-color: #eee;">
+    <button class="btn d-flex align-items-center rounded-pill shadow-sm" style="background-color: #eee;"
+            data-bs-toggle="modal"
+            data-bs-target="#qrModal">
         <span class="d-flex justify-content-center align-items-center me-2 text-black">
             <i class="fa-solid fa-qrcode fa-fw fa-xs"></i>
         </span>
@@ -144,6 +146,20 @@
             QR Invitation
         </small>
     </button>
+</div>
+<div class="modal fade" id="qrModal" tabindex="-1" aria-labelledby="qrModalLabel" aria-hidden="true"
+     data-bs-backdrop="static">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="qrModalLabel">Modal title</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body p-0">
+                <img src="{{ asset('storage/616467.jpg') }}" alt="qr code" class="img-fluid w-100">
+            </div>
+        </div>
+    </div>
 </div>
 <div id="controls" class="shadow-sm">
     <button class="btn p-0" id="btn_play">
