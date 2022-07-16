@@ -4,6 +4,7 @@ use App\Http\Controllers\RsvpController;
 use App\Models\Invitation;
 use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\Route;
+use Intervention\Image\ImageManager;
 use SimpleSoftwareIO\QrCode\Facades\QrCode;
 
 /*
@@ -36,6 +37,36 @@ Route::get('/', function () {
 })->name('home');
 
 Route::get('/download', function () {
+    $guestName = '12345678901234567890123456789012345678901234'; // 44 max
+    $guestName = 'Soo Jong Kiau, Ko Nanang, Ko Ati, Ko Aliong, Ko Afo';
+    $guestCode = '616467';
+    $fontSize = 45 - (round(strlen($guestName) / 10) * 5);
+    //dd($fontSize);
+
+    $intervention = new ImageManager;
+    $template = $intervention->make(public_path('images/template-2.jpg'));
+    $template->insert(storage_path('app/public/qr/616467.png'), 'top-left', 350, 525);
+    $template->text($guestName, 600, 1100, function ($font) use ($guestName, $fontSize) {
+        $font->file(public_path('fonts/MADETOMMY-Bold.ttf'));
+        $font->size($fontSize);
+        $font->align('center');
+        $font->valign('middle');
+    });
+    $template->text($guestCode, 600, 1140, function ($font) {
+        $font->file(public_path('fonts/MADETOMMY.ttf'));
+        $font->size(20);
+        $font->align('center');
+        $font->valign('middle');
+    });
+    $template->text('Table: Arendelle', 600, 1180, function ($font) {
+        $font->file(public_path('fonts/MADETOMMY.ttf'));
+        $font->size(20);
+        $font->align('center');
+        $font->valign('middle');
+    });
+    $template->save(storage_path('app/public/616467.jpg'));
+    dd($template);
+
     $guestCode = request('guest');
     abort_unless($guestCode, 404, 'Guest code missing.');
 
