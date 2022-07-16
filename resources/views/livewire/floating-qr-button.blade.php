@@ -12,24 +12,5 @@
                 </small>
             </button>
         </div>
-        <div class="modal fade" id="qrModal" tabindex="-1" aria-labelledby="qrModalLabel" aria-hidden="true"
-             data-bs-backdrop="static">
-            <div class="modal-dialog modal-dialog-centered">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h5 class="modal-title" id="qrModalLabel">Digital Invitation</h5>
-                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                    </div>
-                    <div class="modal-body p-0">
-                        <img src="{{ asset('storage/616467.jpg') }}" alt="qr code" class="img-fluid w-100">
-                    </div>
-                    <div class="modal-footer justify-content-start">
-                        <small class="fst-italic">
-                            Screenshot this page or save this QR Code as image.
-                        </small>
-                    </div>
-                </div>
-            </div>
-        </div>
     @endif
 </div>

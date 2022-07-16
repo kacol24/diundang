@@ -111,6 +111,7 @@
 
     @include('includes.footer')
 </div>
+@livewireScripts
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
@@ -135,7 +136,26 @@
         Studio Chorus
     </marquee>
 </div>
-<livewire:floating-qr-button :invitation="$invitation"/>
+<livewire:floating-qr-button :is-shown="optional($invitation)->is_attending"/>
+<div class="modal fade" id="qrModal" tabindex="-1" aria-labelledby="qrModalLabel" aria-hidden="true"
+     data-bs-backdrop="static">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="qrModalLabel">Digital Invitation</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body p-0">
+                <img src="{{ asset('storage/616467.jpg') }}" alt="qr code" class="img-fluid w-100">
+            </div>
+            <div class="modal-footer justify-content-start">
+                <small class="fst-italic">
+                    Screenshot this page or save this QR Code as image.
+                </small>
+            </div>
+        </div>
+    </div>
+</div>
 <div id="controls" class="shadow-sm">
     <button class="btn p-0" id="btn_play">
         <i class="fas fa-fw fa-xs fa-play"></i>
@@ -232,6 +252,13 @@
 {{--    });--}}
 {{--</script>--}}
 <script>
+    var qrModal = new bootstrap.Modal(document.getElementById('qrModal'));
+    Livewire.on('rsvpUpdated', function(payload) {
+        if (payload.invitation.is_attending == 1) {
+            qrModal.show();
+        }
+    });
+
     var invitationModal = new bootstrap.Modal(document.getElementById('invitationModal'));
     invitationModal.show();
 
@@ -301,6 +328,5 @@
     });
 </script>
 @stack('after_scripts')
-@livewireScripts
 </body>
 </html>

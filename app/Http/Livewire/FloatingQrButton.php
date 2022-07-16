@@ -8,16 +8,7 @@ class FloatingQrButton extends Component
 {
     public $isShown = false;
 
-    public $invitation;
-
     protected $listeners = ['rsvpUpdated' => 'setIsShown'];
-
-    public function mount()
-    {
-        if (optional($this->invitation)->is_attending) {
-            $this->isShown = true;
-        }
-    }
 
     public function setIsShown($payload)
     {
