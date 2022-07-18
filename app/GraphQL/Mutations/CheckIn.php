@@ -18,7 +18,7 @@ final class CheckIn
         $sequenceGroup = optional($args)['sequence_group'];
         $attendanceId = optional($args)['attendance_id'];
         $hasGift = optional($args)['has_gift'];
-        
+
         $guestCode = $args['guest_code'];
 
         $invitation = Invitation::where('guest_code', $guestCode)->first();

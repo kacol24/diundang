@@ -10,6 +10,9 @@ final class AttendanceTable
     public static function columns()
     {
         return [
+            TextColumn::make('sequence_group')
+                      ->label('Usher')
+                      ->toggleable(isToggledHiddenByDefault: true),
             TextColumn::make('serial_number'),
             TextColumn::make('invitation.name')
                       ->label('Guest Name'),
