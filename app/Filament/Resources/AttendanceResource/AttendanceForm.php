@@ -6,6 +6,7 @@ use App\Models\Attendance;
 use Filament\Forms\Components\Grid;
 use Filament\Forms\Components\Select;
 use Filament\Forms\Components\TextInput;
+use Filament\Forms\Components\Toggle;
 use Illuminate\Database\Eloquent\Model;
 
 final class AttendanceForm
@@ -19,16 +20,19 @@ final class AttendanceForm
                           ->relationship('invitation', 'name')
                           ->getOptionLabelFromRecordUsing(fn(Model $record) => "{$record->name} {$record->phone}")
                           ->searchable(),
+                    TextInput::make('sequence_group'),
+                ]),
+            Grid::make()
+                ->schema([
                     Select::make('attendance_id')
                           ->label('Checked-in By')
                           ->options(
                               Attendance::whereNull('attendance_id')->get()->pluck('invitation.name', 'id')
                           )
                           ->searchable(),
-                ]),
-            Grid::make()
-                ->schema([
-                    TextInput::make('sequence_group'),
+                    Toggle::make('has_gift')
+                          ->inline(false)
+                          ->default(true),
                 ]),
         ];
     }

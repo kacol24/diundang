@@ -14,6 +14,7 @@ class Attendance extends Model
         'sequence',
         'attendance_id',
         'invitation_id',
+        'has_gift',
     ];
 
     public function invitation()
