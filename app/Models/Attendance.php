@@ -12,11 +12,18 @@ class Attendance extends Model
     protected $fillable = [
         'sequence_group',
         'sequence',
+        'attendance_id',
+        'invitation_id',
     ];
 
     public function invitation()
     {
         return $this->belongsTo(Invitation::class);
+    }
+
+    public function attendance()
+    {
+        return $this->belongsTo(Attendance::class, 'attendance_id');
     }
 
     public function getSerialNumberAttribute()
