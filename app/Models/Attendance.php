@@ -17,6 +17,10 @@ class Attendance extends Model
         'has_gift',
     ];
 
+    protected $casts = [
+        'has_gift' => 'boolean',
+    ];
+
     public function invitation()
     {
         return $this->belongsTo(Invitation::class);

@@ -3,6 +3,7 @@
 namespace App\Filament\Resources\AttendanceResource;
 
 use App\Models\Attendance;
+use App\Models\Invitation;
 use Filament\Forms\Components\Grid;
 use Filament\Forms\Components\Select;
 use Filament\Forms\Components\TextInput;
@@ -17,8 +18,12 @@ final class AttendanceForm
             Grid::make()
                 ->schema([
                     Select::make('invitation_id')
-                          ->relationship('invitation', 'name')
-                          ->getOptionLabelFromRecordUsing(fn(Model $record) => "{$record->name} {$record->phone}")
+                          ->options(
+                              Invitation::doesntHave('attendance')
+                                        ->get()
+                                        ->pluck('dropdown_name', 'id')
+                          )
+                          ->reactive()
                           ->searchable(),
                     TextInput::make('sequence_group'),
                 ]),
@@ -26,9 +31,14 @@ final class AttendanceForm
                 ->schema([
                     Select::make('attendance_id')
                           ->label('Checked-in By')
-                          ->options(
-                              Attendance::whereNull('attendance_id')->get()->pluck('invitation.name', 'id')
-                          )
+                          ->options(function (callable $get) {
+                              $invitationId = $get('invitation_id');
+
+                              return Attendance::whereNull('attendance_id')
+                                               ->where('id', '!=', $invitationId)
+                                               ->get()
+                                               ->pluck('invitation.name', 'id');
+                          })
                           ->searchable(),
                     Toggle::make('has_gift')
                           ->inline(false)

@@ -92,6 +92,11 @@ class Invitation extends Model
             [$this->phone, urlencode($message)],
             self::WA_CTC);
     }
+
+    public function getDropdownNameAttribute()
+    {
+        return "[{$this->guest_code}] {$this->name} {$this->phone}";
+    }
     /*
     |--------------------------------------------------------------------------
     | MUTATORS
