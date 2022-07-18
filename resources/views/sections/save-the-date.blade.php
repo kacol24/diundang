@@ -26,17 +26,21 @@
         <div class="row justify-content-center text-white mt-5 pb-5 font-sans-serif g-1"
              x-data="countdown(new Date('2022-09-24 18:00:00'))"
              x-init="init()">
-            <div class="col-2 col-md-1">
-                <h3 class="fw-normal mb-0" x-text="time().days">00</h3>
-                <small>
-                    Days
-                </small>
-            </div>
-            <div class="col-auto">
-                <div class="mt-1">
-                    :
+            <template x-if="time().days != '00'">
+                <div class="col-2 col-md-1">
+                    <h3 class="fw-normal mb-0" x-text="time().days">00</h3>
+                    <small>
+                        Days
+                    </small>
                 </div>
-            </div>
+            </template>
+            <template x-if="time().days != '00'">
+                <div class="col-auto">
+                    <div class="mt-1">
+                        :
+                    </div>
+                </div>
+            </template>
             <div class="col-2 col-md-1">
                 <h3 class="fw-normal mb-0" x-text="time().hours">00</h3>
                 <small>
