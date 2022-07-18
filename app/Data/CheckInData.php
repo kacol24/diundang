@@ -21,4 +21,9 @@ class CheckInData
     {
         return new self($data['sequence_group'], $data['attendance_id'], $data['has_gift']);
     }
+
+    public static function fromArray(array $data)
+    {
+        return new self($data['sequence_group'], $data['attendance_id'], $data['has_gift']);
+    }
 }
