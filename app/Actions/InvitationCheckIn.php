@@ -2,13 +2,17 @@
 
 namespace App\Actions;
 
+use App\Data\CheckInData;
 use App\Models\Attendance;
 use App\Models\Invitation;
 
 class InvitationCheckIn
 {
-    public function checkIn(Invitation $invitation, $sequenceGroup = null, $attendanceId = null)
+    public function checkIn(Invitation $invitation, CheckInData $checkInData)
     {
+        $sequenceGroup = $checkInData->sequenceGroup;
+        $attendanceId = $checkInData->attendanceId;
+
         if ($invitation->attendance()->exists()) {
             return $invitation->attendance->where('invitation_id', $invitation->id)
                                           ->where('sequence_group', $sequenceGroup)
@@ -32,6 +36,7 @@ class InvitationCheckIn
             'invitation_id'  => $invitation->id,
             'sequence_group' => $sequenceGroup,
             'sequence'       => $nextSequence,
+            'has_gift'       => $checkInData->hasGift,
         ]);
 
         if ($attendanceId) {

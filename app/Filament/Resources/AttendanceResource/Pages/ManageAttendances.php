@@ -3,6 +3,7 @@
 namespace App\Filament\Resources\AttendanceResource\Pages;
 
 use App\Actions\InvitationCheckIn;
+use App\Data\CheckInData;
 use App\Filament\Resources\AttendanceResource;
 use App\Models\Invitation;
 use Filament\Pages\Actions;
@@ -19,11 +20,8 @@ class ManageAttendances extends ManageRecords
                                 ->using(function ($data) {
                                     $invitation = Invitation::find($data['invitation_id']);
 
-                                    return (new InvitationCheckIn)->checkIn(
-                                        $invitation,
-                                        $data['sequence_group'],
-                                        $data['attendance_id']
-                                    );
+                                    return (new InvitationCheckIn)
+                                        ->checkIn($invitation, CheckInData::fromFilament($data));
                                 }),
         ];
     }
