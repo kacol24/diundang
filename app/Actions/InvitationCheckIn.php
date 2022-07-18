@@ -1,0 +1,45 @@
+<?php
+
+namespace App\Actions;
+
+use App\Models\Attendance;
+use App\Models\Invitation;
+
+class InvitationCheckIn
+{
+    public function checkIn(Invitation $invitation, $sequenceGroup = null, $attendanceId = null)
+    {
+        if ($invitation->attendance()->exists()) {
+            return $invitation->attendance->where('invitation_id', $invitation->id)
+                                          ->where('sequence_group', $sequenceGroup)
+                                          ->orderBy('sequence', 'desc')
+                                          ->first();
+        }
+
+        $lastSequence = Attendance::query()
+                                  ->when($sequenceGroup, function ($query) use ($sequenceGroup) {
+                                      return $query->where('sequence_group', $sequenceGroup);
+                                  })
+                                  ->latest('sequence')
+                                  ->first();
+
+        $nextSequence = 1;
+        if ($lastSequence) {
+            $nextSequence = $lastSequence->sequence + 1;
+        }
+
+        $attendance = Attendance::create([
+            'invitation_id'  => $invitation->id,
+            'sequence_group' => $sequenceGroup,
+            'sequence'       => $nextSequence,
+        ]);
+
+        if ($attendanceId) {
+            $attendance->update([
+                'attendance_id' => $attendanceId,
+            ]);
+        }
+
+        return $attendance;
+    }
+}
