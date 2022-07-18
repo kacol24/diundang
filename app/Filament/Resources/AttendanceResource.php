@@ -22,16 +22,18 @@ class AttendanceResource extends Resource
     {
         return $form
             ->schema([
-                Forms\Components\BelongsToSelect::make('invitation_id')
-                                                ->relationship('invitation', 'name')
-                                                ->getOptionLabelFromRecordUsing(fn(Model $record
-                                                ) => "{$record->name} {$record->phone}")
-                                                ->searchable(),
+                Forms\Components\Select::make('invitation_id')
+                                       ->relationship('invitation', 'name')
+                                       ->getOptionLabelFromRecordUsing(fn(Model $record
+                                       ) => "{$record->name} {$record->phone}")
+                                       ->searchable(),
                 Forms\Components\Grid::make()
                                      ->schema([
                                          Forms\Components\TextInput::make('sequence_group'),
                                          Forms\Components\TextInput::make('sequence')
-                                                                   ->type('number'),
+                                                                   ->type('number')
+                                                                   ->disabled()
+                                                                   ->hint('Auto-generated'),
                                      ]),
             ]);
     }
@@ -65,9 +67,10 @@ class AttendanceResource extends Resource
     public static function getPages(): array
     {
         return [
-            'index'  => Pages\ListAttendances::route('/'),
-            'create' => Pages\CreateAttendance::route('/create'),
-            'edit'   => Pages\EditAttendance::route('/{record}/edit'),
+            //'index'  => Pages\ListAttendances::route('/'),
+            //'create' => Pages\CreateAttendance::route('/create'),
+            //'edit'   => Pages\EditAttendance::route('/{record}/edit'),
+            'index' => Pages\ManageAttendances::route('/'),
         ];
     }
 }

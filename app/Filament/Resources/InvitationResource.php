@@ -49,6 +49,11 @@ class InvitationResource extends Resource
                           ->searchable(),
                 TextColumn::make('name')
                           ->searchable(),
+                BooleanColumn::make('is_teapai')
+                             ->action(function ($record) {
+                                 $record->is_teapai = ! $record->is_teapai;
+                                 $record->save();
+                             }),
                 TextColumn::make('group.name'),
                 TextColumn::make('guests'),
                 TextColumn::make('seating.name')
@@ -64,6 +69,7 @@ class InvitationResource extends Resource
                                  ->label('Table')
                                  ->relationship('seating', 'name'),
                 TernaryFilter::make('is_attending'),
+                TernaryFilter::make('is_teapai'),
                 TernaryFilter::make('rsvp_at')
                              ->label('RSVP')
                              ->nullable(),
@@ -117,8 +123,8 @@ class InvitationResource extends Resource
                                 TextInput::make('phone')
                                          ->type('tel')
                                          ->prefix('+62'),
-                                TextInput::make('guest_code')
-                                         ->unique(ignorable: fn(?Model $record): ?Model => $record),
+                                Forms\Components\Checkbox::make('is_teapai')
+                                                         ->inline(false),
                             ]),
                      Section::make('Invitation Detail')
                             ->schema([
@@ -144,6 +150,8 @@ class InvitationResource extends Resource
                  ->schema([
                      Section::make('RSVP Detail')
                             ->schema([
+                                TextInput::make('guest_code')
+                                         ->unique(ignorable: fn(?Model $record): ?Model => $record),
                                 Select::make('is_attending')
                                       ->options([
                                           1 => 'Attending',
