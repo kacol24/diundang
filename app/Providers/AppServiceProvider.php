@@ -28,6 +28,8 @@ class AppServiceProvider extends ServiceProvider
             Filament::registerNavigationGroups([
                 'Invitations',
                 'Master',
+                'Rundown',
+                'Settings',
             ]);
         });
     }
