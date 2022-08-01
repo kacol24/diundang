@@ -34,9 +34,6 @@ class RegenrateQrInvitation extends Command
 
         foreach ($invitations as $invitation) {
             $guestCode = $invitation->guest_code;
-            $this->info('Processing guest: '. $guestCode);
-
-            $invitationPath = storage_path("app/public/{$guestCode}.jpg");
             $this->info('Generating for guest: '.$guestCode);
             GenerateQrInvitation::dispatchSync($invitation);
         }
