@@ -3,15 +3,11 @@
 namespace App\Jobs;
 
 use Illuminate\Bus\Queueable;
-use Illuminate\Contracts\Queue\ShouldBeUnique;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Foundation\Bus\Dispatchable;
 use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Queue\SerializesModels;
-use Illuminate\Support\Facades\App;
-use Illuminate\Support\Facades\Storage;
 use Intervention\Image\ImageManager;
-use SimpleSoftwareIO\QrCode\Facades\QrCode;
 
 class GenerateQrInvitation implements ShouldQueue
 {
@@ -53,7 +49,7 @@ class GenerateQrInvitation implements ShouldQueue
         }
         $template = $intervention->make($templatePath);
         $template->insert($qrname, 'top-left', 350, 525);
-        $template->text($guestName, 600, 1100, function ($font) use ($guestName, $fontSize, $seating) {
+        $template->text($guestName, 600, 1100, function ($font) use ($fontSize) {
             $font->file(public_path('fonts/MADETOMMY-Bold.ttf'));
             $font->size($fontSize);
             $font->align('center');

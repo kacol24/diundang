@@ -2,7 +2,6 @@
 
 namespace App\Console\Commands;
 
-use App\Jobs\GenerateQrCode;
 use App\Jobs\GenerateQrInvitation;
 use App\Models\Invitation;
 use Illuminate\Console\Command;

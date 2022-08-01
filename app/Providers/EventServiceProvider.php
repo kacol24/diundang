@@ -22,7 +22,7 @@ class EventServiceProvider extends ServiceProvider
         ],
 
         InvitationCreated::class => [
-            GenerateQrInvitation::class
+            GenerateQrInvitation::class,
         ],
     ];
 

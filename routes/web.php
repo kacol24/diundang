@@ -2,10 +2,7 @@
 
 use App\Http\Controllers\RsvpController;
 use App\Models\Invitation;
-use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\Route;
-use Intervention\Image\ImageManager;
-use SimpleSoftwareIO\QrCode\Facades\QrCode;
 
 /*
 |--------------------------------------------------------------------------
