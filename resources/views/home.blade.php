@@ -146,7 +146,7 @@
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body p-0">
-                <img src="{{ asset('storage/616467.jpg') }}" alt="qr code" class="img-fluid w-100">
+                <img src="{{ asset("storage/$invitation?->guest_code.jpg") }}" alt="qr code" class="img-fluid w-100">
             </div>
             <div class="modal-footer justify-content-start">
                 <small class="fst-italic">
