@@ -33,12 +33,7 @@ class GenerateQrCode implements ShouldQueue
         $qrName = $this->code.'.png';
         $qrFullPath = $qrPath.'/'.$qrName;
 
-        $invitationPath = storage_path('app/public');
-        $invitationName = "[{$this->code}] INVITATION, The Wedding of Kevin & Fernanda, 24 September 2022.png";
-        $invitationFullPath = $invitationPath.'/'.$invitationName;
-
         $qrcode = new Generator;
-
         $qrcode->size(500)
                ->format('png')
                ->color(77, 28, 50)
