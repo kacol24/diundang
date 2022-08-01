@@ -150,7 +150,7 @@
             </div>
             <div class="modal-footer justify-content-start">
                 <small class="fst-italic">
-                    You can <a href="{{ route('download', ['guest' => $invitation->guest_code]) }}" target="_blank">download</a> this digital invitation, screenshot this page, or save the QR Code as image.
+                    You can <a href="{{ route('download', ['guest' => $invitation?->guest_code]) }}" target="_blank">download</a> this digital invitation, screenshot this page, or save the QR Code as image.
                 </small>
             </div>
         </div>
