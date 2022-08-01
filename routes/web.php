@@ -29,7 +29,7 @@ Route::get('/', function () {
     }
 
     $data = [
-        'guestName'  => $guestName,
+        'guestName' => $guestName,
         'invitation' => $invitation,
     ];
 
@@ -46,7 +46,7 @@ Route::get('/download', function () {
     $intervention = new ImageManager;
     $template = $intervention->make(public_path('images/template-2.jpg'));
     $template->insert(storage_path('app/public/qr/616467.png'), 'top-left', 350, 525);
-    $template->text($guestName, 600, 1100, function ($font) use ($guestName, $fontSize) {
+    $template->text($guestName, 600, 1100, function ($font) use ($fontSize) {
         $font->file(public_path('fonts/MADETOMMY-Bold.ttf'));
         $font->size($fontSize);
         $font->align('center');
@@ -92,6 +92,6 @@ Route::get('/download', function () {
 Route::post('rsvp', [RsvpController::class, 'store'])
      ->name('rsvp.store');
 
-Route::get('login', function (){
+Route::get('login', function () {
     return redirect()->route('filament.auth.login');
 })->name('login');

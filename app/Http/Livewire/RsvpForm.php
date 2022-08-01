@@ -28,9 +28,9 @@ class RsvpForm extends Component
 
             $invitation = Invitation::create([
                 'guest_code' => Invitation::generateGuestCode(),
-                'name'       => $this->guestName,
-                'guests'     => 2,
-                'group_id'   => optional($group)->id,
+                'name' => $this->guestName,
+                'guests' => 2,
+                'group_id' => optional($group)->id,
                 //'is_attending' => $this->isAttending,
                 //'pax'          => $this->guests,
                 //'rsvp_at'      => now(),

@@ -3,17 +3,13 @@
 namespace App\Filament\Resources;
 
 use App\Filament\Resources\GroupResource\Pages;
-use App\Filament\Resources\GroupResource\RelationManagers;
 use App\Models\Group;
-use App\Models\Invitation;
 use Carbon\Carbon;
 use Filament\Forms;
 use Filament\Resources\Form;
 use Filament\Resources\Resource;
 use Filament\Resources\Table;
 use Filament\Tables;
-use Illuminate\Database\Eloquent\Builder;
-use Illuminate\Database\Eloquent\SoftDeletingScope;
 
 class GroupResource extends Resource
 {
@@ -49,15 +45,15 @@ class GroupResource extends Resource
                 Tables\Actions\Action::make('send_wa')
                                      ->label('WhatsApp')
                                      ->url(function (Group $record) {
-                                         return "https://wa.me/?text=".urlencode(view('whatsapp',
-                                                 [
-                                                     'groomName'  => 'Kevin Chandra',
-                                                     'guestName'  => $record->name,
-                                                     'brideName'  => 'Fernanda Eka Putri',
-                                                     'linkToSite' => route('home', ['for' => $record->name]),
-                                                     'dueDate'    => Carbon::parse('2022-09-24')->subMonth()
-                                                                           ->format('d F Y'),
-                                                 ])->render());
+                                         return 'https://wa.me/?text='.urlencode(view('whatsapp',
+                                             [
+                                                 'groomName' => 'Kevin Chandra',
+                                                 'guestName' => $record->name,
+                                                 'brideName' => 'Fernanda Eka Putri',
+                                                 'linkToSite' => route('home', ['for' => $record->name]),
+                                                 'dueDate' => Carbon::parse('2022-09-24')->subMonth()
+                                                                       ->format('d F Y'),
+                                             ])->render());
                                      })
                                      ->openUrlInNewTab(),
                 Tables\Actions\EditAction::make(),

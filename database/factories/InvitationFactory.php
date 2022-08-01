@@ -20,9 +20,9 @@ class InvitationFactory extends Factory
         return [
             'seating_id' => Seating::inRandomOrder()->first()->id,
             'guest_code' => Invitation::generateGuestCode(),
-            'name'       => $this->faker->name,
-            'phone'      => "82244872421",
-            'guests'     => 2,
+            'name' => $this->faker->name,
+            'phone' => '82244872421',
+            'guests' => 2,
         ];
     }
 }

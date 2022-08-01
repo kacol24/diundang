@@ -3,7 +3,6 @@
 namespace App\Filament\Resources;
 
 use App\Filament\Resources\SeatingResource\Pages;
-use App\Filament\Resources\SeatingResource\RelationManagers;
 use App\Models\Seating;
 use Filament\Forms;
 use Filament\Resources\Form;

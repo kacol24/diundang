@@ -2,7 +2,6 @@
 
 namespace Database\Seeders;
 
-use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 
 class GroupSeeder extends Seeder
@@ -16,57 +15,57 @@ class GroupSeeder extends Seeder
     {
         $insert = [
             [
-                'name'       => 'Keluarga Kevin',
+                'name' => 'Keluarga Kevin',
                 'created_at' => now(),
                 'updated_at' => now(),
             ],
             [
-                'name'       => 'Keluarga Nanda',
+                'name' => 'Keluarga Nanda',
                 'created_at' => now(),
                 'updated_at' => now(),
             ],
             [
-                'name'       => 'Papa Kevin',
+                'name' => 'Papa Kevin',
                 'created_at' => now(),
                 'updated_at' => now(),
             ],
             [
-                'name'       => 'Papa Nanda',
+                'name' => 'Papa Nanda',
                 'created_at' => now(),
                 'updated_at' => now(),
             ],
             [
-                'name'       => 'Mama Kevin',
+                'name' => 'Mama Kevin',
                 'created_at' => now(),
                 'updated_at' => now(),
             ],
             [
-                'name'       => 'Mama Kevin',
+                'name' => 'Mama Kevin',
                 'created_at' => now(),
                 'updated_at' => now(),
             ],
             [
-                'name'       => 'Teman Kevin',
+                'name' => 'Teman Kevin',
                 'created_at' => now(),
                 'updated_at' => now(),
             ],
             [
-                'name'       => 'Teman Nanda',
+                'name' => 'Teman Nanda',
                 'created_at' => now(),
                 'updated_at' => now(),
             ],
             [
-                'name'       => 'Koko Ori',
+                'name' => 'Koko Ori',
                 'created_at' => now(),
                 'updated_at' => now(),
             ],
             [
-                'name'       => 'Yolen',
+                'name' => 'Yolen',
                 'created_at' => now(),
                 'updated_at' => now(),
             ],
             [
-                'name'       => 'Dio',
+                'name' => 'Dio',
                 'created_at' => now(),
                 'updated_at' => now(),
             ],

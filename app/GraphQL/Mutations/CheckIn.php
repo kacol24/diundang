@@ -4,7 +4,6 @@ namespace App\GraphQL\Mutations;
 
 use App\Actions\InvitationCheckIn;
 use App\Data\CheckInData;
-use App\Models\Attendance;
 use App\Models\Invitation;
 
 final class CheckIn
@@ -28,8 +27,8 @@ final class CheckIn
                 $invitation,
                 CheckInData::fromArray([
                     'sequence_group' => $sequenceGroup,
-                    'attendance_id'  => $attendanceId,
-                    'has_gift'       => $hasGift,
+                    'attendance_id' => $attendanceId,
+                    'has_gift' => $hasGift,
                 ])
             );
 
