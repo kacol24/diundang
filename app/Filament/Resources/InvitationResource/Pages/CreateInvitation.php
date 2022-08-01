@@ -2,6 +2,7 @@
 
 namespace App\Filament\Resources\InvitationResource\Pages;
 
+use App\Events\InvitationCreated;
 use App\Filament\Resources\InvitationResource;
 use App\Jobs\GenerateQrCode;
 use App\Jobs\GenerateQrInvitation;
@@ -21,7 +22,8 @@ class CreateInvitation extends CreateRecord
         }
 
         $invitation = parent::handleRecordCreation($data);
-        GenerateQrInvitation::dispatch($invitation);
+
+        event(new InvitationCreated($invitation));
 
         return $invitation;
     }
