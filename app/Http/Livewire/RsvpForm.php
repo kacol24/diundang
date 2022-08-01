@@ -2,6 +2,7 @@
 
 namespace App\Http\Livewire;
 
+use App\Events\InvitationCreated;
 use App\Models\Group;
 use App\Models\Invitation;
 use Livewire\Component;
@@ -35,6 +36,8 @@ class RsvpForm extends Component
                 //'pax'          => $this->guests,
                 //'rsvp_at'      => now(),
             ]);
+
+            event(new InvitationCreated($invitation, sync: true));
 
             $this->dispatchBrowserEvent('rsvp-created', ['guest' => $invitation->guest_code]);
             $this->emit('rsvpCreated', ['guest' => $invitation->guest_code]);

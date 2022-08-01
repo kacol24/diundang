@@ -23,6 +23,7 @@ class InvitationFactory extends Factory
             'name' => $this->faker->name,
             'phone' => '82244872421',
             'guests' => 2,
+            'is_teapai' => $this->faker->boolean,
         ];
     }
 }

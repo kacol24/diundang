@@ -97,6 +97,12 @@ class Invitation extends Model
     {
         return "[{$this->guest_code}] {$this->name} {$this->phone}";
     }
+
+    public function getQrInvitationPathAttribute()
+    {
+        return storage_path("app/public/{$this->guest_code}.jpg");
+    }
+
     /*
     |--------------------------------------------------------------------------
     | MUTATORS
