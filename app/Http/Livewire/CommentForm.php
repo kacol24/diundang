@@ -18,7 +18,7 @@ class CommentForm extends Component
     public $guest;
 
     protected $rules = [
-        'name'    => 'required|min:2',
+        'name' => 'required|min:2',
         'message' => 'required|min:2',
     ];
 
@@ -40,10 +40,10 @@ class CommentForm extends Component
 
         Comment::create([
             'invitation_id' => $invitationId,
-            'ip_address'    => request()->ip(),
-            'is_approved'   => $isApproved,
-            'name'          => $this->name,
-            'message'       => $this->message,
+            'ip_address' => request()->ip(),
+            'is_approved' => $isApproved,
+            'name' => $this->name,
+            'message' => $this->message,
         ]);
 
         $this->emit('commentSaved');

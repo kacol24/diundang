@@ -5,15 +5,11 @@ namespace App\Filament\Resources;
 use App\Filament\Resources\AttendanceResource\AttendanceForm;
 use App\Filament\Resources\AttendanceResource\AttendanceTable;
 use App\Filament\Resources\AttendanceResource\Pages;
-use App\Filament\Resources\AttendanceResource\RelationManagers;
 use App\Models\Attendance;
-use Filament\Forms;
 use Filament\Resources\Form;
 use Filament\Resources\Resource;
 use Filament\Resources\Table;
 use Filament\Tables;
-use Illuminate\Database\Eloquent\Builder;
-use Illuminate\Database\Eloquent\SoftDeletingScope;
 
 class AttendanceResource extends Resource
 {

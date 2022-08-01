@@ -3,7 +3,6 @@
 namespace App\Filament\Resources;
 
 use App\Filament\Resources\InvitationResource\Pages;
-use App\Filament\Resources\InvitationResource\RelationManagers;
 use App\Models\Invitation;
 use App\Models\Seating;
 use Carbon\Carbon;
@@ -79,14 +78,14 @@ class InvitationResource extends Resource
                                      ->label('WhatsApp')
                                      ->url(function (Invitation $record) {
                                          return "https://wa.me/62{$record->phone}?text=".urlencode(view('whatsapp',
-                                                 [
-                                                     'groomName'  => 'Kevin Chandra',
-                                                     'guestName'  => $record->name ?: 'Mr. / Mrs. / Ms.',
-                                                     'brideName'  => 'Fernanda Eka Putri',
-                                                     'linkToSite' => route('home', ['guest' => $record->guest_code]),
-                                                     'dueDate'    => Carbon::parse('2022-09-24')->subMonth()
-                                                                           ->format('d F Y'),
-                                                 ])->render());
+                                             [
+                                                 'groomName' => 'Kevin Chandra',
+                                                 'guestName' => $record->name ?: 'Mr. / Mrs. / Ms.',
+                                                 'brideName' => 'Fernanda Eka Putri',
+                                                 'linkToSite' => route('home', ['guest' => $record->guest_code]),
+                                                 'dueDate' => Carbon::parse('2022-09-24')->subMonth()
+                                                                       ->format('d F Y'),
+                                             ])->render());
                                      })
                                      ->openUrlInNewTab(),
                 //Tables\Actions\ViewAction::make(),
@@ -105,9 +104,9 @@ class InvitationResource extends Resource
     public static function getPages(): array
     {
         return [
-            'index'  => Pages\ListInvitations::route('/'),
+            'index' => Pages\ListInvitations::route('/'),
             'create' => Pages\CreateInvitation::route('/create'),
-            'edit'   => Pages\EditInvitation::route('/{record}/edit'),
+            'edit' => Pages\EditInvitation::route('/{record}/edit'),
         ];
     }
 
@@ -144,14 +143,14 @@ class InvitationResource extends Resource
                                          ->minValue(1),
                             ]),
                  ])->columnSpan([
-                    'sm' => 2,
-                ]),
+                     'sm' => 2,
+                 ]),
             Group::make()
                  ->schema([
                      Section::make('RSVP Detail')
                             ->schema([
                                 TextInput::make('guest_code')
-                                         ->unique(ignorable: fn(?Model $record): ?Model => $record),
+                                         ->unique(ignorable: fn (?Model $record): ?Model => $record),
                                 Select::make('is_attending')
                                       ->options([
                                           1 => 'Attending',

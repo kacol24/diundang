@@ -9,7 +9,6 @@ use App\Jobs\GenerateQrInvitation;
 use App\Models\Invitation;
 use Filament\Resources\Pages\CreateRecord;
 use Illuminate\Database\Eloquent\Model;
-use SimpleSoftwareIO\QrCode\Facades\QrCode;
 
 class CreateInvitation extends CreateRecord
 {

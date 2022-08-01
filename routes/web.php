@@ -29,7 +29,7 @@ Route::get('/', function () {
     }
 
     $data = [
-        'guestName'  => $guestName,
+        'guestName' => $guestName,
         'invitation' => $invitation,
     ];
 

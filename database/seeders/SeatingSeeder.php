@@ -2,7 +2,6 @@
 
 namespace Database\Seeders;
 
-use App\Models\Seating;
 use Illuminate\Database\Seeder;
 
 class SeatingSeeder extends Seeder
@@ -16,97 +15,97 @@ class SeatingSeeder extends Seeder
     {
         $seatings = [
             [
-                'name'       => 'Andalasia',
+                'name' => 'Andalasia',
                 'created_at' => now(),
                 'updated_at' => now(),
             ],
             [
-                'name'       => 'Arendelle',
+                'name' => 'Arendelle',
                 'created_at' => now(),
                 'updated_at' => now(),
             ],
             [
-                'name'       => 'Avalor',
+                'name' => 'Avalor',
                 'created_at' => now(),
                 'updated_at' => now(),
             ],
             [
-                'name'       => 'Atlantica',
+                'name' => 'Atlantica',
                 'created_at' => now(),
                 'updated_at' => now(),
             ],
             [
-                'name'       => 'Costa Luna',
+                'name' => 'Costa Luna',
                 'created_at' => now(),
                 'updated_at' => now(),
             ],
             [
-                'name'       => 'Dun Broch',
+                'name' => 'Dun Broch',
                 'created_at' => now(),
                 'updated_at' => now(),
             ],
             [
-                'name'       => 'Fang',
+                'name' => 'Fang',
                 'created_at' => now(),
                 'updated_at' => now(),
             ],
             [
-                'name'       => 'Freezenburg',
+                'name' => 'Freezenburg',
                 'created_at' => now(),
                 'updated_at' => now(),
             ],
             [
-                'name'       => 'Gummadoon',
+                'name' => 'Gummadoon',
                 'created_at' => now(),
                 'updated_at' => now(),
             ],
             [
-                'name'       => 'Hakalo',
+                'name' => 'Hakalo',
                 'created_at' => now(),
                 'updated_at' => now(),
             ],
             [
-                'name'       => 'Macadamia',
+                'name' => 'Macadamia',
                 'created_at' => now(),
                 'updated_at' => now(),
             ],
             [
-                'name'       => 'Mount Olympus',
+                'name' => 'Mount Olympus',
                 'created_at' => now(),
                 'updated_at' => now(),
             ],
             [
-                'name'       => 'Moors',
+                'name' => 'Moors',
                 'created_at' => now(),
                 'updated_at' => now(),
             ],
             [
-                'name'       => 'Narnia',
+                'name' => 'Narnia',
                 'created_at' => now(),
                 'updated_at' => now(),
             ],
             [
-                'name'       => 'Odiferous',
+                'name' => 'Odiferous',
                 'created_at' => now(),
                 'updated_at' => now(),
             ],
             [
-                'name'       => 'Pixie Hollow',
+                'name' => 'Pixie Hollow',
                 'created_at' => now(),
                 'updated_at' => now(),
             ],
             [
-                'name'       => 'Tabor',
+                'name' => 'Tabor',
                 'created_at' => now(),
                 'updated_at' => now(),
             ],
             [
-                'name'       => 'Underland',
+                'name' => 'Underland',
                 'created_at' => now(),
                 'updated_at' => now(),
             ],
             [
-                'name'       => 'Weselton',
+                'name' => 'Weselton',
                 'created_at' => now(),
                 'updated_at' => now(),
             ],

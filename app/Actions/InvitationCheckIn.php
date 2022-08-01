@@ -33,10 +33,10 @@ class InvitationCheckIn
         }
 
         $attendance = Attendance::create([
-            'invitation_id'  => $invitation->id,
+            'invitation_id' => $invitation->id,
             'sequence_group' => $sequenceGroup,
-            'sequence'       => $nextSequence,
-            'has_gift'       => $checkInData->hasGift,
+            'sequence' => $nextSequence,
+            'has_gift' => $checkInData->hasGift,
         ]);
 
         if ($attendanceId) {
