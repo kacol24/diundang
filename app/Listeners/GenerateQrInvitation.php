@@ -15,6 +15,6 @@ class GenerateQrInvitation implements ShouldQueue
             return \App\Jobs\GenerateQrInvitation::dispatchSync($invitation);
         }
 
-        return \App\Jobs\GenerateQrInvitation::dispatch($invitation);
+        return \App\Jobs\GenerateQrInvitation::dispatchAfterResponse($invitation);
     }
 }
