@@ -7,7 +7,7 @@ use Illuminate\Contracts\Queue\ShouldQueue;
 
 class GenerateQrInvitation implements ShouldQueue
 {
-    public function handle(InvitationCreated $event)
+    public function handle($event)
     {
         $invitation = $event->invitation;
 
