@@ -1,4 +1,4 @@
-Dear {{ $guestName }},
+Dear {!! $guestName !!},
 
 You are cordially invited to
 The Wedding of *{{ $groomName }} & {{ $brideName }}*
