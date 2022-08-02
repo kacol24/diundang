@@ -103,6 +103,15 @@ class Invitation extends Model
         return storage_path("app/public/{$this->guest_code}.jpg");
     }
 
+    public function getWhatsappPhoneAttribute()
+    {
+        if (! $this->phone) {
+            return '';
+        }
+
+        return '62'.$this->phone;
+    }
+
     /*
     |--------------------------------------------------------------------------
     | MUTATORS

@@ -77,7 +77,7 @@ class InvitationResource extends Resource
                 Tables\Actions\Action::make('send_wa')
                                      ->label('WhatsApp')
                                      ->url(function (Invitation $record) {
-                                         return "https://wa.me/62{$record->phone}?text=".urlencode(view('whatsapp',
+                                         return "https://wa.me/{$record->whatsapp_phone}?text=".urlencode(view('whatsapp',
                                              [
                                                  'groomName' => 'Kevin Chandra',
                                                  'guestName' => $record->name ?: 'Mr. / Mrs. / Ms.',
