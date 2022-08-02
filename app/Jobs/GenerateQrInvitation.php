@@ -7,6 +7,7 @@ use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Foundation\Bus\Dispatchable;
 use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Queue\SerializesModels;
+use Illuminate\Support\Str;
 use Intervention\Image\ImageManager;
 
 class GenerateQrInvitation implements ShouldQueue
@@ -57,18 +58,20 @@ class GenerateQrInvitation implements ShouldQueue
         });
         $template->text($guestCode, 600, 1140, function ($font) {
             $font->file(public_path('fonts/MADETOMMY.ttf'));
-            $font->size(20);
+            $font->size(28);
             $font->align('center');
             $font->valign('middle');
         });
+        $table = $this->invitation->pax . ' ' . Str::plural('guest', $this->invitation->pax);
         if ($seating) {
-            $template->text('Table: Arendelle', 600, 1180, function ($font) {
-                $font->file(public_path('fonts/MADETOMMY.ttf'));
-                $font->size(20);
-                $font->align('center');
-                $font->valign('middle');
-            });
+            $table = 'Table: ' . $this->invitation->seating->name . ' | ' . $table;
         }
+        $template->text($table, 600, 1180, function ($font) {
+            $font->file(public_path('fonts/MADETOMMY.ttf'));
+            $font->size(28);
+            $font->align('center');
+            $font->valign('middle');
+        });
 
         $template->save(storage_path("app/public/{$guestCode}.jpg"));
     }
