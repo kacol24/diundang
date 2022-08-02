@@ -2,6 +2,7 @@
 
 namespace App\Filament\Resources;
 
+use App\Events\InvitationUpdated;
 use App\Filament\Resources\InvitationResource\Pages;
 use App\Models\Invitation;
 use App\Models\Seating;
@@ -52,6 +53,8 @@ class InvitationResource extends Resource
                              ->action(function ($record) {
                                  $record->is_teapai = ! $record->is_teapai;
                                  $record->save();
+
+                                 event(new InvitationUpdated($record));
                              }),
                 TextColumn::make('group.name'),
                 TextColumn::make('guests'),
