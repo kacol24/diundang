@@ -17,6 +17,11 @@ class GenerateQrInvitation implements ShouldQueue
     public $invitation;
 
     /**
+     * @var \Intervention\Image\ImageManager
+     */
+    protected ImageManager $intervention;
+
+    /**
      * Create a new job instance.
      *
      * @return void
@@ -24,6 +29,7 @@ class GenerateQrInvitation implements ShouldQueue
     public function __construct($invitation)
     {
         $this->invitation = $invitation;
+        $this->intervention = new ImageManager;
     }
 
     /**
@@ -33,46 +39,60 @@ class GenerateQrInvitation implements ShouldQueue
      */
     public function handle()
     {
+        $guestCode = $this->invitation->guest_code;
+        $qrname = storage_path("app/public/qr/{$guestCode}.png");
+
+        if (! file_exists($qrname)) {
+            GenerateQrCode::dispatchSync($guestCode);
+        }
+
+        $templatePath = public_path('images/template-3.jpg');
+        if ($this->invitation->is_teapai) {
+            $templatePath = public_path('images/template-3-teapai.jpg');
+        }
+        $template = $this->intervention->make($templatePath);
+        $qrPrintable = $this->processQrCode();
+        $template->insert($qrPrintable, 'top-left', 350 - 50, 525 - 50);
+        $template->save(storage_path("app/public/{$guestCode}.jpg"));
+    }
+
+    protected function processQrCode()
+    {
         $guestName = $this->invitation->name; // 44 max
         $guestCode = $this->invitation->guest_code;
         $fontSize = 45 - (round(strlen($guestName) / 10) * 5);
         $seating = $this->invitation->seating;
 
         $qrname = storage_path("app/public/qr/{$guestCode}.png");
-        if (! file_exists($qrname)) {
-            GenerateQrCode::dispatchSync($guestCode);
-        }
 
-        $intervention = new ImageManager;
-        $templatePath = public_path('images/template-3.jpg');
-        if ($this->invitation->is_teapai) {
-            $templatePath = public_path('images/template-3-teapai.jpg');
-        }
-        $template = $intervention->make($templatePath);
-        $template->insert($qrname, 'top-left', 350, 525);
-        $template->text($guestName, 600, 1100, function ($font) use ($fontSize) {
+        $blankWhite = $this->intervention->make(public_path('images/blank-white.jpg'));
+        $blankWhite->insert($qrname, 'top-left', 350 - 300, 525 - 475);
+        $blankWhite->text($guestName, 600 - 300, 1100 - 475, function ($font) use ($fontSize) {
             $font->file(public_path('fonts/MADETOMMY-Bold.ttf'));
             $font->size($fontSize);
             $font->align('center');
             $font->valign('middle');
         });
-        $template->text($guestCode, 600, 1140, function ($font) {
+        $blankWhite->text($guestCode, 600 - 300, 1140 - 475, function ($font) {
             $font->file(public_path('fonts/MADETOMMY.ttf'));
             $font->size(28);
             $font->align('center');
             $font->valign('middle');
         });
-        $table = $this->invitation->pax . ' ' . Str::plural('guest', $this->invitation->pax);
+        $pax = $this->invitation->pax ?? $this->invitation->guests;
+        $table = $pax.' '.Str::plural('guest', $pax);
         if ($seating) {
-            $table = 'Table: ' . $this->invitation->seating->name . ' | ' . $table;
+            $table = 'Table: '.$this->invitation->seating->name.' | '.$table;
         }
-        $template->text($table, 600, 1180, function ($font) {
+        $blankWhite->text($table, 600 - 300, 1180 - 475, function ($font) {
             $font->file(public_path('fonts/MADETOMMY.ttf'));
             $font->size(28);
             $font->align('center');
             $font->valign('middle');
         });
 
-        $template->save(storage_path("app/public/{$guestCode}.jpg"));
+        $blankWhite->save(storage_path("app/public/printable/{$guestCode}.jpg"));
+
+        return storage_path("app/public/printable/{$guestCode}.jpg");
     }
 }
