@@ -1,16 +1,40 @@
-<html>
+@php
+    $paperSizes = [
+        'A3' => [
+            'paper'             => '297mm 420mm',
+            'break'             => 90,
+            'break_with_margin' => 90
+        ],
+        'A4' => [
+            'paper' => '210mm 297mm',
+            'break' => 42
+        ],
+        'A3_LANDSCAPE' => [
+            'paper'             => '420mm 297mm',
+            'break'             => 98,
+            'break_with_margin' => 78
+        ],
+        'A4_LANDSCAPE' => [
+            'paper' => '297mm 210mm',
+            'break' => 45
+        ],
+    ];
+    $paper = 'A3';
+@endphp
+    <!doctype html>
+<html lang="en">
 <head>
     <meta charset="utf-8">
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
     <title>You Are Invited - The Wedding Of John Doe & Jane Doe</title>
     <style>
         @page {
-            margin: 0;
-            size: 8cm 11.2cm;
+            margin: 1cm;
+            size: {{ $paperSizes[$paper]['paper'] }};
         }
 
         body {
-            margin: 0;
+            margin: 1cm;
         }
 
         img {
@@ -18,40 +42,26 @@
         }
 
         * {
+            font-size: 0;
             box-sizing: border-box;
             font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", "Liberation Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
         }
+
+        .break {
+            padding-top: 1cm;
+            page-break-before: always;
+        }
     </style>
 </head>
-<body>
-<div style="page-break-after: always">
-    <div style="text-align: center;padding: 15px;">
-        <div>
-            Your table:<br>
-            <strong>
-                {{ $invitation->seating->name }}
-            </strong>
-        </div>
-        <img src="{{ public_path('images/'. rand(1, 5) .'.jpg') }}" style="max-width: 100%;height:auto;margin-top: 30px;">
-        <div style="position: fixed;bottom: 15px;left: 0;width: 100%;">
-            <div style="width: 100px;margin: auto;">
-                Invitation<br>
-                Next Page
-            </div>
-        </div>
+<body style="font-size: 0;">
+@foreach(App\Models\Invitation::limit(98)->get() as $invitation)
+    <div style="width: 3cm; max-width: 3cm; height:auto; outline: 1px solid black; margin: 0;display: inline-flex">
+        <img src="{{ asset('storage/printable/' . $invitation->filename) }}"
+             style="max-width: 100%; height: auto; margin: 0; width: 100%;">
     </div>
-</div>
-<div style="position: relative;">
-    <img src="{{ public_path('images/design.jpg') }}" style="max-width: 100%;height:auto;">
-    <div style="position: absolute; left: 2.13cm;bottom: 1.6cm;">
-        <div style="background-color:#fff;width: 3cm;padding: 15px;text-align: center;border-radius: 8px;">
-            <img src="{{ $qr }}" style="height:auto;max-width: 100%">
-            <strong style="font-size: 12px;">{{ $invitation->name }}</strong><br>
-            <small style="font-size: 10px;">
-                Table: <strong>{{ $invitation->seating->name }}</strong>
-            </small>
-        </div>
-    </div>
-</div>
+    @if($loop->iteration % $paperSizes[$paper]['break_with_margin'] == 0)
+        <div class="break"></div>
+    @endif
+@endforeach
 </body>
 </html>

@@ -18,4 +18,9 @@ class DownloadController extends Controller
                 "[$guestCode] Invitation, The Wedding of Kevin & Fernanda, 24-09-2022.jpg"
             );
     }
+
+    public function print()
+    {
+        return view('qr');
+    }
 }
