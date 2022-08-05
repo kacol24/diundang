@@ -14,7 +14,7 @@
                             </h5>
                         </div>
                     </div>
-                    <img src="{{ asset('images/ALBUM-COVER-KEVIN-&-NANDA-WD-02-FRONT.jpg') }}"
+                    <img src="{{ asset('images/album-cover-front.jpg') }}"
                          class="img-fluid w-100 user-select-none"
                          draggable="false" alt="album cover front">
                 </a>
