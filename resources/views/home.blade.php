@@ -134,7 +134,9 @@
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body p-0">
-                <img src="{{ asset("storage/$invitation?->guest_code.jpg") }}" alt="qr code" class="img-fluid w-100">
+                @if($invitation)
+                    <img src="{{ asset("storage/$invitation?->guest_code.jpg") }}" alt="qr code" class="img-fluid w-100">
+                @endif
             </div>
             <div class="modal-footer justify-content-start">
                 <small class="fst-italic">
