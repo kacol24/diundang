@@ -9,9 +9,9 @@
                         style="background-color:rgba(0, 0, 0, .4);">
                         <div class="text-center text-white" style="margin-top: 50%;">
                             <i class="fa-solid fa-hand-pointer fa-lg fa-fw"></i>
-                            <h5 class="mt-3 mb-0 font-serif">
+                            <div class="mt-3 mb-0 font-serif">
                                 View Album
-                            </h5>
+                            </div>
                         </div>
                     </div>
                     <img src="{{ asset('images/album-cover-front.jpg') }}"
