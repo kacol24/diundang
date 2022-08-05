@@ -7,9 +7,9 @@
         @forelse($comments as $comment)
             <div class="mb-4 mb-md-5">
                 <div class="d-flex w-100 justify-content-between">
-                    <h5 class="mb-1 h6">
+                    <div class="mb-1 h6">
                         {{ $comment->name }}
-                    </h5>
+                    </div>
                     <small>
                         {{ $comment->created_at->diffForHumans() }}
                     </small>

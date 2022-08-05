@@ -6,7 +6,7 @@
                     #loVINyouforeFER
                 </small>
             </a>
-            <button class="navbar-toggler border-0 text-white" type="button" id="open_nav">
+            <button class="navbar-toggler border-0 text-white" type="button" id="open_nav" aria-label="open navigation">
                 <i class="fas fa-fw fa-bars"></i>
             </button>
             <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasNavbar"

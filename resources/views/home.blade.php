@@ -149,10 +149,10 @@
     </div>
 </div>
 <div id="controls" class="shadow-sm">
-    <button class="btn p-0" id="btn_play">
+    <button class="btn p-0" id="btn_play" aria-label="play button">
         <i class="fas fa-fw fa-xs fa-play"></i>
     </button>
-    <button class="btn p-0 d-none" id="btn_pause">
+    <button class="btn p-0 d-none" id="btn_pause" aria-label="pause button">
         <i class="fas fa-fw fa-xs fa-pause"></i>
     </button>
 </div>
