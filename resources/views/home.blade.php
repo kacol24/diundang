@@ -65,32 +65,20 @@
                     </div>
                 </div>
             </div>
-            <div class="modal-footer border-0 justify-content-center">
-                {{--                <div class="dropdown">--}}
-                {{--                    <button type="button" class="btn btn-secondary" aria-expanded="false"--}}
-                {{--                            data-bs-toggle="dropdown">--}}
-                {{--                        {{ __('See Invitation') }}--}}
-                {{--                    </button>--}}
-                {{--                    <ul class="dropdown-menu">--}}
-                {{--                        <li>--}}
-                {{--                            <h6 class="dropdown-header">--}}
-                {{--                                Choose Language--}}
-                {{--                            </h6>--}}
-                {{--                        </li>--}}
-                {{--                        <li>--}}
-                {{--                            <a class="dropdown-item" href="#">--}}
-                {{--                                English--}}
-                {{--                            </a>--}}
-                {{--                        </li>--}}
-                {{--                        <li>--}}
-                {{--                            <a class="dropdown-item" href="#">--}}
-                {{--                                Bahasa Indonesia--}}
-                {{--                            </a>--}}
-                {{--                        </li>--}}
-                {{--                    </ul>--}}
-                {{--                </div>--}}
+            <div class="modal-footer border-0 justify-content-center flex-column">
+                @if(optional($invitation)->is_attending)
+                    <button class="btn d-flex align-items-center rounded-pill"
+                            style="background-color: #eee; height: 38px;"
+                            data-bs-toggle="modal"
+                            data-bs-target="#qrModal">
+                    <span class="d-flex justify-content-center align-items-center me-1 text-black">
+                        <i class="fa-solid fa-qrcode fa-fw fa-xs"></i>
+                    </span>
+                        QR Invitation
+                    </button>
+                @endif
                 <button type="button" class="btn btn-secondary rounded-pill" data-bs-dismiss="modal">
-                    {{ __('See Invitation') }}
+                    {{ __('Open Invitation') }}
                 </button>
             </div>
         </div>
@@ -150,7 +138,9 @@
             </div>
             <div class="modal-footer justify-content-start">
                 <small class="fst-italic">
-                    You can <a href="{{ route('download', ['guest' => $invitation?->guest_code]) }}" target="_blank" style="color: var(--color-secondary)">download</a> this digital invitation, screenshot this page, or save the QR Code as image.
+                    You can <a href="{{ route('download', ['guest' => $invitation?->guest_code]) }}" target="_blank"
+                               style="color: var(--color-secondary)">download</a> this digital invitation, screenshot
+                    this page, or save the QR Code as image.
                 </small>
             </div>
         </div>
