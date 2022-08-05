@@ -45,19 +45,10 @@
                                                      draggable="false" alt="album cover front">
                                             </div>
                                             @foreach([
-                                                        //'ROB00520.jpg',
-                                                        'gallery.jpeg',
-                                                        //'ROB00812.jpg',
-                                                        'ROB00667.jpg',
-                                                        'ROB00398.jpg',
-                                                        'ROB00667.jpg',
-                                                        'ROB00398.jpg',
-                                                        'ROB00667.jpg',
-                                                        'ROB00398.jpg',
-                                                        'ROB00667.jpg',
-                                                        'ROB00398.jpg',
-                                                        'ROB00667.jpg',
-                                                        'ROB00398.jpg',
+                                                        'ROB00302.jpg',
+                                                        'ROB00450.jpg',
+                                                        'ROB00458.jpg',
+                                                        'ROB00520.jpg',
                                                         'ROB00667.jpg',
                                                     ] as $gallery)
                                                 <div>
