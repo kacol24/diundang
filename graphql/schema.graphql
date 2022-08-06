@@ -25,7 +25,7 @@ type Query {
       name: String @where(operator: "like")
     ): [User!]! @paginate(defaultCount: 10)
 
-    invitations: [Invitation!]! @paginate(defaultCount: 10)
+    invitations: [Invitation!]! @all
     attendances(
         limit: Int @limit
         sequence_group: String @where(clause: "whereSequenceGroup")
