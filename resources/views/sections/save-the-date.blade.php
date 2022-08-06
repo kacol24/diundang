@@ -2,7 +2,7 @@
     <div class="position-absolute w-100 darkened-overlay"
          style="top: 0;left: 0; height: 80%; background-repeat: no-repeat; background-size: cover; background-position: center bottom"
          data-parallax
-         data-src="{{ asset('images/ROB00394.jpg') }}"></div>
+         data-src="{{ asset('images/JES04035.jpg') }}"></div>
     <div class="container position-relative text-center" style="z-index: 1">
         <h3 class="text-uppercase text-white h2 font-serif lh-base">
             {{ __('Saturday') }},<br>
