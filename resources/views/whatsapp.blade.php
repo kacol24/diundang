@@ -8,7 +8,7 @@ Keluarga yang berbahagia,
 dan
 *{{ __('Mr.') }} Ge Cing Kai & {{ __('Mrs.') }} Liauw Hung San*
 
-@if($isAttending)
+@if(isset($isAttending) && $isAttending)
 Anda dapat melihat detail acara dan download Digital Invitation pada link berikut:
 *{{ $linkToSite }}*
 
