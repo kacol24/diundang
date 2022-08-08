@@ -80,10 +80,16 @@ class GenerateQrInvitation implements ShouldQueue
             $font->valign('middle');
         });
         $pax = $this->invitation->pax ?? $this->invitation->guests;
-        $table = $pax.' '.Str::plural('guest', $pax);
+        $table = '';
         if ($seating) {
-            $table = 'Table: '.$this->invitation->seating->name.' | '.$table;
+            $table = 'Table: '.$this->invitation->seating->name.' | ';
         }
+        if ($this->invitation->is_family) {
+            $table .= 'Family';
+        } else {
+            $table .= $pax.' '.Str::plural('guest', $pax);
+        }
+
         $blankWhite->text($table, 600 - 300, 1180 - 475, function ($font) {
             $font->file(public_path('fonts/MADETOMMY.ttf'));
             $font->size(28);

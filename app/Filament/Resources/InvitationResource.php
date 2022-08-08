@@ -55,13 +55,24 @@ class InvitationResource extends Resource
                                  $record->save();
 
                                  event(new InvitationUpdated($record));
-                             }),
+                             })
+                             ->toggleable(),
                 TextColumn::make('group.name'),
-                TextColumn::make('guests'),
+                TextColumn::make('guests')
+                          ->label('Max Guests'),
                 TextColumn::make('seating.name')
                           ->label('Table'),
                 BooleanColumn::make('is_attending'),
                 TextColumn::make('rsvp_at')->dateTime(),
+                TextColumn::make('pax')->toggleable(isToggledHiddenByDefault: true),
+                BooleanColumn::make('is_family')
+                             ->action(function ($record) {
+                                 $record->is_family = ! $record->is_family;
+                                 $record->save();
+
+                                 event(new InvitationUpdated($record));
+                             })
+                             ->toggleable(isToggledHiddenByDefault: true),
             ])
             ->filters([
                 MultiSelectFilter::make('group_id')
@@ -162,6 +173,13 @@ class InvitationResource extends Resource
                                       ]),
                                 DateTimePicker::make('rsvp_at')
                                               ->label('RSVP At'),
+                                Forms\Components\Grid::make()
+                                                     ->schema([
+                                                         TextInput::make('pax')
+                                                                  ->numeric(),
+                                                         Forms\Components\Checkbox::make('is_family')
+                                                                                  ->inline(false),
+                                                     ]),
                             ]),
                  ])
                  ->columnSpan(1),
