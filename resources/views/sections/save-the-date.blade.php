@@ -71,7 +71,7 @@
             </div>
         </div>
         <div class="row mt-5 justify-content-around font-serif">
-            <div class="col-md-5">
+            <div class="col-lg-5">
                 <div class="card mb-4 rounded-4 text-center border-0" data-aos="fade-up">
                     <div class="card-body py-5 px-md-5">
                         <h3 class="card-title mb-5 h3">
@@ -92,7 +92,7 @@
                     </div>
                 </div>
             </div>
-            <div class="col-md-5">
+            <div class="col-lg-5">
                 <div class="card rounded-4 text-center border-0" data-aos="fade-up" data-aos-delay="300">
                     <div class="card-body py-5 px-md-5">
                         <h3 class="card-title mb-5 h3">

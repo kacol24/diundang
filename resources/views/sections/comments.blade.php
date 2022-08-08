@@ -7,7 +7,7 @@
             Leave your wishes here
         </small>
         <div class="row justify-content-center">
-            <div class="col-md-6">
+            <div class="col-lg-6">
                 <livewire:comment-form/>
                 <livewire:comment-list/>
             </div>

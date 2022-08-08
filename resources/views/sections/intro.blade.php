@@ -17,8 +17,8 @@
             </p>
         </div>
         <div class="row py-5 justify-content-around overflow-hidden">
-            <div class="col-md-5">
-                <div class="card rounded-4 mb-4 mb-md-0 text-center" data-aos="fade-right">
+            <div class="col-lg-5">
+                <div class="card rounded-4 mb-4 mb-lg-0 text-center" data-aos="fade-right">
                     <div class="card-body py-5">
                         <img src="{{ asset('images/kevin.jpg') }}" alt=""
                              class="img-fluid rounded-circle mb-3 mx-auto"
@@ -38,7 +38,7 @@
                     </div>
                 </div>
             </div>
-            <div class="col-md-5">
+            <div class="col-lg-5">
                 <div class="card rounded-4 text-center h-100" data-aos="fade-left">
                     <div class="card-body py-5">
                         <img src="{{ asset('images/nanda.jpg') }}" alt=""

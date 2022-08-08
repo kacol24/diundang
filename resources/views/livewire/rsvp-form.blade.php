@@ -91,9 +91,9 @@
                 </button>
             </div>
             @if($invitation && $invitation->is_attending)
-                <div class="col-md-4 text-end">
+                <div class="col-md-4 text-md-end text-center mt-3">
                     <a class="btn d-inline-flex align-items-center rounded-pill shadow-sm me-0"
-                       style="background-color: #eee; height: 40px;"
+                       style="background-color: #eee; height: 38px;"
                        data-bs-toggle="modal"
                        href="#qrModal">
                         <span class="d-flex justify-content-center align-items-center me-2 text-black">

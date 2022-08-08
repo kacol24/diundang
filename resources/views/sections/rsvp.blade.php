@@ -7,7 +7,7 @@
             @include('components.horizontal-separator')
         </div>
         <div class="row justify-content-center mt-5">
-            <div class="col-md-6">
+            <div class="col-lg-6">
                 <livewire:rsvp-form :invitation="$invitation" :guestName="$guestName" :group="request('for')"/>
             </div>
         </div>

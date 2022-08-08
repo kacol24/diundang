@@ -2,7 +2,7 @@
      x-data>
     <div class="container">
         <div class="row justify-content-center">
-            <div class="col-md-5">
+            <div class="col-lg-5">
                 <a href="#galleryModal" data-bs-toggle="modal" class="position-relative d-block">
                     <div
                         class="position-absolute w-100 h-100 top-0 start-0 d-flex align-items-center justify-content-center"
