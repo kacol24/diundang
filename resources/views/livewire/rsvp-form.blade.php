@@ -92,10 +92,15 @@
             </div>
             @if($invitation && $invitation->is_attending)
                 <div class="col-md-4 text-end">
-                    <a href="#qrModal" style="color: var(--color-secondary);"
-                       data-bs-toggle="modal">
-                        <small class="fst-italic">
-                            {{ __('Show QR Invitation') }}
+                    <a class="btn d-inline-flex align-items-center rounded-pill shadow-sm me-0"
+                       style="background-color: #eee; height: 40px;"
+                       data-bs-toggle="modal"
+                       href="#qrModal">
+                        <span class="d-flex justify-content-center align-items-center me-2 text-black">
+                            <i class="fa-solid fa-qrcode fa-fw fa-xs"></i>
+                        </span>
+                        <small style="font-size: 70%;">
+                            QR Invitation
                         </small>
                     </a>
                 </div>

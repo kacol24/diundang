@@ -221,9 +221,9 @@
 {{--    });--}}
 {{--</script>--}}
 <script>
-    var qrModal = new bootstrap.Modal(document.getElementById('qrModal'));
     Livewire.on('rsvpUpdated', function(payload) {
         if (payload.invitation.is_attending == 1) {
+            var qrModal = new bootstrap.Modal(document.getElementById('qrModal'));
             qrModal.show();
         }
     });
