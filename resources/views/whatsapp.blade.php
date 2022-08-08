@@ -1,25 +1,19 @@
 Dear {!! $guestName !!},
 
-You are cordially invited to
-The Wedding of *{{ $groomName }} & {{ $brideName }}*
+Tanpa mengurangi rasa hormat, kami mengundang Anda untuk hadir ke acara
+Pernikahan *{{ $groomName }} & {{ $brideName }}*
 
-Together with their families,
+Keluarga yang berbahagia,
 *{{ __('Mr.') }} Tjen Gunawan Chandra & {{ __('Mrs.') }} Susilowati*
-And
+dan
 *{{ __('Mr.') }} Ge Cing Kai & {{ __('Mrs.') }} Liauw Hung San*
 
-Invites you to attend the Wedding Reception of their Son and Daughter which will be held on:
-*Saturday, 24 September 2022*
-at *18.00*
-*XO Palace*
-_Jl. Raya Kupang Indah No.15, Dukuh Kupang, Kec. Dukuhpakis, Kota SBY, Jawa Timur 60225_
-
-Please kindly help us prepare everything better by confirming your presence to our wedding event with the following RSVP form:
-
+Untuk membantu kami mempersiapkan semuanya lebih baik,
+mohon konfirmasi kehadiran Anda di acara pernikahan kami dengan mengisi formulir RSVP pada link berikut:
 *{{ $linkToSite }}*
 
 
-_Please complete this RSVP before *{{ $dueDate }}*._
+_Harap lengkapi RSVP ini sebelum *{{ $dueDate }}*._
 
 
 With love,
