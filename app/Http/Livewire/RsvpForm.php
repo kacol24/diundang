@@ -3,6 +3,7 @@
 namespace App\Http\Livewire;
 
 use App\Events\InvitationCreated;
+use App\Events\InvitationUpdated;
 use App\Models\Group;
 use App\Models\Invitation;
 use Livewire\Component;
@@ -49,6 +50,8 @@ class RsvpForm extends Component
         $this->invitation->pax = $this->guests;
         $this->invitation->rsvp_at = now();
         $this->invitation->save();
+
+        event(new InvitationUpdated($this->invitation, sync: true));
 
         $this->emit('rsvpUpdated', ['invitation' => $this->invitation]);
 
