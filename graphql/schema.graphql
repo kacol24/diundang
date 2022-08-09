@@ -25,7 +25,7 @@ type Query {
       name: String @where(operator: "like")
     ): [User!]! @paginate(defaultCount: 10)
 
-    invitations: [Invitation!]! @all
+    invitations: [Invitation!]! @all @orderBy(column: "name", direction: ASC)
     attendances(
         limit: Int @limit
         sequence_group: String @where(clause: "whereSequenceGroup")
@@ -58,6 +58,8 @@ type Invitation {
     id: ID
     guest_code: String
     name: String!
+    title: String
+    full_name: String
     phone: String
     guests: Int
     seating: Seating @belongsTo
