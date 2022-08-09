@@ -31,6 +31,12 @@ class Invitation extends Model
 
     protected $casts = [
         'rsvp_at' => 'datetime',
+        'title'   => 'array',
+    ];
+
+    protected $appends = [
+        'full_name',
+        'formatted_title',
     ];
 
     /*
@@ -100,7 +106,7 @@ class Invitation extends Model
 
     public function getFilenameAttribute()
     {
-        return $this->guest_code . '.jpg';
+        return $this->guest_code.'.jpg';
     }
 
     public function getQrInvitationPathAttribute()
@@ -117,6 +123,15 @@ class Invitation extends Model
         return '62'.$this->phone;
     }
 
+    public function getFullNameAttribute()
+    {
+        return $this->formatted_title.' '.$this->name;
+    }
+
+    public function getFormattedTitleAttribute()
+    {
+        return implode(' ', $this->title ?? []);
+    }
     /*
     |--------------------------------------------------------------------------
     | MUTATORS

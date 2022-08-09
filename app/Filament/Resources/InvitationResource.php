@@ -8,8 +8,11 @@ use App\Models\Invitation;
 use App\Models\Seating;
 use Carbon\Carbon;
 use Filament\Forms;
+use Filament\Forms\Components\Checkbox;
 use Filament\Forms\Components\DateTimePicker;
+use Filament\Forms\Components\Grid;
 use Filament\Forms\Components\Group;
+use Filament\Forms\Components\MultiSelect;
 use Filament\Forms\Components\Section;
 use Filament\Forms\Components\Select;
 use Filament\Forms\Components\TextInput;
@@ -47,7 +50,7 @@ class InvitationResource extends Resource
             ->columns([
                 TextColumn::make('guest_code')
                           ->searchable(),
-                TextColumn::make('name')
+                TextColumn::make('full_name')
                           ->searchable(),
                 BooleanColumn::make('is_teapai')
                              ->action(function ($record) {
@@ -132,13 +135,24 @@ class InvitationResource extends Resource
                  ->schema([
                      Section::make('Guest Detail')
                             ->schema([
-                                TextInput::make('name')
-                                         ->required(),
+                                Grid::make()
+                                    ->schema([
+                                        MultiSelect::make('title')
+                                                   ->options([
+                                                       'Mr.'        => 'Mr.',
+                                                       'Mrs.'       => 'Mrs.',
+                                                       'Mr. & Mrs.' => 'Mr. & Mrs.',
+                                                       'dr.'        => 'dr.',
+                                                       'drg.'       => 'drg.',
+                                                   ]),
+                                        TextInput::make('name')
+                                                 ->required(),
+                                    ]),
                                 TextInput::make('phone')
                                          ->type('tel')
                                          ->prefix('+62'),
-                                Forms\Components\Checkbox::make('is_teapai')
-                                                         ->inline(false),
+                                Checkbox::make('is_teapai')
+                                        ->inline(false),
                             ]),
                      Section::make('Invitation Detail')
                             ->schema([
@@ -173,13 +187,13 @@ class InvitationResource extends Resource
                                       ]),
                                 DateTimePicker::make('rsvp_at')
                                               ->label('RSVP At'),
-                                Forms\Components\Grid::make()
-                                                     ->schema([
-                                                         TextInput::make('pax')
-                                                                  ->numeric(),
-                                                         Forms\Components\Checkbox::make('is_family')
-                                                                                  ->inline(false),
-                                                     ]),
+                                Grid::make()
+                                    ->schema([
+                                        TextInput::make('pax')
+                                                 ->numeric(),
+                                        Checkbox::make('is_family')
+                                                ->inline(false),
+                                    ]),
                             ]),
                  ])
                  ->columnSpan(1),
