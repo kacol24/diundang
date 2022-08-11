@@ -62,8 +62,14 @@ type Invitation {
     full_name: String
     phone: String
     guests: Int
+    pax: Int
     seating: Seating @belongsTo
     attendance: Attendance @hasOne
+    group: Group @belongsTo
+}
+
+type Group {
+    name: String!
 }
 
 type Seating {
