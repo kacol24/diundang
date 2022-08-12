@@ -45,11 +45,14 @@
                                                      draggable="false" alt="album cover front">
                                             </div>
                                             @foreach([
-                                                        'ROB00302.jpg',
-                                                        'ROB00450.jpg',
+                                                        'ROB00394.jpg',
                                                         'ROB00458.jpg',
-                                                        'ROB00520.jpg',
                                                         'ROB00667.jpg',
+                                                        'Untitled-1.jpg',
+                                                        'E1460169.jpg',
+                                                        'E1450809.jpg',
+                                                        'E1450956.jpg',
+                                                        'E1460039.jpg',
                                                     ] as $gallery)
                                                 <div>
                                                     <div class="gradient"></div>
