@@ -45,21 +45,34 @@
                                                      draggable="false" alt="album cover front">
                                             </div>
                                             @foreach([
-                                                        'ROB00394.jpg',
-                                                        'ROB00458.jpg',
-                                                        'ROB00667.jpg',
-                                                        'Untitled-2.jpg',
-                                                        'E1460169.jpg',
-                                                        'E1450809.jpg',
-                                                        'E1450956.jpg',
-                                                        'E1460039.jpg',
-                                                    ] as $gallery)
+                                                        'ROB00394.jpg' => 'rob',
+                                                        'ROB00458.jpg' => 'rob',
+                                                        'ROB00667.jpg' => 'rob',
+                                                        'Untitled-2.jpg' => 'jes',
+                                                        'E1460169.jpg' => 'jes',
+                                                        'E1450809.jpg' => 'jes',
+                                                        'E1450956.jpg' => 'jes',
+                                                        'E1460039.jpg' => 'jes',
+                                                    ] as $gallery => $credit)
                                                 <div>
                                                     <div class="gradient"></div>
                                                     <div class="p-5 h-100 d-flex align-items-center">
-                                                        <img src="{{ asset('images/gallery/' . $gallery) }}"
-                                                             class="img-fluid w-100 user-select-none" draggable="false"
-                                                             alt="photo {{ $gallery }}">
+                                                        <figure class="figure figure-credit">
+                                                            <img src="{{ asset('images/gallery/' . $gallery) }}"
+                                                                 class="img-fluid w-100 user-select-none"
+                                                                 draggable="false"
+                                                                 alt="photo {{ $gallery }}">
+                                                            <figcaption class="figure-caption" style="font-size: 8px;">
+                                                                {{ __('Photo by') }} -
+                                                                @if($credit == 'rob')
+                                                                    <a href="https://www.instagram.com/explore/tags/summerstoryrobert/"
+                                                                       target="_blank" class="link-secondary">#summerstoryrobert</a>
+                                                                @else
+                                                                    <a href="https://www.instagram.com/explore/tags/summerstoryjesica/"
+                                                                       target="_blank" class="link-secondary">#summerstoryjesica</a>
+                                                                @endif
+                                                            </figcaption>
+                                                        </figure>
                                                     </div>
                                                 </div>
                                             @endforeach
