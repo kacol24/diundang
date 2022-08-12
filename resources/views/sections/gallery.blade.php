@@ -48,7 +48,7 @@
                                                         'ROB00394.jpg',
                                                         'ROB00458.jpg',
                                                         'ROB00667.jpg',
-                                                        'Untitled-1.jpg',
+                                                        'Untitled-2.jpg',
                                                         'E1460169.jpg',
                                                         'E1450809.jpg',
                                                         'E1450956.jpg',
