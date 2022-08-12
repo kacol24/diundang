@@ -23,24 +23,18 @@
                 </a>
             </template>
         </div>
-        <div class="row justify-content-center text-white mt-5 pb-5 font-sans-serif g-1"
-             x-data="countdown()"
-             x-init="init()">
-            <template x-if="time.days != '00'">
-                <div class="col-2 col-md-1">
-                    <h3 class="fw-normal mb-0" x-text="time.days">00</h3>
-                    <small>
-                        Days
-                    </small>
+        <div class="row justify-content-center text-white mt-5 pb-5 font-sans-serif g-1" id="countdown">
+            <div class="col-2 col-md-1">
+                <h3 class="fw-normal mb-0" x-text="time.days">00</h3>
+                <small>
+                    Days
+                </small>
+            </div>
+            <div class="col-auto">
+                <div class="mt-1">
+                    :
                 </div>
-            </template>
-            <template x-if="time.days != '00'">
-                <div class="col-auto">
-                    <div class="mt-1">
-                        :
-                    </div>
-                </div>
-            </template>
+            </div>
             <div class="col-2 col-md-1">
                 <h3 class="fw-normal mb-0" x-text="time.hours">00</h3>
                 <small>
@@ -142,60 +136,16 @@
 
 @push('after_scripts')
     <script>
+        $('#countdown').countdown('2022/09/24 18:00:00', function(event) {
+            $('[x-text="time.days"]').html(event.strftime('%D'));
+            $('[x-text="time.hours"]').html(event.strftime('%H'));
+            $('[x-text="time.minutes"]').html(event.strftime('%M'));
+            $('[x-text="time.seconds"]').html(event.strftime('%S'));
+        });
+
         document.addEventListener('alpine:init', function() {
             var isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent) && !window.MSStream;
             Alpine.store('isIos', isIOS);
-
-            Alpine.data('countdown', function() {
-                return {
-                    expiry: new Date('2022-09-24 18:00:00'),
-                    remaining: null,
-                    init() {
-                        this.setRemaining();
-                        setInterval(() => {
-                            this.setRemaining();
-                        }, 1000);
-                    },
-                    setRemaining() {
-                        const diff = this.expiry.getTime() - new Date().getTime();
-                        this.remaining = diff / 1000;
-                    },
-                    days() {
-                        return {
-                            value: this.remaining / 86400,
-                            remaining: this.remaining % 86400
-                        };
-                    },
-                    hours() {
-                        return {
-                            value: this.days().remaining / 3600,
-                            remaining: this.days().remaining % 3600
-                        };
-                    },
-                    minutes() {
-                        return {
-                            value: this.hours().remaining / 60,
-                            remaining: this.hours().remaining % 60
-                        };
-                    },
-                    seconds() {
-                        return {
-                            value: this.minutes().remaining
-                        };
-                    },
-                    format(value) {
-                        return ('0' + parseInt(value)).slice(-2);
-                    },
-                    get time() {
-                        return {
-                            days: this.format(this.days().value),
-                            hours: this.format(this.hours().value),
-                            minutes: this.format(this.minutes().value),
-                            seconds: this.format(this.seconds().value)
-                        };
-                    }
-                };
-            });
         });
     </script>
 @endpush

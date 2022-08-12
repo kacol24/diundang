@@ -104,6 +104,7 @@
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
         crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/jquery-countdown@2.2.0/dist/jquery.countdown.min.js"></script>
 @stack('before_scripts')
 <script
     src="https://cdn.jsdelivr.net/combine/npm/masonry.js@3.1.5/dist/masonry.pkgd.min.js,npm/imagesloaded@5.0.0/imagesloaded.pkgd.min.js,npm/simple-parallax-js@5.6.2,npm/@fancyapps/ui@4.0.27,npm/aos@2.3.4"></script>
