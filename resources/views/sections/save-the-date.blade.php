@@ -24,7 +24,7 @@
             </template>
         </div>
         <div class="row justify-content-center text-white mt-5 pb-5 font-sans-serif g-1"
-             x-data="countdown(new Date('2022-09-24 18:00:00'))"
+             x-data="countdown()"
              x-init="init()">
             <template x-if="time().days != '00'">
                 <div class="col-2 col-md-1">
@@ -109,7 +109,8 @@
                                 60225
                             </small>
                         </address>
-                        <a href="#mapModal" class="btn btn-secondary text-uppercase btn-sm rounded-pill" data-bs-toggle="modal">
+                        <a href="#mapModal" class="btn btn-secondary text-uppercase btn-sm rounded-pill"
+                           data-bs-toggle="modal">
                             <i class="fas fa-fw fa-map-marker" style="color: #ee2e30"></i>
                             {{ __('Get Direction') }}
                         </a>
@@ -144,57 +145,57 @@
         document.addEventListener('alpine:init', function() {
             var isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent) && !window.MSStream;
             Alpine.store('isIos', isIOS);
-        });
 
-        function countdown(expiry) {
-            return {
-                expiry: expiry,
-                remaining: null,
-                init() {
-                    this.setRemaining();
-                    setInterval(() => {
+            Alpine.data('countdown', function() {
+                return {
+                    expiry: new Date('2022-09-24 18:00:00'),
+                    remaining: null,
+                    init() {
                         this.setRemaining();
-                    }, 1000);
-                },
-                setRemaining() {
-                    const diff = this.expiry - new Date().getTime();
-                    this.remaining = parseInt(diff / 1000);
-                },
-                days() {
-                    return {
-                        value: this.remaining / 86400,
-                        remaining: this.remaining % 86400
-                    };
-                },
-                hours() {
-                    return {
-                        value: this.days().remaining / 3600,
-                        remaining: this.days().remaining % 3600
-                    };
-                },
-                minutes() {
-                    return {
-                        value: this.hours().remaining / 60,
-                        remaining: this.hours().remaining % 60
-                    };
-                },
-                seconds() {
-                    return {
-                        value: this.minutes().remaining
-                    };
-                },
-                format(value) {
-                    return ('0' + parseInt(value)).slice(-2);
-                },
-                time() {
-                    return {
-                        days: this.format(parseInt(this.days().value)),
-                        hours: this.format(this.hours().value),
-                        minutes: this.format(this.minutes().value),
-                        seconds: this.format(this.seconds().value)
-                    };
-                }
-            };
-        }
+                        setInterval(() => {
+                            this.setRemaining();
+                        }, 1000);
+                    },
+                    setRemaining() {
+                        const diff = this.expiry - new Date().getTime();
+                        this.remaining = diff / 1000;
+                    },
+                    days() {
+                        return {
+                            value: this.remaining / 86400,
+                            remaining: this.remaining % 86400
+                        };
+                    },
+                    hours() {
+                        return {
+                            value: this.days().remaining / 3600,
+                            remaining: this.days().remaining % 3600
+                        };
+                    },
+                    minutes() {
+                        return {
+                            value: this.hours().remaining / 60,
+                            remaining: this.hours().remaining % 60
+                        };
+                    },
+                    seconds() {
+                        return {
+                            value: this.minutes().remaining
+                        };
+                    },
+                    format(value) {
+                        return ('0' + parseInt(value)).slice(-2);
+                    },
+                    time() {
+                        return {
+                            days: this.format(this.days().value),
+                            hours: this.format(this.hours().value),
+                            minutes: this.format(this.minutes().value),
+                            seconds: this.format(this.seconds().value)
+                        };
+                    }
+                };
+            });
+        });
     </script>
 @endpush
