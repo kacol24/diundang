@@ -186,7 +186,7 @@
                     format(value) {
                         return ('0' + parseInt(value)).slice(-2);
                     },
-                    time() {
+                    get time() {
                         return {
                             days: this.format(this.days().value),
                             hours: this.format(this.hours().value),
