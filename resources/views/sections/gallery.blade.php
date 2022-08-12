@@ -101,7 +101,7 @@
         }
 
         .ratio.responsive {
-            --bs-aspect-ratio: {{ 3/2.13 * 100 }}%;
+            --bs-aspect-ratio: {{ 3/2.129 * 100 }}%;
         }
 
         @media (min-width: 992px) {
