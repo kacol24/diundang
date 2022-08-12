@@ -58,6 +58,16 @@ html {
     background-color: rgba(0, 0, 0, .5);
 }
 
+#cta {
+    padding-top: 5%;
+}
+
+@media (min-width: 768px) {
+    #cta {
+        padding-top: 15%;
+    }
+}
+
 #bgm {
     position: fixed;
     right: 15px;
