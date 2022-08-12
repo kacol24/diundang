@@ -157,7 +157,7 @@
                         }, 1000);
                     },
                     setRemaining() {
-                        const diff = this.expiry - new Date().getTime();
+                        const diff = this.expiry.getTime() - new Date().getTime();
                         this.remaining = diff / 1000;
                     },
                     days() {
