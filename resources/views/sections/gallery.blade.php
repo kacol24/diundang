@@ -53,7 +53,7 @@
                                                     ] as $gallery)
                                                 <div>
                                                     <div class="gradient"></div>
-                                                    <div class="p-5">
+                                                    <div class="p-5 h-100 d-flex align-items-center">
                                                         <img src="{{ asset('images/gallery/' . $gallery) }}"
                                                              class="img-fluid w-100 user-select-none" draggable="false"
                                                              alt="photo {{ $gallery }}">
@@ -96,12 +96,12 @@
             height: 100% !important;
         }
 
-        .page {
+        .page:not(.hard) {
             background-color: white;
         }
 
         .ratio.responsive {
-            --bs-aspect-ratio: {{ 3/2.19 * 100 }}%;
+            --bs-aspect-ratio: {{ 3/2.13 * 100 }}%;
         }
 
         @media (min-width: 992px) {
