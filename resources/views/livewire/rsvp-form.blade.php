@@ -91,7 +91,7 @@
                 </button>
             </div>
             @if($invitation && $invitation->is_attending)
-                <div class="col-md-4 text-md-end text-center mt-3">
+                <div class="col-md-4 text-md-end text-center mt-3 mt-md-0">
                     <a class="btn d-inline-flex align-items-center rounded-pill shadow-sm me-0"
                        style="background-color: #eee; height: 38px;"
                        data-bs-toggle="modal"
@@ -103,6 +103,36 @@
                             QR Invitation
                         </small>
                     </a>
+                </div>
+                <div class="modal fade" id="qrModal" tabindex="-1" aria-labelledby="qrModalLabel" aria-hidden="true"
+                     data-bs-backdrop="static">
+                    <div class="modal-dialog modal-dialog-centered">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="qrModalLabel">Digital Invitation</h5>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                        aria-label="Close"></button>
+                            </div>
+                            @if($invitation)
+                                <div class="modal-body p-0">
+                                    <img
+                                        src="{{ asset("storage/{$invitation['guest_code']}.jpg") }}?v={{ now()->timestamp }}"
+                                        alt="qr code"
+                                        class="img-fluid w-100">
+                                </div>
+                                <div class="modal-footer justify-content-start">
+                                    <small class="fst-italic">
+                                        You can <a
+                                            href="{{ route('download', ['guest' => $invitation['guest_code']]) }}"
+                                            target="_blank"
+                                            style="color: var(--color-secondary)">download</a> this digital invitation,
+                                        screenshot
+                                        this page, or save the QR Code as image.
+                                    </small>
+                                </div>
+                            @endif
+                        </div>
+                    </div>
                 </div>
             @endif
         </div>
