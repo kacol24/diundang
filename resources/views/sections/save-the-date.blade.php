@@ -188,7 +188,7 @@
                 },
                 time() {
                     return {
-                        days: this.format(this.days().value),
+                        days: this.format(parseInt(this.days().value)),
                         hours: this.format(this.hours().value),
                         minutes: this.format(this.minutes().value),
                         seconds: this.format(this.seconds().value)
