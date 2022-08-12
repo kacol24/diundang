@@ -1,5 +1,5 @@
 <div id="cta" class="darkened-overlay"
-     style="background-repeat: no-repeat; background-size: cover; background-position: center bottom; padding-bottom: 15%"
+     style="background-repeat: no-repeat; background-size: cover; background-position: center bottom; padding-bottom: 20%"
      data-parallax
      data-src="{{ asset('images/JES03644-4by3.jpg') }}">
     <div class="container text-white py-5 my-5 mt-0 text-center position-relative font-serif" style="z-index: 2">
