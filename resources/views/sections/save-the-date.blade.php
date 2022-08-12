@@ -26,15 +26,15 @@
         <div class="row justify-content-center text-white mt-5 pb-5 font-sans-serif g-1"
              x-data="countdown()"
              x-init="init()">
-            <template x-if="time().days != '00'">
+            <template x-if="time.days != '00'">
                 <div class="col-2 col-md-1">
-                    <h3 class="fw-normal mb-0" x-text="time().days">00</h3>
+                    <h3 class="fw-normal mb-0" x-text="time.days">00</h3>
                     <small>
                         Days
                     </small>
                 </div>
             </template>
-            <template x-if="time().days != '00'">
+            <template x-if="time.days != '00'">
                 <div class="col-auto">
                     <div class="mt-1">
                         :
@@ -42,7 +42,7 @@
                 </div>
             </template>
             <div class="col-2 col-md-1">
-                <h3 class="fw-normal mb-0" x-text="time().hours">00</h3>
+                <h3 class="fw-normal mb-0" x-text="time.hours">00</h3>
                 <small>
                     Hrs
                 </small>
@@ -53,7 +53,7 @@
                 </div>
             </div>
             <div class="col-2 col-md-1">
-                <h3 class="fw-normal mb-0" x-text="time().minutes">00</h3>
+                <h3 class="fw-normal mb-0" x-text="time.minutes">00</h3>
                 <small>
                     Mins
                 </small>
@@ -64,7 +64,7 @@
                 </div>
             </div>
             <div class="col-2 col-md-1">
-                <h3 class="fw-normal mb-0" x-text="time().seconds">00</h3>
+                <h3 class="fw-normal mb-0" x-text="time.seconds">00</h3>
                 <small>
                     Secs
                 </small>
