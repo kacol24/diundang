@@ -162,7 +162,7 @@ class InvitationResource extends Resource
                                       ->searchable(),
                                 Select::make('seating_id')
                                       ->label('Table')
-                                      ->options(Seating::all()->pluck('name', 'id'))
+                                      ->options(Seating::all()->pluck('table_dropdown', 'id'))
                                       ->searchable(),
                                 TextInput::make('guests')
                                          ->required()

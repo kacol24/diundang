@@ -23,6 +23,8 @@ class SeatingResource extends Resource
         return $form
             ->schema([
                 Forms\Components\TextInput::make('name'),
+                Forms\Components\TextInput::make('nickname'),
+                Forms\Components\Textarea::make('notes'),
             ]);
     }
 
@@ -31,6 +33,8 @@ class SeatingResource extends Resource
         return $table
             ->columns([
                 Tables\Columns\TextColumn::make('name'),
+                Tables\Columns\TextColumn::make('nickname'),
+                Tables\Columns\TextColumn::make('notes'),
                 Tables\Columns\TextColumn::make('quota'),
             ])
             ->filters([
