@@ -26,6 +26,9 @@ class Seating extends Model
     // protected $fillable = [];
     // protected $hidden = [];
     // protected $dates = [];
+    protected $appends = [
+        'table_dropdown'
+    ];
 
     /*
     |--------------------------------------------------------------------------
@@ -73,6 +76,17 @@ class Seating extends Model
         $sumGuests = $this->invitations->sum('guests');
 
         return ceil($sumGuests / self::PER_TABLE);
+    }
+
+    public function getTableDropdownAttribute()
+    {
+        $name = $this->name;
+
+        if ($this->nickname) {
+            $name = $name . ' (' . $this->nickname . ')';
+        }
+
+        return $name;
     }
     /*
     |--------------------------------------------------------------------------
