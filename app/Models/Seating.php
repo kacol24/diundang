@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Seating extends Model
 {
-    const PER_TABLE = 6;
+    const PER_TABLE = 10;
 
     use HasFactory;
 
