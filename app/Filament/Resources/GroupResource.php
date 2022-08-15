@@ -33,7 +33,7 @@ class GroupResource extends Resource
     {
         return $table
             ->columns([
-                Tables\Columns\TextColumn::make('name'),
+                Tables\Columns\TextColumn::make('group_name'),
                 Tables\Columns\TextColumn::make('invitations_count')
                                          ->counts('invitations'),
                 Tables\Columns\TextColumn::make('invitations_sum_pax')

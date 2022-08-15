@@ -16,8 +16,23 @@ class Group extends Model
         'is_bride'
     ];
 
+    protected $appends = [
+        'group_name'
+    ];
+
     public function invitations()
     {
         return $this->hasMany(Invitation::class);
+    }
+
+    public function getGroupNameAttribute()
+    {
+        $prefix = '[Groom]';
+
+        if ($this->is_bride) {
+            $prefix = '[Bride]';
+        }
+
+        return $prefix . ' ' . $this->name;
     }
 }
