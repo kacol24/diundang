@@ -2,12 +2,13 @@
 
 namespace App\Models;
 
-use Backpack\CRUD\app\Models\Traits\CrudTrait;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
 class Seating extends Model
 {
+    const PER_TABLE = 6;
+
     use HasFactory;
 
     /*
@@ -56,6 +57,22 @@ class Seating extends Model
     public function getPlanImageUrlAttribute()
     {
         return asset('images/'.rand(1, 5).'.jpg');
+    }
+
+    public function getQuotaAttribute()
+    {
+        $sumGuests = $this->invitations->sum('guests');
+
+        $tableCount = $this->table_count;
+
+        return $sumGuests.'/'.$tableCount * self::PER_TABLE.' ('.$tableCount.' tables)';
+    }
+
+    public function getTableCountAttribute()
+    {
+        $sumGuests = $this->invitations->sum('guests');
+
+        return ceil($sumGuests / self::PER_TABLE);
     }
     /*
     |--------------------------------------------------------------------------

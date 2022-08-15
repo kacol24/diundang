@@ -2,7 +2,6 @@
 
 namespace Database\Seeders;
 
-use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\Schema;
 
@@ -17,7 +16,6 @@ class DummyDataSeeder extends Seeder
     {
         Schema::disableForeignKeyConstraints();
 
-        $this->call(SeatingSeeder::class);
         $this->call(InvitationSeeder::class);
 
         Schema::enableForeignKeyConstraints();

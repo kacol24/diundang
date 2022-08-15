@@ -20,4 +20,27 @@
         background-color: #3a1526;
         border-color: #3a1526;
     }
+
+    &:disabled {
+        background-color: lighten(#4d1c32, 20);
+        border-color: lighten(#4d1c32, 20);
+    }
+}
+
+.form-check-input:checked {
+    background-color: var(--color-secondary);
+    border-color: var(--color-secondary);
+}
+
+.form-control,
+.form-select {
+    &:focus {
+        box-shadow: 0 0 0 0.25rem rgba(77, 28, 50, .25);
+        border-color: var(--color-secondary);
+    }
+}
+
+.btn.rounded-pill {
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
 }

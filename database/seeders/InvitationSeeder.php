@@ -15,13 +15,13 @@ class InvitationSeeder extends Seeder
     public function run()
     {
         \DB::table('invitations')->truncate();
-        
+
         Invitation::create([
             'seating_id' => 1,
             'guest_code' => '82244872421',
-            'name'       => 'Kevin & Nanda',
-            'phone'      => 82244872421,
-            'guests'     => 2,
+            'name' => 'Kevin & Nanda',
+            'phone' => 82244872421,
+            'guests' => 2,
         ]);
 
         Invitation::factory()->count(200)->create();

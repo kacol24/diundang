@@ -2,7 +2,6 @@
 
 namespace App\Models;
 
-use Backpack\CRUD\app\Models\Traits\CrudTrait;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
@@ -30,11 +29,31 @@ class Invitation extends Model
     // protected $hidden = [];
     // protected $dates = [];
 
+    protected $casts = [
+        'rsvp_at' => 'datetime',
+        'title'   => 'array',
+    ];
+
+    protected $appends = [
+        'full_name',
+        'formatted_title',
+    ];
+
     /*
     |--------------------------------------------------------------------------
     | FUNCTIONS
     |--------------------------------------------------------------------------
     */
+    public static function generateGuestCode()
+    {
+        $candidate = mt_rand(100000, 999999);
+
+        if (self::where('guest_code', $candidate)->exists()) {
+            return self::generateGuestCode();
+        }
+
+        return $candidate;
+    }
 
     /*
     |--------------------------------------------------------------------------
@@ -49,6 +68,11 @@ class Invitation extends Model
     public function attendance()
     {
         return $this->hasOne(Attendance::class);
+    }
+
+    public function group()
+    {
+        return $this->belongsTo(Group::class);
     }
 
     /*
@@ -73,6 +97,40 @@ class Invitation extends Model
             ['%phone%', '%message%'],
             [$this->phone, urlencode($message)],
             self::WA_CTC);
+    }
+
+    public function getDropdownNameAttribute()
+    {
+        return "[{$this->guest_code}] {$this->name} {$this->phone}";
+    }
+
+    public function getFilenameAttribute()
+    {
+        return $this->guest_code.'.jpg';
+    }
+
+    public function getQrInvitationPathAttribute()
+    {
+        return storage_path("app/public/{$this->filename}");
+    }
+
+    public function getWhatsappPhoneAttribute()
+    {
+        if (! $this->phone) {
+            return '';
+        }
+
+        return '62'.$this->phone;
+    }
+
+    public function getFullNameAttribute()
+    {
+        return $this->formatted_title.' '.$this->name;
+    }
+
+    public function getFormattedTitleAttribute()
+    {
+        return implode(' ', $this->title ?? []);
     }
     /*
     |--------------------------------------------------------------------------

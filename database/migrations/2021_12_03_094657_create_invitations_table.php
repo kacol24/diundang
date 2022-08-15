@@ -18,8 +18,9 @@ class CreateInvitationsTable extends Migration
             $table->foreignId('seating_id')->nullable()->constrained();
             $table->string('guest_code')->unique();
             $table->string('name');
-            $table->string('phone');
+            $table->string('phone')->nullable();
             $table->tinyInteger('guests')->default(1);
+            $table->tinyInteger('pax')->nullable();
             $table->timestamps();
             $table->softDeletes();
         });

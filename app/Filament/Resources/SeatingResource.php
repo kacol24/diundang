@@ -3,7 +3,6 @@
 namespace App\Filament\Resources;
 
 use App\Filament\Resources\SeatingResource\Pages;
-use App\Filament\Resources\SeatingResource\RelationManagers;
 use App\Models\Seating;
 use Filament\Forms;
 use Filament\Resources\Form;
@@ -13,6 +12,8 @@ use Filament\Tables;
 
 class SeatingResource extends Resource
 {
+    protected static ?string $navigationGroup = 'Master';
+
     protected static ?string $model = Seating::class;
 
     protected static ?string $navigationIcon = 'heroicon-o-collection';
@@ -30,8 +31,7 @@ class SeatingResource extends Resource
         return $table
             ->columns([
                 Tables\Columns\TextColumn::make('name'),
-                Tables\Columns\TextColumn::make('invitations_count')
-                                         ->counts('invitations'),
+                Tables\Columns\TextColumn::make('quota'),
             ])
             ->filters([
                 //

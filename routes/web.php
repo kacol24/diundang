@@ -1,9 +1,10 @@
 <?php
 
+use App\Http\Controllers\DownloadController;
+use App\Http\Controllers\HomeController;
+use App\Http\Controllers\RsvpController;
 use App\Models\Invitation;
-use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\Route;
-use SimpleSoftwareIO\QrCode\Facades\QrCode;
 
 /*
 |--------------------------------------------------------------------------
@@ -16,43 +17,16 @@ use SimpleSoftwareIO\QrCode\Facades\QrCode;
 |
 */
 
-Route::get('/', function () {
-    $guestName = 'Tamu Undangan';
+Route::get('/', HomeController::class)
+     ->name('home');
 
-    $guestCode = request('guest');
-    $invitation = Invitation::where('guest_code', $guestCode)->first();
+Route::get('/download', DownloadController::class)
+     ->name('download');
 
-    if ($invitation) {
-        $guestName = $invitation->name;
-    }
+Route::get('print', [DownloadController::class, 'print']);
 
-    $data = [
-        'guestName' => $guestName,
-    ];
+Route::post('rsvp', [RsvpController::class, 'store'])
+     ->name('rsvp.store');
 
-    return view('home', $data);
-});
-
-Route::get('/download', function () {
-    $guestCode = request('guest');
-    abort_unless($guestCode, 404, 'Guest code missing.');
-
-    $invitation = Invitation::where('guest_code', $guestCode)->firstOrFail();
-
-    $qrname = storage_path('app/public/qr/'.$guestCode.'.png');
-    $filename = storage_path('app/public/['.$guestCode.'] Invitation, The Wedding of Kevin & Fernanda, 09-10-2022.pdf');
-
-    if (! file_exists($filename)) {
-        QrCode::size(500)
-              ->format('png')
-              ->generate($invitation->guest_code, $qrname);
-        $qr = $qrname;
-
-        $pdf = App::make('dompdf.wrapper');
-        $pdf->loadView('qr', compact('invitation', 'qr'));
-        $pdf->save($filename);
-    }
-
-    return response()->download($filename);
-})->name('download');
-
+Route::get('login', [HomeController::class, 'login'])
+     ->name('login');
