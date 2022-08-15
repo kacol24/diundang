@@ -1,25 +1,44 @@
+@php
+    $brideAndGroom = collect([
+        $groomName,
+        $brideName
+    ]);
+    $parents = collect([
+        ['Mr. Tjen Gunawan Chandra', 'Mrs. Susilowati'],
+        ['Mr. Ge Cing Kai', 'Mrs. Liauw Hung San'],
+    ]);
+    if (isset($reverse) && $reverse) {
+        $brideAndGroom = $brideAndGroom->reverse();
+        $parents = $parents->reverse();
+    }
+@endphp
 Dear {!! $guestName !!},
 
-Tanpa mengurangi rasa hormat, kami mengundang Anda untuk hadir ke acara
-Pernikahan *{{ $groomName }} & {{ $brideName }}*
+You are cordially invited to the Wedding of
+@foreach($brideAndGroom as $name)
+*{{ $name }}{!! $loop->first ? ' &' : '' !!}*
+@endforeach
 
-Keluarga yang berbahagia,
-*{{ __('Mr.') }} Tjen Gunawan Chandra & {{ __('Mrs.') }} Susilowati*
-dan
-*{{ __('Mr.') }} Ge Cing Kai & {{ __('Mrs.') }} Liauw Hung San*
+Together with their families,
+@foreach($parents as $parent)
+*{{ $parent[0] }} &*
+*{{ $parent[1] }}*
+@if($loop->first)
+and
+@endif
+@endforeach
 
 @if(isset($isAttending) && $isAttending)
-Anda dapat melihat detail acara dan download Digital Invitation pada link berikut:
+You can view detailed information of the reception and download your *Digital Invitation* from this link:
 *{{ $linkToSite }}*
 
-_Harap simpan/download/screenshot QR Code dan bawa QR Code tersebut saat acara resepsi sebagai Digital Invitation._
+_Please save/download/screenshot the QR Code provided and bring the QR Code with you at the reception as your *Digital Invitation*._
 @else
-Untuk membantu kami mempersiapkan semuanya lebih baik,
-mohon konfirmasi kehadiran Anda di acara pernikahan kami dengan mengisi formulir RSVP pada link berikut:
+Please kindly help us prepare everything better by confirming your presence to our wedding reception using the following RSVP form:
 *{{ $linkToSite }}*
 
 
-_Harap lengkapi RSVP ini sebelum *{{ $dueDate }}*._
+_Please complete this RSVP before *{{ $dueDate }}*._
 @endif
 
 
