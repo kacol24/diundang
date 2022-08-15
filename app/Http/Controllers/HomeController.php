@@ -15,7 +15,7 @@ class HomeController extends Controller
         $invitation = Invitation::firstWhere('guest_code', $guestCode);
 
         if ($invitation) {
-            $guestName = $invitation->name;
+            $guestName = $invitation->full_name;
         }
 
         $data = [

@@ -58,7 +58,7 @@ class GenerateQrInvitation implements ShouldQueue
 
     protected function processQrCode()
     {
-        $guestName = $this->invitation->name; // 44 max
+        $guestName = $this->invitation->full_name; // 44 max
         $guestCode = $this->invitation->guest_code;
         $fontSize = 45 - (round(strlen($guestName) / 10) * 5);
         $seating = $this->invitation->seating;
