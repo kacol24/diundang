@@ -27,6 +27,9 @@
     <meta property="og:image" content="{{ asset('images/logo@2x.png') }}"/>
     <meta property="og:image:width" content="500"/>
     <meta property="og:image:height" content="500"/>
+    <meta property="og:title" content="Dear {{ $guestName }}, you are cordially invited to celebrate the wedding of Kevin and Fernanda on September 24th, 2022."/>
+    <meta property="og:type" content="website"/>
+    <meta property="og:url" content="{{ url()->current() }}"/>
 
     <script src="https://cdn.jsdelivr.net/npm/lozad@1.16.0/dist/lozad.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/alpinejs@3.10.2/dist/cdn.min.js" defer></script>
