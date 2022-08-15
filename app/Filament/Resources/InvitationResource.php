@@ -84,8 +84,8 @@ class InvitationResource extends Resource
                 MultiSelectFilter::make('seating_id')
                                  ->label('Table')
                                  ->relationship('seating', 'name'),
-                TernaryFilter::make('is_attending'),
                 TernaryFilter::make('is_teapai'),
+                TernaryFilter::make('is_attending'),
                 TernaryFilter::make('rsvp_at')
                              ->label('RSVP')
                              ->nullable(),

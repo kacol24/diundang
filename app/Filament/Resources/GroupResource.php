@@ -39,6 +39,12 @@ class GroupResource extends Resource
                 Tables\Columns\TextColumn::make('invitations_sum_pax')
                                          ->sum('invitations', 'pax')
                                          ->label('Pax'),
+                Tables\Columns\BooleanColumn::make('is_bride')
+                                            ->sortable()
+                                            ->action(function ($record) {
+                                                $record->is_bride = ! $record->is_bride;
+                                                $record->save();
+                                            }),
             ])
             ->filters([
                 //
