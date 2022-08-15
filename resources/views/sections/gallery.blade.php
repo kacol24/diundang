@@ -57,7 +57,7 @@
                                                 <div>
                                                     <div class="gradient"></div>
                                                     <div class="p-5 h-100 d-flex align-items-center">
-                                                        <figure class="figure figure-credit">
+                                                        <figure class="figure figure-credit m-0">
                                                             <img src="{{ asset('images/gallery/' . $gallery) }}"
                                                                  class="img-fluid w-100 user-select-none"
                                                                  draggable="false"
