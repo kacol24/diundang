@@ -24,6 +24,8 @@ class GroupResource extends Resource
         return $form
             ->schema([
                 Forms\Components\TextInput::make('name'),
+                Forms\Components\Checkbox::make('is_bride')
+                                         ->inline(false),
             ]);
     }
 
@@ -46,14 +48,15 @@ class GroupResource extends Resource
                                      ->label('WhatsApp')
                                      ->url(function (Group $record) {
                                          return 'https://wa.me/?text='.urlencode(view('whatsapp',
-                                             [
-                                                 'groomName' => 'Kevin Chandra',
-                                                 'guestName' => $record->name,
-                                                 'brideName' => 'Fernanda Eka Putri',
-                                                 'linkToSite' => route('home', ['for' => $record->name]),
-                                                 'dueDate' => Carbon::parse('2022-09-24')->subMonth()
-                                                                       ->format('d F Y'),
-                                             ])->render());
+                                                 [
+                                                     'groomName'  => 'Kevin Chandra',
+                                                     'guestName'  => $record->name,
+                                                     'brideName'  => 'Fernanda Eka Putri',
+                                                     'linkToSite' => route('home', ['for' => $record->name]),
+                                                     'dueDate'    => Carbon::parse('2022-09-24')->subMonth()
+                                                                           ->format('d F Y'),
+                                                     'reverse'    => $record->is_bride,
+                                                 ])->render());
                                      })
                                      ->openUrlInNewTab(),
                 Tables\Actions\EditAction::make(),

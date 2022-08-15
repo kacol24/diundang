@@ -98,11 +98,11 @@ class InvitationResource extends Resource
                                                  [
                                                      'groomName'   => 'Kevin Chandra',
                                                      'brideName'   => 'Fernanda Eka Putri',
-                                                     'guestName'   => $record->name ?: 'Mr. / Mrs. / Ms.',
+                                                     'guestName'   => $record->full_name ?: 'Mr. / Mrs. / Ms.',
                                                      'linkToSite'  => route('home', ['guest' => $record->guest_code]),
-                                                     'dueDate'     => Carbon::parse('2022-09-24')->subMonth()
-                                                                            ->format('d F Y'),
+                                                     'dueDate'     => Carbon::parse('2022-08-30')->format('d F Y'),
                                                      'isAttending' => $record->is_attending,
+                                                     'reverse'     => optional($record->group)->is_bride,
                                                  ])->render());
                                      })
                                      ->openUrlInNewTab(),
