@@ -54,7 +54,8 @@
     </style>
 </head>
 <body style="font-size: 0;">
-@foreach(App\Models\Invitation::limit(98)->get() as $invitation)
+@php($invitations = App\Models\Invitation::limit(98)->get())
+@foreach($invitations as $invitation)
     <div style="width: 3.4cm; max-width: 3.4cm; height:auto; outline: 1px solid black; margin: 0;display: inline-flex">
         <img src="{{ asset('storage/printable/' . $invitation->filename) }}"
              style="max-width: 100%; height: auto; margin: 0; width: 100%;">
