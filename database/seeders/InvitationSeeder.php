@@ -14,8 +14,6 @@ class InvitationSeeder extends Seeder
      */
     public function run()
     {
-        \DB::table('invitations')->truncate();
-
         Invitation::create([
             'seating_id' => 1,
             'guest_code' => '82244872421',
