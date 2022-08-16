@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Invitation extends Model
 {
@@ -12,6 +13,7 @@ class Invitation extends Model
     const WA_CTC = 'https://wa.me/62%phone%?text=%message%';
 
     use HasFactory;
+    use SoftDeletes;
 
     /*
     |--------------------------------------------------------------------------

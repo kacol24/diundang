@@ -30,3 +30,11 @@ Route::post('rsvp', [RsvpController::class, 'store'])
 
 Route::get('login', [HomeController::class, 'login'])
      ->name('login');
+
+Route::domain(config('filament.domain'))
+     ->middleware(config('filament.middleware.base'))
+     ->name('filament.')
+     ->prefix(config('filament.path'))
+     ->group(function () {
+         Route::post('import');
+     });
