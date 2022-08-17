@@ -15,6 +15,7 @@ use Filament\Forms\Components\MultiSelect;
 use Filament\Forms\Components\Radio;
 use Filament\Forms\Components\Section;
 use Filament\Forms\Components\Select;
+use Filament\Forms\Components\TagsInput;
 use Filament\Forms\Components\TextInput;
 use Filament\Resources\Form;
 use Filament\Resources\Resource;
@@ -183,8 +184,7 @@ class InvitationResource extends Resource
                                 TextInput::make('phone')
                                          ->type('tel')
                                          ->prefix('+62'),
-                                Checkbox::make('is_teapai')
-                                        ->inline(false),
+                                TagsInput::make('notes')->separator(', '),
                             ]),
                      Section::make('Invitation Detail')
                             ->schema([
@@ -212,20 +212,24 @@ class InvitationResource extends Resource
                             ->schema([
                                 TextInput::make('guest_code')
                                          ->unique(ignorable: fn(?Model $record): ?Model => $record),
-                                Select::make('is_attending')
-                                      ->options([
-                                          1 => 'Attending',
-                                          0 => 'Not Attending',
-                                      ]),
-                                DateTimePicker::make('rsvp_at')
-                                              ->label('RSVP At'),
+                                Grid::make()->schema([
+                                    Select::make('is_attending')
+                                          ->options([
+                                              1 => 'Attending',
+                                              0 => 'Not Attending',
+                                          ]),
+                                    DateTimePicker::make('rsvp_at')
+                                                  ->label('RSVP At'),
+                                ]),
                                 Grid::make()
                                     ->schema([
                                         TextInput::make('pax')
                                                  ->numeric(),
                                         Checkbox::make('is_family')
                                                 ->inline(false),
-                                    ]),
+                                        Checkbox::make('is_teapai')
+                                                ->inline(false),
+                                    ])->columns(3),
                             ]),
                  ])
                  ->columnSpan(1),
