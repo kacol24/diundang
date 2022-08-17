@@ -59,6 +59,22 @@ class InvitationResource extends Resource
                           ->searchable(),
                 TextColumn::make('full_name')
                           ->searchable(['name']),
+                TagsColumn::make('notes')
+                          ->separator(', ')
+                          ->toggleable(),
+                TextColumn::make('group.name'),
+                TextColumn::make('seating.name')
+                          ->label('Table'),
+                TextColumn::make('guests')
+                          ->label('Max Guests'),
+                BooleanColumn::make('is_family')
+                             ->action(function ($record) {
+                                 $record->is_family = ! $record->is_family;
+                                 $record->save();
+
+                                 event(new InvitationUpdated($record));
+                             })
+                             ->toggleable(),
                 BooleanColumn::make('is_teapai')
                              ->action(function ($record) {
                                  $record->is_teapai = ! $record->is_teapai;
@@ -67,46 +83,24 @@ class InvitationResource extends Resource
                                  event(new InvitationUpdated($record));
                              })
                              ->toggleable(),
-                TextColumn::make('group.name'),
-                TextColumn::make('guests')
-                          ->label('Max Guests'),
-                TextColumn::make('seating.name')
-                          ->label('Table'),
-                TagsColumn::make('notes')
-                          ->separator(', '),
-                //BooleanColumn::make('is_attending'),
-                //TextColumn::make('rsvp_at')->dateTime(),
-                //TextColumn::make('pax')->toggleable(isToggledHiddenByDefault: true),
-                BooleanColumn::make('is_family')
-                             ->action(function ($record) {
-                                 $record->is_family = ! $record->is_family;
-                                 $record->save();
-
-                                 event(new InvitationUpdated($record));
-                             })
-                             ->toggleable(isToggledHiddenByDefault: true),
             ])
             ->filters([
-                TernaryFilter::make('is_teapai'),
-                MultiSelectFilter::make('group_id')
-                                 ->label('Group')
-                                 ->options(\App\Models\Group::all()->pluck('group_name', 'id')),
-                MultiSelectFilter::make('seating_id')
-                                 ->label('Table')
-                                 ->relationship('seating', 'name'),
-                TernaryFilter::make('is_attending'),
                 Filter::make('notes')
                       ->form([
-                          TextInput::make('search'),
+                          TextInput::make('search')->label('Notes'),
                       ])->query(function (Builder $query, array $data): Builder {
                         return $query->when(
                             $data['search'],
                             fn(Builder $query, $term): Builder => $query->where('notes', 'like', '%'.$term.'%')
                         );
                     }),
-                //TernaryFilter::make('rsvp_at')
-                //             ->label('RSVP')
-                //             ->nullable(),
+                MultiSelectFilter::make('group_id')
+                                 ->label('Group')
+                                 ->options(\App\Models\Group::all()->pluck('group_name', 'id')),
+                MultiSelectFilter::make('seating_id')
+                                 ->label('Table')
+                                 ->relationship('seating', 'name'),
+                TernaryFilter::make('is_teapai'),
                 TernaryFilter::make('is_family'),
             ])
             ->actions([
