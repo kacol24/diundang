@@ -29,7 +29,7 @@ class InvitationsImport implements ToModel, WithHeadingRow
     {
         return new Invitation([
             'name'       => $row['name'] ?? 'Mr. / Mrs. / Ms.',
-            'guests'     => (int) $row['guests'],
+            'guests'     => $row['guests'] ?? 2,
             'is_family'  => $row['as_family'] == 'checked',
             'is_teapai'  => $row['tea_pai'] == 'checked',
             'group_id'   => $this->groupId,
