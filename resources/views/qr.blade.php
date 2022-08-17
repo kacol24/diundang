@@ -49,6 +49,7 @@
         .break {
             padding-top: 1cm;
             page-break-before: always;
+            width: 100%;
         }
     </style>
 </head>
