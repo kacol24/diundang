@@ -13,7 +13,8 @@ class Group extends Model
 
     protected $fillable = [
         'name',
-        'is_bride'
+        'is_bride',
+        'seating_id',
     ];
 
     protected $appends = [
@@ -23,6 +24,11 @@ class Group extends Model
     public function invitations()
     {
         return $this->hasMany(Invitation::class);
+    }
+
+    public function seating()
+    {
+        return $this->belongsTo(Seating::class);
     }
 
     public function getGroupNameAttribute()
