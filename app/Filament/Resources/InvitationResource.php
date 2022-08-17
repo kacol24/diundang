@@ -62,7 +62,7 @@ class InvitationResource extends Resource
                 TagsColumn::make('notes')
                           ->separator(', ')
                           ->toggleable(),
-                TextColumn::make('group.name'),
+                TextColumn::make('group.group_name'),
                 TextColumn::make('seating.name')
                           ->label('Table'),
                 TextColumn::make('guests')
@@ -124,6 +124,37 @@ class InvitationResource extends Resource
                 //Tables\Actions\DeleteAction::make(),
             ])
             ->prependBulkActions([
+                BulkAction::make('edit')
+                          ->form([
+                              Select::make('group_id')
+                                    ->label('Group')
+                                    ->options(\App\Models\Group::all()->pluck('group_name', 'id')),
+                              Select::make('seating_id')
+                                    ->label('Table')
+                                    ->options(Seating::all()->pluck('table_dropdown', 'id')),
+                              TextInput::make('guests')
+                                       ->label('Max. Guests')
+                                       ->required()
+                                       ->type('number')
+                                       ->suffix('person(s)')
+                                       ->default(2)
+                                       ->minValue(1),
+                              TagsInput::make('notes')->separator(', '),
+                          ])
+                          ->action(function (Collection $records, array $data): void {
+                              foreach ($records as $record) {
+                                  $record->group_id = $data['group_id'];
+                                  $record->seating_id = $data['seating_id'];
+                                  $record->guests = $data['guests'];
+                                  $record->notes = $data['notes'];
+                                  $record->save();
+
+                                  event(new InvitationUpdated($record));
+                              }
+                          })
+                          ->color('primary')
+                          ->icon('heroicon-o-pencil')
+                          ->requiresConfirmation(),
                 BulkAction::make('print_selected')
                           ->action(
                               fn(Collection $records, array $data) => redirect()->route('print', [
