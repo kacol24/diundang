@@ -12,6 +12,7 @@ use Filament\Forms\Components\DateTimePicker;
 use Filament\Forms\Components\Grid;
 use Filament\Forms\Components\Group;
 use Filament\Forms\Components\MultiSelect;
+use Filament\Forms\Components\Radio;
 use Filament\Forms\Components\Section;
 use Filament\Forms\Components\Select;
 use Filament\Forms\Components\TextInput;
@@ -113,9 +114,29 @@ class InvitationResource extends Resource
             ->appendBulkActions([
                 Tables\Actions\BulkAction::make('print_selected')
                                          ->action(
-                                             fn(Collection $records) => redirect()->route('print', ['invitations' => $records->pluck('id')->implode(',')])
+                                             fn(Collection $records, array $data) => redirect()->route('print', [
+                                                 'paper'       => $data['paper'],
+                                                 'break'       => $data['break'],
+                                                 'invitations' => $records->pluck('id')->implode(','),
+                                             ])
                                          )
                                          ->requiresConfirmation()
+                                         ->form([
+                                             Radio::make('paper')
+                                                  ->options([
+                                                      'A3'           => 'A3',
+                                                      'A4'           => 'A4',
+                                                      'A3_LANDSCAPE' => 'A3 Landscape',
+                                                      'A4_LANDSCAPE' => 'A4 Landscape',
+                                                  ])
+                                                  ->default('A3'),
+                                             Radio::make('break')
+                                                  ->options([
+                                                      'break'             => 'Normal Break',
+                                                      'break_with_margin' => 'Break W/ Margin',
+                                                  ])
+                                                  ->default('break'),
+                                         ])
                                          ->icon('heroicon-o-printer'),
             ]);
     }

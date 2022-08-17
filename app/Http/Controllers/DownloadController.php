@@ -29,8 +29,8 @@ class DownloadController extends Controller
         }
 
         $invitations = $invitations->get();
-        $paper = 'A3';
-        $break = 'break';
+        $paper = request('paper');
+        $break = request('break');
 
         return view('qr', compact('invitations', 'paper', 'break'));
     }
