@@ -53,9 +53,11 @@ class RsvpForm extends Component
 
         event(new InvitationUpdated($this->invitation, sync: true));
 
-        $this->emit('rsvpUpdated', ['invitation' => $this->invitation]);
+        sleep(1);
 
         session()->flash('success', 'Thank you for confirming your presence.');
+
+        $this->emit('rsvpUpdated', ['invitation' => $this->invitation]);
     }
 
     public function mount()

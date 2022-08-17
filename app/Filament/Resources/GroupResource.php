@@ -36,6 +36,9 @@ class GroupResource extends Resource
                 Tables\Columns\TextColumn::make('group_name'),
                 Tables\Columns\TextColumn::make('invitations_count')
                                          ->counts('invitations'),
+                Tables\Columns\TextColumn::make('invitations_sum_guests')
+                                         ->sum('invitations', 'guests')
+                                         ->label('Est. Guests'),
                 Tables\Columns\TextColumn::make('invitations_sum_pax')
                                          ->sum('invitations', 'pax')
                                          ->label('Pax'),
