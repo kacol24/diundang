@@ -67,15 +67,15 @@ class GenerateQrInvitation implements ShouldQueue
 
         $blankWhite = $this->intervention->make(public_path('images/blank-white.jpg'));
         $blankWhite->insert($qrname, 'top-left', 350 - 300, 525 - 475);
-        $blankWhite->text($guestName, 600 - 300, 1100 - 475, function ($font) use ($fontSize) {
+        $blankWhite->text($guestName, 600 - 300, 1100 - 515, function ($font) use ($fontSize) {
             $font->file(public_path('fonts/MADETOMMY-Bold.ttf'));
             $font->size($fontSize);
             $font->align('center');
             $font->valign('middle');
         });
-        $blankWhite->text($guestCode, 600 - 300, 1140 - 475, function ($font) {
+        $blankWhite->text($guestCode, 600 - 300, 1140 - 505, function ($font) {
             $font->file(public_path('fonts/MADETOMMY.ttf'));
-            $font->size(28);
+            $font->size(45);
             $font->align('center');
             $font->valign('middle');
         });
@@ -90,9 +90,9 @@ class GenerateQrInvitation implements ShouldQueue
             $table .= $pax.' '.Str::plural('guest', $pax);
         }
 
-        $blankWhite->text($table, 600 - 300, 1180 - 475, function ($font) {
+        $blankWhite->text($table, 600 - 300, 1180 - 495, function ($font) {
             $font->file(public_path('fonts/MADETOMMY.ttf'));
-            $font->size(28);
+            $font->size(40);
             $font->align('center');
             $font->valign('middle');
         });

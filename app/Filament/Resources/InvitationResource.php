@@ -12,6 +12,7 @@ use Filament\Forms\Components\DateTimePicker;
 use Filament\Forms\Components\Grid;
 use Filament\Forms\Components\Group;
 use Filament\Forms\Components\MultiSelect;
+use Filament\Forms\Components\Radio;
 use Filament\Forms\Components\Section;
 use Filament\Forms\Components\Select;
 use Filament\Forms\Components\TextInput;
@@ -19,6 +20,8 @@ use Filament\Resources\Form;
 use Filament\Resources\Resource;
 use Filament\Resources\Table;
 use Filament\Tables;
+use Filament\Tables\Actions\Action;
+use Filament\Tables\Actions\BulkAction;
 use Filament\Tables\Columns\BooleanColumn;
 use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Filters\MultiSelectFilter;
@@ -91,32 +94,53 @@ class InvitationResource extends Resource
                              ->nullable(),
             ])
             ->actions([
-                Tables\Actions\Action::make('send_wa')
-                                     ->label('WhatsApp')
-                                     ->url(function (Invitation $record) {
-                                         return "https://wa.me/{$record->whatsapp_phone}?text=".urlencode(view('whatsapp',
-                                                 [
-                                                     'groomName'   => 'Kevin Chandra',
-                                                     'brideName'   => 'Fernanda Eka Putri',
-                                                     'guestName'   => $record->full_name ?: 'Mr. / Mrs. / Ms.',
-                                                     'linkToSite'  => route('home', ['guest' => $record->guest_code]),
-                                                     'dueDate'     => Carbon::parse('2022-08-30')->format('d F Y'),
-                                                     'isAttending' => $record->is_attending,
-                                                     'reverse'     => optional($record->group)->is_bride,
-                                                 ])->render());
-                                     })
-                                     ->openUrlInNewTab(),
+                Action::make('send_wa')
+                      ->label('WhatsApp')
+                      ->url(function (Invitation $record) {
+                          return "https://wa.me/{$record->whatsapp_phone}?text=".urlencode(view('whatsapp',
+                                  [
+                                      'groomName'   => 'Kevin Chandra',
+                                      'brideName'   => 'Fernanda Eka Putri',
+                                      'guestName'   => $record->full_name ?: 'Mr. / Mrs. / Ms.',
+                                      'linkToSite'  => route('home', ['guest' => $record->guest_code]),
+                                      'dueDate'     => Carbon::parse('2022-08-30')->format('d F Y'),
+                                      'isAttending' => $record->is_attending,
+                                      'reverse'     => optional($record->group)->is_bride,
+                                  ])->render());
+                      })
+                      ->openUrlInNewTab(),
                 //Tables\Actions\ViewAction::make(),
                 Tables\Actions\EditAction::make(),
                 //Tables\Actions\DeleteAction::make(),
             ])
-            ->appendBulkActions([
-                Tables\Actions\BulkAction::make('print_selected')
-                                         ->action(
-                                             fn(Collection $records) => redirect()->route('print', ['invitations' => $records->pluck('id')->implode(',')])
-                                         )
-                                         ->requiresConfirmation()
-                                         ->icon('heroicon-o-printer'),
+            ->prependBulkActions([
+                BulkAction::make('print_selected')
+                          ->action(
+                              fn(Collection $records, array $data) => redirect()->route('print', [
+                                  'paper'       => $data['paper'],
+                                  'break'       => $data['break'],
+                                  'invitations' => $records->pluck('id')->implode(','),
+                              ])
+                          )
+                          ->requiresConfirmation()
+                          ->deselectRecordsAfterCompletion()
+                          ->form([
+                              Radio::make('paper')
+                                   ->options([
+                                       'A3'           => 'A3',
+                                       'A4'           => 'A4',
+                                       'A3_LANDSCAPE' => 'A3 Landscape',
+                                       'A4_LANDSCAPE' => 'A4 Landscape',
+                                   ])
+                                   ->default('A3'),
+                              Radio::make('break')
+                                   ->options([
+                                       'break'             => 'Normal Break',
+                                       'break_with_margin' => 'Break W/ Margin',
+                                   ])
+                                   ->default('break'),
+                          ])
+                          ->icon('heroicon-o-printer'),
             ]);
     }
 

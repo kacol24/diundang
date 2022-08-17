@@ -29,8 +29,48 @@ class DownloadController extends Controller
         }
 
         $invitations = $invitations->get();
-        $paper = 'A3';
+        $paper = request('paper');
+        $break = request('break');
 
-        return view('qr', compact('invitations', 'paper'));
+        $paperSizes = [
+            'A3'           => [
+                'paper'             => '297mm 420mm',
+                'break'             => [
+                    'x' => 8,
+                ],
+                'break_with_margin' => [
+                    'x' => 8,
+                ],
+            ],
+            'A4'           => [
+                'paper'             => '210mm 297mm',
+                'break'             => [
+                    'x' => 6,
+                ],
+                'break_with_margin' => [
+                    'x' => 8,
+                ],
+            ],
+            'A3_LANDSCAPE' => [
+                'paper'             => '420mm 297mm',
+                'break'             => [
+                    'x' => 12,
+                ],
+                'break_with_margin' => [
+                    'x' => 8,
+                ],
+            ],
+            'A4_LANDSCAPE' => [
+                'paper'             => '297mm 210mm',
+                'break'             => [
+                    'x' => 8,
+                ],
+                'break_with_margin' => [
+                    'x' => 8,
+                ],
+            ],
+        ];
+
+        return view('qr', compact('invitations', 'paper', 'break', 'paperSizes'));
     }
 }

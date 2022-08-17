@@ -34,9 +34,9 @@ class GenerateQrCode implements ShouldQueue
         $qrcode = new Generator;
         $qrcode->size(500)
                ->format('png')
-               ->color(77, 28, 50)
+               ->color(9, 35, 47)
                ->errorCorrection('H')
-               ->merge('/public/images/logo-qr-deinterlaced.png')
+               ->merge('/public/images/logo-qr-deinterlaced-mauve.png')
                ->generate($this->code, $qrFullPath);
     }
 }
