@@ -20,7 +20,7 @@ class GenerateMissingQrCodes extends Command
      *
      * @var string
      */
-    protected $description = 'Checks and generates missing QR Codes';
+    protected $description = 'Generates QR Codes';
 
     /**
      * Execute the console command.
@@ -32,18 +32,8 @@ class GenerateMissingQrCodes extends Command
         $invitations = Invitation::all();
 
         foreach ($invitations as $invitation) {
-            $this->info('Processing guest: '.$invitation->guest_code);
-
-            $qrPath = storage_path('app/public/qr');
-            $qrName = $invitation->code.'.png';
-            $qrFullPath = $qrPath.'/'.$qrName;
-
-            if (file_exists($qrFullPath)) {
-                $this->warn("Skipping [{$invitation->guest_code}] already exists!");
-            } else {
-                $this->info('Generating for guest: '.$invitation->guest_code);
-                GenerateQrCode::dispatchSync($invitation->guest_code);
-            }
+            $this->info('Generating for guest: '.$invitation->guest_code);
+            GenerateQrCode::dispatchSync($invitation->guest_code);
         }
     }
 }
