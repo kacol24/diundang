@@ -19,9 +19,8 @@
             'break' => 45
         ],
     ];
-    $paper = 'A3';
 @endphp
-    <!doctype html>
+<!doctype html>
 <html lang="en">
 <head>
     <meta charset="utf-8">
@@ -53,8 +52,7 @@
         }
     </style>
 </head>
-<body style="font-size: 0;">
-@php($invitations = App\Models\Invitation::limit(98)->get())
+<body style="font-size: 0;display: flex;flex-wrap: wrap">
 @foreach($invitations as $invitation)
     <div style="width: 3.4cm; max-width: 3.4cm; height:auto; outline: 1px solid black; margin: 0;display: inline-flex">
         <img src="{{ asset('storage/printable/' . $invitation->filename) }}"

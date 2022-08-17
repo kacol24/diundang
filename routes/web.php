@@ -23,7 +23,8 @@ Route::get('/', HomeController::class)
 Route::get('/download', DownloadController::class)
      ->name('download');
 
-Route::get('print', [DownloadController::class, 'print']);
+Route::get('print', [DownloadController::class, 'print'])
+     ->name('print');
 
 Route::post('rsvp', [RsvpController::class, 'store'])
      ->name('rsvp.store');

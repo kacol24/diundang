@@ -21,6 +21,16 @@ class DownloadController extends Controller
 
     public function print()
     {
-        return view('qr');
+        $invitations = Invitation::query();
+
+        if (request()->has('invitations')) {
+            $invitationIds = explode(',', request('invitations'));
+            $invitations->whereIn('id', $invitationIds);
+        }
+
+        $invitations = $invitations->get();
+        $paper = 'A3';
+
+        return view('qr', compact('invitations', 'paper'));
     }
 }
