@@ -4,6 +4,7 @@ namespace App\Filament\Resources;
 
 use App\Events\InvitationUpdated;
 use App\Filament\Resources\InvitationResource\Pages;
+use App\Models\Group;
 use App\Models\Invitation;
 use App\Models\Seating;
 use Carbon\Carbon;
@@ -11,7 +12,6 @@ use Filament\Forms;
 use Filament\Forms\Components\Checkbox;
 use Filament\Forms\Components\DateTimePicker;
 use Filament\Forms\Components\Grid;
-use Filament\Forms\Components\Group;
 use Filament\Forms\Components\MultiSelect;
 use Filament\Forms\Components\Section;
 use Filament\Forms\Components\Select;
@@ -80,7 +80,7 @@ class InvitationResource extends Resource
             ->filters([
                 MultiSelectFilter::make('group_id')
                                  ->label('Group')
-                                 ->relationship('group', 'name'),
+                                 ->options(Group::all()->pluck('group_name', 'id')),
                 MultiSelectFilter::make('seating_id')
                                  ->label('Table')
                                  ->relationship('seating', 'name'),
