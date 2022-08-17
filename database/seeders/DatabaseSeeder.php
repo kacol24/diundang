@@ -22,6 +22,5 @@ class DatabaseSeeder extends Seeder
         ]);
 
         $this->call(SeatingSeeder::class);
-        $this->call(GroupSeeder::class);
     }
 }
