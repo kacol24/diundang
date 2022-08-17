@@ -90,8 +90,8 @@
             <div class="row align-items-center">
                 <div class="col-md-4 offset-md-4 text-center">
                     <button type="submit" class="btn btn-secondary disabled rounded-pill" disabled
-                            :disabled="!pax"
-                            :class="{ 'disabled': !pax }">
+                            :disabled="!name || !attend || (!pax && attend == 1)"
+                            :class="{ 'disabled': !name || !attend || (!pax && attend == 1) }">
                         @if(optional($invitation)->rsvp_at)
                             {{ __('Update RSVP') }}
                         @else
