@@ -24,9 +24,12 @@ use Filament\Tables;
 use Filament\Tables\Actions\Action;
 use Filament\Tables\Actions\BulkAction;
 use Filament\Tables\Columns\BooleanColumn;
+use Filament\Tables\Columns\TagsColumn;
 use Filament\Tables\Columns\TextColumn;
+use Filament\Tables\Filters\Filter;
 use Filament\Tables\Filters\MultiSelectFilter;
 use Filament\Tables\Filters\TernaryFilter;
+use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Database\Eloquent\Model;
 
@@ -55,7 +58,7 @@ class InvitationResource extends Resource
                 TextColumn::make('guest_code')
                           ->searchable(),
                 TextColumn::make('full_name')
-                          ->searchable(),
+                          ->searchable(['name']),
                 BooleanColumn::make('is_teapai')
                              ->action(function ($record) {
                                  $record->is_teapai = ! $record->is_teapai;
@@ -69,9 +72,11 @@ class InvitationResource extends Resource
                           ->label('Max Guests'),
                 TextColumn::make('seating.name')
                           ->label('Table'),
-                BooleanColumn::make('is_attending'),
-                TextColumn::make('rsvp_at')->dateTime(),
-                TextColumn::make('pax')->toggleable(isToggledHiddenByDefault: true),
+                TagsColumn::make('notes')
+                          ->separator(', '),
+                //BooleanColumn::make('is_attending'),
+                //TextColumn::make('rsvp_at')->dateTime(),
+                //TextColumn::make('pax')->toggleable(isToggledHiddenByDefault: true),
                 BooleanColumn::make('is_family')
                              ->action(function ($record) {
                                  $record->is_family = ! $record->is_family;
@@ -82,17 +87,27 @@ class InvitationResource extends Resource
                              ->toggleable(isToggledHiddenByDefault: true),
             ])
             ->filters([
+                TernaryFilter::make('is_teapai'),
                 MultiSelectFilter::make('group_id')
                                  ->label('Group')
                                  ->options(\App\Models\Group::all()->pluck('group_name', 'id')),
                 MultiSelectFilter::make('seating_id')
                                  ->label('Table')
                                  ->relationship('seating', 'name'),
-                TernaryFilter::make('is_teapai'),
                 TernaryFilter::make('is_attending'),
-                TernaryFilter::make('rsvp_at')
-                             ->label('RSVP')
-                             ->nullable(),
+                Filter::make('notes')
+                      ->form([
+                          TextInput::make('search'),
+                      ])->query(function (Builder $query, array $data): Builder {
+                        return $query->when(
+                            $data['search'],
+                            fn(Builder $query, $term): Builder => $query->where('notes', 'like', '%'.$term.'%')
+                        );
+                    }),
+                //TernaryFilter::make('rsvp_at')
+                //             ->label('RSVP')
+                //             ->nullable(),
+                TernaryFilter::make('is_family'),
             ])
             ->actions([
                 Action::make('send_wa')
@@ -190,12 +205,10 @@ class InvitationResource extends Resource
                             ->schema([
                                 Select::make('group_id')
                                       ->label('Group')
-                                      ->options(\App\Models\Group::all()->pluck('group_name', 'id'))
-                                      ->searchable(),
+                                      ->options(\App\Models\Group::all()->pluck('group_name', 'id')),
                                 Select::make('seating_id')
                                       ->label('Table')
-                                      ->options(Seating::all()->pluck('table_dropdown', 'id'))
-                                      ->searchable(),
+                                      ->options(Seating::all()->pluck('table_dropdown', 'id')),
                                 TextInput::make('guests')
                                          ->required()
                                          ->type('number')
