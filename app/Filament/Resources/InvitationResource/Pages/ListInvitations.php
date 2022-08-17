@@ -14,4 +14,14 @@ class ListInvitations extends ListRecords
     {
         return Layout::AboveContent;
     }
+
+    protected function shouldPersistTableFiltersInSession(): bool
+    {
+        return true;
+    }
+
+    protected function getTableFiltersFormColumns(): int
+    {
+        return 6;
+    }
 }
