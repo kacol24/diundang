@@ -46,6 +46,11 @@ class Seating extends Model
         return $this->hasMany(Invitation::class);
     }
 
+    public function groups()
+    {
+        return $this->hasMany(Group::class);
+    }
+
     /*
     |--------------------------------------------------------------------------
     | SCOPES
