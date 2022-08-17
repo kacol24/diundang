@@ -4,12 +4,17 @@ namespace App\Filament\Resources;
 
 use App\Filament\Resources\GroupResource\Pages;
 use App\Models\Group;
+use App\Models\Seating;
 use Carbon\Carbon;
-use Filament\Forms;
+use Filament\Forms\Components\Checkbox;
+use Filament\Forms\Components\Select;
+use Filament\Forms\Components\TextInput;
 use Filament\Resources\Form;
 use Filament\Resources\Resource;
 use Filament\Resources\Table;
 use Filament\Tables;
+use Filament\Tables\Columns\BooleanColumn;
+use Filament\Tables\Columns\TextColumn;
 
 class GroupResource extends Resource
 {
@@ -23,9 +28,12 @@ class GroupResource extends Resource
     {
         return $form
             ->schema([
-                Forms\Components\TextInput::make('name'),
-                Forms\Components\Checkbox::make('is_bride')
-                                         ->inline(false),
+                TextInput::make('name'),
+                Checkbox::make('is_bride')
+                        ->inline(false),
+                Select::make('seating_id')
+                      ->label('Table')
+                      ->options(Seating::all()->pluck('table_dropdown', 'id')),
             ]);
     }
 
@@ -33,21 +41,23 @@ class GroupResource extends Resource
     {
         return $table
             ->columns([
-                Tables\Columns\TextColumn::make('group_name'),
-                Tables\Columns\TextColumn::make('invitations_count')
-                                         ->counts('invitations'),
-                Tables\Columns\TextColumn::make('invitations_sum_guests')
-                                         ->sum('invitations', 'guests')
-                                         ->label('Est. Guests'),
-                Tables\Columns\TextColumn::make('invitations_sum_pax')
-                                         ->sum('invitations', 'pax')
-                                         ->label('Pax'),
-                Tables\Columns\BooleanColumn::make('is_bride')
-                                            ->sortable()
-                                            ->action(function ($record) {
-                                                $record->is_bride = ! $record->is_bride;
-                                                $record->save();
-                                            }),
+                TextColumn::make('group_name'),
+                TextColumn::make('invitations_count')
+                          ->counts('invitations'),
+                TextColumn::make('invitations_sum_guests')
+                          ->sum('invitations', 'guests')
+                          ->label('Est. Guests'),
+                TextColumn::make('invitations_sum_pax')
+                          ->sum('invitations', 'pax')
+                          ->label('Pax'),
+                TextColumn::make('seating.name')
+                          ->label('Table'),
+                BooleanColumn::make('is_bride')
+                             ->sortable()
+                             ->action(function ($record) {
+                                 $record->is_bride = ! $record->is_bride;
+                                 $record->save();
+                             }),
             ])
             ->filters([
                 //

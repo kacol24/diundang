@@ -103,8 +103,7 @@
                                 60225
                             </small>
                         </address>
-                        <a href="#mapModal" class="btn btn-secondary text-uppercase btn-sm rounded-pill"
-                           data-bs-toggle="modal">
+                        <a href="https://goo.gl/maps/awjipcfW3aGRyvte9" class="btn btn-secondary text-uppercase btn-sm rounded-pill" target="_blank">
                             <i class="fas fa-fw fa-map-marker" style="color: #ee2e30"></i>
                             {{ __('Get Direction') }}
                         </a>
@@ -115,24 +114,24 @@
     </div>
 </div>
 
-@push('before_scripts')
-    <div class="modal fade" id="mapModal" tabindex="-1" aria-labelledby="mapModalLabel" aria-hidden="true">
-        <div class="modal-dialog modal-dialog-centered modal-lg">
-            <div class="modal-content">
-                <div class="modal-header border-0">
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="modal-body p-0">
-                    <div class="ratio ratio-4x3">
-                        <iframe
-                            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3957.6403243803657!2d112.70499985105243!3d-7.281701673559742!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2dd7fc0ee483ffff%3A0x625015abf9f3022e!2sXO%20Palace!5e0!3m2!1sen!2sid!4v1643895260472!5m2!1sen!2sid"
-                            style="border:0;" allowfullscreen="" loading="lazy"></iframe>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-@endpush
+{{--@push('before_scripts')--}}
+{{--    <div class="modal fade" id="mapModal" tabindex="-1" aria-labelledby="mapModalLabel" aria-hidden="true">--}}
+{{--        <div class="modal-dialog modal-dialog-centered modal-lg">--}}
+{{--            <div class="modal-content">--}}
+{{--                <div class="modal-header border-0">--}}
+{{--                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>--}}
+{{--                </div>--}}
+{{--                <div class="modal-body p-0">--}}
+{{--                    <div class="ratio ratio-4x3">--}}
+{{--                        <iframe--}}
+{{--                            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3957.6403243803657!2d112.70499985105243!3d-7.281701673559742!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2dd7fc0ee483ffff%3A0x625015abf9f3022e!2sXO%20Palace!5e0!3m2!1sen!2sid!4v1643895260472!5m2!1sen!2sid"--}}
+{{--                            style="border:0;" allowfullscreen="" loading="lazy"></iframe>--}}
+{{--                    </div>--}}
+{{--                </div>--}}
+{{--            </div>--}}
+{{--        </div>--}}
+{{--    </div>--}}
+{{--@endpush--}}
 
 @push('after_scripts')
     <script>
