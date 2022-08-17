@@ -2,12 +2,13 @@
     $paperSizes = [
         'A3' => [
             'paper'             => '297mm 420mm',
-            'break'             => 72,
-            'break_with_margin' => 90
+            'break'             => 90,
+            'break_with_margin' => 72
         ],
         'A4' => [
-            'paper' => '210mm 297mm',
-            'break' => 42
+            'paper'             => '210mm 297mm',
+            'break'             => 42,
+            'break_with_margin' => 42,
         ],
         'A3_LANDSCAPE' => [
             'paper'             => '420mm 297mm',
@@ -15,8 +16,9 @@
             'break_with_margin' => 78
         ],
         'A4_LANDSCAPE' => [
-            'paper' => '297mm 210mm',
-            'break' => 45
+            'paper'             => '297mm 210mm',
+            'break'             => 45,
+            'break_with_margin' => 45
         ],
     ];
 @endphp
