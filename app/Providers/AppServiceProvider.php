@@ -30,5 +30,9 @@ class AppServiceProvider extends ServiceProvider
                 'Master',
             ]);
         });
+
+        Filament::registerStyles([
+            asset('css/admin.css'),
+        ]);
     }
 }

@@ -7,7 +7,6 @@ use App\Filament\Resources\InvitationResource\Pages;
 use App\Models\Invitation;
 use App\Models\Seating;
 use Carbon\Carbon;
-use Filament\Forms;
 use Filament\Forms\Components\Checkbox;
 use Filament\Forms\Components\DateTimePicker;
 use Filament\Forms\Components\Grid;
@@ -24,6 +23,7 @@ use Filament\Tables\Columns\BooleanColumn;
 use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Filters\MultiSelectFilter;
 use Filament\Tables\Filters\TernaryFilter;
+use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Database\Eloquent\Model;
 
 class InvitationResource extends Resource
@@ -80,7 +80,7 @@ class InvitationResource extends Resource
             ->filters([
                 MultiSelectFilter::make('group_id')
                                  ->label('Group')
-                                 ->relationship('group', 'name'),
+                                 ->options(\App\Models\Group::all()->pluck('group_name', 'id')),
                 MultiSelectFilter::make('seating_id')
                                  ->label('Table')
                                  ->relationship('seating', 'name'),
@@ -107,8 +107,16 @@ class InvitationResource extends Resource
                                      })
                                      ->openUrlInNewTab(),
                 //Tables\Actions\ViewAction::make(),
-                //Tables\Actions\EditAction::make(),
+                Tables\Actions\EditAction::make(),
                 //Tables\Actions\DeleteAction::make(),
+            ])
+            ->appendBulkActions([
+                Tables\Actions\BulkAction::make('print_selected')
+                                         ->action(
+                                             fn(Collection $records) => redirect()->route('print', ['invitations' => $records->pluck('id')->implode(',')])
+                                         )
+                                         ->requiresConfirmation()
+                                         ->icon('heroicon-o-printer'),
             ]);
     }
 
@@ -158,7 +166,7 @@ class InvitationResource extends Resource
                             ->schema([
                                 Select::make('group_id')
                                       ->label('Group')
-                                      ->options(\App\Models\Group::all()->pluck('name', 'id'))
+                                      ->options(\App\Models\Group::all()->pluck('group_name', 'id'))
                                       ->searchable(),
                                 Select::make('seating_id')
                                       ->label('Table')
