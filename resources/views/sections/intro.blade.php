@@ -20,7 +20,7 @@
             <div class="col-lg-5">
                 <div class="card rounded-4 mb-4 mb-lg-0 text-center" data-aos="fade-right">
                     <div class="card-body py-5">
-                        <img src="{{ asset('images/kevin.jpg') }}" alt=""
+                        <img src="{{ asset('images/groom.jpg') }}" alt=""
                              class="img-fluid rounded-circle mb-3 mx-auto"
                              style="max-width: 150px" data-aos="fade-down" data-aos-delay="300">
                         <h2 class="font-serif text-uppercase h5">
