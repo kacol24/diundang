@@ -2,7 +2,7 @@
     $paperSizes = [
         'A3' => [
             'paper'             => '297mm 420mm',
-            'break'             => 90,
+            'break'             => 72,
             'break_with_margin' => 90
         ],
         'A4' => [
