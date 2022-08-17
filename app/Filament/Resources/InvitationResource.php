@@ -166,7 +166,7 @@ class InvitationResource extends Resource
                             ->schema([
                                 Select::make('group_id')
                                       ->label('Group')
-                                      ->options(\App\Models\Group::all()->pluck('name', 'id'))
+                                      ->options(\App\Models\Group::all()->pluck('group_name', 'id'))
                                       ->searchable(),
                                 Select::make('seating_id')
                                       ->label('Table')
