@@ -8,7 +8,6 @@ use App\Models\Group;
 use App\Models\Invitation;
 use App\Models\Seating;
 use Carbon\Carbon;
-use Filament\Forms;
 use Filament\Forms\Components\Checkbox;
 use Filament\Forms\Components\DateTimePicker;
 use Filament\Forms\Components\Grid;
@@ -24,6 +23,7 @@ use Filament\Tables\Columns\BooleanColumn;
 use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Filters\MultiSelectFilter;
 use Filament\Tables\Filters\TernaryFilter;
+use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Database\Eloquent\Model;
 
 class InvitationResource extends Resource
@@ -109,6 +109,14 @@ class InvitationResource extends Resource
                 //Tables\Actions\ViewAction::make(),
                 //Tables\Actions\EditAction::make(),
                 //Tables\Actions\DeleteAction::make(),
+            ])
+            ->appendBulkActions([
+                Tables\Actions\BulkAction::make('print_selected')
+                                         ->action(
+                                             fn(Collection $records) => redirect()->route('print', ['invitations' => $records->pluck('id')->implode(',')])
+                                         )
+                                         ->requiresConfirmation()
+                                         ->icon('heroicon-o-printer'),
             ]);
     }
 
