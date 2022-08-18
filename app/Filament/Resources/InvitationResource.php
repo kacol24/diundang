@@ -155,6 +155,33 @@ class InvitationResource extends Resource
                           ->color('primary')
                           ->icon('heroicon-o-pencil')
                           ->requiresConfirmation(),
+                BulkAction::make('print_label')
+                          ->action(
+                              fn(Collection $records, array $data) => redirect()->route('label', [
+                                  'paper'       => $data['paper'],
+                                  'break'       => $data['break'],
+                                  'invitations' => $records->pluck('id')->implode(','),
+                              ])
+                          )
+                          ->requiresConfirmation()
+                          ->deselectRecordsAfterCompletion()
+                          ->form([
+                              Radio::make('paper')
+                                   ->options([
+                                       'A3'           => 'A3',
+                                       'A4'           => 'A4',
+                                       'A3_LANDSCAPE' => 'A3 Landscape',
+                                       'A4_LANDSCAPE' => 'A4 Landscape',
+                                   ])
+                                   ->default('A3'),
+                              Radio::make('break')
+                                   ->options([
+                                       'break'             => 'Normal Break',
+                                       'break_with_margin' => 'Break W/ Margin',
+                                   ])
+                                   ->default('break'),
+                          ])
+                          ->icon('heroicon-o-printer'),
                 BulkAction::make('print_selected')
                           ->action(
                               fn(Collection $records, array $data) => redirect()->route('print', [
