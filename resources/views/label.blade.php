@@ -46,7 +46,7 @@
     @foreach($invitations->chunk($paperSizes[$paper][$break]['x']) as $row => $invitationRow)
         <tr style="page-break-inside: avoid">
             @foreach($invitationRow as $invitation)
-                <td style="width: 64mm;height: 32mm; outline: 1px solid black; vertical-align: middle; text-align: center; page-break-inside: avoid">
+                <td style="width: 64mm;height: 32mm; min-width: 64mm; min-height: 32mm; max-width: 64mm; max-height: 32mm; outline: 1px solid black; vertical-align: middle; text-align: center; page-break-inside: avoid">
                     {{ $invitation->name }}
                 </td>
             @endforeach
