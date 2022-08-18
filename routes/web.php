@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\DownloadController;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\PrintController;
 use App\Http\Controllers\RsvpController;
 use App\Models\Invitation;
 use Illuminate\Support\Facades\Route;
@@ -23,8 +24,11 @@ Route::get('/', HomeController::class)
 Route::get('/download', DownloadController::class)
      ->name('download');
 
-Route::get('print', [DownloadController::class, 'print'])
+Route::get('print', [PrintController::class, 'qr'])
      ->name('print');
+
+Route::get('label', [PrintController::class, 'label'])
+     ->name('label');
 
 Route::post('rsvp', [RsvpController::class, 'store'])
      ->name('rsvp.store');
