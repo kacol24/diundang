@@ -87,11 +87,11 @@ class InvitationResource extends Resource
             ->filters([
                 Filter::make('notes')
                       ->form([
-                          TextInput::make('search')->label('Notes'),
+                          TagsInput::make('search')->label('Notes'),
                       ])->query(function (Builder $query, array $data): Builder {
                         return $query->when(
                             $data['search'],
-                            fn(Builder $query, $term): Builder => $query->where('notes', 'like', '%'.$term.'%')
+                            fn(Builder $query, $term): Builder => $query->whereIn('notes', $term)
                         );
                     }),
                 MultiSelectFilter::make('group_id')
