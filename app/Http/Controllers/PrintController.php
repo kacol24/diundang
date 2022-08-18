@@ -87,10 +87,14 @@ class PrintController extends Controller
         $paperSizes['A4']['break']['x'] = 3;
         $paperSizes['A4']['break_with_margin']['x'] = 3;
 
-        $paperSizes['A3']['break']['x'] = 7;
-        $paperSizes['A3']['break_with_margin']['x'] = 5;
-        $paperSizes['A3_LANDSCAPE']['break']['x'] = 10;
-        $paperSizes['A3_LANDSCAPE']['break_with_margin']['x'] = 6;
+        $paperSizes['A3']['break']['x'] = 6;
+        $paperSizes['A3']['break']['count'] = 4 * 13;
+        $paperSizes['A3']['break_with_margin']['x'] = 3;
+        $paperSizes['A3']['break_with_margin']['count'] = 4 * 12;
+
+        $paperSizes['A3_LANDSCAPE']['break']['x'] = 6;
+        $paperSizes['A3_LANDSCAPE']['break_with_margin']['x'] = 5;
+        $paperSizes['A3_LANDSCAPE']['break_with_margin']['count'] = 6 * 8;
 
         return view('label', compact('invitations', 'paper', 'break', 'paperSizes'));
     }
