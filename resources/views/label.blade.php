@@ -21,6 +21,10 @@
             font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", "Liberation Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
         }
 
+        div {
+            display: none;
+        }
+
         .break {
             padding-top: {{ $break == 'break_with_margin' ? '1cm' : '0' }};
             page-break-before: always;
@@ -42,16 +46,14 @@
 {{--        Soo Jong Kiau, Ko Nanang, Ko Ati, Ko Afo, Asong--}}
 {{--    </h1>--}}
 {{--</div>--}}
-<table style="font-size: 8pt">
-    @foreach($invitations->chunk($paperSizes[$paper][$break]['x']) as $row => $invitationRow)
-        <tr style="page-break-inside: avoid">
-            @foreach($invitationRow as $invitation)
-                <td style="width: 64mm;height: 32mm; min-width: 64mm; min-height: 32mm; max-width: 64mm; max-height: 32mm; outline: 1px solid black; vertical-align: middle; text-align: center; page-break-inside: avoid">
-                    {{ $invitation->name }}
-                </td>
-            @endforeach
-        </tr>
-    @endforeach
-</table>
+@foreach($invitations as $invitation)
+    <div
+        style="width: 64mm;height: 32mm; min-width: 64mm; min-height: 32mm; max-width: 64mm; max-height: 32mm; outline: 1px solid black; text-align: center; page-break-inside: avoid; display: inline-flex;align-items: center;justify-content: center; font-size: 8pt;">
+        {{ $invitation->name }}
+    </div>
+    @if($paperSizes[$paper][$break]['count'] == $loop->iteration)
+        <div class="break"></div>
+    @endif
+@endforeach
 </body>
 </html>
