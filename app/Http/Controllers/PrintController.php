@@ -93,6 +93,7 @@ class PrintController extends Controller
         $paperSizes['A3']['break_with_margin']['count'] = 4 * 12;
 
         $paperSizes['A3_LANDSCAPE']['break']['x'] = 6;
+        $paperSizes['A3_LANDSCAPE']['break']['count'] = 6 * 9;
         $paperSizes['A3_LANDSCAPE']['break_with_margin']['x'] = 5;
         $paperSizes['A3_LANDSCAPE']['break_with_margin']['count'] = 6 * 8;
 
