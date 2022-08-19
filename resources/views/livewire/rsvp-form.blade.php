@@ -58,7 +58,7 @@
                        @else
                            class="form-control"
                        x-model="name"
-                       wire:model.lazy="guestName"
+                       wire:model.defer="guestName"
                        @endif
                        id="name">
             </div>
