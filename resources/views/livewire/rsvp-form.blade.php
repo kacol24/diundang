@@ -73,14 +73,14 @@
                                 <input class="form-check-input" type="radio" name="inlineRadioOptions"
                                        id="inlineRadio1" value="1"
                                        x-model="attend"
-                                       wire:model.lazy="isAttending">
+                                       wire:model.defer="isAttending">
                                 <label class="form-check-label" for="inlineRadio1">Yes</label>
                             </div>
                             <div class="form-check form-check-inline">
                                 <input class="form-check-input" type="radio" name="inlineRadioOptions"
                                        id="inlineRadio2" value="0"
                                        x-model="attend"
-                                       wire:model.lazy="isAttending">
+                                       wire:model.defer="isAttending">
                                 <label class="form-check-label" for="inlineRadio2">No</label>
                             </div>
                         </div>
@@ -96,7 +96,7 @@
                             </label>
                             <select class="form-select" id="pax" style="font-size: inherit;"
                                     x-model="pax"
-                                    wire:model.lazy="guests">
+                                    wire:model.defer="guests">
                                 <option selected value="" disabled hidden>
                                     {{ __('How many people will attend?') }}
                                 </option>
