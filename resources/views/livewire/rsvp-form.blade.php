@@ -43,7 +43,15 @@
           wire:submit.prevent="save"
           @rsvp-created.window="function(event) { window.history.replaceState('', '', '{{ route('home') }}?guest=' + event.detail.guest); }">
         @csrf
-        <fieldset class="position-relative">
+        <fieldset class="position-relative"
+                  wire:loading.attr="disabled" wire:target="save">
+            <div class="position-absolute start-0 top-0 w-100 h-100 align-items-center justify-content-center"
+                 style="background-color:rgba(255, 255, 255, .7);"
+                 wire:loading.flex wire:target="save">
+                <div>
+                    <i class="fas fa-refresh fa-fw fa-spin text-color:blue fa-lg"></i>
+                </div>
+            </div>
             <div class="mb-3">
                 <label class="fw-bold" for="name">
                     {{ __('Your Name') }}
