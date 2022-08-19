@@ -36,7 +36,7 @@
 @foreach($invitations->chunk($paperSizes[$paper][$break]['x']) as $row => $invitationRow)
     <div style="page-break-inside: avoid">
         @foreach($invitationRow as $invitation)
-            <div style="outline: 1px solid black; width: 3.4cm; max-width: 3.4cm; display: inline-block;">
+            <div style="outline: .5px solid black; width: 3.4cm; max-width: 3.4cm; display: inline-block;">
                 <img src="{{ asset('storage/printable/' . $invitation->filename) }}"
                      style="height:auto; width: 100%; max-width: 100%">
             </div>
