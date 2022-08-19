@@ -1,10 +1,10 @@
-<div
-    x-data="{
+<div>
+    <form action="{{ route('rsvp.store') }}" method="POST" class="mt-4 font-sans-serif" id="RsvpForm"
+          x-data="{
             name: '{{ optional($invitation)->name }}',
             attend: '{{ $isAttending }}',
             pax: '{{ optional($invitation)->pax }}'
-          }">
-    <form action="{{ route('rsvp.store') }}" method="POST" class="mt-4 font-sans-serif" id="RsvpForm"
+          }"
           wire:submit.prevent="save"
           @rsvp-created.window="function(event) { window.history.replaceState('', '', '{{ route('home') }}?guest=' + event.detail.guest); }">
         @csrf
