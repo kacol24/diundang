@@ -122,35 +122,5 @@
                 * {!! __('rsvp_section.trouble', ['groom' => '<a href="https://wa.me/6282233662728?text='. urlencode('Hi, this is '. $guestName .'! I want to confirm my attendance to your wedding reception.') .'" style="color: var(--color-secondary)">Kevin</a>', 'bride' => '<a href="https://wa.me/6282244872421?text='. urlencode('Hi, '. $guestName .'! I want to confirm my attendance to your wedding reception.') .'" style="color: var(--color-secondary)">Fernanda</a>']) !!}
             </em>
         </small>
-        <div class="modal fade" id="qrModal" tabindex="-1" aria-labelledby="qrModalLabel" aria-hidden="true"
-             data-bs-backdrop="static">
-            <div class="modal-dialog modal-dialog-centered">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h5 class="modal-title" id="qrModalLabel">Digital Invitation</h5>
-                        <button type="button" class="btn-close" data-bs-dismiss="modal"
-                                aria-label="Close"></button>
-                    </div>
-                    @if($invitation)
-                        <div class="modal-body p-0">
-                            <img
-                                src="{{ asset("storage/{$invitation['guest_code']}.jpg") }}?v={{ now()->timestamp }}"
-                                alt="qr code"
-                                class="img-fluid w-100">
-                        </div>
-                        <div class="modal-footer justify-content-start">
-                            <small class="fst-italic">
-                                You can <a
-                                    href="{{ route('download', ['guest' => $invitation['guest_code']]) }}"
-                                    target="_blank"
-                                    style="color: var(--color-secondary)">download</a> this digital invitation,
-                                screenshot
-                                this page, or save the QR Code as image.
-                            </small>
-                        </div>
-                    @endif
-                </div>
-            </div>
-        </div>
     </form>
 </div>
