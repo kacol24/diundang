@@ -14,24 +14,22 @@
                     <button type="button" class="btn-close" data-bs-dismiss="modal"
                             aria-label="Close"></button>
                 </div>
-                @if($invitation)
-                    <div class="modal-body p-0">
-                        <img
-                            src="{{ asset("storage/{$invitation['guest_code']}.jpg") }}?v={{ now()->timestamp }}"
-                            alt="qr code"
-                            class="img-fluid w-100">
-                    </div>
-                    <div class="modal-footer justify-content-start">
-                        <small class="fst-italic">
-                            You can <a
-                                href="{{ route('download', ['guest' => $invitation['guest_code']]) }}"
-                                target="_blank"
-                                style="color: var(--color-secondary)">download</a> this digital invitation,
-                            screenshot
-                            this page, or save the QR Code as image.
-                        </small>
-                    </div>
-                @endif
+                <div class="modal-body p-0">
+                    <img
+                        src="{{ asset("storage/{$invitation['guest_code']}.jpg") }}?v={{ now()->timestamp }}"
+                        alt="qr code"
+                        class="img-fluid w-100">
+                </div>
+                <div class="modal-footer justify-content-start">
+                    <small class="fst-italic">
+                        You can <a
+                            href="{{ route('download', ['guest' => $invitation['guest_code']]) }}"
+                            target="_blank"
+                            style="color: var(--color-secondary)">download</a> this digital invitation,
+                        screenshot
+                        this page, or save the QR Code as image.
+                    </small>
+                </div>
             </div>
         </div>
     </div>
