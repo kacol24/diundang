@@ -1,6 +1,6 @@
 <div
     x-data="{
-            name: '{{ addslashes(optional($invitation)->name) ?? '' }}',
+            name: '{{ optional($invitation)->name }}',
             attend: '{{ $isAttending }}',
             pax: '{{ optional($invitation)->pax }}'
           }">
