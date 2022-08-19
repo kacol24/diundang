@@ -1,12 +1,12 @@
-<div
-    x-data="{
-        name: '{{ addslashes(optional($invitation)->name) ?? "" }}',
-        attend: '{{ $isAttending }}',
-        pax: '{{ optional($invitation)->pax }}'
-      }">
+<div>
     <form action="{{ route('rsvp.store') }}" method="POST" class="mt-4 font-sans-serif" id="RsvpForm"
           wire:submit.prevent="save"
           wire:ignore
+          x-data="{
+            name: '{{ addslashes(optional($invitation)->name) ?? "" }}',
+            attend: '{{ $isAttending }}',
+            pax: '{{ optional($invitation)->pax }}'
+          }"
           @rsvp-created.window="function(event) { window.history.replaceState('', '', '{{ route('home') }}?guest=' + event.detail.guest); }">
         @csrf
         @if(session('success'))
