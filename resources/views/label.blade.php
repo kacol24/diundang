@@ -29,11 +29,31 @@
             padding-top: {{ $break == 'break_with_margin' ? '1cm' : '0' }};
             page-break-before: always;
             width: 100%;
+            display: block;
+            clear: both;
+        }
+
+        .label {
+            width: 64mm;
+            height: 32mm;
+            min-width: 64mm;
+            min-height: 32mm;
+            max-width: 64mm;
+            max-height: 32mm;
+            border: .1px solid #ccc;
+            text-align: center;
+            page-break-inside: avoid;
             display: flex;
+            float: left;
+            align-items: center;
+            justify-content: center;
+            font-size: 15pt;
+            padding: 0.5cm;
+            position: relative;
         }
     </style>
 </head>
-<body style="font-size: 0">
+<body style="font-size: 0; display: block;">
 {{--<div--}}
 {{--    style="outline: 1px solid black; width: 64mm; height: 32mm; display: inline-flex; align-items: center; justify-content: center; padding: 0.5cm; text-align: center">--}}
 {{--    <h1 style="margin: 0; font-size: 8pt">--}}
@@ -47,8 +67,7 @@
 {{--    </h1>--}}
 {{--</div>--}}
 @foreach($invitations as $invitation)
-    <div
-        style="width: 64mm;height: 32mm; min-width: 64mm; min-height: 32mm; max-width: 64mm; max-height: 32mm; outline: .5px solid black; text-align: center; page-break-inside: avoid; display: inline-flex;align-items: center;justify-content: center; font-size: 8pt;">
+    <div class="label">
         {{ $invitation->name }}
     </div>
     @if($paperSizes[$paper][$break]['count'] == $loop->iteration)
