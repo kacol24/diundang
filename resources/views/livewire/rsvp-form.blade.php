@@ -1,4 +1,9 @@
-<div>
+<div
+    x-data="{
+    name: '{{ addslashes(optional($invitation)->name) ?? "" }}',
+    attend: '{{ $isAttending }}',
+    pax: '{{ optional($invitation)->pax }}'
+  }">
     <div class="modal fade" id="qrModal" tabindex="-1" aria-labelledby="qrModalLabel" aria-hidden="true"
          data-bs-backdrop="static">
         <div class="modal-dialog modal-dialog-centered">
@@ -40,12 +45,7 @@
           @rsvp-created.window="function(event) { window.history.replaceState('', '', '{{ route('home') }}?guest=' + event.detail.guest); }">
         @csrf
         <fieldset class="position-relative"
-                  wire:loading.attr="disabled" wire:target="save"
-                  x-data="{
-                    name: '{{ addslashes(optional($invitation)->name) ?? "" }}',
-                    attend: '{{ $isAttending }}',
-                    pax: '{{ optional($invitation)->pax }}'
-                  }">
+                  wire:loading.attr="disabled" wire:target="save">
             <div class="position-absolute start-0 top-0 w-100 h-100 align-items-center justify-content-center"
                  style="background-color:rgba(255, 255, 255, .7);"
                  wire:loading.flex wire:target="save">
