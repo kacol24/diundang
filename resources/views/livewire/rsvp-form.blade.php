@@ -5,7 +5,8 @@
     pax: '{{ optional($invitation)->pax }}'
   }">
     <div class="modal fade" id="qrModal" tabindex="-1" aria-labelledby="qrModalLabel" aria-hidden="true"
-         data-bs-backdrop="static">
+         data-bs-backdrop="static"
+         wire:ignore>
         <div class="modal-dialog modal-dialog-centered">
             <div class="modal-content">
                 <div class="modal-header">
