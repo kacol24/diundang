@@ -5,8 +5,7 @@
     pax: '{{ optional($invitation)->pax }}'
   }">
     <div class="modal fade" id="qrModal" tabindex="-1" aria-labelledby="qrModalLabel" aria-hidden="true"
-         data-bs-backdrop="static"
-         wire:ignore>
+         data-bs-backdrop="static">
         <div class="modal-dialog modal-dialog-centered">
             <div class="modal-content">
                 <div class="modal-header">
@@ -14,22 +13,24 @@
                     <button type="button" class="btn-close" data-bs-dismiss="modal"
                             aria-label="Close"></button>
                 </div>
-                <div class="modal-body p-0">
-                    <img
-                        src="{{ asset("storage/{$invitation['guest_code']}.jpg") }}?v={{ now()->timestamp }}"
-                        alt="qr code"
-                        class="img-fluid w-100">
-                </div>
-                <div class="modal-footer justify-content-start">
-                    <small class="fst-italic">
-                        You can <a
-                            href="{{ route('download', ['guest' => $invitation['guest_code']]) }}"
-                            target="_blank"
-                            style="color: var(--color-secondary)">download</a> this digital invitation,
-                        screenshot
-                        this page, or save the QR Code as image.
-                    </small>
-                </div>
+                @if($invitation)
+                    <div class="modal-body p-0">
+                        <img
+                            src="{{ asset("storage/{$invitation['guest_code']}.jpg") }}?v={{ now()->timestamp }}"
+                            alt="qr code"
+                            class="img-fluid w-100">
+                    </div>
+                    <div class="modal-footer justify-content-start">
+                        <small class="fst-italic">
+                            You can <a
+                                href="{{ route('download', ['guest' => $invitation['guest_code']]) }}"
+                                target="_blank"
+                                style="color: var(--color-secondary)">download</a> this digital invitation,
+                            screenshot
+                            this page, or save the QR Code as image.
+                        </small>
+                    </div>
+                @endif
             </div>
         </div>
     </div>
@@ -40,18 +41,9 @@
     @endif
     <form action="{{ route('rsvp.store') }}" method="POST" class="mt-4 font-sans-serif" id="RsvpForm"
           wire:submit.prevent="save"
-          wire:ignore
           @rsvp-created.window="function(event) { window.history.replaceState('', '', '{{ route('home') }}?guest=' + event.detail.guest); }">
         @csrf
-        <fieldset class="position-relative"
-                  wire:loading.attr="disabled" wire:target="save">
-            <div class="position-absolute start-0 top-0 w-100 h-100 align-items-center justify-content-center"
-                 style="background-color:rgba(255, 255, 255, .7);"
-                 wire:loading.flex wire:target="save">
-                <div>
-                    <i class="fas fa-refresh fa-fw fa-spin text-color:blue fa-lg"></i>
-                </div>
-            </div>
+        <fieldset class="position-relative">
             <div class="mb-3">
                 <label class="fw-bold" for="name">
                     {{ __('Your Name') }}
