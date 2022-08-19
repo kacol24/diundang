@@ -48,7 +48,7 @@
 {{--</div>--}}
 @foreach($invitations as $invitation)
     <div
-        style="width: 64mm;height: 32mm; min-width: 64mm; min-height: 32mm; max-width: 64mm; max-height: 32mm; outline: 1px solid black; text-align: center; page-break-inside: avoid; display: inline-flex;align-items: center;justify-content: center; font-size: 8pt;">
+        style="width: 64mm;height: 32mm; min-width: 64mm; min-height: 32mm; max-width: 64mm; max-height: 32mm; outline: .5px solid black; text-align: center; page-break-inside: avoid; display: inline-flex;align-items: center;justify-content: center; font-size: 8pt;">
         {{ $invitation->name }}
     </div>
     @if($paperSizes[$paper][$break]['count'] == $loop->iteration)
