@@ -1,4 +1,9 @@
 <div>
+    @if(session('success'))
+        <div class="alert alert-success">
+            {{ session('success') }}
+        </div>
+    @endif
     <form action="{{ route('rsvp.store') }}" method="POST" class="mt-4 font-sans-serif" id="RsvpForm"
           wire:submit.prevent="save"
           wire:ignore
@@ -9,11 +14,6 @@
           }"
           @rsvp-created.window="function(event) { window.history.replaceState('', '', '{{ route('home') }}?guest=' + event.detail.guest); }">
         @csrf
-        @if(session('success'))
-            <div class="alert alert-success">
-                {{ session('success') }}
-            </div>
-        @endif
         <fieldset class="position-relative"
                   wire:loading.attr="disabled" wire:target="save">
             <div class="position-absolute start-0 top-0 w-100 h-100 align-items-center justify-content-center"
