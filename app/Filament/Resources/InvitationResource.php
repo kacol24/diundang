@@ -93,7 +93,12 @@ class InvitationResource extends Resource
                       ])->query(function (Builder $query, array $data): Builder {
                         return $query->when(
                             $data['search'],
-                            fn(Builder $query, $term): Builder => $query->whereIn('notes', $term)
+                            function ($query, $terms){
+                                foreach($terms as $term) {
+                                    $query->where('notes', 'like', '%'. $term .'%');
+                                }
+                                return $query;
+                            }
                         );
                     }),
                 MultiSelectFilter::make('group_id')
