@@ -16,4 +16,9 @@ class ManageGroups extends ManageRecords
             Actions\CreateAction::make(),
         ];
     }
+
+    protected function getTableReorderColumn(): ?string
+    {
+        return 'order_column';
+    }
 }

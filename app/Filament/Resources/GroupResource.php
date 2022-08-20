@@ -83,7 +83,8 @@ class GroupResource extends Resource
             ])
             ->bulkActions([
                 Tables\Actions\DeleteBulkAction::make(),
-            ]);
+            ])
+            ->reorderable('order_column');
     }
 
     public static function getPages(): array
