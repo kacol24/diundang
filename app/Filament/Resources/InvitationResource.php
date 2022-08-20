@@ -99,7 +99,7 @@ class InvitationResource extends Resource
                                  ->options(\App\Models\Group::all()->pluck('group_name', 'id')),
                 MultiSelectFilter::make('seating_id')
                                  ->label('Table')
-                                 ->relationship('seating', 'name'),
+                                 ->options(Seating::all()->pluck('table_dropdown', 'id')),
                 TernaryFilter::make('is_teapai'),
                 TernaryFilter::make('is_family'),
             ])
