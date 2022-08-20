@@ -30,13 +30,20 @@
             width: 100%;
             display: flex;
         }
+
+        .label {
+            outline: .2px solid black;
+            width: 3.5cm;
+            max-width: 3.5cm;
+            display: inline-block;
+        }
     </style>
 </head>
 <body>
 @foreach($invitations->chunk($paperSizes[$paper][$break]['x']) as $row => $invitationRow)
     <div style="page-break-inside: avoid">
         @foreach($invitationRow as $invitation)
-            <div style="outline: .2px solid black; width: 3.4cm; max-width: 3.4cm; display: inline-block;">
+            <div class="label">
                 <img src="{{ asset('storage/printable/' . $invitation->filename) }}"
                      style="height:auto; width: 100%; max-width: 100%">
             </div>
