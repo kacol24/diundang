@@ -27,7 +27,7 @@ class Seating extends Model
     // protected $hidden = [];
     // protected $dates = [];
     protected $appends = [
-        'table_dropdown'
+        'table_dropdown',
     ];
 
     /*
@@ -97,7 +97,11 @@ class Seating extends Model
         $name = $this->name;
 
         if ($this->nickname) {
-            $name = $name . ' (' . $this->nickname . ')';
+            $name = $name.' / '.$this->nickname;
+        }
+
+        if ($this->notes) {
+            $name = $name.' ('.$this->notes.')';
         }
 
         return $name;

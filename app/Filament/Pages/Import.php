@@ -37,7 +37,7 @@ class Import extends Page
     public function mount()
     {
         $this->groups = Group::all()->pluck('group_name', 'id');
-        $this->seatings = Seating::all()->pluck('name', 'id');
+        $this->seatings = Seating::all()->pluck('table_dropdown', 'id');
     }
 
     public function import()
