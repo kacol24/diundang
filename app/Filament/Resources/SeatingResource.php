@@ -36,6 +36,7 @@ class SeatingResource extends Resource
                 Tables\Columns\TextColumn::make('nickname'),
                 Tables\Columns\TextColumn::make('notes'),
                 Tables\Columns\TextColumn::make('quota'),
+                Tables\Columns\TextColumn::make('confirmed_quota'),
             ])
             ->filters([
                 //
