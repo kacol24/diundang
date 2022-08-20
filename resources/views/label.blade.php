@@ -68,7 +68,14 @@
 {{--</div>--}}
 @foreach($invitations as $invitation)
     <div class="label">
-        {{ $invitation->name }}
+        <div style="display: block;">
+            @if($invitation->formatted_title)
+                <small style="display: block;font-size: 9pt;">
+                    {{ $invitation->formatted_title }}
+                </small>
+            @endif
+            {{ $invitation->name }}
+        </div>
     </div>
     @if($paperSizes[$paper][$break]['count'] == $loop->iteration)
         <div class="break"></div>
