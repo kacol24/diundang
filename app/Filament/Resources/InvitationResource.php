@@ -59,6 +59,8 @@ class InvitationResource extends Resource
                           ->searchable(),
                 TextColumn::make('full_name')
                           ->searchable(['name']),
+                TextColumn::make('name')
+                          ->toggleable(isToggledHiddenByDefault: true),
                 TagsColumn::make('notes')
                           ->separator(', ')
                           ->toggleable(),
