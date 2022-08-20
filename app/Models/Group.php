@@ -15,11 +15,17 @@ class Group extends Model
         'name',
         'is_bride',
         'seating_id',
+        'order_column',
     ];
 
     protected $appends = [
         'group_name'
     ];
+
+    public function scopeOrdered($query)
+    {
+        return $query->orderBy('order_column');
+    }
 
     public function invitations()
     {
