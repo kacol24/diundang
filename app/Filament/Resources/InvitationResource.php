@@ -103,7 +103,7 @@ class InvitationResource extends Resource
                     }),
                 MultiSelectFilter::make('group_id')
                                  ->label('Group')
-                                 ->options(\App\Models\Group::all()->pluck('group_name', 'id')),
+                                 ->options(\App\Models\Group::ordered()->get()->pluck('group_name', 'id')),
                 MultiSelectFilter::make('seating_id')
                                  ->label('Table')
                                  ->options(Seating::all()->pluck('table_dropdown', 'id')),
@@ -140,7 +140,7 @@ class InvitationResource extends Resource
                                               ->inline(false),
                                       Select::make('group_id')
                                             ->label('Group')
-                                            ->options(\App\Models\Group::all()->pluck('group_name', 'id'))
+                                            ->options(\App\Models\Group::ordered()->get()->pluck('group_name', 'id'))
                                             ->columnSpan(3),
                                   ])
                                   ->columns(4),
