@@ -126,27 +126,67 @@ class InvitationResource extends Resource
             ->prependBulkActions([
                 BulkAction::make('edit')
                           ->form([
-                              Select::make('group_id')
-                                    ->label('Group')
-                                    ->options(\App\Models\Group::all()->pluck('group_name', 'id')),
-                              Select::make('seating_id')
-                                    ->label('Table')
-                                    ->options(Seating::all()->pluck('table_dropdown', 'id')),
-                              TextInput::make('guests')
-                                       ->label('Max. Guests')
-                                       ->required()
-                                       ->type('number')
-                                       ->suffix('person(s)')
-                                       ->default(2)
-                                       ->minValue(1),
-                              TagsInput::make('notes')->separator(', '),
+                              Grid::make()
+                                  ->schema([
+                                      Checkbox::make('update_group')
+                                              ->label('Update')
+                                              ->inline(false),
+                                      Select::make('group_id')
+                                            ->label('Group')
+                                            ->options(\App\Models\Group::all()->pluck('group_name', 'id'))
+                                            ->columnSpan(3),
+                                  ])
+                                  ->columns(4),
+                              Grid::make()
+                                  ->schema([
+                                      Checkbox::make('update_seating')
+                                              ->label('Update')
+                                              ->inline(false),
+                                      Select::make('seating_id')
+                                            ->label('Table')
+                                            ->options(Seating::all()->pluck('table_dropdown', 'id'))
+                                            ->columnSpan(3),
+                                  ])
+                                  ->columns(4),
+                              Grid::make()
+                                  ->schema([
+                                      Checkbox::make('update_guests')
+                                              ->label('Update')
+                                              ->inline(false),
+                                      TextInput::make('guests')
+                                               ->label('Max. Guests')
+                                               ->required()
+                                               ->type('number')
+                                               ->suffix('person(s)')
+                                               ->default(2)
+                                               ->minValue(1)
+                                               ->columnSpan(3),
+                                  ])
+                                  ->columns(4),
+                              Grid::make()
+                                  ->schema([
+                                      Checkbox::make('update_notes')
+                                              ->label('Update')
+                                              ->inline(false),
+                                      TagsInput::make('notes')->separator(', ')
+                                               ->columnSpan(3),
+                                  ])
+                                  ->columns(4),
                           ])
                           ->action(function (Collection $records, array $data): void {
                               foreach ($records as $record) {
-                                  $record->group_id = $data['group_id'];
-                                  $record->seating_id = $data['seating_id'];
-                                  $record->guests = $data['guests'];
-                                  $record->notes = $data['notes'];
+                                  if ($data['update_group']) {
+                                      $record->group_id = $data['group_id'];
+                                  }
+                                  if ($data['update_seating']) {
+                                      $record->seating_id = $data['seating_id'];
+                                  }
+                                  if ($data['update_guests']) {
+                                      $record->guests = $data['guests'];
+                                  }
+                                  if ($data['update_notes']) {
+                                      $record->notes = $data['notes'];
+                                  }
                                   $record->save();
 
                                   event(new InvitationUpdated($record));
