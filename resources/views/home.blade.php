@@ -15,7 +15,7 @@
         <script src="https://cdn.lr-in-prod.com/LogRocket.min.js" crossorigin="anonymous"></script>
         <script>window.LogRocket && window.LogRocket.init('lovinyouforefer/website');</script>
         <script>
-            LogRocket.identify('{{ optional($invitation)->id }}', {
+            LogRocket.identify('{{ optional($invitation)->id ?? $guestName }}', {
                 name: '{{ $guestName }}'
             });
         </script>
