@@ -11,6 +11,14 @@
 
           gtag('config', 'G-HCZKW8XZHK');
         </script>
+
+        <script src="https://cdn.lr-in-prod.com/LogRocket.min.js" crossorigin="anonymous"></script>
+        <script>window.LogRocket && window.LogRocket.init('lovinyouforefer/website');</script>
+        <script>
+            LogRocket.identify('{{ optional($invitation)->id }}', {
+                name: '{{ $guestName }}'
+            });
+        </script>
     @endif
     <!-- Required meta tags -->
     <meta charset="utf-8">
