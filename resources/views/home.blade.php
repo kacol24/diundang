@@ -1,6 +1,17 @@
 <!doctype html>
 <html lang="en">
 <head>
+    @if(config('app.env') === 'production')
+        <!-- Google tag (gtag.js) -->
+        <script async src="https://www.googletagmanager.com/gtag/js?id=G-HCZKW8XZHK"></script>
+        <script>
+          window.dataLayer = window.dataLayer || [];
+          function gtag(){dataLayer.push(arguments);}
+          gtag('js', new Date());
+
+          gtag('config', 'G-HCZKW8XZHK');
+        </script>
+    @endif
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
