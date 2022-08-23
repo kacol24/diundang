@@ -26,6 +26,9 @@ type Query {
     ): [User!]! @paginate(defaultCount: 10)
 
     invitations: [Invitation!]! @all @orderBy(column: "name", direction: ASC)
+
+    groupedInvitations: [GroupedInvitation!]! @field(resolver: "GroupedInvitations")
+
     attendances(
         limit: Int @limit
         sequence_group: String @where(clause: "whereSequenceGroup")
@@ -53,6 +56,10 @@ type User {
     updated_at: DateTime!
 }
 
+type GroupedInvitation {
+    key: String!
+    invitations: [Invitation!]!
+}
 
 type Invitation {
     id: ID

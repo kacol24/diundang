@@ -127,7 +127,12 @@ class Invitation extends Model
 
     public function getFullNameAttribute()
     {
-        return $this->formatted_title.' '.$this->name;
+        $name = $this->name;
+        if ($this->formatted_title) {
+            $name = $this->formatted_title.' '.$name;
+        }
+
+        return $name;
     }
 
     public function getFormattedTitleAttribute()
