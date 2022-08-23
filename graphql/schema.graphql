@@ -70,13 +70,15 @@ type Invitation {
     phone: String
     guests: Int
     pax: Int
+    is_family: Boolean
     seating: Seating @belongsTo
     attendance: Attendance @hasOne
     group: Group @belongsTo
 }
 
 type Group {
-    name: String!
+    name: String
+    group_name: String
 }
 
 type Seating {
