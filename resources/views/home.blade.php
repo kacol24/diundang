@@ -1,6 +1,25 @@
 <!doctype html>
 <html lang="en">
 <head>
+    @if(config('app.env') === 'production')
+        <!-- Google tag (gtag.js) -->
+        <script async src="https://www.googletagmanager.com/gtag/js?id=G-HCZKW8XZHK"></script>
+        <script>
+          window.dataLayer = window.dataLayer || [];
+          function gtag(){dataLayer.push(arguments);}
+          gtag('js', new Date());
+
+          gtag('config', 'G-HCZKW8XZHK');
+        </script>
+
+        <script src="https://cdn.lr-in-prod.com/LogRocket.min.js" crossorigin="anonymous"></script>
+        <script>window.LogRocket && window.LogRocket.init('lovinyouforefer/website');</script>
+        <script>
+            LogRocket.identify('{{ optional($invitation)->id }}', {
+                name: '{{ $guestName }}'
+            });
+        </script>
+    @endif
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
