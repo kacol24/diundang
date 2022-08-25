@@ -22,13 +22,16 @@ final class CheckIn
 
         $invitation = Invitation::where('guest_code', $guestCode)->first();
 
-        return (new InvitationCheckIn)->checkIn(
-            $invitation,
-            CheckInData::fromArray([
-                'sequence_group' => $sequenceGroup,
-                'attendance_id'  => $attendanceId,
-                'has_gift'       => $hasGift,
-            ])
-        );
+        return [
+            'attendance'  => (new InvitationCheckIn)->checkIn(
+                $invitation,
+                CheckInData::fromArray([
+                    'sequence_group' => $sequenceGroup,
+                    'attendance_id'  => $attendanceId,
+                    'has_gift'       => $hasGift,
+                ])
+            ),
+            'invitations' => Invitation::get(),
+        ];
     }
 }
