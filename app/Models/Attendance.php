@@ -35,4 +35,9 @@ class Attendance extends Model
     {
         return $this->sequence_group.str_pad($this->sequence, 3, 0, STR_PAD_LEFT);
     }
+
+    public function getCheckinTimeAttribute()
+    {
+        return $this->created_at->format('H:i:s');
+    }
 }

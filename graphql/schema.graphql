@@ -92,4 +92,5 @@ type Attendance {
     sequence_group: String
     serial_number: String!
     created_at: DateTime
+    checkin_time: String
 }
