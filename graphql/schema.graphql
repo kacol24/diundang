@@ -5,7 +5,8 @@ type Mutation {
     checkIn(
         guest_code: String!
         sequence_group: String
-    ): Invitation @field(resolver: "CheckIn")
+        has_gift: Boolean
+    ): Attendance @field(resolver: "CheckIn")
 }
 
 "Indicates what fields are available at the top level of a query operation."
@@ -93,4 +94,5 @@ type Attendance {
     serial_number: String!
     created_at: DateTime
     checkin_time: String
+    has_gift: Boolean
 }

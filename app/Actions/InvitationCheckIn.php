@@ -13,11 +13,12 @@ class InvitationCheckIn
         $sequenceGroup = $checkInData->sequenceGroup;
         $attendanceId = $checkInData->attendanceId;
 
-        if ($invitation->attendance()->exists()) {
-            return $invitation->attendance->where('invitation_id', $invitation->id)
-                                          ->where('sequence_group', $sequenceGroup)
-                                          ->orderBy('sequence', 'desc')
-                                          ->first();
+        $existingAttendance = null;
+        if ($invitation->attendance) {
+            $existingAttendance = $invitation->attendance->where('invitation_id', $invitation->id)
+                                                         ->where('sequence_group', $sequenceGroup)
+                                                         ->orderBy('sequence', 'desc')
+                                                         ->first();
         }
 
         $lastSequence = Attendance::query()
@@ -32,11 +33,12 @@ class InvitationCheckIn
             $nextSequence = $lastSequence->sequence + 1;
         }
 
-        $attendance = Attendance::create([
+        $attendance = Attendance::updateOrCreate([
             'invitation_id' => $invitation->id,
+            'sequence'      => optional($existingAttendance)->sequence ?? $nextSequence,
+        ], [
             'sequence_group' => $sequenceGroup,
-            'sequence' => $nextSequence,
-            'has_gift' => $checkInData->hasGift,
+            'has_gift'       => $checkInData->hasGift,
         ]);
 
         if ($attendanceId) {
