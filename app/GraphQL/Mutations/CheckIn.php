@@ -31,7 +31,7 @@ final class CheckIn
                     'has_gift'       => $hasGift,
                 ])
             ),
-            'invitations' => Invitation::get(),
+            'invitations' => Invitation::ordered()->get(),
         ];
     }
 }

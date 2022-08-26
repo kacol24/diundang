@@ -12,7 +12,6 @@ class Invitation extends Model
 
     const WA_CTC = 'https://wa.me/62%phone%?text=%message%';
 
-    use HasFactory;
     use SoftDeletes;
 
     /*
@@ -82,6 +81,10 @@ class Invitation extends Model
     | SCOPES
     |--------------------------------------------------------------------------
     */
+    public function scopeOrdered($query)
+    {
+        return $query->orderBy('name', 'asc');
+    }
 
     /*
     |--------------------------------------------------------------------------
