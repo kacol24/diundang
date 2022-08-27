@@ -26,7 +26,7 @@ type Query {
       name: String @where(operator: "like")
     ): [User!]! @paginate(defaultCount: 10)
 
-    invitations: [Invitation!]! @all @orderBy(column: "name", direction: ASC)
+    invitations(limit: Int @limit): [Invitation!]! @all @orderBy(column: "name", direction: ASC)
 
     groupedInvitations: [GroupedInvitation!]! @field(resolver: "GroupedInvitations")
 
