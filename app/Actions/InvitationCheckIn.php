@@ -16,6 +16,7 @@ class InvitationCheckIn
         $existingAttendance = null;
         if ($invitation->attendance) {
             $existingAttendance = $invitation->attendance->where('invitation_id', $invitation->id)
+                                                         ->where('sequence_group', $sequenceGroup)
                                                          ->orderBy('sequence', 'desc')
                                                          ->first();
         }
