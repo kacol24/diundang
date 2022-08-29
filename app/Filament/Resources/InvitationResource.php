@@ -118,7 +118,7 @@ class InvitationResource extends Resource
                           DatePicker::make('due_date')
                                     ->format('d F Y')
                                     ->minDate(now())
-                                    ->default('31 August 2022'),
+                                    ->default('04 September 2022'),
                       ])
                       ->label('WhatsApp')
                       ->action(function (Invitation $record, array $data) {
