@@ -4,9 +4,16 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Venturecraft\Revisionable\RevisionableTrait;
 
 class Seating extends Model
 {
+    use RevisionableTrait;
+
+    protected $revisionForceDeleteEnabled = true;
+
+    protected $revisionCreationsEnabled = true;
+
     const PER_TABLE = 10;
 
     use HasFactory;
