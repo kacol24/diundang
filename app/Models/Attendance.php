@@ -7,8 +7,6 @@ use Illuminate\Database\Eloquent\Model;
 
 class Attendance extends Model
 {
-    use HasFactory;
-
     protected $fillable = [
         'sequence_group',
         'sequence',

@@ -41,6 +41,8 @@ class InvitationCheckIn
             'has_gift'       => $checkInData->hasGift,
         ]);
 
+        $attendance->touch();
+
         if ($attendanceId) {
             $attendance->update([
                 'attendance_id' => $attendanceId,
