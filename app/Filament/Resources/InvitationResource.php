@@ -8,6 +8,7 @@ use App\Models\Invitation;
 use App\Models\Seating;
 use Carbon\Carbon;
 use Filament\Forms\Components\Checkbox;
+use Filament\Forms\Components\DatePicker;
 use Filament\Forms\Components\DateTimePicker;
 use Filament\Forms\Components\Grid;
 use Filament\Forms\Components\Group;
@@ -93,10 +94,11 @@ class InvitationResource extends Resource
                       ])->query(function (Builder $query, array $data): Builder {
                         return $query->when(
                             $data['search'],
-                            function ($query, $terms){
-                                foreach($terms as $term) {
-                                    $query->where('notes', 'like', '%'. $term .'%');
+                            function ($query, $terms) {
+                                foreach ($terms as $term) {
+                                    $query->where('notes', 'like', '%'.$term.'%');
                                 }
+
                                 return $query;
                             }
                         );
@@ -112,20 +114,27 @@ class InvitationResource extends Resource
             ])
             ->actions([
                 Action::make('send_wa')
+                      ->form([
+                          DatePicker::make('due_date')
+                                    ->format('d F Y')
+                                    ->minDate(now())
+                                    ->default('31 August 2022'),
+                      ])
                       ->label('WhatsApp')
-                      ->url(function (Invitation $record) {
-                          return "https://wa.me/{$record->whatsapp_phone}?text=".urlencode(view('whatsapp',
+                      ->action(function (Invitation $record, array $data) {
+                          $waUrl = "https://wa.me/{$record->whatsapp_phone}?text=".urlencode(view('whatsapp',
                                   [
                                       'groomName'   => 'Kevin Chandra',
                                       'brideName'   => 'Fernanda Eka Putri',
                                       'guestName'   => $record->full_name ?: 'Mr. / Mrs. / Ms.',
                                       'linkToSite'  => route('home', ['guest' => $record->guest_code]),
-                                      'dueDate'     => Carbon::parse('2022-08-30')->format('d F Y'),
+                                      'dueDate'     => $data['due_date'],
                                       'isAttending' => $record->is_attending,
                                       'reverse'     => optional($record->group)->is_bride,
                                   ])->render());
-                      })
-                      ->openUrlInNewTab(),
+
+                          return redirect()->to($waUrl);
+                      }),
                 //Tables\Actions\ViewAction::make(),
                 Tables\Actions\EditAction::make(),
                 //Tables\Actions\DeleteAction::make(),
