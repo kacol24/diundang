@@ -38,6 +38,6 @@ class Attendance extends Model
 
     public function getCheckinTimeAttribute()
     {
-        return $this->created_at->format('H:i:s');
+        return $this->updated_at->format('H:i:s');
     }
 }
