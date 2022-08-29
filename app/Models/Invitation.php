@@ -68,7 +68,7 @@ class Invitation extends Model
 
     public function attendance()
     {
-        return $this->hasOne(Attendance::class);
+        return $this->hasOne(Attendance::class)->latest();
     }
 
     public function group()
