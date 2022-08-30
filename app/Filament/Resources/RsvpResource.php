@@ -67,7 +67,8 @@ class RsvpResource extends Resource
                           ->separator(', ')
                           ->toggleable(),
                 BooleanColumn::make('is_attending'),
-                TextColumn::make('rsvp_at')->dateTime(),
+                TextColumn::make('rsvp_at')->dateTime()
+                          ->sortable(),
                 TextColumn::make('pax'),
             ])
             ->filters([
@@ -97,7 +98,8 @@ class RsvpResource extends Resource
             ])
             ->bulkActions([
                 //Tables\Actions\DeleteBulkAction::make(),
-            ]);
+            ])
+            ->defaultSort('rsvp_at', 'desc');
     }
 
     public static function getPages(): array

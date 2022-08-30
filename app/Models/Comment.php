@@ -4,9 +4,16 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use Venturecraft\Revisionable\RevisionableTrait;
 
 class Comment extends Model
 {
+    use RevisionableTrait;
+
+    protected $revisionForceDeleteEnabled = true;
+
+    protected $revisionCreationsEnabled = true;
+
     use SoftDeletes;
 
     protected $fillable = [

@@ -5,9 +5,16 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use Venturecraft\Revisionable\RevisionableTrait;
 
 class Invitation extends Model
 {
+    use RevisionableTrait;
+
+    protected $revisionForceDeleteEnabled = true;
+
+    protected $revisionCreationsEnabled = true;
+
     const INVITATION_MESSAGE = 'Hi %name%! You are invited to attend our wedding which is held on October 9th, 2022. Please check this invitation card attach on this link for details. %link%';
 
     const WA_CTC = 'https://wa.me/62%phone%?text=%message%';

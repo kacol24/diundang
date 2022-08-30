@@ -7,9 +7,16 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
+use Venturecraft\Revisionable\RevisionableTrait;
 
 class User extends Authenticatable implements FilamentUser
 {
+    use RevisionableTrait;
+
+    protected $revisionForceDeleteEnabled = true;
+
+    protected $revisionCreationsEnabled = true;
+    
     use HasApiTokens, HasFactory, Notifiable;
 
     /**
