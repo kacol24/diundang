@@ -36,9 +36,9 @@
                             <option value="">
                                 -- No Group --
                             </option>
-                            @foreach($groups as $value => $group)
-                                <option value="{{ $value }}">
-                                    {{ $group }}
+                            @foreach($groups as $group)
+                                <option value="{{ $group->id }}">
+                                    {{ $group->group_name }}
                                 </option>
                             @endforeach
                         </select>

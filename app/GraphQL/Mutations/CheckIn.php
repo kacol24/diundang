@@ -16,22 +16,22 @@ final class CheckIn
     {
         $sequenceGroup = optional($args)['sequence_group'];
         $attendanceId = optional($args)['attendance_id'];
-        $hasGift = optional($args)['has_gift'];
+        $hasGift = (bool) optional($args)['has_gift'];
 
         $guestCode = $args['guest_code'];
 
         $invitation = Invitation::where('guest_code', $guestCode)->first();
 
-        (new InvitationCheckIn)
-            ->checkIn(
+        return [
+            'attendance'  => (new InvitationCheckIn)->checkIn(
                 $invitation,
                 CheckInData::fromArray([
                     'sequence_group' => $sequenceGroup,
-                    'attendance_id' => $attendanceId,
-                    'has_gift' => $hasGift,
+                    'attendance_id'  => $attendanceId,
+                    'has_gift'       => $hasGift,
                 ])
-            );
-
-        return $invitation;
+            ),
+            'invitations' => Invitation::ordered()->get(),
+        ];
     }
 }

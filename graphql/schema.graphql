@@ -5,31 +5,37 @@ type Mutation {
     checkIn(
         guest_code: String!
         sequence_group: String
-    ): Invitation @field(resolver: "CheckIn")
+        has_gift: Boolean
+    ): CheckinResponse @field(resolver: "CheckIn")
 }
 
 "Indicates what fields are available at the top level of a query operation."
 type Query {
     "Find a single user by an identifying attribute."
     user(
-      "Search by primary key."
-      id: ID @eq @rules(apply: ["prohibits:email", "required_without:email"])
+        "Search by primary key."
+        id: ID @eq @rules(apply: ["prohibits:email", "required_without:email"])
 
-      "Search by email address."
-      email: String @eq @rules(apply: ["prohibits:id", "required_without:id", "email"])
+        "Search by email address."
+        email: String @eq @rules(apply: ["prohibits:id", "required_without:id", "email"])
     ): User @find
 
     "List multiple users."
     users(
-      "Filters by name. Accepts SQL LIKE wildcards `%` and `_`."
-      name: String @where(operator: "like")
+        "Filters by name. Accepts SQL LIKE wildcards `%` and `_`."
+        name: String @where(operator: "like")
     ): [User!]! @paginate(defaultCount: 10)
 
-    invitations: [Invitation!]! @all @orderBy(column: "name", direction: ASC)
+    invitations(limit: Int @limit): [Invitation!]! @all @orderBy(column: "name", direction: ASC)
+
+    groupedInvitations: [GroupedInvitation!]! @field(resolver: "GroupedInvitations")
+
     attendances(
         limit: Int @limit
         sequence_group: String @where(clause: "whereSequenceGroup")
     ): [Attendance!]! @all @orderBy(column: "created_at", direction: DESC)
+
+    groups: [Group!]! @all @orderBy(column: "order_column", direction: ASC)
 }
 
 "Account of a person who utilizes this application."
@@ -53,6 +59,10 @@ type User {
     updated_at: DateTime!
 }
 
+type GroupedInvitation {
+    key: String!
+    invitations: [Invitation!]!
+}
 
 type Invitation {
     id: ID
@@ -63,13 +73,16 @@ type Invitation {
     phone: String
     guests: Int
     pax: Int
+    is_family: Boolean
     seating: Seating @belongsTo
     attendance: Attendance @hasOne
     group: Group @belongsTo
 }
 
 type Group {
-    name: String!
+    id: ID
+    name: String
+    group_name: String
 }
 
 type Seating {
@@ -83,4 +96,11 @@ type Attendance {
     sequence_group: String
     serial_number: String!
     created_at: DateTime
+    checkin_time: String
+    has_gift: Boolean
+}
+
+type CheckinResponse {
+    attendance: Attendance!
+    invitations: [Invitation]
 }

@@ -19,7 +19,6 @@ class Invitation extends Model
 
     const WA_CTC = 'https://wa.me/62%phone%?text=%message%';
 
-    use HasFactory;
     use SoftDeletes;
 
     /*
@@ -76,7 +75,7 @@ class Invitation extends Model
 
     public function attendance()
     {
-        return $this->hasOne(Attendance::class);
+        return $this->hasOne(Attendance::class)->orderBy('id', 'desc');
     }
 
     public function group()
@@ -89,6 +88,10 @@ class Invitation extends Model
     | SCOPES
     |--------------------------------------------------------------------------
     */
+    public function scopeOrdered($query)
+    {
+        return $query->orderBy('name', 'asc');
+    }
 
     /*
     |--------------------------------------------------------------------------
@@ -134,7 +137,12 @@ class Invitation extends Model
 
     public function getFullNameAttribute()
     {
-        return $this->formatted_title.' '.$this->name;
+        $name = $this->name;
+        if ($this->formatted_title) {
+            $name = $this->formatted_title.' '.$name;
+        }
+
+        return $name;
     }
 
     public function getFormattedTitleAttribute()
