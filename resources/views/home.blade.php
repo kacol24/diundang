@@ -38,7 +38,7 @@
     <link rel="manifest" href="/site.webmanifest">
     <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#09232f">
     <meta name="msapplication-TileColor" content="#09232f">
-    <meta name="theme-color" content="#09232f">
+    <meta name="theme-color" content="#4d1c32">
 
     <title>The Wedding of Kevin & Fernanda</title>
     <meta name="description"
