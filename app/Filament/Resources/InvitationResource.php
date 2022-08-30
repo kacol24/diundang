@@ -6,6 +6,7 @@ use App\Events\InvitationUpdated;
 use App\Filament\Resources\InvitationResource\Pages;
 use App\Models\Invitation;
 use App\Models\Seating;
+use App\Settings\BadWordsSettings;
 use Carbon\Carbon;
 use Filament\Forms\Components\Checkbox;
 use Filament\Forms\Components\DatePicker;
@@ -114,27 +115,22 @@ class InvitationResource extends Resource
             ])
             ->actions([
                 Action::make('send_wa')
-                      ->form([
-                          DatePicker::make('due_date')
-                                    ->format('d F Y')
-                                    ->minDate(now())
-                                    ->default('04 September 2022'),
-                      ])
                       ->label('WhatsApp')
-                      ->action(function (Invitation $record, array $data) {
+                      ->url(function (Invitation $record) {
                           $waUrl = "https://wa.me/{$record->whatsapp_phone}?text=".urlencode(view('whatsapp',
                                   [
                                       'groomName'   => 'Kevin Chandra',
                                       'brideName'   => 'Fernanda Eka Putri',
                                       'guestName'   => $record->full_name ?: 'Mr. / Mrs. / Ms.',
                                       'linkToSite'  => route('home', ['guest' => $record->guest_code]),
-                                      'dueDate'     => $data['due_date'],
+                                      'dueDate'     => app(BadWordsSettings::class)->due_date,
                                       'isAttending' => $record->is_attending,
                                       'reverse'     => optional($record->group)->is_bride,
                                   ])->render());
 
-                          return redirect()->to($waUrl);
-                      }),
+                          return $waUrl;
+                      })
+                      ->openUrlInNewTab(),
                 //Tables\Actions\ViewAction::make(),
                 Tables\Actions\EditAction::make(),
                 //Tables\Actions\DeleteAction::make(),
