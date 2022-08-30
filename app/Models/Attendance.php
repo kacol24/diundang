@@ -31,7 +31,7 @@ class Attendance extends Model
 
     public function getSerialNumberAttribute()
     {
-        return $this->sequence_group.str_pad($this->sequence, 3, 0, STR_PAD_LEFT);
+        return $this->sequence_group. '-' .$this->sequence;
     }
 
     public function getCheckinTimeAttribute()
