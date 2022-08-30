@@ -21,7 +21,8 @@ class StatsOverview extends BaseWidget
             Card::make('Table Count', Seating::all()->sum('table_count'))
                 ->description('Total estimated guests: '.Invitation::sum('guests')),
 
-            Card::make('RSVP', Invitation::whereNotNull('is_attending')->count().' of '.Invitation::count()),
+            Card::make('RSVP', Invitation::whereNotNull('is_attending')->count().' of '.Invitation::count())
+                ->description('Total RSVP guests: '.Invitation::sum('pax')),
         ];
     }
 }

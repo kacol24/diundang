@@ -5,9 +5,16 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use Venturecraft\Revisionable\RevisionableTrait;
 
 class Group extends Model
 {
+    use RevisionableTrait;
+
+    protected $revisionForceDeleteEnabled = true;
+
+    protected $revisionCreationsEnabled = true;
+
     use SoftDeletes;
 
     protected $fillable = [
