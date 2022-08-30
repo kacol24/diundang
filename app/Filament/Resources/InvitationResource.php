@@ -294,6 +294,7 @@ class InvitationResource extends Resource
                                                        'Mr.'        => 'Mr.',
                                                        'Mrs.'       => 'Mrs.',
                                                        'Mr. & Mrs.' => 'Mr. & Mrs.',
+                                                       'Ms.'        => 'Ms.',
                                                        'dr.'        => 'dr.',
                                                        'drg.'       => 'drg.',
                                                    ]),
