@@ -11,18 +11,23 @@ class StatsOverview extends BaseWidget
 {
     protected function getCards(): array
     {
+        $invitations = Invitation::get();
+        $seatings = Seating::get();
+
         return [
-            Card::make('Invitations', Invitation::where('is_attending', true)->count().' are attending')
-                ->description(
-                    Invitation::where('is_attending', false)
-                              ->count().' cannot make it | '.Invitation::whereNull('is_attending')
-                                                                       ->count().' have not respond'),
+            Card::make(
+                'RSVP  ('.$invitations->whereNotNull('is_attending')->count().' of '.$invitations->count().')',
+                $invitations->where('is_attending', true)->count().' are attending'
+            )->description(
+                $invitations->where('is_attending', false)
+                            ->count().' cannot make it | '.$invitations->whereNull('is_attending')
+                                                                       ->count().' have not respond'
+            ),
+            Card::make('Confirmed Guests', $invitations->where('is_attending', true)->sum('pax'))
+                ->description('Total invited guests: '.$invitations->sum('guests')),
 
-            Card::make('Table Count', Seating::all()->sum('table_count'))
-                ->description('Total estimated guests: '.Invitation::sum('guests')),
-
-            Card::make('RSVP', Invitation::whereNotNull('is_attending')->count().' of '.Invitation::count())
-                ->description('Total RSVP guests: '.Invitation::sum('pax')),
+            Card::make('Confirmed Table', $seatings->sum('confirmed_table_count'))
+                ->description('Estimated: '.$seatings->sum('table_count')),
         ];
     }
 }
