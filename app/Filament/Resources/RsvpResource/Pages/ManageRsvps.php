@@ -6,6 +6,8 @@ use App\Filament\Resources\RsvpResource;
 use Filament\Pages\Actions;
 use Filament\Resources\Pages\ManageRecords;
 use Filament\Tables\Filters\Layout;
+use Illuminate\Contracts\Pagination\Paginator;
+use Illuminate\Database\Eloquent\Builder;
 
 class ManageRsvps extends ManageRecords
 {
@@ -31,5 +33,10 @@ class ManageRsvps extends ManageRecords
         return [
             //Actions\CreateAction::make(),
         ];
+    }
+
+    protected function paginateTableQuery(Builder $query): Paginator
+    {
+        return $query->fastPaginate($this->getTableRecordsPerPage());
     }
 }
