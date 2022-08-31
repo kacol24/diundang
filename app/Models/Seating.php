@@ -85,9 +85,9 @@ class Seating extends Model
 
     public function getConfirmedQuotaAttribute()
     {
-        $sumGuests = $this->invitations->sum('pax');
+        $sumGuests = $this->invitations->where('is_attending')->sum('pax');
 
-        $tableCount = ceil($sumGuests / self::PER_TABLE);
+        $tableCount = $this->confirmed_table_count;
 
         return $sumGuests.'/'.$tableCount * self::PER_TABLE.' ('.$tableCount.' tables)';
     }
@@ -95,6 +95,13 @@ class Seating extends Model
     public function getTableCountAttribute()
     {
         $sumGuests = $this->invitations->sum('guests');
+
+        return ceil($sumGuests / self::PER_TABLE);
+    }
+
+    public function getConfirmedTableCountAttribute()
+    {
+        $sumGuests = $this->invitations->where('is_attending')->sum('pax');
 
         return ceil($sumGuests / self::PER_TABLE);
     }
