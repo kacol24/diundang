@@ -19,7 +19,7 @@ class StatsOverview extends BaseWidget
                 'RSVP  ('.$invitations->whereNotNull('is_attending')->count().' of '.$invitations->count().')',
                 $invitations->where('is_attending', true)->count().' are attending'
             )->description(
-                $invitations->where('is_attending', false)
+                $invitations->whereStrict('is_attending', 0)
                             ->count().' cannot make it | '.$invitations->whereNull('is_attending')
                                                                        ->count().' have not respond'
             ),
