@@ -3,6 +3,7 @@
 namespace App\Filament\Resources;
 
 use App\Filament\Resources\SeatingResource\Pages;
+use App\Filament\Resources\SeatingResource\RelationManagers\InvitationsRelationManager;
 use App\Models\Seating;
 use Filament\Forms;
 use Filament\Resources\Form;
@@ -47,6 +48,14 @@ class SeatingResource extends Resource
     {
         return [
             'index' => Pages\ManageSeatings::route('/'),
+            'view'  => Pages\ViewSeating::route('/{record}'),
+        ];
+    }
+
+    public static function getRelations(): array
+    {
+        return [
+            InvitationsRelationManager::class,
         ];
     }
 }

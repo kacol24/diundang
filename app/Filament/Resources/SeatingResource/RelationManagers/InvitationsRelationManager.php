@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Filament\Resources\GroupResource\RelationManagers;
+namespace App\Filament\Resources\SeatingResource\RelationManagers;
 
 use App\Events\InvitationUpdated;
 use App\Filament\Resources\InvitationResource;
@@ -35,8 +35,7 @@ class InvitationsRelationManager extends RelationManager
             TagsColumn::make('notes')
                       ->separator(', ')
                       ->toggleable(isToggledHiddenByDefault: true),
-            TextColumn::make('seating.name')
-                      ->label('Table')
+            TextColumn::make('group.group_name')
                       ->toggleable(),
             BooleanColumn::make('is_family')
                          ->action(function ($record) {
