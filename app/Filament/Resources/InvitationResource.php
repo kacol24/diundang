@@ -342,8 +342,7 @@ class InvitationResource extends Resource
                                        TextInput::make('guest_code')
                                                 ->unique(ignorable: fn(?Model $record): ?Model => $record),
                                        DateTimePicker::make('rsvp_at')
-                                                     ->label('RSVP At')
-                                                     ->default(now()),
+                                                     ->label('RSVP At'),
                                    ]),
                                Grid::make()
                                    ->schema([
