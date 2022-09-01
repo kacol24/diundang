@@ -104,7 +104,7 @@
                             <select class="form-select" id="pax" style="font-size: inherit;"
                                     x-model="pax"
                                     wire:model.defer="guests">
-                                <option selected value="" disabled hidden>
+                                <option selected value="" disabled>
                                     {{ __('How many people will attend?') }}
                                 </option>
                                 @foreach(range($invitation->guests ?? 2, 1) as $guest)
