@@ -43,12 +43,7 @@ class InvitationResource extends Resource
 
     public static function form(Form $form): Form
     {
-        return $form
-            ->schema(static::getFormSchema())
-            ->columns([
-                'sm' => 3,
-                'lg' => null,
-            ]);
+        return $form->schema(static::getFormSchema());
     }
 
     public static function table(Table $table): Table
@@ -281,74 +276,88 @@ class InvitationResource extends Resource
     public static function getFormSchema()
     {
         return [
-            Group::make()
-                 ->schema([
-                     Section::make('Guest Detail')
-                            ->schema([
-                                Grid::make()
-                                    ->schema([
-                                        MultiSelect::make('title')
-                                                   ->options([
-                                                       'Mr.'        => 'Mr.',
-                                                       'Mrs.'       => 'Mrs.',
-                                                       'Mr. & Mrs.' => 'Mr. & Mrs.',
-                                                       'Ms.'        => 'Ms.',
-                                                       'dr.'        => 'dr.',
-                                                       'drg.'       => 'drg.',
-                                                   ]),
-                                        TextInput::make('name')
-                                                 ->required(),
-                                    ]),
-                                TextInput::make('phone')
-                                         ->type('tel')
-                                         ->prefix('+62'),
-                                TagsInput::make('notes')->separator(', '),
-                            ]),
-                     Section::make('Invitation Detail')
-                            ->schema([
-                                Select::make('group_id')
-                                      ->label('Group')
-                                      ->options(\App\Models\Group::all()->pluck('group_name', 'id')),
-                                Select::make('seating_id')
-                                      ->label('Table')
-                                      ->options(Seating::all()->pluck('table_dropdown', 'id')),
-                                TextInput::make('guests')
-                                         ->required()
-                                         ->type('number')
-                                         ->suffix('person(s)')
-                                         ->default(2)
-                                         ->minValue(1),
-                            ]),
-                 ])->columnSpan([
-                    'sm' => 2,
-                ]),
-            Group::make()
-                 ->schema([
-                     Section::make('RSVP Detail')
-                            ->schema([
-                                TextInput::make('guest_code')
-                                         ->unique(ignorable: fn(?Model $record): ?Model => $record),
-                                Grid::make()->schema([
-                                    Select::make('is_attending')
+            Section::make('Guest Detail')
+                   ->schema([
+                       Grid::make()
+                           ->schema([
+                               MultiSelect::make('title')
                                           ->options([
-                                              1 => 'Attending',
-                                              0 => 'Not Attending',
+                                              'Mr.'        => 'Mr.',
+                                              'Mrs.'       => 'Mrs.',
+                                              'Mr. & Mrs.' => 'Mr. & Mrs.',
+                                              'Ms.'        => 'Ms.',
+                                              'dr.'        => 'dr.',
+                                              'drg.'       => 'drg.',
                                           ]),
-                                    DateTimePicker::make('rsvp_at')
-                                                  ->label('RSVP At'),
-                                ]),
-                                Grid::make()
-                                    ->schema([
-                                        TextInput::make('pax')
-                                                 ->numeric(),
-                                        Checkbox::make('is_family')
-                                                ->inline(false),
-                                        Checkbox::make('is_teapai')
-                                                ->inline(false),
-                                    ])->columns(3),
-                            ]),
-                 ])
-                 ->columnSpan(1),
+                               TextInput::make('name')
+                                        ->required(),
+                           ]),
+                       Grid::make()
+                           ->schema([
+                               TextInput::make('phone')
+                                        ->type('tel')
+                                        ->prefix('+62'),
+                               TagsInput::make('notes')->separator(', '),
+                           ]),
+                   ]),
+            Grid::make()
+                ->schema([
+                    Section::make('Invitation Detail')
+                           ->columnSpan(1)
+                           ->schema([
+                               Grid::make()
+                                   ->schema([
+                                       Select::make('group_id')
+                                             ->label('Group')
+                                             ->searchable()
+                                             ->options(\App\Models\Group::ordered()->get()->pluck('group_name', 'id')),
+                                       Select::make('seating_id')
+                                             ->label('Table')
+                                             ->searchable()
+                                             ->options(Seating::get()->pluck('table_dropdown', 'id')),
+                                   ]),
+                               Grid::make()
+                                   ->columns(4)
+                                   ->schema([
+                                       TextInput::make('guests')
+                                                ->required()
+                                                ->type('number')
+                                                ->suffix('person(s)')
+                                                ->default(2)
+                                                ->minValue(1)
+                                                ->columnSpan(2),
+                                       Checkbox::make('is_family')
+                                               ->label('Family')
+                                               ->inline(false),
+                                       Checkbox::make('is_teapai')
+                                               ->label('Teapai')
+                                               ->inline(false),
+                                   ]),
+                           ]),
+                    Section::make('RSVP Detail')
+                           ->columnSpan(1)
+                           ->schema([
+                               Grid::make()
+                                   ->schema([
+                                       TextInput::make('guest_code')
+                                                ->unique(ignorable: fn(?Model $record): ?Model => $record),
+                                       DateTimePicker::make('rsvp_at')
+                                                     ->label('RSVP At')
+                                                     ->default(now()),
+                                   ]),
+                               Grid::make()
+                                   ->schema([
+                                       Select::make('is_attending')
+                                             ->options([
+                                                 1 => 'Yes',
+                                                 0 => 'No',
+                                             ])
+                                             ->label('Attend'),
+                                       TextInput::make('pax')
+                                                ->numeric(),
+                                   ]),
+                           ]),
+                ]),
         ];
     }
 }

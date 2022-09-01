@@ -3,6 +3,7 @@
 namespace App\Filament\Resources;
 
 use App\Filament\Resources\GroupResource\Pages;
+use App\Filament\Resources\GroupResource\RelationManagers\InvitationsRelationManager;
 use App\Models\Group;
 use App\Models\Seating;
 use Carbon\Carbon;
@@ -92,6 +93,14 @@ class GroupResource extends Resource
     {
         return [
             'index' => Pages\ManageGroups::route('/'),
+            'view'  => Pages\ViewGroup::route('/{record}'),
+        ];
+    }
+
+    public static function getRelations(): array
+    {
+        return [
+            InvitationsRelationManager::class,
         ];
     }
 }

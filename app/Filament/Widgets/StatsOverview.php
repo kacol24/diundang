@@ -14,20 +14,45 @@ class StatsOverview extends BaseWidget
         $invitations = Invitation::get();
         $seatings = Seating::get();
 
+        $invitationsHasAttending = $invitations->whereNotNull('is_attending');
+        $invitationsNullAttending = $invitations->whereNull('rsvp_at');
+        $invitationsAttending = $invitations->where('is_attending', true);
+
+        $templateRsvpWidgetTitle = 'RSVP ({already_rsvp} of {total_invitations})';
+        $rsvpWidgetTitle = str_replace(
+            [
+                '{already_rsvp}',
+                '{total_invitations}',
+            ],
+            [
+                $invitations->whereNotNull('rsvp_at')->count(),
+                $invitations->count(),
+            ],
+            $templateRsvpWidgetTitle);
+
+        $templateRsvpWidgetDescription = '{not_attending_count} cannot make it | {no_response_count} have not respond';
+        $rsvpWidgetDescription = str_replace(
+            [
+                '{not_attending_count}',
+                '{no_response_count}',
+            ],
+            [
+                $invitationsHasAttending->where('is_attending', 0)->count(),
+                $invitationsNullAttending->count(),
+            ],
+            $templateRsvpWidgetDescription
+        );
+
         return [
-            Card::make(
-                'RSVP  ('.$invitations->whereNotNull('is_attending')->count().' of '.$invitations->count().')',
-                $invitations->where('is_attending', true)->count().' are attending'
-            )->description(
-                $invitations->whereNotNull('is_attending')->where('is_attending', 0)
-                            ->count().' cannot make it | '.$invitations->whereNull('is_attending')
-                                                                       ->count().' have not respond'
-            ),
-            Card::make('Confirmed Guests', $invitations->where('is_attending', true)->sum('pax'))
+            Card::make($rsvpWidgetTitle, $invitationsAttending->count().' are attending')
+                ->description($rsvpWidgetDescription),
+            Card::make('Confirmed Guests', $invitationsAttending->sum('pax'))
                 ->description('Total invited guests: '.$invitations->sum('guests')),
 
             Card::make('Confirmed Table', $seatings->sum('confirmed_table_count'))
                 ->description('Estimated: '.$seatings->sum('table_count')),
+
+
         ];
     }
 }
