@@ -43,7 +43,7 @@
     <title>The Wedding of Kevin & Fernanda</title>
     <meta name="description"
           content="Dear {{ $guestName }}, you are cordially invited to celebrate the wedding of Kevin and Fernanda on September 24th, 2022.">
-    <meta property="og:image" content="{{ asset('images/logo-og.png') }}"/>
+    <meta property="og:image" content="{{ asset('images/logo-qr.png') }}"/>
     <meta property="og:image:width" content="955"/>
     <meta property="og:image:height" content="500"/>
     <meta property="og:title" content="You are invited! The Wedding of Kevin and Fernanda, 24 September 2022"/>
