@@ -12,7 +12,7 @@ class HomeController extends Controller
         $guestName = request('for', 'Honored Guest');
 
         $guestCode = request('guest');
-        $invitation = Invitation::firstWhere('guest_code', $guestCode);
+        $invitation = Invitation::firstWhere('guest_code', substr($guestCode, 0, 6));
 
         if ($invitation) {
             $guestName = $invitation->full_name;
