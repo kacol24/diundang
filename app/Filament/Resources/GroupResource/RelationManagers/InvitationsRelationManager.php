@@ -39,20 +39,8 @@ class InvitationsRelationManager extends RelationManager
                       ->label('Table')
                       ->toggleable(),
             BooleanColumn::make('is_family')
-                         ->action(function ($record) {
-                             $record->is_family = ! $record->is_family;
-                             $record->save();
-
-                             event(new InvitationUpdated($record));
-                         })
                          ->toggleable(),
             BooleanColumn::make('is_teapai')
-                         ->action(function ($record) {
-                             $record->is_teapai = ! $record->is_teapai;
-                             $record->save();
-
-                             event(new InvitationUpdated($record));
-                         })
                          ->toggleable(),
             TextColumn::make('guests')
                       ->label('Max Guests')
