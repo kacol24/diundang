@@ -76,17 +76,17 @@ class RsvpResource extends Resource
                           ->searchable(),
                 TextColumn::make('full_name')
                           ->searchable(['name']),
-                TextColumn::make('group.name')
+                TextColumn::make('group.group_name')
                           ->toggleable(),
                 TextColumn::make('guests')
                           ->label('Max Guests')
                           ->toggleable(),
                 TextColumn::make('seating.name')
                           ->label('Table')
-                          ->toggleable(),
+                          ->toggleable(isToggledHiddenByDefault: true),
                 TagsColumn::make('notes')
                           ->separator(', ')
-                          ->toggleable(),
+                          ->toggleable(isToggledHiddenByDefault: true),
                 BooleanColumn::make('is_attending'),
                 TextColumn::make('rsvp_at')->dateTime()
                           ->sortable(),
