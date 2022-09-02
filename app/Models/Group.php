@@ -25,7 +25,11 @@ class Group extends Model
     ];
 
     protected $appends = [
-        'group_name'
+        'group_name',
+    ];
+
+    protected $casts = [
+        'is_bride' => 'boolean',
     ];
 
     public function scopeOrdered($query)
@@ -51,6 +55,6 @@ class Group extends Model
             $prefix = '[Bride]';
         }
 
-        return $prefix . ' ' . $this->name;
+        return $prefix.' '.$this->name;
     }
 }

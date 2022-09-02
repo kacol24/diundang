@@ -8,7 +8,7 @@
         </small>
         <div class="row justify-content-center">
             <div class="col-lg-6">
-                <livewire:comment-form/>
+                <livewire:comment-form :invitation="$invitation"/>
                 <livewire:comment-list/>
             </div>
         </div>
