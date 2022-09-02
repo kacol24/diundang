@@ -17,6 +17,8 @@ class CommentForm extends Component
 
     public $guest;
 
+    public $invitation;
+
     protected $rules = [
         'name'    => 'required|min:2',
         'message' => 'required|min:2',
@@ -71,7 +73,10 @@ class CommentForm extends Component
 
     public function mount(Request $request)
     {
-        $this->setInvitation(['guest' => $request->guest]);
+        if ($this->invitation) {
+            $this->guest = $this->invitation->guest_code;
+            $this->name = $this->invitation->full_name;
+        }
     }
 
     public function render()

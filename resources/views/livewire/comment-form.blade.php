@@ -4,7 +4,7 @@
               wire:loading.delay.attr="disabled">
         <div class="mb-3">
             <input type="text" class="form-control" placeholder="Name" aria-label="Name" required
-                   @if($guest)
+                   @if($invitation)
                        disabled
                    @endif
                    wire:model.defer="name">

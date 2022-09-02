@@ -2,7 +2,6 @@
 
 namespace App\Filament\Resources\GroupResource\RelationManagers;
 
-use App\Events\InvitationUpdated;
 use App\Filament\Resources\InvitationResource;
 use Filament\Resources\Form;
 use Filament\Resources\RelationManagers\RelationManager;

@@ -5,6 +5,8 @@ namespace App\Providers;
 use App\Events\InvitationCreated;
 use App\Events\InvitationUpdated;
 use App\Listeners\GenerateQrInvitation;
+use App\Models\Invitation;
+use App\Observers\InvitationObserver;
 use Illuminate\Auth\Events\Registered;
 use Illuminate\Auth\Listeners\SendEmailVerificationNotification;
 use Illuminate\Foundation\Support\Providers\EventServiceProvider as ServiceProvider;
@@ -29,6 +31,12 @@ class EventServiceProvider extends ServiceProvider
         InvitationUpdated::class => [
             GenerateQrInvitation::class
         ],
+    ];
+
+    protected $observers = [
+        Invitation::class => [
+            InvitationObserver::class
+        ]
     ];
 
     /**
