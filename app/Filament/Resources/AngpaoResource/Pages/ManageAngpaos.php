@@ -16,4 +16,11 @@ class ManageAngpaos extends ManageRecords
             Actions\CreateAction::make(),
         ];
     }
+
+    protected function getHeaderWidgets(): array
+    {
+        return [
+            AngpaoResource\Widgets\TotalAngpao::class,
+        ];
+    }
 }
