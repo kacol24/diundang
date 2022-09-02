@@ -20,6 +20,7 @@ class Attendance extends Model
         'attendance_id',
         'invitation_id',
         'has_gift',
+        'notes',
     ];
 
     protected $casts = [
@@ -38,7 +39,7 @@ class Attendance extends Model
 
     public function getSerialNumberAttribute()
     {
-        return $this->sequence_group. '-' .$this->sequence;
+        return $this->sequence_group.'-'.$this->sequence;
     }
 
     public function getCheckinTimeAttribute()

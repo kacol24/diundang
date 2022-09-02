@@ -10,11 +10,14 @@ class CheckInData
 
     public bool $hasGift = true;
 
-    public function __construct($sequenceGroup, $attendanceId, $hasGift)
+    public ?string $notes = '';
+
+    public function __construct($sequenceGroup, $attendanceId, $hasGift, $notes)
     {
         $this->sequenceGroup = $sequenceGroup;
         $this->attendanceId = $attendanceId;
         $this->hasGift = $hasGift;
+        $this->notes = $notes;
     }
 
     public static function fromFilament(array $data)
@@ -24,6 +27,6 @@ class CheckInData
 
     public static function fromArray(array $data)
     {
-        return new self($data['sequence_group'], $data['attendance_id'], $data['has_gift']);
+        return new self($data['sequence_group'], $data['attendance_id'], $data['has_gift'], $data['notes']);
     }
 }
