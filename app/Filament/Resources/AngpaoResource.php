@@ -68,7 +68,9 @@ class AngpaoResource extends Resource
                           ->toggleable(),
                 BooleanColumn::make('is_attending'),
                 TextColumn::make('angpao')
-                          ->sortable(),
+                          ->prefix('Rp')
+                          ->sortable()
+                          ->formatStateUsing(fn($state) => number_format($state, 0, ',', '.')),
             ])
             ->filters([
                 MultiSelectFilter::make('group_id')
