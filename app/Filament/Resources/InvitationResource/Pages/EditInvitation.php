@@ -15,8 +15,6 @@ class EditInvitation extends EditRecord
     {
         $record->update($data);
 
-        event(new InvitationUpdated($record));
-
         return $record;
     }
 }

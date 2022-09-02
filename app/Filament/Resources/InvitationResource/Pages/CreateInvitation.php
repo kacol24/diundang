@@ -20,8 +20,6 @@ class CreateInvitation extends CreateRecord
 
         $invitation = parent::handleRecordCreation($data);
 
-        event(new InvitationCreated($invitation));
-
         return $invitation;
     }
 }
