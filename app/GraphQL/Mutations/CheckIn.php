@@ -17,6 +17,7 @@ final class CheckIn
         $sequenceGroup = optional($args)['sequence_group'];
         $attendanceId = optional($args)['attendance_id'];
         $hasGift = (bool) optional($args)['has_gift'];
+        $notes = optional($args)['notes'];
 
         $guestCode = $args['guest_code'];
 
@@ -29,6 +30,7 @@ final class CheckIn
                     'sequence_group' => $sequenceGroup,
                     'attendance_id'  => $attendanceId,
                     'has_gift'       => $hasGift,
+                    'notes'          => $notes,
                 ])
             ),
             'invitations' => Invitation::ordered()->get(),

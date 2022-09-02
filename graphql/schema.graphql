@@ -6,6 +6,7 @@ type Mutation {
         guest_code: String!
         sequence_group: String
         has_gift: Boolean
+        notes: String
     ): CheckinResponse @field(resolver: "CheckIn")
 }
 
@@ -98,6 +99,7 @@ type Attendance {
     created_at: DateTime
     checkin_time: String
     has_gift: Boolean
+    notes: String
 }
 
 type CheckinResponse {
