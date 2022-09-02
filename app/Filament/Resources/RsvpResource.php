@@ -7,6 +7,9 @@ use App\Filament\Resources\RsvpResource\RelationManagers;
 use App\Models\Invitation;
 use App\Models\Rsvp;
 use Filament\Forms;
+use Filament\Forms\Components\DateTimePicker;
+use Filament\Forms\Components\Grid;
+use Filament\Forms\Components\Select;
 use Filament\Forms\Components\TextInput;
 use Filament\Resources\Form;
 use Filament\Resources\Resource;
@@ -19,6 +22,7 @@ use Filament\Tables\Filters\Filter;
 use Filament\Tables\Filters\MultiSelectFilter;
 use Filament\Tables\Filters\TernaryFilter;
 use Illuminate\Database\Eloquent\Builder;
+use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
 
 class RsvpResource extends Resource
@@ -43,7 +47,24 @@ class RsvpResource extends Resource
     {
         return $form
             ->schema([
-                //
+                Grid::make()
+                    ->schema([
+                        TextInput::make('guest_code')
+                                 ->unique(ignorable: fn(?Model $record): ?Model => $record),
+                        DateTimePicker::make('rsvp_at')
+                                      ->label('RSVP At'),
+                    ]),
+                Grid::make()
+                    ->schema([
+                        Select::make('is_attending')
+                              ->options([
+                                  1 => 'Yes',
+                                  0 => 'No',
+                              ])
+                              ->label('Attend'),
+                        TextInput::make('pax')
+                                 ->numeric(),
+                    ]),
             ]);
     }
 
@@ -93,7 +114,7 @@ class RsvpResource extends Resource
                              ->nullable(),
             ])
             ->actions([
-                //Tables\Actions\EditAction::make(),
+                Tables\Actions\EditAction::make(),
                 //Tables\Actions\DeleteAction::make(),
             ])
             ->bulkActions([
