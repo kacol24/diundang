@@ -22,6 +22,7 @@ class InvitationCheckIn
         }
 
         $lastSequence = Attendance::query()
+                                  ->withTrashed()
                                   ->when($sequenceGroup, function ($query) use ($sequenceGroup) {
                                       return $query->where('sequence_group', $sequenceGroup);
                                   })
