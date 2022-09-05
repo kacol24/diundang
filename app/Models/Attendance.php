@@ -28,6 +28,7 @@ class Attendance extends Model
 
     protected $casts = [
         'has_gift' => 'boolean',
+        'notes'    => 'array',
     ];
 
     public function invitation()

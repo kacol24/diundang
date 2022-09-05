@@ -10,7 +10,7 @@ class CheckInData
 
     public bool $hasGift = true;
 
-    public ?string $notes = '';
+    public ?array $notes = [];
 
     public function __construct($sequenceGroup, $attendanceId, $hasGift, $notes)
     {
