@@ -6,8 +6,10 @@ type Mutation {
         guest_code: String!
         sequence_group: String
         has_gift: Boolean
-        notes: String
+        notes: [String]
     ): CheckinResponse @field(resolver: "CheckIn")
+
+    deleteAttendance(id: ID!): Attendance @delete
 }
 
 "Indicates what fields are available at the top level of a query operation."
@@ -92,6 +94,7 @@ type Seating {
 }
 
 type Attendance {
+    id: ID
     invitation: Invitation @belongsTo
     sequence: Int
     sequence_group: String
@@ -99,7 +102,7 @@ type Attendance {
     created_at: DateTime
     checkin_time: String
     has_gift: Boolean
-    notes: String
+    notes: [String]
 }
 
 type CheckinResponse {

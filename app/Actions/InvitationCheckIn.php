@@ -22,6 +22,7 @@ class InvitationCheckIn
         }
 
         $lastSequence = Attendance::query()
+                                  ->withTrashed()
                                   ->when($sequenceGroup, function ($query) use ($sequenceGroup) {
                                       return $query->where('sequence_group', $sequenceGroup);
                                   })
@@ -35,11 +36,12 @@ class InvitationCheckIn
 
         $attendance = Attendance::updateOrCreate([
             'invitation_id' => $invitation->id,
-            'sequence'      => optional($existingAttendance)->sequence ?? $nextSequence,
         ], [
+            'sequence'       => optional($existingAttendance)->sequence ?? $nextSequence,
             'sequence_group' => $sequenceGroup,
             'has_gift'       => $checkInData->hasGift,
             'notes'          => $checkInData->notes,
+            'extra_gifts'    => count(array_filter($checkInData->notes)),
         ]);
 
         $attendance->touch();
