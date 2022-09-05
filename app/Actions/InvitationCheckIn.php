@@ -41,7 +41,7 @@ class InvitationCheckIn
             'sequence_group' => $sequenceGroup,
             'has_gift'       => $checkInData->hasGift,
             'notes'          => $checkInData->notes,
-            'extra_gifts'    => count($checkInData->notes),
+            'extra_gifts'    => count(array_filter($checkInData->notes)),
         ]);
 
         $attendance->touch();
