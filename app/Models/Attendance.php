@@ -23,6 +23,7 @@ class Attendance extends Model
         'invitation_id',
         'has_gift',
         'notes',
+        'extra_gifts',
     ];
 
     protected $casts = [
@@ -51,6 +52,6 @@ class Attendance extends Model
 
     public function getGiftCountAttribute()
     {
-        return (int) $this->has_gift;
+        return (int) $this->has_gift + $this->extra_gifts;
     }
 }
