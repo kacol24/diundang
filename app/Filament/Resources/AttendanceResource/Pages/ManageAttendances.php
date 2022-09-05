@@ -8,6 +8,7 @@ use App\Filament\Resources\AttendanceResource;
 use App\Models\Invitation;
 use Filament\Pages\Actions;
 use Filament\Resources\Pages\ManageRecords;
+use Filament\Tables\Filters\Layout;
 
 class ManageAttendances extends ManageRecords
 {
@@ -23,6 +24,23 @@ class ManageAttendances extends ManageRecords
                                     return (new InvitationCheckIn)
                                         ->checkIn($invitation, CheckInData::fromFilament($data));
                                 }),
+        ];
+    }
+
+    protected function shouldPersistTableFiltersInSession(): bool
+    {
+        return true;
+    }
+
+    protected function getTableFiltersLayout(): ?string
+    {
+        return Layout::AboveContent;
+    }
+
+    protected function getHeaderWidgets(): array
+    {
+        return [
+            AttendanceResource\Widgets\AttendanceAngpaoCount::class,
         ];
     }
 }

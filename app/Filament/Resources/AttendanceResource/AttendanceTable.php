@@ -22,13 +22,14 @@ final class AttendanceTable
                       ->label('Seating'),
             TextColumn::make('invitation.guests')
                       ->label('Guest(s)'),
-            TextColumn::make('attendance.invitation.name')
-                      ->label('Checked-in By'),
+            //TextColumn::make('attendance.invitation.name')
+            //          ->label('Checked-in By'),
             BooleanColumn::make('has_gift')
                          ->action(function ($record) {
                              $record->has_gift = ! $record->has_gift;
                              $record->save();
                          }),
+            TextColumn::make('gift_count'),
             TextColumn::make('created_at')
                       ->dateTime(),
         ];

@@ -48,4 +48,9 @@ class Attendance extends Model
     {
         return $this->updated_at->format('H:i:s');
     }
+
+    public function getGiftCountAttribute()
+    {
+        return (int) $this->has_gift;
+    }
 }

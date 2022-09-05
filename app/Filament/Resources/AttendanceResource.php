@@ -10,6 +10,7 @@ use Filament\Resources\Form;
 use Filament\Resources\Resource;
 use Filament\Resources\Table;
 use Filament\Tables;
+use Filament\Tables\Filters\MultiSelectFilter;
 
 class AttendanceResource extends Resource
 {
@@ -27,7 +28,13 @@ class AttendanceResource extends Resource
         return $table
             ->columns(AttendanceTable::columns())
             ->filters([
-                //
+                MultiSelectFilter::make('sequence_group')
+                                 ->label('By usher')
+                                 ->options(
+                                     Attendance::get()
+                                               ->unique('sequence_group')
+                                               ->pluck('sequence_group', 'sequence_group')
+                                 ),
             ])
             ->actions([
                 Tables\Actions\EditAction::make(),
