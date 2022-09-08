@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\DownloadController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\PrintController;
@@ -43,3 +44,5 @@ Route::domain(config('filament.domain'))
      ->group(function () {
          Route::post('import');
      });
+
+Route::get('dashboard', DashboardController::class);
