@@ -1,5 +1,5 @@
 <div class="container-fluid">
-    <div class="table-responsive">
+    <div class="table-responsive" wire:poll.5000ms>
         <table class="table table-condensed table-bordered">
             <thead>
             <tr>
