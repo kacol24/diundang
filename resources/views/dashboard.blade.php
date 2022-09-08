@@ -14,9 +14,8 @@
 </head>
 <body>
 <main class="py-3">
-    <div class="container-fluid">
-        @livewire('usher-checkin-dashboard')
-    </div>
+    @livewire('usher-checkin-dashboard')
+    @livewire('attendance-dashboard')
 </main>
 @livewireScripts
 </body>

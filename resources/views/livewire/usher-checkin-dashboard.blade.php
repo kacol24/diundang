@@ -1,4 +1,4 @@
-<div>
+<div class="container-fluid">
     <div class="row" wire:poll.5000ms>
         @foreach($bySequenceGroup as $usher => $group)
             <div class="col-md-3 mb-3">
@@ -21,11 +21,11 @@
                         </div>
                     </div>
                     <div class="card-footer bg-white p-0">
-                        <div class="table-responsive" style="max-height: 300px; overflow-y: auto;">
-                            <table class="table m-0 text-nowrap table-striped">
+                        <div class="table-responsive" style="max-height: 500px; overflow-y: auto;">
+                            <table class="table m-0 table-striped">
                                 <thead>
                                 <tr>
-                                    <th>SN</th>
+                                    <th>Serial</th>
                                     <th>Name</th>
                                     <th>Angpao</th>
                                     <th>Table</th>
@@ -38,7 +38,8 @@
                                             {{ $attendance->serial_number }}
                                         </td>
                                         <td>
-                                            {{ optional($attendance->invitation)->name }}
+                                            {{ optional($attendance->invitation)->name }}<br>
+                                            {{ optional($attendance->invitation->group)->group_name }}
                                             <small class="text-muted d-block">
                                                 Check-in: {{ $attendance->updated_at->format('H:i:s') }}
                                             </small>
@@ -76,5 +77,4 @@
             </div>
         @endforeach
     </div>
-
 </div>
