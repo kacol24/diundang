@@ -7,6 +7,13 @@ use Livewire\Component;
 
 class AttendanceDashboard extends Component
 {
+    public $usherMap = [
+        'P' => 'Peter',
+        'S' => 'Sutrisno',
+        'V' => 'Verly',
+        'Z' => 'Zella',
+    ];
+
     public function render()
     {
         $attendances = Attendance::latest()->get();
