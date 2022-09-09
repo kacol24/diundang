@@ -1,13 +1,13 @@
 <div class="container-fluid">
     <div class="table-responsive" wire:poll.5000ms>
-        <table class="table table-condensed table-bordered">
+        <table class="table table-sm table-bordered m-0 table-striped">
             <thead>
             <tr>
                 <th>Serial</th>
                 <th>Usher</th>
-                <th>Name</th>
-                <th>Group</th>
                 <th>Angpao</th>
+                <th>Guest</th>
+                <th>Group / Table</th>
             </tr>
             </thead>
             <tbody>
@@ -15,18 +15,12 @@
                 <tr>
                     <td>
                         {{ $attendance->serial_number }}
-                        <small class="text-muted">
-                            Check-in: {{ $attendance->updated_at->format('H:i:s') }}
+                        <small class="text-muted d-block">
+                            <span class="text-nowrap">Check-in:</span> {{ $attendance->updated_at->format('H:i:s') }}
                         </small>
                     </td>
                     <td>
-                        {{ $attendance->sequence_group }}
-                    </td>
-                    <td>
-                        {{ $attendance->invitation->name }}
-                    </td>
-                    <td>
-                        {{ optional($attendance->invitation->group)->group_name }}
+                        {{ $usherMap[$attendance->sequence_group] ?? $attendance->sequence_group }}
                     </td>
                     <td>
                         <strong>{{ $attendance->gift_count }}</strong>
@@ -34,12 +28,12 @@
                             ({{ $attendance->has_gift }} + {{ $attendance->extra_gifts }})
                         @endif
                         @if($attendance->notes)
-                            <table class="table table-condensed table-bordered">
+                            <table class="table table-condensed table-bordered m-0">
                                 @foreach($attendance->notes as $note)
                                     <tr>
-                                        <td>
+                                        <th style="width: 20px;">
                                             {{ $loop->iteration }}
-                                        </td>
+                                        </th>
                                         <td>
                                             {{ $note }}
                                         </td>
@@ -47,6 +41,16 @@
                                 @endforeach
                             </table>
                         @endif
+                    </td>
+                    <td class="text-nowrap">
+                        {{ $attendance->invitation->name }}<br>
+                        [{{ $attendance->invitation->guest_code }}]
+                    </td>
+                    <td class="text-nowrap">
+                        <small>
+                            Group: {{ optional($attendance->invitation->group)->group_name }}<br>
+                            Table: {{ optional($attendance->invitation->seating)->name }}
+                        </small>
                     </td>
                 </tr>
             @endforeach
