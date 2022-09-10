@@ -15,10 +15,12 @@
                 </div>
                 @if($invitation)
                     <div class="modal-body p-0">
-                        <img
-                            src="{{ asset("storage/{$invitation['guest_code']}.jpg") }}?v={{ now()->timestamp }}"
-                            alt="qr code"
-                            class="img-fluid w-100">
+                        @if($isAttending)
+                            <img
+                                src="{{ asset("storage/{$invitation['guest_code']}.jpg") }}?v={{ now()->timestamp }}"
+                                alt="qr code"
+                                class="img-fluid w-100">
+                        @endif
                     </div>
                     <div class="modal-footer justify-content-start">
                         <small class="fst-italic">
