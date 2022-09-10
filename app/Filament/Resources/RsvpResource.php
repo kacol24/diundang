@@ -6,10 +6,14 @@ use App\Filament\Resources\RsvpResource\Pages;
 use App\Filament\Resources\RsvpResource\RelationManagers;
 use App\Models\Invitation;
 use App\Models\Rsvp;
+use App\Models\Seating;
 use Filament\Forms;
+use Filament\Forms\Components\Checkbox;
 use Filament\Forms\Components\DateTimePicker;
 use Filament\Forms\Components\Grid;
+use Filament\Forms\Components\Section;
 use Filament\Forms\Components\Select;
+use Filament\Forms\Components\TagsInput;
 use Filament\Forms\Components\TextInput;
 use Filament\Resources\Form;
 use Filament\Resources\Resource;
@@ -49,22 +53,64 @@ class RsvpResource extends Resource
             ->schema([
                 Grid::make()
                     ->schema([
-                        TextInput::make('guest_code')
-                                 ->unique(ignorable: fn(?Model $record): ?Model => $record),
-                        DateTimePicker::make('rsvp_at')
-                                      ->label('RSVP At'),
+                        TextInput::make('name'),
+                        TagsInput::make('notes')->separator(', '),
                     ]),
-                Grid::make()
-                    ->schema([
-                        Select::make('is_attending')
-                              ->options([
-                                  1 => 'Yes',
-                                  0 => 'No',
-                              ])
-                              ->label('Attend'),
-                        TextInput::make('pax')
-                                 ->numeric(),
-                    ]),
+                Section::make('Invitation Detail')
+                       ->schema([
+                           Grid::make()
+                               ->schema([
+                                   Select::make('group_id')
+                                         ->label('Group')
+                                         ->searchable()
+                                         ->options(\App\Models\Group::ordered()->get()->pluck('group_name', 'id')),
+                                   Select::make('seating_id')
+                                         ->label('Table')
+                                         ->searchable()
+                                         ->options(Seating::get()->pluck('table_dropdown', 'id')),
+                                   Grid::make([
+                                       'default' => 4,
+                                   ])->schema([
+                                       TextInput::make('guests')
+                                                ->required()
+                                                ->type('number')
+                                                ->suffix('person(s)')
+                                                ->default(2)
+                                                ->minValue(1)
+                                                ->columnSpan(2),
+                                       Checkbox::make('is_family')
+                                               ->label('Family')
+                                               ->inline(false),
+                                       Checkbox::make('is_teapai')
+                                               ->label('Teapai')
+                                               ->inline(false),
+                                   ]),
+                               ]),
+                       ]),
+                Section::make('RSVP Detail')
+                       ->schema([
+                           Grid::make()
+                               ->schema([
+                                   TextInput::make('guest_code')
+                                            ->unique(ignorable: fn(?Model $record): ?Model => $record),
+                                   DateTimePicker::make('rsvp_at')
+                                                 ->label('RSVP At')
+                                                 ->hint('Auto-filled with current date/time'),
+                                   Grid::make([
+                                       'default' => 2,
+                                   ])
+                                       ->schema([
+                                           Select::make('is_attending')
+                                                 ->options([
+                                                     1 => 'Yes',
+                                                     0 => 'No',
+                                                 ])
+                                                 ->label('Attend'),
+                                           TextInput::make('pax')
+                                                    ->numeric(),
+                                       ]),
+                               ]),
+                       ]),
             ]);
     }
 
@@ -114,7 +160,15 @@ class RsvpResource extends Resource
                              ->nullable(),
             ])
             ->actions([
-                Tables\Actions\EditAction::make(),
+                Tables\Actions\EditAction::make()
+                                         ->mountUsing(function ($form, $record) {
+                                             $data = $record->toArray();
+                                             if (! $record->rsvp_at) {
+                                                 $data = array_merge($data, ['rsvp_at' => now()]);
+                                             }
+
+                                             return $form->fill($data);
+                                         }),
                 //Tables\Actions\DeleteAction::make(),
             ])
             ->bulkActions([
