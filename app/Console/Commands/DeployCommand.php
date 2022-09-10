@@ -33,6 +33,6 @@ class DeployCommand extends Command
         $this->call('route:cache');
         //$this->call('view:cache');
         $this->call('optimize');
-        $this->call('opcache:compile', ['--force']);
+        $this->call('opcache:compile', ['--force' => true]);
     }
 }
