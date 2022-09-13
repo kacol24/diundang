@@ -1,6 +1,7 @@
 <div
     x-data="{
     name: '{{ addslashes(optional($invitation)->name) ?? "" }}',
+    phone: '',
     attend: '{{ $isAttending }}',
     pax: '{{ optional($invitation)->pax }}'
   }">
@@ -54,22 +55,40 @@
                     <i class="fas fa-refresh fa-fw fa-spin text-color:blue fa-lg"></i>
                 </div>
             </div>
-            <div class="mb-3">
-                <label class="fw-bold" for="name">
-                    {{ __('Your Name') }}
-                </label>
-                <input type="hidden" name="guest_code" value="{{ optional($invitation)->guest_code }}">
-                <input type="text"
-                       @if($invitation)
-                           class="form-control-plaintext"
-                       readonly
-                       value="{{ $guestName }}"
-                       @else
-                           class="form-control"
-                       x-model="name"
-                       wire:model.defer="guestName"
-                       @endif
-                       id="name">
+            <div class="row">
+                <div class="col-md">
+                    <div class="mb-3">
+                        <label class="fw-bold" for="name">
+                            {{ __('Your Name') }}
+                        </label>
+                        <input type="hidden" name="guest_code" value="{{ optional($invitation)->guest_code }}">
+                        <input type="text"
+                               @if($invitation)
+                                   class="form-control-plaintext"
+                               readonly
+                               value="{{ $guestName }}"
+                               @else
+                                   class="form-control"
+                               x-model="name"
+                               wire:model.defer="guestName"
+                               @endif
+                               id="name">
+                    </div>
+                </div>
+                @unless($invitation)
+                    <div class="col-md">
+                        <div class="mb-3">
+                            <label class="fw-bold" for="phone">
+                                {{ __('Your Phone / WhatsApp') }}
+                            </label>
+                            <input type="tel"
+                                   class="form-control"
+                                   x-model="phone"
+                                   wire:model.defer="phone"
+                                   id="phone">
+                        </div>
+                    </div>
+                @endunless
             </div>
             <div class="row">
                 <div class="col-md-6">
