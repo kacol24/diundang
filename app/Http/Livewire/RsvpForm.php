@@ -14,6 +14,8 @@ class RsvpForm extends Component
 
     public $guestName;
 
+    public $phone;
+
     public $guests;
 
     public $isAttending;
@@ -23,6 +25,11 @@ class RsvpForm extends Component
     public function save()
     {
         if (! $this->invitation) {
+            $hasInvitationBasedOnPhone = Invitation::where('phone', $this->phone)->first();
+            if ($hasInvitationBasedOnPhone) {
+                return redirect()->route('home', ['guest' => $hasInvitationBasedOnPhone->guest_code]);
+            }
+
             $group = null;
             if ($this->group) {
                 $group = Group::firstWhere('name', $this->group);
@@ -31,6 +38,7 @@ class RsvpForm extends Component
             $invitation = Invitation::create([
                 'guest_code' => Invitation::generateGuestCode(),
                 'name'       => $this->guestName,
+                'phone'      => $this->phone,
                 'guests'     => 2,
                 'group_id'   => optional($group)->id,
                 'seating_id' => optional($group)->seating_id
