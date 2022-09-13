@@ -56,7 +56,7 @@
                 </div>
             </div>
             <div class="row">
-                <div class="col">
+                <div class="col-md">
                     <div class="mb-3">
                         <label class="fw-bold" for="name">
                             {{ __('Your Name') }}
@@ -76,7 +76,7 @@
                     </div>
                 </div>
                 @unless($invitation)
-                    <div class="col">
+                    <div class="col-md">
                         <div class="mb-3">
                             <label class="fw-bold" for="phone">
                                 {{ __('Your Phone / WhatsApp') }}
