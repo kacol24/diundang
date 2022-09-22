@@ -7,6 +7,7 @@ use App\Filament\Resources\RsvpResource\RelationManagers;
 use App\Models\Invitation;
 use App\Models\Rsvp;
 use App\Models\Seating;
+use App\Settings\BadWordsSettings;
 use Filament\Forms;
 use Filament\Forms\Components\Checkbox;
 use Filament\Forms\Components\DateTimePicker;
@@ -19,6 +20,7 @@ use Filament\Resources\Form;
 use Filament\Resources\Resource;
 use Filament\Resources\Table;
 use Filament\Tables;
+use Filament\Tables\Actions\Action;
 use Filament\Tables\Columns\BooleanColumn;
 use Filament\Tables\Columns\TagsColumn;
 use Filament\Tables\Columns\TextColumn;
@@ -160,6 +162,24 @@ class RsvpResource extends Resource
                              ->nullable(),
             ])
             ->actions([
+                Action::make('send_wa')
+                      ->label('WhatsApp')
+                      ->url(function (Invitation $record) {
+                          $waUrl = "https://wa.me/{$record->whatsapp_phone}?text=".urlencode(view('whatsapp',
+                                  [
+                                      'groomName'    => 'Kevin Chandra',
+                                      'brideName'    => 'Fernanda Eka Putri',
+                                      'guestName'    => $record->full_name ?: 'Mr. / Mrs. / Ms.',
+                                      'linkToSite'   => route('home', ['guest' => $record->guest_code]),
+                                      'dueDate'      => app(BadWordsSettings::class)->due_date,
+                                      'isAttending'  => $record->is_attending,
+                                      'reverse'      => optional($record->group)->is_bride,
+                                      'downloadLink' => route('download', ['guest' => $record->guest_code]),
+                                  ])->render());
+
+                          return $waUrl;
+                      })
+                      ->openUrlInNewTab(),
                 Tables\Actions\EditAction::make()
                                          ->mountUsing(function ($form, $record) {
                                              $data = $record->toArray();
