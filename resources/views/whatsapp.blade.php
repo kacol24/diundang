@@ -29,13 +29,14 @@ and
 @endforeach
 
 @if(isset($isAttending) && $isAttending)
-You can view detailed information of the reception and download your *Digital Invitation* from this link:
-*{{ $linkToSite }}*
+You can directly *download* your _Digital Invitation_ using this link:
+{{ $downloadLink }}
 
-_Please save/download/screenshot the QR Code provided and bring the QR Code with you at the reception as your *Digital Invitation*._
+_For detailed information of the reception, please visit this link:_
+{{ $linkToSite }}
 @else
 Please kindly help us prepare everything better by confirming your presence to our wedding reception using the following RSVP form:
-*{{ $linkToSite }}*
+{{ $linkToSite }}
 
 
 _Please complete this RSVP before *{{ $dueDate }}*._
