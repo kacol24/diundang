@@ -112,13 +112,14 @@ class InvitationResource extends Resource
                       ->url(function (Invitation $record) {
                           $waUrl = "https://wa.me/{$record->whatsapp_phone}?text=".urlencode(view('whatsapp',
                                   [
-                                      'groomName'   => 'Kevin Chandra',
-                                      'brideName'   => 'Fernanda Eka Putri',
-                                      'guestName'   => $record->full_name ?: 'Mr. / Mrs. / Ms.',
-                                      'linkToSite'  => route('home', ['guest' => $record->guest_code]),
-                                      'dueDate'     => app(BadWordsSettings::class)->due_date,
-                                      'isAttending' => $record->is_attending,
-                                      'reverse'     => optional($record->group)->is_bride,
+                                      'groomName'    => 'Kevin Chandra',
+                                      'brideName'    => 'Fernanda Eka Putri',
+                                      'guestName'    => $record->full_name ?: 'Mr. / Mrs. / Ms.',
+                                      'linkToSite'   => route('home', ['guest' => $record->guest_code]),
+                                      'dueDate'      => app(BadWordsSettings::class)->due_date,
+                                      'isAttending'  => $record->is_attending,
+                                      'reverse'      => optional($record->group)->is_bride,
+                                      'downloadLink' => route('download', ['guest' => $record->guest_code]),
                                   ])->render());
 
                           return $waUrl;
