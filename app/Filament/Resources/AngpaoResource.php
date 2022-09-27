@@ -58,6 +58,9 @@ class AngpaoResource extends Resource
     {
         return $table
             ->columns([
+                TextColumn::make('attendance.serial_number')
+                        ->label('Serial Number')
+                        ->searchable(),
                 TextColumn::make('guest_code')
                           ->searchable(),
                 TextColumn::make('full_name')
