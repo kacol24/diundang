@@ -59,8 +59,21 @@ class AngpaoResource extends Resource
         return $table
             ->columns([
                 TextColumn::make('attendance.serial_number')
-                        ->label('Serial Number')
-                        ->searchable(),
+                          ->label('Serial Number')
+                          ->searchable(query: function (Builder $query, $search): Builder {
+                              $search = strtoupper($search);
+
+                              return $query->whereHas('attendance', function ($query) use ($search) {
+                                  return $query->where('sequence_group', 'like', "%{$search}%")
+                                               ->orWhere('sequence', 'like', "%{$search}%");
+                              });
+                          }, isIndividual: true)
+                          ->sortable(query: function (Builder $query, $direction): Builder {
+                              return $query->whereHas('attendance', function ($query) use ($direction) {
+                                  return $query->orderBy('sequence', $direction)
+                                               ->orderBy('sequence_group', $direction);
+                              });
+                          }),
                 TextColumn::make('guest_code')
                           ->searchable(),
                 TextColumn::make('full_name')
