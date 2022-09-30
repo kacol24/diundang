@@ -5,6 +5,7 @@ namespace App\Filament\Resources;
 use App\Filament\Resources\AngpaoResource\Pages;
 use App\Filament\Resources\AngpaoResource\RelationManagers;
 use App\Models\Angpao;
+use App\Models\Attendance;
 use App\Models\Invitation;
 use Filament\Forms;
 use Filament\Forms\Components\TextInput\Mask;
@@ -64,14 +65,12 @@ class AngpaoResource extends Resource
                               $search = strtoupper($search);
 
                               return $query->whereHas('attendance', function ($query) use ($search) {
-                                  return $query->where('sequence_group', 'like', "%{$search}%")
-                                               ->orWhere('sequence', 'like', "%{$search}%");
+                                  return $query->where('sequence', 'like', "{$search}%");
                               });
                           }, isIndividual: true)
                           ->sortable(query: function (Builder $query, $direction): Builder {
                               return $query->whereHas('attendance', function ($query) use ($direction) {
-                                  return $query->orderBy('sequence', $direction)
-                                               ->orderBy('sequence_group', $direction);
+                                  return $query->orderBy('sequence', $direction);
                               });
                           }),
                 TextColumn::make('guest_code')
@@ -89,6 +88,22 @@ class AngpaoResource extends Resource
                           ->formatStateUsing(fn($state) => number_format($state, 0, ',', '.')),
             ])
             ->filters([
+                MultiSelectFilter::make('sequence_group')
+                                 ->label('By usher')
+                                 ->options(
+                                     Attendance::get()
+                                               ->unique('sequence_group')
+                                               ->pluck('sequence_group', 'sequence_group')
+                                 )
+                                 ->query(function (Builder $query, array $data): Builder {
+                                     return $query->when(
+                                         $data['values'],
+                                         fn(Builder $query, $sequenceGroup): Builder => $query->whereHas('attendance',
+                                             function ($query) use ($sequenceGroup) {
+                                                 return $query->whereIn('sequence_group', $sequenceGroup);
+                                             }),
+                                     );
+                                 }),
                 MultiSelectFilter::make('group_id')
                                  ->label('Group')
                                  ->options(\App\Models\Group::all()->pluck('group_name', 'id')),
