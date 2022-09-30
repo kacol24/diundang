@@ -5,6 +5,7 @@ namespace App\Filament\Resources\AngpaoResource\Pages;
 use App\Filament\Resources\AngpaoResource;
 use Filament\Pages\Actions;
 use Filament\Resources\Pages\ManageRecords;
+use Filament\Tables\Filters\Layout;
 use Illuminate\Contracts\Pagination\Paginator;
 use Illuminate\Database\Eloquent\Builder;
 
@@ -29,5 +30,15 @@ class ManageAngpaos extends ManageRecords
     protected function paginateTableQuery(Builder $query): Paginator
     {
         return $query->fastPaginate($this->getTableRecordsPerPage());
+    }
+
+    protected function shouldPersistTableFiltersInSession(): bool
+    {
+        return true;
+    }
+
+    protected function getTableFiltersLayout(): ?string
+    {
+        return Layout::AboveContent;
     }
 }
